@@ -1,6 +1,7 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
+#encoding: utf-8
 
 class BadConsequence
     
@@ -13,32 +14,11 @@ class BadConsequence
   @specificHiddenTreasures=Array.new
   @specificVisibleTreasures=Array.new
   
-#  def initialize(t,l,v,h)
-#    @text=t
-#    @levels=l
-#    @nVisibleTreasures=v
-#    @nHiddenTreasures=h
-#    
-#  end
-#  
-#  
-#  def initialize(t,l,v,h)
-#    @text=t
-#    @levels=l
-#    @specificHiddenTreasures=v
-#    @specificVisibleTreasures=h
-#    
-#  end
-#  
-#   def initialize(t,d)
-#    @text=t
-#    @death=d
-#      
-#  end
+
 
   def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures,someSpecificVisibleTreasures, someSpecificHiddenTreasures, death)
     @text=aText
-    @level=someLevels
+    @levels=someLevels
     @nVisibleTreasures=someVisibleTreasures
     @nHiddenTreasures=someHiddenTreasures
     @death=death
@@ -47,19 +27,30 @@ class BadConsequence
   end
  
    attr_accessor :text, :levels ,:nVisibleTreasures ,:nHiddenTreasures
-   attr_reader :specificHiddenTreasures, :specificVisibleTreasures
+  #Esto en un futuro puede cambiar para acceder a estas cosas 
+  attr_reader :specificHiddenTreasures, :specificVisibleTreasures
    
-  
-  def BadConsequence.newLevelNumberOfTreasures (aText, someLevels,someVisibleTreasures, someHiddenTreasures)
-    
-  end
-  
-  def BadConsequence.newLevelSpecificTreasures (aText, someLevels,  someSpecificVisibleTreasures, someSpecificHiddenTreasures)
-    
-  end
-  
-  def BadConsequence.newDeath (aText)
-    
-  end
+   private_class_method :new
+   
+  #Todos estos métodos llaman al constructor
+    def self.newLevelNumberOfTreasures (aText, someLevels,someVisibleTreasures, someHiddenTreasures)
+      new(aText, someLevels, someVisibleTreasures, someHiddenTreasures,[], [], [])
+    end
+
+    def self.newLevelSpecificTreasures (aText, someLevels,  someSpecificVisibleTreasures, someSpecificHiddenTreasures)
+      new(aText, someLevels, [], [],someSpecificVisibleTreasures, someSpecificHiddenTreasures, [])
+    end
+
+    def self.newDeath (aText)
+      new(aText, [], [], [],[], [], true)
+    end
+#    if(specificVisibleTreasures.isEmpty()==false || specificHiddenTreasures.isEmpty()==false){
+#            return "BadConsequence{" + "text=" + text + ", levels=" + Integer.toString(levels) + ", nVisibleTreasures=" + specificVisibleTreasures
+#                + ", nHiddenTreasures=" +specificHiddenTreasures + ", Death=" + Boolean.toString(death) +  '}';//
+#        }
+
+     def to_s
+        "Text: #{@text} Niveles perdidos: #{@levels} TesorosVisibles: #{@nVisibleTreasures} TesorosOcultos: #{@nHiddenTreasures} Death: #{@death} TesorosEspecificosOcultos: #{@specificHiddenTreasures} TesorosEspecificosVisibles: #{@specificVisibleTreasures}"
+      end 
   
 end

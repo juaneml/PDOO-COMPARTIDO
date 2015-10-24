@@ -103,7 +103,7 @@ public class PruebaNapakalaki {
         
         tVisible= new ArrayList();
         tHidden=new ArrayList();
-        badConsequence = new BadConsequence("Da mucho asquito. Pierdes 3 niveles",3,tVisible,tHidden);
+        badConsequence = new BadConsequence("Da mucho asquito. Pierdes 3 niveles",3,0,0);
         prize=new Prize(1,1);
         monstruos.add(new Monster("Pollipólipo volante",3,badConsequence,prize));
         

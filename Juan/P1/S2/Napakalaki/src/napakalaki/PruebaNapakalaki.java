@@ -151,7 +151,7 @@ public class PruebaNapakalaki {
        tVisible = new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS));
        tHidden = new ArrayList();
        prize = new Prize(2,1);
-       badConsequence = new BadConsequence("La quinta directiva primaria te obliba"
+       badConsequence = new BadConsequence("La quinta directiva primaria te obliga"
                + " a perder 2 niveles y un tesoro, 2 manos visibles",2,tVisible,tHidden);
        monstruos.add(new Monster("Roboggoth",8,badConsequence,prize));
        
@@ -172,8 +172,10 @@ public class PruebaNapakalaki {
        monstruos.add(new Monster("El Lenguas",20,badConsequence,prize));
        
        // Bicéfalo
+       tVisible = new ArrayList(Arrays.asList(TreasureKind.ONEHAND));
+       tHidden = new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS));;
        badConsequence = new BadConsequence("Te faltan manos para tanta cabeza. "
-               + "Pierdes 3 niveles y tus tesoros visibles de las manos",3,10,0);
+               + "Pierdes 3 niveles y tus tesoros visibles de las manos",3,tVisible,tHidden);
        prize = new Prize(1,1);
        monstruos.add(new Monster("Bicéfalo",20,badConsequence,prize));
        

@@ -20,30 +20,44 @@ public class BadConsequence {
     private boolean death; // representa un mal royo de tipo muerte
 
     /**
-     * Atributos d tipo lista de TreasureKind *
+     * Atributos de tipo lista de TreasureKind *
      */
     private ArrayList<TreasureKind> specificHiddenTreasures = new ArrayList();
     private ArrayList<TreasureKind> specificVisibleTreasures = new ArrayList();
 
     /**
-     * constructores *
+     * constructores 
+     * Todos los atributos hay que inicializarlos
      */
     BadConsequence(String text, int levels, int nVisible, int nHidden) {
         this.text = text;
         this.levels = levels;
         this.nVisibleTreasures = nVisible;
         this.nHiddenTreasures = nHidden;
+        this.death = false;
+        this.specificVisibleTreasures = new ArrayList();
+        this.specificVisibleTreasures = new ArrayList();
     }
 
     BadConsequence(String text, boolean death) {
         this.text = text;
         this.death = death;
+        this.levels = 0;
+        this.nVisibleTreasures = 10;
+        this.nHiddenTreasures = 10; 
+        this.specificVisibleTreasures = new ArrayList();        
+        this.specificHiddenTreasures  = new ArrayList();
+       
+        
     }
 
     BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible,
             ArrayList<TreasureKind> tHidden) {
         this.text = text;
         this.levels = levels;
+        this.nVisibleTreasures = 10; // valor por defecto que no va a a ser nunca así
+        this.nHiddenTreasures = 10;
+        this.death = false;
         this.specificVisibleTreasures = tVisible;
         this.specificHiddenTreasures = tHidden;
     }
@@ -128,8 +142,8 @@ public class BadConsequence {
         return "BadConsequence = " +  this.text + ", levels = " +  this.levels 
                 + ", nVisibleTreasures = "  + this.nVisibleTreasures 
                 + ", nHiddenTreasures = " +  this.nHiddenTreasures 
-                + ", death = " +  this.death + ", specificHiddenTreasures = " 
-                +  this.specificHiddenTreasures + ", specificVisibleTreasures = " 
-                +  this.specificVisibleTreasures ;
+                + ", death = " +  this.death + ", specificVisibleTreasures = " 
+                +  this.specificVisibleTreasures + ", specificHiddenTreasures = " 
+                +  this.specificHiddenTreasures  ;
     }
 }

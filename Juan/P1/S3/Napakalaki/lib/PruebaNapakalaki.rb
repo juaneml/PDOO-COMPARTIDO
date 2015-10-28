@@ -125,7 +125,7 @@ monsters << Monster.new('El Lenguas',20,badconsequence,price)
 # Bicéfalo
 
 price = Prize.new(1,1)
-badconsequence = BadConsequence.newLevelSpecificTreasures('Te faltan manos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos',3,[TreasureKind::ONEHAND],[TreasureKind::ONEHAND])
+badconsequence = BadConsequence.newLevelSpecificTreasures('Te faltan manos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos',3,[TreasureKind::BOTHHANDS,TreasureKind::ONEHAND,TreasureKind::ONEHAND],[])
 monsters << Monster.new('Bicefalo',20,badconsequence,price)
 
 #Bucle para imprimir el array de monstruos

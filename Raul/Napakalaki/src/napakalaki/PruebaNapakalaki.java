@@ -140,7 +140,7 @@ public class PruebaNapakalaki {
         tVisible= new ArrayList(Arrays.asList(TreasureKind.ONEHAND));
         tVisible.add(TreasureKind.ONEHAND);
         tVisible.add(TreasureKind.BOTHHANDS);        
-        tHidden=new ArrayList(Arrays.asList());
+        tHidden=new ArrayList();
         badConsequence = new BadConsequence("Te faltan manos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos",0,tVisible,tHidden);
         prize=new Prize(1,1);
         monstruos.add(new Monster("Bicéfalo",20,badConsequence,prize));

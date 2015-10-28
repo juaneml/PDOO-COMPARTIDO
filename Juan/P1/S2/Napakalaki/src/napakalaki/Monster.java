@@ -2,7 +2,7 @@ package napakalaki;
 
 /**
  *
- * @author juane
+ * @author juane y Raúl
  * @version 1.1
  * Clase Monster
  */

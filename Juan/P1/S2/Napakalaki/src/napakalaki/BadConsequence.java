@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author juane
+ * @author juane y Raúl
  * @version 1.1
  * Clase BadConsequence para el mal rollo del monstruo
  */
@@ -139,11 +139,19 @@ public class BadConsequence {
      */
     @Override
     public String toString() {
-        return "BadConsequence = " +  this.text + ", levels = " +  this.levels 
-                + ", nVisibleTreasures = "  + this.nVisibleTreasures 
-                + ", nHiddenTreasures = " +  this.nHiddenTreasures 
-                + ", death = " +  this.death + ", specificVisibleTreasures = " 
-                +  this.specificVisibleTreasures + ", specificHiddenTreasures = " 
-                +  this.specificHiddenTreasures  ;
+        
+        if(specificVisibleTreasures.isEmpty()==false || specificHiddenTreasures.isEmpty()==false){
+            return "BadConsequence = "  + text + ", levels = " + Integer.toString(levels) + ", nVisibleTreasures = " + specificVisibleTreasures
+                + ", nHiddenTreasures = " +specificHiddenTreasures + ", Death = " + Boolean.toString(death) ;//
+        }
+        else
+        {
+           
+            return "BadConsequence = " + text + ", levels = " + Integer.toString(levels) + ", nVisibleTreasures = " + Integer.toString(nVisibleTreasures) 
+                + ", nHiddenTreasures = " + Integer.toString(nHiddenTreasures) + ", Death = " + Boolean.toString(death) ;//
+        }
+        
+        
+        
     }
 }

@@ -3,7 +3,7 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
  
-
+#encoding: utf-8
 require 'rubygems'
 require 'rake'
 require 'rake/clean'
@@ -14,12 +14,13 @@ require 'rspec/core/rake_task'
 
 spec = Gem::Specification.new do |s|
   s.name = 'Napakalaki'
+  
   s.version = '0.0.1'
   s.has_rdoc = true
   s.extra_rdoc_files = ['README', 'LICENSE']
   s.summary = 'Your summary here'
   s.description = s.summary
-  s.author = 'juane y Raul'
+  s.author = 'Juane y Raul'
   s.email = ''
   # s.executables = ['your_executable_here']
   s.files = %w(LICENSE README Rakefile) + Dir.glob("{bin,lib,spec}/**/*")

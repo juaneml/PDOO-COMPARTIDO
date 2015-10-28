@@ -1,5 +1,7 @@
 #encoding: utf-8
-#Versión 1.0
+# Versión 1.0
+# author: juane, Raúl
+
 #Modulo para el tipo enumerado
 
 module TreasureKind

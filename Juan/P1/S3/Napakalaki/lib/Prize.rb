@@ -1,7 +1,11 @@
 #encoding: utf-8
-# author: Juane
+# #Versión 1.0
+# author: juane, Raúl
+
 #Versión 1.0
-require 'TreasureKind.rb'
+require_relative 'BadConsequence.rb'
+require_relative 'Monster.rb'
+require_relative 'TreasureKind.rb'
 class Prize    
     
     def initialize(treasures,level)

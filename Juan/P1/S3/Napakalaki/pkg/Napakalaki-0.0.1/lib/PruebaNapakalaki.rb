@@ -1,11 +1,13 @@
 #encoding: utf-8
+#Los acentos no los imprime
+# Versión 1.0
+# author: juane, Raúl
 
-#Versión 1.0
 
 require_relative 'BadConsequence.rb'
 require_relative 'Monster.rb'
 require_relative 'TreasureKind.rb'
-require  'Prize.rb'
+require_relative  'Prize.rb'
 monsters = Array.new
 
 # Monstrous
@@ -149,17 +151,25 @@ puts "\n"
 i=0
 num =0
 puts "Todos los monstruos que tengan un mal rollo que implique solo perdida de niveles"+"\n\n"
+
+#fetch es como get(i) ó []
+#empty? devuelve si el array está vacío
 while i < monsters.size
     
-    auxiliar = monsters[i].badconsequence.levels
     
-    if(auxiliar > 0)
+    perLevel = monsters[i].badconsequence.levels
+    tVisible = monsters[i].badconsequence.specificVisibleTreasures
+    tHidden  = monsters[i].badconsequence.specificHiddenTreasures
+    nivel_pV = monsters[i].badconsequence.nVisibleTreasures
+    nivel_pH = monsters[i].badconsequence.nHiddenTreasures
+    if( perLevel > 0 && (tVisible.empty? && tHidden.empty?) && (nivel_pV == 0 && nivel_pH == 0) )
         puts monsters.fetch(i)
         num = num + 1
     end
     i = i+1
 end
 puts "\n"
+puts "Total monstrous: #{num}"
 # Mostrar todos los monstruos que tengan un buen rollo que indique una ganancia de
 # niveles superior a 1.
 

@@ -1,10 +1,10 @@
 #encoding: utf-8
 #Versión 1.0
+# author: juane, Raúl
 
-require_relative 'TreasureKind.rb'
 require_relative 'BadConsequence.rb'
-require 'Prize.rb'
-
+require_relative 'TreasureKind.rb'
+require_relative  'Prize.rb'
 
 class Monster
     #Atributos propios de la clase

@@ -1,10 +1,11 @@
 #encoding: utf-8
+
 #Versión 1.0
+# author: juane, Raúl
 
 require_relative 'Monster.rb'
-require_relative 'Prize.rb'
-#include TreasureKind
-require 'TreasureKind.rb'
+require_relative 'TreasureKind.rb'
+require_relative  'Prize.rb'
 class BadConsequence
 
     #  @text #String que representa lo que dice el mal royo
@@ -32,7 +33,8 @@ class BadConsequence
         @death = death
    
     end 
-
+    #Indica que el método new tiene visibilidad privada
+    
     private_class_method :new
 
     def self.newLevelNumberOfTreasures(aText, someLevels,someVisibleTreasures,
@@ -50,40 +52,41 @@ class BadConsequence
         new(aText,0,0,0,[],[],true)
     end
    
+#    Otra forma de definir los médotodos get y set 
+#    #Método text
+# 
+#    def text
+#        @text
+#    end
+#  
+#    #Método levels
+#    def levels
+#        @levels
+#    end
+#  
+#    #Método nvisible_treasures
+#    def nvisible_treasures 
+#        @nVisibleTreasures
+#    end
+#  
+#    #Método nhidden_treasures
+#    def nhidden_treasures
+#        @nHiddenTreasures
+#    end
+#  
+#    #Método death
+#    def death
+#        @death
+#    end
+#  
+#    def specificHiddenTreasures
+#        @specificHiddenTreasures
+#    end
+#    
+#    def specificVisibleTreasure
+#        @sepecificviVisibleTreasures
+#    end
     
-    #Método text
- 
-    def text
-        @text
-    end
-  
-    #Método levels
-    def levels
-        @levels
-    end
-  
-    #Método nvisible_treasures
-    def nvisible_treasures 
-        @nVisibleTreasures
-    end
-  
-    #Método nhidden_treasures
-    def nhidden_treasures
-        @nHiddenTreasures
-    end
-  
-    #Método death
-    def death
-        @death
-    end
-  
-    def specificHiddenTreasures
-        @specificHiddenTreasures
-    end
-    
-    def specificVisibleTreasure
-        @sepecificviVisibleTreasures
-    end
     #Método consultores de otra forma
 
     attr_accessor :text

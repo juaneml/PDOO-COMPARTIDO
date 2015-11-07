@@ -72,7 +72,10 @@ public class BadConsequence {
      * @return 
      */
     public boolean isEmpty(){
-        return false; //cambiar
+        if(nVisibleTreasures==0 && nHiddenTreasures== 0 && specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty()) 
+            return true;
+        else
+            return false;
     }
     
      /**
@@ -159,12 +162,6 @@ public class BadConsequence {
     public String getText() {
         return this.text;
     }
-
-   
-
-    
-
-    
 
     /**
      * Método isDeath() Devuelve true o false del mal royo de tipo muerte

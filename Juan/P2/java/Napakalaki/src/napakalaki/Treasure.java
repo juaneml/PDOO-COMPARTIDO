@@ -15,12 +15,14 @@ public class Treasure {
      */
     private String name;
     private int bonus;
+    private TreasureKind treasure;
     
      /** Constructor ***/
     
-    public Treasure(String n,int g ,int bonus, TreasureKind t) {
-        this.name = name;
-        this.bonus = bonus;
+    public Treasure(String n ,int b, TreasureKind t) {
+        this.name = n;
+        this.bonus = b;
+        this.treasure =t;
     }
 
    
@@ -49,7 +51,7 @@ public class Treasure {
       * @return 
       */
      public TreasureKind getType(){
-         return null;
+         return treasure;
      }
 
     

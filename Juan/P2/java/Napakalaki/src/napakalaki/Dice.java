@@ -1,5 +1,7 @@
 package napakalaki;
 
+import java.util.Random;
+
 /**
  *
  * @author juane
@@ -27,7 +29,12 @@ public class Dice {
      * @return 
      */
     public int nextNumber(){
-        return 0; //cambiar
+         int numero;
+         Random rnd = new Random();
+         
+         numero=(rnd.nextInt()*6 + 1);
+         
+         return numero;
         
     }
 }

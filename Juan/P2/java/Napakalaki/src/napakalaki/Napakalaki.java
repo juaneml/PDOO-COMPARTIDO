@@ -10,6 +10,15 @@ import java.util.ArrayList;
  * clase singleton
  */
 public class Napakalaki {
+    /** 
+     * Atributos de la clase
+     */
+    //Falta el de CombatResult
+    Player currentPlayer;
+    ArrayList<Player> players = new ArrayList();
+    CardDealer dealer;
+    Monster currentMonster;
+    
     private static final Napakalaki instance = null;
     
     /**

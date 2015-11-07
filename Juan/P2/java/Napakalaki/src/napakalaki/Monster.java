@@ -59,7 +59,7 @@ public class Monster {
      * @return 
      */
     public int getLevelsGained(){
-        return 0; //cambiar
+        return price.getLevel(); //cambiar
     }
     
     /**
@@ -67,7 +67,7 @@ public class Monster {
      * @return 
      */
     public int getTreasuresGained(){
-        return 0; //cambiar
+        return price.getTreasures(); //cambiar
     }
     /**
      * Método getPrice()

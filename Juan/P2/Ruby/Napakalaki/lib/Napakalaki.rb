@@ -10,7 +10,7 @@ class Napakalaki
     # como crear el instance
     
     
-    /*Constructor/
+    #/*Constructor/
     def  initialize(jugadores, jugadorActual,repartidor,monster)
         @players = jugadores
         @currentPlayer = jugadorActual
@@ -20,27 +20,27 @@ class Napakalaki
     
     attr_accessor :players, :currentPlayer, :dealer, :currentMonster
     
-    /*inicializar jugadores/
+    #/*inicializar jugadores/
     def initPlayers(names)
         
     end
     
-    /*Siguiente jugador/
+    #/*Siguiente jugador/
     def nextPlayer()
         
     end
     
-    /*siguiente turno/
+    #/*siguiente turno/
     def nextTurnAllowed()
         
     end
     
-    /*introducir enemigos/
+    #/*introducir enemigos/
     def setEnemies()
         
     end
     
-    /*Devuelve instalncia /
+    #/*Devuelve instalncia /
     def self.getInstance()
         
     end
@@ -50,32 +50,32 @@ class Napakalaki
         
     end
     
-    /*Descarta tesoro visible/
+    #/*Descarta tesoro visible/
     def discardVisibleTreasures(treasures)
         
     end
     
-    /*Descarta tesoro oculto/
+    #/*Descarta tesoro oculto/
     def discardHiddenTreasures(treasures)
         
     end
     
-    /*Convierte un tesoro oculto en visible/
+    #/*Convierte un tesoro oculto en visible/
     def makeTreasuresVisible(treasures)
         
     end
     
-    /*Inicia el juego para un jugador/
+    #/*Inicia el juego para un jugador/
     def initGame(players)
        
     end
     
-    /*Siguiente turno/
+    #/*Siguiente turno/
     def nextTurn
         
     end
     
-    /*Termina un juego/
+    #/*Termina un juego/
     def endOfGame(resutl)
         
     end

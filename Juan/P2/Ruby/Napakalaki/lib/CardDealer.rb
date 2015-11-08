@@ -7,14 +7,14 @@ include Singleton
 
 class CardDealer
     
-    /*Constructor/
+    #/*Constructor/
     def initialize()
         @unusedMonsters=Array.new
         @usedMonsters=Array.new
         @unusedTreasures=Array.new
         @usedTreasures=Array.new
     end
-    /*Iniciar cartas tesoros/
+    #/*Iniciar cartas tesoros/
     def initTreasureCardDeck
         
 #        def initialize(n,b,t)
@@ -31,9 +31,64 @@ class CardDealer
         
         @unusedTreasures << Treasure.new('A Prueba de babas', 2, TreasureKind::ARMOR)
         
+        @unusedTreasures << Treasure.new('Botas de lluvia ácida',1 , TreasureKind::BOTHHANDS)
+        
+        @unusedTreasures << Treasure.new('Casco minero',2 , TreasureKind::HELMET)
+        
+        @unusedTreasures << Treasure.new('Ametralladora Thompson',4 , TreasureKind::BOTHHANS)
+        
+        @unusedTreasures << Treasure.new('Camiseta de UGR',1 , TreasureKind::ARMOR)
+        
+        @unusedTreasures << Treasure.new('Clavo de rail ferroviario',3 , TreasureKind::ONEHAND)
+        
+        @unusedTreasures << Treasure.new('Cuchillo de shusi arcano',2 , TreasureKind::ONEHAND)
+        
+        @unusedTreasures << Treasure.new('Fez alopodo', 3, TreasureKind::HELMET)
+        
+        @unusedTreasures << Treasure.new('Hacha prehistorica',3 , TreasureKind::ONEHAND)
+        
+        @unusedTreasures << Treasure.new('El aparato del profesor Tesla',4 , TreasureKind::ARMOR)
+        
+        @unusedTreasures << Treasure.new('Gaita',4 , TreasureKind::BOTHHANDS)
+        
+        @unusedTreasures << Treasure.new('Insecticida',2 , TreasureKind::ONEHAND)
+        
+        @unusedTreasures << Treasure.new('Escopeta de tres cañones',4 , TreasureKind::BOTHHANDS)
+        
+        @unusedTreasures << Treasure.new('Garabato mistico',2 , TreasureKind::ONEHAND)
+        
+        @unusedTreasures << Treasure.new('La rebeca metalica',2 , TreasureKind::ARMOR)
+        
+        @unusedTreasures << Treasure.new('Lanzallamas',4 , TreasureKind::BOTHHANDS)
+        
+        @unusedTreasures << Treasure.new('Necromicon',1 , TreasureKind::ONEHAND)
+        
+        @unusedTreasures << Treasure.new('Necronomicon',5 , TreasureKind::BOTHHANDS)
+        
+        @unusedTreasures << Treasure.new('Linterna a dos manos',3 , TreasureKind::BOTHHANDS)
+        
+        @unusedTreasures << Treasure.new('Necrognomicon',1 , TreasureKind::ONEHAND)
+        
+        @unusedTreasures << Treasure.new('Necrotelecom',2 , TreasureKind::HELMET)
+        
+        @unusedTreasures << Treasure.new('Mazo de los antiguos', 3, TreasureKind::ONEHAND)
+        
+        @unusedTreasures << Treasure.new('Necroplayboycon',3, TreasureKind::ONEHAND)
+        
+        @unusedTreasures << Treasure.new('Porra preternatural',2 , TreasureKind::ONEHAND)
+        
+        @unusedTreasures << Treasure.new('Shogulador', 1, TreasureKind::BOTHHANDS)
+        
+        @unusedTreasures << Treasure.new('Varita de atizamiento',3 , TreasureKind::ONEHAND)
+
+        @unusedTreasures << Treasure.new('Tentaculo de pega',2 , TreasureKind::HELMET)
+        
+        @unusedTreasures << Treasure.new('Zapato deja-amigos',1 , TreasureKind::SHOES)
+        
+        
     end
     
-    /*Iniciar cartas monstruos/
+    #/*Iniciar cartas monstruos/
     def initMonsterCardDeck
        
 
@@ -65,7 +120,7 @@ class CardDealer
         # El gorrón en el umbral
 
         price = Prize.new(3,1)
-        badconsequence = BadConsequence.newLevelNumberOfTreasures('El gorron en el umbral',0,10,0)
+        badconsequence = BadConsequence.newLevelNumberOfTreasures('El gorron en el umbral',0,MAXTREASURES,0)
         @unusedMonsters << Monster.new('El gorron en el umbra',10,badconsequence,price)
 
         # H.P. Munchcraft
@@ -153,43 +208,43 @@ class CardDealer
         @unusedMonsters << Monster.new('Bicefalo',20,badconsequence,price)
     end
     
-    /*Barajar tesoros/
+    #/*Barajar tesoros/
     def shuffleTreasures
-        @unusedMonsters.shuffle
+        @unusedMonsters.shuffle!
     end
     
-    /*Barajar Monstruos/
+    #/*Barajar Monstruos/
     def shuffleMonsters
-        @unusedTreasures.shuffle
+        @unusedTreasures.shuffle!
     end
     
     public
-    /*Devuelve instancia de barajador/
+    #/*Devuelve instancia de barajador/
 #    def self.getInstance
 #       
 #    end
     
-    /*siguiente tesoro/
+    #/*siguiente tesoro/
     def nextTreasure
         
     end
     
-    /*siguiente monstruo/
+    #/*siguiente monstruo/
     def nextMonster
         
     end
     
-    /*devuelve tesoro/
+    #/*devuelve tesoro/
     def giveTreasureBack(t)
         @usedTreasures << t
     end
     
-    /*Devuelve monstruo/
+    #/*Devuelve monstruo/
     def giveMonsterBack(m)
         @usedMonsters << m
     end
     
-    /*Inicializar cartas/
+    #/*Inicializar cartas/
     def initCards
         
     end

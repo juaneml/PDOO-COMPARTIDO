@@ -5,7 +5,7 @@ require_relative  'Dice.rb'
 
 
 class Player
-    /*Constructor/
+   # /*Constructor/
     def initialize(nombre)
         @name=nombre
         @level=0
@@ -19,67 +19,67 @@ class Player
         @@MAXLEVEL=10
     end
     
-    /*Consultores/
+    #/*Consultores/
     attr_accesor :name
     
-    /*Revivir/
+    #/*Revivir/
     def bringToLife
         @dead= false
     end
     
-    /*Conseguir nivel de combate/
+    #/*Conseguir nivel de combate/
     def getCombatLevel()
         @combatLevel = @level + @bonusLevel
     end
     
-    /*Incrementar niveles/
+    #/*Incrementar niveles/
     def incrementLevels(l)
         @level= @level + l
     end
     
-    /*Decrementar niveles/
+    #/*Decrementar niveles/
     def decrementLevels(l)
         @level= @level - l
     end
     
-    /*Añadir mal rollo/
+    #/*Añadir mal rollo/
     def setPendingBadConsequence(b)
         @pendingBadConsequence=b
     end
     
-    /*Recibir premio/
+    #/*Recibir premio/
     def applyPrize(m)
         
     end
     
-    /*Aplicar mal rollo/
+    #/*Aplicar mal rollo/
     def applyBadConsequence(m)
         
     end
     
-    /*Mirar si es posible hacer tesoro visible/
+    #/*Mirar si es posible hacer tesoro visible/
     def canMakeTreasureVisible(t)
         
     end
     
-    /*Cuantos tesoros hay visibles/
+    #/*Cuantos tesoros hay visibles/
     def howManyVisibleTreasures(tKind)
         @visibleTreasures.size
     end
     
-    /*Muere si no tienes tesoros/
+    #/*Muere si no tienes tesoros/
     def dieIfNoTreasures()
         if(hiddenTreasures = [] and visibleTreasures = [])
             @dead = true
         end
     end
     
-    /*Dame un tesoro/
+    #/*Dame un tesoro/
     def giveMeATreasure
         
     end
     
-    /*Puedes darme un tesoro/
+    #/*Puedes darme un tesoro/
     def canYouGiveMeATreasure
         if(!hiddenTreasures.isEmpty)
             true
@@ -89,7 +89,7 @@ class Player
         
     end
     
-    /*Ser robado/
+    #/*Ser robado/
     def haveStolen
         if(robado)
             canISteal=false
@@ -98,7 +98,7 @@ class Player
     
     public
     
-    /*Estas muerto/
+    #/*Estas muerto/
     def isDead()
         @dead
     end
@@ -113,27 +113,27 @@ class Player
     end
     ################################
     
-    /*Lleva combate acabo/
+   # /*Lleva combate acabo/
     def combat(m)
         
     end
     
-    /*Hace tesoro visible/
+    #/*Hace tesoro visible/
     def makeTreasureVisible(t)
         
     end
     
-    /*Descarta un tesoro visible/
+    #/*Descarta un tesoro visible/
     def discardVisibleTreasure(t)
     
     end
     
-    /*Descarta un tesoro oculto/
+    #/*Descarta un tesoro oculto/
     def discardHiddenTreasure(t)
         
     end
     
-    /*Estado válido/
+    #/*Estado válido/
     def validState
         if(pendingBadConsequence.isEmpty and hiddenTreasures.size <= 4)
             true
@@ -142,28 +142,28 @@ class Player
         end
     end
     
-    /*Inicializar tesoros/
+    #/*Inicializar tesoros/
     def initTreasures
         
     end
     
     #lo mismo este tambien se puede coger con el attr
-    /*Obtener niveles/
+    #/*Obtener niveles/
     def getLevels
         @level
     end
     
-    /*Robar tesoro/
+    #/*Robar tesoro/
     def stealTreasure
         
     end
     
-    /*Jugador enemigo/
+    #/*Jugador enemigo/
     def setEnemy(enemigo)
         @enemy=enemigo
     end
     
-    /*Puedo robar/
+    #/*Puedo robar/
     def canISteal
         if(robado)
             canISteal=true
@@ -172,7 +172,7 @@ class Player
         end
     end
     
-    /*Descartar todos los tesoros/
+    #/*Descartar todos los tesoros/
     def discardAllTreasures
         
     end

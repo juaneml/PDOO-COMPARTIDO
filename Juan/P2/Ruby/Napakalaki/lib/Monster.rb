@@ -31,12 +31,12 @@ class Monster
      attr_accessor :price
      attr_accessor :badconsequence
     
-    /*Niveles ganados/
+    #/*Niveles ganados/
     def getLevelsGained
         price.levels
     end 
     
-    /*Tesoros ganados/
+    #/*Tesoros ganados/
     def getTreasuresGained
         price.treasures
     end

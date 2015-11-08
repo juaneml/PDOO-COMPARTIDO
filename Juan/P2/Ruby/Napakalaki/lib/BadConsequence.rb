@@ -53,26 +53,27 @@ class BadConsequence
         new(aText,0,0,0,[],[],true)
     end
    
-    /*Mira si está vacío el mal royo/
+    #Mira si está vacío el mal royo
+    
     def isEmpty
-        if(nVisibleTreasures = 0 and nHiddenTreasures = 0 and specificVisibleTreasures == [] and specificHiddenTreasures == [])
+        if(@nVisibleTreasures == 0 and @nHiddenTreasures == 0 and @specificVisibleTreasures == [] and @specificHiddenTreasures == [])
             true
         else
             false
         end
     end
     
-    /*Extrae tesoros visibles a un jugador/
+    #/*Extrae tesoros visibles a un jugador/
     def substractVisibleTreasure(t)
         
     end
     
-    /*Extrae tesoros ocultos a un jugador/
+    #/*Extrae tesoros ocultos a un jugador/
     def substractHiddenTreasure(t)
         
     end
     
-    /*Ajusta la lista de tesoros/
+    #/*Ajusta la lista de tesoros/
     def adjustToFitTreasureLists(v,h)
         
     end

@@ -29,7 +29,7 @@ public class CardDealer {
      * visibilidad privada
      */
     private CardDealer(){
-        
+        this.initCards();
     }
      
     /**
@@ -149,7 +149,7 @@ public class CardDealer {
        
        //El gorrón en el umbral  
        
-       badConsequence = new BadConsequence("Pierdes todos tus tesoros visibles",0,10,0);
+       badConsequence = new BadConsequence("Pierdes todos tus tesoros visibles",0,badConsequence.MAXTREASURES,0); 
        prize = new Prize(3,1);       
        unusedMonsters.add(new Monster("El gorrón en el umbral",10,badConsequence,prize));
        
@@ -334,6 +334,10 @@ public class CardDealer {
      * Método initCards()
      */
     public void initCards(){
+        this.initMonsterCardDeck();
+        this.initTreasureCardDeck();
+        this.shuffleMonsters();
+        this.shuffleTreasures();
         
     }
 }

@@ -14,10 +14,10 @@ public class Napakalaki {
      * Atributos de la clase
      */
     //Falta el de CombatResult
-    Player currentPlayer;
-    ArrayList<Player> players = new ArrayList();
-    CardDealer dealer;
-    Monster currentMonster;
+    private Player currentPlayer;
+    private ArrayList<Player> players = new ArrayList();
+    private CardDealer dealer;
+    private Monster currentMonster;
     
     private static final Napakalaki instance = null;
     

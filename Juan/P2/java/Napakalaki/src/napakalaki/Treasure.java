@@ -54,6 +54,11 @@ public class Treasure {
          return treasure;
      }
 
+    @Override
+    public String toString() {
+        return "Treasure{" + "name=" + name + ", bonus=" + bonus + ", treasure=" + treasure + '}';
+    }
+
     
      
      

@@ -134,6 +134,13 @@ i = 0
 #    puts monsters.fetch(i)
 #    i = i+1
 #end
+puts "Todos los monstruos"+"\n\n"
+
+monsters.each do |monstruo|
+    puts monstruo
+end
+
+
 
 #Mostrar todos los monstruos que tengan un nivel de combate superior a 10.
 num = 0

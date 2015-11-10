@@ -120,8 +120,8 @@ class CardDealer
         # El gorrón en el umbral
 
         price = Prize.new(3,1)
-        badconsequence = BadConsequence.newLevelNumberOfTreasures('El gorron en el umbral',0,MAXTREASURES,0)
-        @unusedMonsters << Monster.new('El gorron en el umbra',10,badconsequence,price)
+        badconsequence = BadConsequence.newLevelNumberOfTreasures('Pierdes todos tus tesoros visibles',0,MAXTREASURES,0)
+        @unusedMonsters << Monster.new('El gorron en el umbral',10,badconsequence,price)
 
         # H.P. Munchcraft
 

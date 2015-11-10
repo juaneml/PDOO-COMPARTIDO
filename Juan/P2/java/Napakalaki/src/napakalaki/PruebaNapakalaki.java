@@ -254,9 +254,14 @@ public class PruebaNapakalaki {
        
        
        //////////////////////////PRACTICA 2///////////////////////
+       int numero =5;
+       Dice dice =  Dice.getInstance();   
        
+       System.out.println("Total " + numero +"\n");
        
+       CardDealer repartidor = CardDealer.getInstance();
        
+       ArrayList<Monster>pruebam;
        
        
        

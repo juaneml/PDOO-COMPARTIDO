@@ -24,10 +24,10 @@ public class Player {
      * Atributos referencales
      */
 
-     Player enemy;
-     ArrayList<Treasure> hiddenTreasures;
-     ArrayList<Treasure> visibleTreasures;
-     BadConsequence pendingBadConsequence;
+     private Player enemy;
+     private ArrayList<Treasure> hiddenTreasures;
+     private ArrayList<Treasure> visibleTreasures;
+     private BadConsequence pendingBadConsequence;
      //DICE, CardDealer y Combat Resutl?
      
     /* Constructor */
@@ -137,14 +137,14 @@ public class Player {
      * @return un array con los tesoros ocultos
      */
     public ArrayList<Treasure> getHiddenTreasures(){
-        return null; //cambiar
+        return hiddenTreasures; //cambiar
     }
     /**
      * Método getVisibleTreasures()     * 
      * @return un array con los tesoros visibles
      */
     public ArrayList<Treasure> getVisibleTreasures(){
-        return null; //cambiar
+        return visibleTreasures; //cambiar
     }
     
     /**
@@ -265,5 +265,11 @@ public class Player {
     public void discardAllTreasures(){
         
     }
+
+    @Override
+    public String toString() {
+        return "Player{" + "name=" + name + ", level=" + level + ", dead=" + dead + ", canISteal=" + canISteal + ", bonusLevel=" + bonusLevel + ", robado=" + robado + ", enemy=" + enemy + ", hiddenTreasures=" + hiddenTreasures + ", visibleTreasures=" + visibleTreasures + ", pendingBadConsequence=" + pendingBadConsequence + '}';
+    }
             
+    
 }

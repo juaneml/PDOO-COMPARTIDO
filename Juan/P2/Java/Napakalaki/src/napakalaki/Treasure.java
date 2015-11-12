@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package napakalaki;
 
 /**
@@ -15,15 +11,27 @@ public class Treasure {
      */
     private String name;
     private int bonus;
-    private TreasureKind type;
     
     
-     /** Constructor ***/
+    /* Relación */
     
-    public Treasure(String n ,int b, TreasureKind t) {
+    TreasureKind type; //Relación TreasureKind
+    
+     /** Constructor **/
+    
+    /**
+     * Constructor que recibe como parámetros
+     * @param n String
+     * @param g entero
+     * @param bonus entero
+     * @param t TreasureKind
+     
+     **/
+    
+    public Treasure(String n,int bonus, TreasureKind t) {
         this.name = n;
-        this.bonus = b;
-        this.type =t;
+        this.bonus = bonus;
+        this.type = t;
     }
 
    
@@ -32,6 +40,7 @@ public class Treasure {
     
     /**
      * Método getName()
+     * Devuelve el nombre
      * @return 
      */
     
@@ -41,6 +50,7 @@ public class Treasure {
     
     /**
      * Método getBonus()
+     * Devuelve los bonus
      * @return 
      */
      public int getBonus() {
@@ -49,16 +59,12 @@ public class Treasure {
      
      /**
       * Método getType()
+      * Devuelve el tipo de TreasureKind
       * @return 
       */
      public TreasureKind getType(){
-         return type;
+         return this.type;
      }
-
-    @Override
-    public String toString() {
-        return "Treasure{" + "name=" + name + ", bonus=" + bonus + ", treasure=" + type + '}';
-    }
 
     
      

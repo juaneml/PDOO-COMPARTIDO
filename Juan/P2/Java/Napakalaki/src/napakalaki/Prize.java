@@ -16,9 +16,9 @@ public class Prize {
     /**
      * Constructor
      */
-    Prize(int treasures, int level) {
-        this.treasures = treasures;
-        this.level = level;
+    Prize(int t, int l) {
+        this.treasures = t;
+        this.level = l;
     }
 
     /**
@@ -38,7 +38,7 @@ public class Prize {
      *
      * @return level de tipo int
      */
-    public int getLevel() {
+    public int getLevels() {
         return this.level;
     }
 

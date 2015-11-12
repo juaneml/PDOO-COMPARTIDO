@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class BadConsequence {
    /* si no se pone nada visibilidad de package*/ 
+   /*constante*/
    static final int MAXTREASURES = 10;
     /**
      * Atributos propios de la clase *
@@ -72,10 +73,15 @@ public class BadConsequence {
      * @return 
      */
     public boolean isEmpty(){
-        if(nVisibleTreasures==0 && nHiddenTreasures== 0 && specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty()) 
+        
+        if(this.nHiddenTreasures==0 && this.nVisibleTreasures==0 
+                && this.death == false
+                && this.specificVisibleTreasures.isEmpty() 
+                && this.specificHiddenTreasures.isEmpty()){
             return true;
+        }
         else
-            return false;
+            return false; 
     }
     
      /**
@@ -95,7 +101,7 @@ public class BadConsequence {
      *
      * @return nVisibleTreasures de tipo int
      */
-    public int getnVisibleTreasures() {
+    public int geNVisibleTreasures() {
         return this.nVisibleTreasures;
     }
     
@@ -106,7 +112,7 @@ public class BadConsequence {
      *
      * @return nHiddenTreasures de tipo int
      */
-    public int getnHiddenTreasures() {
+    public int getNHiddenTreasures() {
         return this.nHiddenTreasures;
     }
     
@@ -162,6 +168,8 @@ public class BadConsequence {
     public String getText() {
         return this.text;
     }
+
+   
 
     /**
      * Método isDeath() Devuelve true o false del mal royo de tipo muerte

@@ -1,5 +1,6 @@
 package napakalaki;
 
+import static java.lang.Math.random;
 import java.util.Random;
 
 /**
@@ -26,15 +27,14 @@ public class Dice {
     
     /**
      * Método nextNumber()
+     * Crea un número aleatorio entre 1-6
      * @return 
      */
     public int nextNumber(){
-         int numero;
-         Random rnd = new Random();
-         
-         numero=(rnd.nextInt()*6 + 1);
-         
-         return numero;
+        Random rand = new Random();
+        int numero = rand.nextInt(6)+1;
+        
+        return numero; 
         
     }
 }

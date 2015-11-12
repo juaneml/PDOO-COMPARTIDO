@@ -1,8 +1,5 @@
 package napakalaki;
 
-//import java.util.ArrayList;
-//import java.util.Arrays;
-
 /**
  *
  * @author juane
@@ -15,7 +12,7 @@ public class PruebaNapakalaki {
      */
     public static void main(String[] args) {
      
-        /////////////////////PRACTICA1////////////////////////
+//  PRÁCTICA 1
 //        
 //       BadConsequence badConsequence ;  // mal royo
 //       Prize prize; // buen royo
@@ -175,7 +172,10 @@ public class PruebaNapakalaki {
 //       
 //       // Bicéfalo
 //       tVisible = new ArrayList(Arrays.asList(TreasureKind.ONEHAND));
-//       tHidden = new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS));;
+//       tVisible.add(TreasureKind.ONEHAND);
+//       tVisible.add(TreasureKind.BOTHHANDS);
+//       tHidden = new ArrayList();
+//       
 //       badConsequence = new BadConsequence("Te faltan manos para tanta cabeza. "
 //               + "Pierdes 3 niveles y tus tesoros visibles de las manos",3,tVisible,tHidden);
 //       prize = new Prize(1,1);
@@ -183,12 +183,6 @@ public class PruebaNapakalaki {
 //       
 //       
 //       /*Consultas*/
-//       
-//       System.out.println("TODOS"+"\n");
-//        for (int i = 0; i < monstruos.size(); i++) {
-//            System.out.println(monstruos.get(i) + "\n");
-//        }
-//       
 //       Monster mon;
 //       int total = 0;
 //       
@@ -252,20 +246,10 @@ public class PruebaNapakalaki {
 //       }
 //       
 //       System.out.println("Total " + total +"\n");
-       ////////////////////////////////////////////////////////////////////////////////////////////////////////
-       
-       
-       
-       //////////////////////////PRACTICA 2///////////////////////
-//       int numero = Dice.getInstance().nextNumber();
-//       
-//       System.out.println("Total " + numero +"\n");
-//       
-       
-       
-       
-       
-       /////////////////////////////////////////////////////////////////////
+//    }
+//   
+        /* Practica 2*/
+        // int numero = Dice.getInstance().nextNumber();
+    }
     }
     
-}

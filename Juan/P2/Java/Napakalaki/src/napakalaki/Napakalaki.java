@@ -1,4 +1,3 @@
-
 package napakalaki;
 
 import java.util.ArrayList;
@@ -10,20 +9,21 @@ import java.util.ArrayList;
  * clase singleton
  */
 public class Napakalaki {
-    /** 
-     * Atributos de la clase
-     */
-    //Falta el de CombatResult
-    private Player currentPlayer;
-    private ArrayList<Player> players = new ArrayList();
-    private CardDealer dealer;
-    private Monster currentMonster;
-    
     private static final Napakalaki instance = null;
+    
+    /* Relaciones con las clases */
+    
+    private Monster currentMonster; // Relación con los monstruos    
+    private CardDealer dealer; // Relación con CardDealer
+    private Player currentPlayer; // Relación con Player
+    private ArrayList<Player> players = new ArrayList(); // Relación con Player
     
     /**
      * Constructor privado
      */
+    
+    
+            
     private Napakalaki(){
         
     }

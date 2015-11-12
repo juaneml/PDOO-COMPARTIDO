@@ -257,10 +257,10 @@ public class PruebaNapakalaki {
        
        
        //////////////////////////PRACTICA 2///////////////////////
-       int numero = Dice.getInstance().nextNumber();
-       
-       System.out.println("Total " + numero +"\n");
-       
+//       int numero = Dice.getInstance().nextNumber();
+//       
+//       System.out.println("Total " + numero +"\n");
+//       
        
        
        

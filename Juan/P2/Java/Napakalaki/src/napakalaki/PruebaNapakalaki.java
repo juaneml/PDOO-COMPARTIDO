@@ -1,5 +1,8 @@
 package napakalaki;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author juane
@@ -250,6 +253,10 @@ public class PruebaNapakalaki {
 //   
         /* Practica 2*/
         // int numero = Dice.getInstance().nextNumber();
+    
+   
+      
     }
+    
     }
     

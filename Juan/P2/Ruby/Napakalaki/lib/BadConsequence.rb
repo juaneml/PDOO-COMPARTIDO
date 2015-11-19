@@ -5,7 +5,7 @@
 
 require_relative 'Monster.rb'
 require_relative 'TreasureKind.rb'
-require_relative  'Prize.rb'
+require_relative 'Prize.rb'
 class BadConsequence
 
     #  @text #String que representa lo que dice el mal royo

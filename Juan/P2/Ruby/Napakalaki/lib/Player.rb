@@ -23,7 +23,7 @@ class Player
     #/*Consultores/
     attr_reader :name, :visibleTreasures, :hiddenTreasures, :level
     
-    private
+     private
     #/*Revivir/
     def bringToLife
         @dead= false

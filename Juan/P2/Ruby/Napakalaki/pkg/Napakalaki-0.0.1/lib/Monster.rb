@@ -31,6 +31,31 @@ class Monster
      attr_reader :prize
      attr_reader :badconsequence
     
+    
+
+    #EXAMEN
+    attr_reader :n  
+    attr_reader :fav
+    attr_reader :favorite # objeto de la clase Player
+   
+    
+    def getNumOfMonster()
+        
+        card_d = CardDealer.new
+        card_d.giveMonsterBack(m)
+        tam = card_d.giveMonsterBack(m).size
+        num=0
+        
+         card_d.each do |tam|
+            if(tam !=0)
+                num= num +1
+            end
+        end
+        
+        num
+    end
+    
+    #FIN EXAMEN
     #/*Niveles ganados/
     def getLevelsGained
         @prize.levels

@@ -17,6 +17,7 @@ class CardDealer
         @usedTreasures=Array.new
     end
     
+    attr_reader :unusedMonster
     
     #/*Iniciar cartas tesoros/
     def initTreasureCardDeck
@@ -26,7 +27,7 @@ class CardDealer
 #        @bonus=b
 #        @treasure=t
 #    end
-
+    
         @unusedTreasures << Treasure.new('¡Si mi amo!', 4, TreasureKind::ARMOR)
         
         @unusedTreasures << Treasure.new('Botas de investigacion', 3, TreasureKind::SHOES)

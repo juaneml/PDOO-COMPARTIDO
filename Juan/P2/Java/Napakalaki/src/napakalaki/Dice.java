@@ -1,6 +1,5 @@
 package napakalaki;
 
-import static java.lang.Math.random;
 import java.util.Random;
 
 /**

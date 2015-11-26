@@ -1,10 +1,11 @@
 #encoding: utf-8
 
 #Versión 3.0
+require 'singleton'
 include Singleton
-
-class Napakalaki
-    
+class Napakalaki 
+   
+   
     #@@instance = nil
 #    Constructor
 
@@ -15,6 +16,7 @@ class Napakalaki
 #        @currentMonster = currentMonster
 #        @unusedMonsters = unusedMonsters
 #    end
+
     def initialize()
         @currentPlayer
         @players
@@ -29,9 +31,17 @@ class Napakalaki
     attr_reader :currentPlayer
     attr_reader :currentMonster
     
-    private
+    #private_class_method :new
+    
+#    Inicializa el array de jugadores que contiene Napakalaki, creando tantos jugadores como
+#    elementos haya en names, que es el array de String que contiene el nombre de los
+#    jugadores.
+   
     def initPlayers(names)
-        
+          for(String n : names)
+              
+           this.players.add(new Player(n));
+          end
     end
     
     private 
@@ -82,6 +92,15 @@ class Napakalaki
     
     def endOfGame (result)
         
+       final = false
+       if (result.eql?([CombatResult::WINGAME]))
+            final = true
+            
+       end
+            return final
+        
+        
+
     end
     
 end

@@ -1,5 +1,7 @@
 package napakalaki;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author juane
@@ -250,6 +252,14 @@ public class PruebaNapakalaki {
 //   
         /* Practica 2*/
         // int numero = Dice.getInstance().nextNumber();
+        
+        /*Practica3*/
+//        Monster monstruo;
+//        ArrayList<Monster> prueba = new ArrayList();
+//        
+//        System.out.print(prueba.get(1));
+        
+        
     }
     }
     

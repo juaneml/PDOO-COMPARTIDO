@@ -98,19 +98,20 @@ public class Player {
      */
     private void applyPrize(Monster m){
         int nLevels = m.getLevelsGained();
-        int nTreasures = m.getTreasuresGained();
-        CardDealer dealer;
-        Treasure treasure;
-        
         this.incrementLevels(nLevels);
+        int nTreasures = m.getTreasuresGained();
+        
+        CardDealer dealer;
+        Treasure treasure;  
+        
         
         if (nTreasures > 0){
             dealer = CardDealer.getInstance();
         
-        for (int i = 1;i<nTreasures;i++){
-            treasure = dealer.nextTreasure();
-            this.hiddenTreasures.add(treasure);
-        }
+            for (int i = 1;i<nTreasures;i++){
+                treasure = dealer.nextTreasure();
+                this.hiddenTreasures.add(treasure);
+            }
         }
     }
     
@@ -121,9 +122,8 @@ public class Player {
     private void applyBadConsequence (Monster m){
         BadConsequence badConsequence;
         BadConsequence pendingBad;
-        int nLevels;
         badConsequence = m.getBadConsequence();
-        nLevels = badConsequence.getLevels();        
+        int nLevels = badConsequence.getLevels();        
         this.decrementLevels(nLevels);
         
         pendingBad = badConsequence.adjustToFitTreasureList(hiddenTreasures, hiddenTreasures);
@@ -136,9 +136,74 @@ public class Player {
      * @return 
      */
     private boolean canMakeTreasureVisible(Treasure t){
+        boolean puede=false;
         
-        //MIRAR
-        return false ; 
+        if(t.getType()== TreasureKind.ONEHAND ){
+            int numero=0;
+            int numerob=0;
+            for(Treasure taux : visibleTreasures){
+                if(taux.getType() == TreasureKind.ONEHAND){
+                    numero++;
+                }
+                if(taux.getType() == TreasureKind.BOTHHANDS)
+                    numerob++;
+            }
+            if(numero<2 && numerob == 0)
+                puede=true;                
+        }
+        
+        if(t.getType()== TreasureKind.BOTHHANDS ){
+            int numero=0;
+            int numerob=0;
+            for(Treasure taux : visibleTreasures){
+                if(taux.getType() == TreasureKind.ONEHAND){
+                    numero++;
+                }
+                if(taux.getType() == TreasureKind.BOTHHANDS)
+                    numerob++;
+            }
+            if(numero==0 && numerob == 0)
+                puede=true;                
+        }
+        
+        if(t.getType()== TreasureKind.ARMOR ){
+            int numero=0;
+            int numerob=0;
+            for(Treasure taux : visibleTreasures){
+                if(taux.getType() == TreasureKind.ARMOR){
+                    numero++;
+                }
+            }
+            if(numero==0)
+                puede=true;                
+        }
+        
+        if(t.getType()== TreasureKind.HELMET ){
+            int numero=0;
+            int numerob=0;
+            for(Treasure taux : visibleTreasures){
+                if(taux.getType() == TreasureKind.HELMET){
+                    numero++;
+                }
+            }
+            if(numero==0)
+                puede=true;                
+        }
+        
+        if(t.getType()== TreasureKind.SHOES ){
+            int numero=0;
+            int numerob=0;
+            for(Treasure taux : visibleTreasures){
+                if(taux.getType() == TreasureKind.SHOES){
+                    numero++;
+                }
+            }
+            if(numero==0)
+                puede=true;                
+        }
+        
+        
+        return puede;
     }
     
     /**
@@ -209,8 +274,7 @@ public class Player {
         
         if(myLevel > monsterLevel){
             this.applyPrize(m);
-            this.applyBadConsequence(m);
-            
+                       
             if(this.getLevels() >= MAXLEVEL)
                 combatResult = CombatResult.WINGAME;
             else
@@ -221,7 +285,7 @@ public class Player {
             this.applyBadConsequence(m);
             combatResult = CombatResult.LOSE;
         }
-        dealer.giveMonsterBack(m);
+        
         return combatResult; 
     }
     
@@ -290,14 +354,23 @@ public class Player {
         this.hiddenTreasures.add(treasure);
         number = dice.nextNumber();
         
-        if( number > 1){
+        if( number == 1){
             treasure = dealer.nextTreasure();
             this.hiddenTreasures.add(treasure);
         }
         
+        if( number > 1 && number < 6){
+            for(int i=0; i<2; i++){
+                treasure = dealer.nextTreasure();
+                this.hiddenTreasures.add(treasure);
+            }
+        }
+        
         if (number == 6){
-            treasure = dealer.nextTreasure();
-            this.hiddenTreasures.add(treasure);
+            for(int i=0; i<3; i++){
+                treasure = dealer.nextTreasure();
+                this.hiddenTreasures.add(treasure);
+            }
             
         }
     }
@@ -354,7 +427,7 @@ public class Player {
 
         Treasure tesoro;
         Random rand = new Random();
-        int numero = rand.nextInt(this.hiddenTreasures.size()) + 1;
+        int numero = rand.nextInt(this.hiddenTreasures.size());
         tesoro = this.hiddenTreasures.get(numero);
 
         return tesoro;

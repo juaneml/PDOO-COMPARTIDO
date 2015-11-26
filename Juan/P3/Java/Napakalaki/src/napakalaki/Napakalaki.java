@@ -44,8 +44,36 @@ public class Napakalaki {
      * @return 
      */
     private Player nextPlayer(){
-       //DUDA
-        return null; //cambiar
+        
+        
+        if(currentPlayer==null){
+            Random rand = new Random();
+            int numero = rand.nextInt(players.size());
+            
+            currentPlayer=players.get(numero);
+            ArrayList<Player> aux = new ArrayList();
+            
+            aux.add(currentPlayer);
+            
+            for(Player p:players){
+                if(p != currentPlayer)
+                    aux.add(p);
+            }
+            players=aux;
+            
+            return currentPlayer;
+        }
+        else
+            for(int i=0; i<players.size(); i++){
+                if(currentPlayer==players.get(i)){
+                    if(i==players.size())  ///////si falla mirara aquí
+                        currentPlayer=players.get(0);
+                    else
+                        currentPlayer=players.get(i+1);
+                }    
+            }
+                
+            return currentPlayer;
     }
     
     /**
@@ -67,10 +95,16 @@ public class Napakalaki {
      */
     private void setEnemies(){
        //DUDAS
+        Player enemigo = players.get(0) ;
         
         Random rand = new Random();
-        int numero = rand.nextInt(4)+1;
-        
+        for(Player p:players){
+            do{
+                int numero = rand.nextInt(players.size());
+              enemigo.setEnemy(players.get(numero));
+
+            }while(enemigo.enemy==p);
+        }
        
     }
     
@@ -88,8 +122,8 @@ public class Napakalaki {
      * @return 
      */
     public CombatResult developCombat(){
-        Monster m = this.currentMonster;
-        CombatResult combatResult = this.currentPlayer.combat(m);
+        
+        CombatResult combatResult = this.currentPlayer.combat(this.currentMonster);
         
         return combatResult; 
     }
@@ -111,7 +145,11 @@ public class Napakalaki {
      * @param treasures 
      */
     public void discardHiddenTreasures(ArrayList<Treasure> treasures){
+        for( Treasure t: treasures){
+            this.currentPlayer.discardHiddenTreasure(t);
         
+            this.dealer.giveTreasureBack(t);
+        }
     }
     
     /**
@@ -164,7 +202,7 @@ public class Napakalaki {
         boolean stateOK = this.nextTurnAllowed();
        
         
-        //stateOK = this.currentPlayer.validState();
+        stateOK = this.currentPlayer.validState();
         if(stateOK){            
           boolean dead;
           this.currentMonster = this.dealer.nextMonster();

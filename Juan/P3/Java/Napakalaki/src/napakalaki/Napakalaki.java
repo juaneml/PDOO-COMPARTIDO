@@ -94,7 +94,7 @@ public class Napakalaki {
      * Método setEnemies()
      */
     private void setEnemies(){
-       //DUDAS
+     
         Player enemigo = players.get(0) ;
         
         Random rand = new Random();

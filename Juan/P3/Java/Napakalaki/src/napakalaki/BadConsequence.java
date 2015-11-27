@@ -156,9 +156,64 @@ public class BadConsequence {
      * @param h
      * @return 
      */
-    public BadConsequence adjustToFitTreasureList(ArrayList<Treasure> v,ArrayList<Treasure> h){
-        return null; //cambiar
+    public BadConsequence adjustToFitTreasureList(ArrayList<Treasure> v, ArrayList<Treasure> h) {
+        BadConsequence badconsecuence = null;
+        Treasure t;
+        TreasureKind te;
+        if( v.size() > 0 || h.size() > 0 ){
+            
+            for (Treasure visible : v){
+                if(visible.type == TreasureKind.ARMOR){
+                    
+                
+            }
+        }
+//
+//        if (nVisibleTreasures != 0 || nHiddenTreasures != 0) {
+//            badconsecuence = new BadConsequence(text, levels, Math.min(v.size(), this.nVisibleTreasures),
+//                    Math.min(h.size(), this.nHiddenTreasures));
+//        } else {
+//            /*                            Visibles                                */
+//
+//            //Copia de specificVisibleTreasures del Badconsequence
+//            ArrayList<TreasureKind> ttvbs = new ArrayList();
+//            ArrayList<TreasureKind> bs_visibles = new ArrayList();
+//
+//            for (TreasureKind tvBadStuff : specificVisibleTreasures) {
+//                ttvbs.add(tvBadStuff);
+//            }
+//
+//            for (Treasure tvp : v) {
+//                if (ttvbs.contains(tvp.getType())) {
+//                    bs_visibles.add(tvp.getType());
+//                    ttvbs.remove(tvp.getType());
+//                }
+//            }
+//            /*                            Ocultos                                 */
+//
+//            //Copia de specificHiddenTreasures del BadStuff:
+//            ArrayList<TreasureKind> tthbs = new ArrayList();
+//            ArrayList<TreasureKind> bs_ocultos = new ArrayList();
+//
+//            for (TreasureKind thBadStuff : specificHiddenTreasures) {
+//                tthbs.add(thBadStuff);
+//            }
+//
+//            for (Treasure thp : h) {
+//                if (tthbs.contains(thp.getType())) {
+//                    bs_ocultos.add(thp.getType());
+//                    tthbs.remove(thp.getType());
+//                }
+//            }
+//
+//           badconsecuence = new BadConsequence(text, 0, bs_visibles, bs_ocultos);
+//        }
+        }
+        return badconsecuence;
+    
     }
+
+    
     /**
      * Método getText() 
      * Devuelve lo que dice el mal royo

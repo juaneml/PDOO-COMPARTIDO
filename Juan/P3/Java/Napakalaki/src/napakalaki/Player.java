@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  *
  * @author juane
- * @version 2.1
+ * @version 3.1
  */
 public class Player {
     static final int MAXLEVEL = 10; // <<constant>>

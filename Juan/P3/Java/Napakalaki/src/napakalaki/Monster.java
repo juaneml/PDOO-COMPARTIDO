@@ -7,7 +7,7 @@ package napakalaki;
  * Clase Monster
  */
 public class Monster {
-      
+    //private static numMonster; contar el numero de objetos
     /* Atributos propios de la clase*/
     
     private String name; // nombre del monstruo

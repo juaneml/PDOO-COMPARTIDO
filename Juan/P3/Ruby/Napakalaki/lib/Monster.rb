@@ -10,6 +10,7 @@ require_relative 'Prize.rb'
 
 
 class Monster
+    # @@numMonster --> contar el número de monstruos
     #Atributos propios de la clase
   
     # @name # String para representar el nombre del monstruo

@@ -163,27 +163,36 @@ public class BadConsequence {
         int nVisibleAux=nVisibleTreasures;
         int nHiddenAux=nHiddenTreasures;
         
-        ArrayList<Treasure> vaux;
-        ArrayList<Treasure> haux;
-        BadConsequence badConsequence ; 
+        ArrayList<Treasure> vaux; //Sin Usar ?? 
+        ArrayList<Treasure> haux; // Sin Usar ?? 
+        BadConsequence badConsequence ; //Sin Usar ??
         
         
         if(tamV>0 || tamH>0){ // Si los vectores que recibimos tienen cosas entramos aqui
             
-            if( this.specificHiddenTreasures.isEmpty() && this.specificVisibleTreasures.isEmpty()){ ///si los arrays de tesoros especificos a perder estan vacíos entramos
+            ///si los arrays de tesoros especificos a perder estan vacíos entramos
+            
+            if( this.specificHiddenTreasures.isEmpty() && this.specificVisibleTreasures.isEmpty()){ 
                 
+                //si perdemos un numero de ocultos o visibles mayor de lo que tenemos
                 
-                if(this.nHiddenTreasures > 0 || this.nVisibleTreasures > 0){ //si perdemos un numero de ocultos o visibles mayor de lo que tenemos
-                    if(nVisibleTreasures> v.size() || nHiddenTreasures > h.size()){ //y se pierden más de lo que tenemos de uno u otro 
-                        if(nVisibleTreasures > v.size() && nHiddenTreasures <= h.size()){//Puede darse que se pierdan mas de los visibles pero los otros no
+                if(this.nHiddenTreasures > 0 || this.nVisibleTreasures > 0){ 
+                    
+                    //y se pierden más de lo que tenemos de uno u otro 
+                    if(nVisibleTreasures> v.size() || nHiddenTreasures > h.size()){ 
+                        
+                        //Puede darse que se pierdan mas de los visibles pero los otros no
+                        if(nVisibleTreasures > v.size() && nHiddenTreasures <= h.size()){
                             nVisibleAux = v.size(); //igualamos el valor
                             
                         }
-                        if(nVisibleTreasures <= v.size() && nHiddenTreasures > h.size()){//Puede darse que se pierdan mas de los ocultos pero los otros no
+                        //Puede darse que se pierdan mas de los ocultos pero los otros no
+                        if(nVisibleTreasures <= v.size() && nHiddenTreasures > h.size()){
                             nHiddenAux = h.size(); //igualamos el valor
                             
                         }
-                        if(nVisibleTreasures > v.size() && nHiddenTreasures > h.size()){//Puede darse que se pierdan más de ambos
+                        //Puede darse que se pierdan más de ambos
+                        if(nVisibleTreasures > v.size() && nHiddenTreasures > h.size()){
                              nHiddenAux = h.size(); //igualamos el valor
                              nVisibleAux = v.size();
                         }
@@ -198,12 +207,15 @@ public class BadConsequence {
                 ArrayList <TreasureKind> vcopia = new ArrayList();
                 ArrayList <TreasureKind> hcopia = new ArrayList();
            
-                
-                if(!this.specificHiddenTreasures.isEmpty() && !this.specificVisibleTreasures.isEmpty()){ // si ninguno de los dos arrays está vacío
-                    for(TreasureKind sht : specificHiddenTreasures){ //de cada elemento de la lista de específicos ocultos
+                // si ninguno de los dos arrays está vacío
+                if(!this.specificHiddenTreasures.isEmpty() && !this.specificVisibleTreasures.isEmpty()){ 
+                    //de cada elemento de la lista de específicos ocultos
+                    for(TreasureKind sht : specificHiddenTreasures){ 
                         boolean esta = false;
                         //for(Treasure vTreasure : v){ // Comprobamos si está en el otro 
-                        for(int i=0; i< v.size() || esta; i++){// Comprobamos si está en el otro 
+                        
+                        // Comprobamos si está en el otro 
+                        for(int i=0; i< v.size() || esta; i++){
                             if(sht == v.get(i).getType()){ //si son iguales
                                 vcopia.add(v.get(i).getType());// se mete en el vector de copias
                                 esta =true; //esta pasa a valer true(esto es para el que el for salte)
@@ -225,7 +237,9 @@ public class BadConsequence {
                     }
                 }
                 ///////////////////////////////////////////////////////////////////////////////////////////
-                if(this.specificHiddenTreasures.isEmpty() && !this.specificVisibleTreasures.isEmpty()){// si uno de ellos está vacio se hace lo mismo que antes
+                
+                // si uno de ellos está vacio se hace lo mismo que antes
+                if(this.specificHiddenTreasures.isEmpty() && !this.specificVisibleTreasures.isEmpty()){
                     for(TreasureKind sht : specificHiddenTreasures){ //de cada elemento de la lista de específicos ocultos
                         boolean esta = false;
                         //for(Treasure vTreasure : v){ // Comprobamos si está en el otro 
@@ -252,7 +266,7 @@ public class BadConsequence {
                         }
                     }
                 }
-              return badConsequence = new BadConsequence(text,levels, vcopia, hcopia);// devolvemos
+              return badConsequence = new BadConsequence(text,levels, vcopia, hcopia);// devolvemos ???
                 
             }
             

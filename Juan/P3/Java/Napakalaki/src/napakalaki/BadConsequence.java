@@ -18,7 +18,7 @@ public class BadConsequence {
      */
 
     private String text; //lo que dice el mal royo
-    private int levels; // niveles que se pierden
+    private int levels; // niveles que se pierden 
     private int nVisibleTreasures; // número de tesoros visibles que si pierden
     private int nHiddenTreasures; // número de tesoros ocultos que se pierden
     private boolean death; // representa un mal royo de tipo muerte
@@ -156,64 +156,113 @@ public class BadConsequence {
      * @param h
      * @return 
      */
-    public BadConsequence adjustToFitTreasureList(ArrayList<Treasure> v, ArrayList<Treasure> h) {
-        BadConsequence badconsecuence = null;
-        Treasure t;
-        TreasureKind te;
-        if( v.size() > 0 || h.size() > 0 ){
+    public BadConsequence adjustToFitTreasureList(ArrayList<Treasure> v,ArrayList<Treasure> h){
+        int tamV = v.size();
+        int tamH = h.size();
+        
+        int nVisibleAux=nVisibleTreasures;
+        int nHiddenAux=nHiddenTreasures;
+        
+        ArrayList<Treasure> vaux;
+        ArrayList<Treasure> haux;
+        BadConsequence badConsequence ; 
+        
+        
+        if(tamV>0 || tamH>0){ // Si los vectores que recibimos tienen cosas entramos aqui
             
-            for (Treasure visible : v){
-                if(visible.type == TreasureKind.ARMOR){
+            if( this.specificHiddenTreasures.isEmpty() && this.specificVisibleTreasures.isEmpty()){ ///si los arrays de tesoros especificos a perder estan vacíos entramos
+                
+                
+                if(this.nHiddenTreasures > 0 || this.nVisibleTreasures > 0){ //si perdemos un numero de ocultos o visibles mayor de lo que tenemos
+                    if(nVisibleTreasures> v.size() || nHiddenTreasures > h.size()){ //y se pierden más de lo que tenemos de uno u otro 
+                        if(nVisibleTreasures > v.size() && nHiddenTreasures <= h.size()){//Puede darse que se pierdan mas de los visibles pero los otros no
+                            nVisibleAux = v.size(); //igualamos el valor
+                            
+                        }
+                        if(nVisibleTreasures <= v.size() && nHiddenTreasures > h.size()){//Puede darse que se pierdan mas de los ocultos pero los otros no
+                            nHiddenAux = h.size(); //igualamos el valor
+                            
+                        }
+                        if(nVisibleTreasures > v.size() && nHiddenTreasures > h.size()){//Puede darse que se pierdan más de ambos
+                             nHiddenAux = h.size(); //igualamos el valor
+                             nVisibleAux = v.size();
+                        }
+                    }
+                }
+                
+
+              return badConsequence = new BadConsequence(text,levels, nVisibleAux, nHiddenAux);
+            }
+            if(this.nVisibleTreasures==0 && this.nHiddenTreasures==0){ // si se pierden 0 tesoros es porque se pierden especificos
+                
+                ArrayList <TreasureKind> vcopia = new ArrayList();
+                ArrayList <TreasureKind> hcopia = new ArrayList();
+           
+                
+                if(!this.specificHiddenTreasures.isEmpty() && !this.specificVisibleTreasures.isEmpty()){ // si ninguno de los dos arrays está vacío
+                    for(TreasureKind sht : specificHiddenTreasures){ //de cada elemento de la lista de específicos ocultos
+                        boolean esta = false;
+                        //for(Treasure vTreasure : v){ // Comprobamos si está en el otro 
+                        for(int i=0; i< v.size() || esta; i++){// Comprobamos si está en el otro 
+                            if(sht == v.get(i).getType()){ //si son iguales
+                                vcopia.add(v.get(i).getType());// se mete en el vector de copias
+                                esta =true; //esta pasa a valer true(esto es para el que el for salte)
+                                v.remove(v.get(i));//se quita de la lista, para que no siga contandolo
+                                
+                            }
+                        }
+                    }
                     
+                    for(TreasureKind svt : specificHiddenTreasures){
+                        boolean esta = false;
+                       // for(Treasure hTreasure : h){
+                        for(int i=0; i< h.size() || esta; i++){
+                            if(svt == h.get(i).getType()){
+                                hcopia.add(h.get(i).getType());
+                                h.remove(h.get(i));
+                            }
+                        }
+                    }
+                }
+                ///////////////////////////////////////////////////////////////////////////////////////////
+                if(this.specificHiddenTreasures.isEmpty() && !this.specificVisibleTreasures.isEmpty()){// si uno de ellos está vacio se hace lo mismo que antes
+                    for(TreasureKind sht : specificHiddenTreasures){ //de cada elemento de la lista de específicos ocultos
+                        boolean esta = false;
+                        //for(Treasure vTreasure : v){ // Comprobamos si está en el otro 
+                        for(int i=0; i< v.size() || esta; i++){// Comprobamos si está en el otro 
+                            if(sht == v.get(i).getType()){ //si son iguales
+                                vcopia.add(v.get(i).getType());// se mete en el vector de copias
+                                esta =true; //esta pasa a valer true(esto es para el que el for salte)
+                                v.remove(v.get(i));//se quita de la lista, para que no siga contandolo
+                                
+                            }
+                        }
+                    }
+                }
+                ///////////////////////////////////////////////////////////////////////////////////////////
+                if(!this.specificHiddenTreasures.isEmpty() && this.specificVisibleTreasures.isEmpty()){
+                    for(TreasureKind svt : specificHiddenTreasures){
+                        boolean esta = false;
+                       // for(Treasure hTreasure : h){
+                        for(int i=0; i< h.size() || esta; i++){
+                            if(svt == h.get(i).getType()){
+                                hcopia.add(h.get(i).getType());
+                                h.remove(h.get(i));
+                            }
+                        }
+                    }
+                }
+              return badConsequence = new BadConsequence(text,levels, vcopia, hcopia);// devolvemos
                 
             }
+            
+            
         }
-//
-//        if (nVisibleTreasures != 0 || nHiddenTreasures != 0) {
-//            badconsecuence = new BadConsequence(text, levels, Math.min(v.size(), this.nVisibleTreasures),
-//                    Math.min(h.size(), this.nHiddenTreasures));
-//        } else {
-//            /*                            Visibles                                */
-//
-//            //Copia de specificVisibleTreasures del Badconsequence
-//            ArrayList<TreasureKind> ttvbs = new ArrayList();
-//            ArrayList<TreasureKind> bs_visibles = new ArrayList();
-//
-//            for (TreasureKind tvBadStuff : specificVisibleTreasures) {
-//                ttvbs.add(tvBadStuff);
-//            }
-//
-//            for (Treasure tvp : v) {
-//                if (ttvbs.contains(tvp.getType())) {
-//                    bs_visibles.add(tvp.getType());
-//                    ttvbs.remove(tvp.getType());
-//                }
-//            }
-//            /*                            Ocultos                                 */
-//
-//            //Copia de specificHiddenTreasures del BadStuff:
-//            ArrayList<TreasureKind> tthbs = new ArrayList();
-//            ArrayList<TreasureKind> bs_ocultos = new ArrayList();
-//
-//            for (TreasureKind thBadStuff : specificHiddenTreasures) {
-//                tthbs.add(thBadStuff);
-//            }
-//
-//            for (Treasure thp : h) {
-//                if (tthbs.contains(thp.getType())) {
-//                    bs_ocultos.add(thp.getType());
-//                    tthbs.remove(thp.getType());
-//                }
-//            }
-//
-//           badconsecuence = new BadConsequence(text, 0, bs_visibles, bs_ocultos);
-//        }
-        }
-        return badconsecuence;
-    
+        
+        
+        return null; //cambiar
+        
     }
-
-    
     /**
      * Método getText() 
      * Devuelve lo que dice el mal royo

@@ -111,20 +111,78 @@ class Player
         
     end
     
+    
+#        public CombatResult combat(Monster m){
+#        int myLevel = this.getCombatLevel(); // 1.1.1
+#        int monsterLevel;
+#        CombatResult combatResult;
+#        CardDealer dealer = CardDealer.getInstance();
+#        Monster currentMonster = m;
+#        monsterLevel = currentMonster.getCombatLevel();
+#        
+#        if(myLevel > monsterLevel){
+#            this.applyPrize(m);
+#                       
+#            if(this.getLevels() >= MAXLEVEL)
+#                combatResult = CombatResult.WINGAME;
+#            else
+#                combatResult = CombatResult.WIN;
+#        }
+#            
+#        else{
+#            this.applyBadConsequence(m);
+#            combatResult = CombatResult.LOSE;
+#        }
+#        
+#        return combatResult; 
+#    }
+    
     def combat(m)
+        myLevel = self.getCombatLevel()
+        dealer = CardDealer. #mirar
+        currentMonster = m
+        monsterLevel = @currentMonster.combatLevel
         
+        if(myLevel > monsterLevel)
+            self.applyPrize(m)
+            
+            if(@levels >= @@MAXLEVEL)
+                combatResult = CombatResult.WINGAME
+            else    
+                combatResult = CombatResult.WIN
+            end
+        else
+            self.applyBadConsequence(m)
+            combatResult = CombatResult.LOSE
+        end
+        
+        return combatResult
     end
     
     def makeTreasuresVisible(t)
         
     end
     
+
+    
     def discardVisibleTreasure(t)
+        @visibleTreasures.delete(t)
         
+        if( (@pendingBadConsequence != nil) && (!@pendingBadConsequence.empty?))
+                @pendingBadConsequence.substractVisibleTreasure(t)
+        end
+        
+        return self.dieIfNoTreasures
     end
     
     def discarHiddenTreasure(t)
+        @hiddenTreasures.delete(t)
         
+        if( (@pendingBadConsequence != nil) && (!@pendingBadConsequence.empty?))
+                @pendingBadConsequence.substractVisibleTreasure(t)
+        end
+        
+        return self.dieIfNoTreasures
     end
     
     def validState()          
@@ -155,10 +213,15 @@ class Player
         @enemy = enemy
     end
     
+   
     private
     
     def giveMeAtreasures()
         
+        numero = rand(@hiddenTreasures.size)
+        tesoro= @hiddenTreasures[numero]
+        
+        return tesoro        
     end
     
     public

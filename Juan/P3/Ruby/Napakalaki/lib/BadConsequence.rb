@@ -72,9 +72,15 @@ class BadConsequence
             vacio
     end
     
+
     def substractVisibleTreasure(t)
-        
+        @specificVisibleTreasures.delete(t)
     end
+    
+    def substractHiddenTreasure(t)
+        @specificHiddenTreasures.delete(t)
+    end
+    
     
     def adjustToFitTreasure(v,h)
         

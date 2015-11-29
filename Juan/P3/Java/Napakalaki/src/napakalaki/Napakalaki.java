@@ -66,7 +66,7 @@ public class Napakalaki {
         else
             for(int i=0; i<players.size(); i++){
                 if(currentPlayer==players.get(i)){
-                    if(i==players.size())  ///////si falla mirara aquí
+                    if(i==players.size()-1)  ///////si falla mirara aquí
                         currentPlayer=players.get(0);
                     else
                         currentPlayer=players.get(i+1);

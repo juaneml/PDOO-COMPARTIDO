@@ -184,13 +184,39 @@ class CardDealer
 #    def self.getInstance()
 #        @@instance = Napakalaki.instance
 #    end
+
+    
+#     public Treasure nextTreasure(){
+#        Treasure tesoro = unusedTreasures.get(0);
+#        unusedTreasures.remove(0);
+#        if(this.unusedTreasures.isEmpty()){
+#            this.unusedTreasures = this.usedTreasures;
+#            this.shuffleTreasures();
+#        }
+#        return tesoro; 
+#    }
     public
     def nextTreasure()
-        
+        tesoro = @unusedTreasures[0]
+        @unusedTreasures.delete(0) { |unusedlocal|  }
+        if(@unusedTreasures.empty?)
+            @unusedTreasures = @usedTreasures
+            self.shuffleTreasures()
+            
+        end
+        return tesoro
     end
     
+    
     def nextMonster()
-        
+        monstruo = @unusedMonsters[0]
+        @unusedMonsters.delete(0) { |unusedlocal|  }
+        if(@unusedMonsters.empty?)
+            @unusedMonsters = @usedMonsters
+            self.shuffleMonsters()
+            
+        end
+        return monstruo
     end
     
     def giveTreasureBack(t)
@@ -201,7 +227,8 @@ class CardDealer
         @usedMonsters << m
     end
     def initCards()
-        
+        self.initTreasureCardDeck()
+        self.initMonstersCardDeck()
     end
     
 end

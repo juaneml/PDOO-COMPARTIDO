@@ -322,7 +322,13 @@ public class Player {
      * @param t 
      */
     public void discardHiddenTreasure(Treasure t){
+        this.hiddenTreasures.remove(t);
         
+        if((this.pendingBadConsequence != null ) && (!this.pendingBadConsequence.isEmpty())){
+            this.pendingBadConsequence.substractVisibleTreasure(t);
+        }
+        
+        this.dielfNoTreasures();
     }
     
     /**

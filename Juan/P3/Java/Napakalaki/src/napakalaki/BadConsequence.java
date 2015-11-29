@@ -202,7 +202,9 @@ public class BadConsequence {
 
               return badConsequence = new BadConsequence(text,levels, nVisibleAux, nHiddenAux);
             }
-            if(this.nVisibleTreasures==0 && this.nHiddenTreasures==0){ // si se pierden 0 tesoros es porque se pierden especificos
+            
+            // si se pierden 0 tesoros es porque se pierden especificos
+            if(this.nVisibleTreasures==0 && this.nHiddenTreasures==0){ 
                 
                 ArrayList <TreasureKind> vcopia = new ArrayList();
                 ArrayList <TreasureKind> hcopia = new ArrayList();

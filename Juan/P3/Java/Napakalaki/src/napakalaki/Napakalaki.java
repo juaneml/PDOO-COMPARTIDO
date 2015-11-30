@@ -212,6 +212,8 @@ public class Napakalaki {
         boolean stateOK;
         stateOK = this.nextTurnAllowed();  
         
+        stateOK = currentPlayer.validState();
+        
         
         if (stateOK) {
             boolean dead;

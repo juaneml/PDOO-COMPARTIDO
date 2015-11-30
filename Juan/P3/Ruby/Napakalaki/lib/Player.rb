@@ -61,8 +61,9 @@ class Player
          
     def applyPrize(m)
         nLevels = m.getLevelsGained()
+        self.incrementLevels(nLevels)   
         nTreasures = m.getTreasureGained()
-        incrementLevels(nLevels)       
+            
         
         if nTreasures > 0
             dealer = CarDealer.instance
@@ -78,11 +79,11 @@ class Player
 
     
     def applyBadConsequence(m)
-        badConsequence = getBadConsequence
-        nLevels = badConsequence.getLevels
-        decrementLevels(nLevels)        
+        badConsequence = m.badconsequence
+        nLevels = badConsequence.levels
+        self.decrementLevels(nLevels)        
         pendingBad = badConsequence.adjustToFitTreasureList(@hiddenTreasures,@hiddenTreasures)
-        setPendingBadConsequence(pendingBad)
+        self.setPendingBadConsequence(pendingBad)
     end
     
      
@@ -150,8 +151,15 @@ class Player
         return combatResult
     end
     
+
+    
     def makeTreasuresVisible(t)
+        canI = self.canMakeTreasureVisible(t)
         
+        if canI
+            @visibleTreasures << t
+            @hiddenTreasures.delete(t) 
+        end
     end
     
 
@@ -193,29 +201,24 @@ class Player
        
         dealer = CardDealer.instance
         dice = Dice.instance
-        bringToLife
+        self.bringToLife
         treasure = dealer.nextTreasure
         @hiddenTreasures << treasure
         number = dice.nextNumber
+              
         
-        if number == 1
-            treasure = dealer.nextTreasure
-            @hiddenTreasures << treasure
-        end
-        
-        if number > 1 && number < 6
-            (0..2).each do |i| 
+        if number > 1 
+            
                 treasure = dealer.nextTreasure
                 @hiddenTreasures << treasure
-                
-            end
+              
         end
         
         if number == 6
-            (0..3).each do |i|
+            
                 treasure = dealer.nextTreasure
                 @hiddenTreasures << treasure
-            end
+          
         end
         
     end
@@ -228,8 +231,8 @@ class Player
     
     def stealTreasure()
         
-        treasure = null
-        canI = canISteal
+        treasure = nil
+        canI = self.canISteal
         @canISteal = canI
         
         if(canI)
@@ -240,8 +243,9 @@ class Player
                 @hiddenTreasures << treasure
                 haveStolen
             end
+            return treasure
         end
-        return treasure
+        return nil
     end
     
     def setEnemy(enemy)
@@ -251,7 +255,7 @@ class Player
    
     private
     
-    def giveMeAtreasures()
+    def giveMeAtreasure()
         
         numero = rand(@hiddenTreasures.size)
         tesoro= @hiddenTreasures[numero]

@@ -102,10 +102,9 @@ public class Player {
      */
     private void applyPrize(Monster m){
         int nLevels = m.getLevelsGained();
+        this.incrementLevels(nLevels);   
         int nTreasures = m.getTreasuresGained();
-        
-        this.incrementLevels(nLevels);     
-        
+               
         CardDealer dealer;
         Treasure treasure;         
         
@@ -379,23 +378,20 @@ public class Player {
         this.hiddenTreasures.add(treasure);
         number = dice.nextNumber();
         
-        if( number == 1){
-            treasure = dealer.nextTreasure();
-            this.hiddenTreasures.add(treasure);
-        }
         
-        if( number > 1 && number < 6){
-            for(int i=0; i<2; i++){
+        
+        if( number > 1 ){
+           
                 treasure = dealer.nextTreasure();
                 this.hiddenTreasures.add(treasure);
-            }
+            
         }
         
         if (number == 6){
-            for(int i=0; i<3; i++){
+            
                 treasure = dealer.nextTreasure();
                 this.hiddenTreasures.add(treasure);
-            }
+            
             
         }
     }
@@ -428,9 +424,9 @@ public class Player {
                 this.haveStolen();
                 
         }       
-           
+         return treasure;   
        }
-        return treasure; //cambiar
+        return null; //cambiar
     }
     
     /**

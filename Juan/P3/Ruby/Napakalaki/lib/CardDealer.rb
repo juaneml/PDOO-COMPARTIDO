@@ -188,19 +188,11 @@ class CardDealer
 #    end
 
     
-#     public Treasure nextTreasure(){
-#        Treasure tesoro = unusedTreasures.get(0);
-#        unusedTreasures.remove(0);
-#        if(this.unusedTreasures.isEmpty()){
-#            this.unusedTreasures = this.usedTreasures;
-#            this.shuffleTreasures();
-#        }
-#        return tesoro; 
-#    }
+
     public
     def nextTreasure()
         tesoro = @unusedTreasures[0]
-        @unusedTreasures.delete(0) { |unusedlocal|  }
+        @unusedTreasures.delete(tesoro) 
         if(@unusedTreasures.empty?)
             @unusedTreasures = @usedTreasures
             self.shuffleTreasures()
@@ -212,7 +204,7 @@ class CardDealer
     
     def nextMonster()
         monstruo = @unusedMonsters[0]
-        @unusedMonsters.delete(0) { |unusedlocal|  }
+        @unusedMonsters.delete(monstruo) 
         if(@unusedMonsters.empty?)
             @unusedMonsters = @usedMonsters
             self.shuffleMonsters()

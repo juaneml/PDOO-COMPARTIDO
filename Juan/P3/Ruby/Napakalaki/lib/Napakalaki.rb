@@ -141,14 +141,19 @@ class Napakalaki
         end
     end
     
+   
     def makeTreasuresVisible(treasures)
+        @treasures.each do |t|
+            @currentPlayer.discardHiddenTreasure(t)
+            @dealer.giveTreasureBack(t)
+        end
         
     end
     
     def initGame(players)
         self.initPlayers(players)
         self.setEnemies()
-        @dealer.initCards()
+        @dealer.initCards
         self.nextTurn
         
     end

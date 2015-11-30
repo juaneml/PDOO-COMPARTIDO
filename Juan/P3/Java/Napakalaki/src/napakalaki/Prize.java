@@ -3,7 +3,7 @@ package napakalaki;
 /**
  *
  * @author juane
- * @version 2.1
+ * @version 3.1
  * Clase Prize para el buen rollo
  */
 public class Prize {
@@ -16,6 +16,12 @@ public class Prize {
     /**
      * Constructor
      */
+    
+    /**
+     * Constructor Prize(int t, int l)
+     * @param t número de tesoros
+     * @param l número de niveles
+     */
     Prize(int t, int l) {
         this.treasures = t;
         this.level = l;
@@ -24,9 +30,10 @@ public class Prize {
     /**
      * Consultores
      */
+    
     /**
      * Método getTreasures()
-     *
+     * Devuelve el número de tesoros
      * @return treasures de tipo int
      */
     public int getTreasures() {
@@ -35,7 +42,7 @@ public class Prize {
 
     /**
      * Método getLevel()
-     *
+     * Devuelve el número de niveles
      * @return level de tipo int
      */
     public int getLevels() {

@@ -1,5 +1,6 @@
 #encoding: utf-8
-#Versión 1.0
+
+#Versión 3.0
 #Modulo para el tipo enumerado
 
 module TreasureKind

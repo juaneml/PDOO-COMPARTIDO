@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author juane
- * @version 2.1
+ * @author juane 
+ * @version 3.1
  * 
  * Clase BadConsequence para el mal rollo del monstruo
  */
@@ -13,7 +13,8 @@ public class BadConsequence {
    /* si no se pone nada visibilidad de package*/ 
    /*constante*/
    static final int MAXTREASURES = 10;
-    /**
+    
+   /**
      * Atributos propios de la clase *
      */
 
@@ -24,7 +25,8 @@ public class BadConsequence {
     private boolean death; // representa un mal royo de tipo muerte
 
     /**
-     * Atributos de tipo lista de TreasureKind *
+     * Atributos de tipo lista de TreasureKind 
+     *
      */
     private ArrayList<TreasureKind> specificHiddenTreasures = new ArrayList();
     private ArrayList<TreasureKind> specificVisibleTreasures = new ArrayList();
@@ -32,6 +34,13 @@ public class BadConsequence {
     /**
      * constructores 
      * Todos los atributos hay que inicializarlos
+     */
+    /**
+     * Constructor BadConsequence(String text, int levels, int nVisible, int nHidden)
+     * @param text título del mal royo
+     * @param levels número de los niveles a perder
+     * @param nVisible número de tesoros visibles
+     * @param nHidden  número de tesoros ocultos
      */
     BadConsequence(String text, int levels, int nVisible, int nHidden) {
         this.text = text;
@@ -43,6 +52,11 @@ public class BadConsequence {
         this.specificVisibleTreasures = new ArrayList();
     }
 
+    /**
+     * Constructor BadConsequence(String text, boolean death)
+     * @param text título del mal royo
+     * @param death true o false para el tipo muerte
+     */
     BadConsequence(String text, boolean death) {
         this.text = text;
         this.death = death;
@@ -54,7 +68,14 @@ public class BadConsequence {
        
         
     }
-
+    /**
+     * Constructor BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible,
+     *      ArrayList<TreasureKind> tHidden)
+     * @param text título del mal royo
+     * @param levels número de niveles
+     * @param tVisible arraylist de los tipos de tesoros visibles
+     * @param tHidden arraylist de los tipos de tesoros ocultos
+     */
     BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible,
             ArrayList<TreasureKind> tHidden) {
         this.text = text;
@@ -70,7 +91,8 @@ public class BadConsequence {
 
     /**
      * Método isEmpty()
-     * @return 
+     * @return true si el número de tesoros visibles y 
+     * ocultos es cero, false en caso contrario.
      */
     public boolean isEmpty(){
         
@@ -152,86 +174,82 @@ public class BadConsequence {
     
     /**
      * Método adjustToFitTreasureList(ArrayList<Treasure> v,ArrayList<Treasure> h)
-     * @param v
-     * @param h
-     * @return 
+     * @param v vector de tesoros visibles
+     * @param h vector de tesoros ocultos
+     * @return BadConsequence
      */
-    public BadConsequence adjustToFitTreasureList(ArrayList<Treasure> v,ArrayList<Treasure> h){
+    public BadConsequence adjustToFitTreasureList(ArrayList<Treasure> v, ArrayList<Treasure> h) {
         int tamV = v.size();
         int tamH = h.size();
-        
-        int nVisibleAux=nVisibleTreasures;
-        int nHiddenAux=nHiddenTreasures;
-        
+
+        int nVisibleAux = nVisibleTreasures;
+        int nHiddenAux = nHiddenTreasures;
+
         ArrayList<Treasure> vaux; //Sin Usar ?? 
         ArrayList<Treasure> haux; // Sin Usar ?? 
-        BadConsequence badConsequence ; //Sin Usar ??
-        
-        
-        if(tamV>0 || tamH>0){ // Si los vectores que recibimos tienen cosas entramos aqui
-            
+        BadConsequence badConsequence; //Sin Usar ??
+
+        if (tamV > 0 || tamH > 0) { // Si los vectores que recibimos tienen cosas entramos aqui
+
             ///si los arrays de tesoros especificos a perder estan vacíos entramos
-            
-            if( this.specificHiddenTreasures.isEmpty() && this.specificVisibleTreasures.isEmpty()){ 
-                
+            if (this.specificHiddenTreasures.isEmpty() && this.specificVisibleTreasures.isEmpty()) {
+
                 //si perdemos un numero de ocultos o visibles mayor de lo que tenemos
-                
-                if(this.nHiddenTreasures > 0 || this.nVisibleTreasures > 0){ 
-                    
+                if (this.nHiddenTreasures > 0 || this.nVisibleTreasures > 0) {
+
                     //y se pierden más de lo que tenemos de uno u otro 
-                    if(nVisibleTreasures> v.size() || nHiddenTreasures > h.size()){ 
-                        
+                    if (nVisibleTreasures > v.size() || nHiddenTreasures > h.size()) {
+
                         //Puede darse que se pierdan mas de los visibles pero los otros no
-                        if(nVisibleTreasures > v.size() && nHiddenTreasures <= h.size()){
+                        if (nVisibleTreasures > v.size() && nHiddenTreasures <= h.size()) {
                             nVisibleAux = v.size(); //igualamos el valor
-                            
+
                         }
                         //Puede darse que se pierdan mas de los ocultos pero los otros no
-                        if(nVisibleTreasures <= v.size() && nHiddenTreasures > h.size()){
+                        if (nVisibleTreasures <= v.size() && nHiddenTreasures > h.size()) {
                             nHiddenAux = h.size(); //igualamos el valor
-                            
+
                         }
                         //Puede darse que se pierdan más de ambos
-                        if(nVisibleTreasures > v.size() && nHiddenTreasures > h.size()){
-                             nHiddenAux = h.size(); //igualamos el valor
-                             nVisibleAux = v.size();
+                        if (nVisibleTreasures > v.size() && nHiddenTreasures > h.size()) {
+                            nHiddenAux = h.size(); //igualamos el valor
+                            nVisibleAux = v.size();
                         }
                     }
                 }
-                
+                    badConsequence = new BadConsequence(text, levels, nVisibleAux, nHiddenAux);
+                return badConsequence;
+            }
 
-              return badConsequence = new BadConsequence(text,levels, nVisibleAux, nHiddenAux);
-            }
-            
             // si se pierden 0 tesoros es porque se pierden especificos
-            if(this.nVisibleTreasures==0 && this.nHiddenTreasures==0){ 
-                
-                ArrayList <TreasureKind> vcopia = new ArrayList();
-                ArrayList <TreasureKind> hcopia = new ArrayList();
-           
+            if (this.nVisibleTreasures == 0 && this.nHiddenTreasures == 0) {
+
+                ArrayList<TreasureKind> vcopia = new ArrayList();
+                ArrayList<TreasureKind> hcopia = new ArrayList();
+
                 // si ninguno de los dos arrays está vacío
-                if(!this.specificHiddenTreasures.isEmpty() && !this.specificVisibleTreasures.isEmpty()){ 
+                if (!this.specificHiddenTreasures.isEmpty() && !this.specificVisibleTreasures.isEmpty()) {
                     //de cada elemento de la lista de específicos ocultos
-                    for(TreasureKind sht : specificHiddenTreasures){ 
+                    for (TreasureKind sht : specificHiddenTreasures) {
                         boolean esta = false;
                         //for(Treasure vTreasure : v){ // Comprobamos si está en el otro 
-                        
+
                         // Comprobamos si está en el otro 
-                        for(int i=0; i< v.size() || esta; i++){
-                            if(sht == v.get(i).getType()){ //si son iguales
+                        for (int i = 0; i < v.size() || esta; i++) {
+                            if (sht == v.get(i).getType()) { //si son iguales
                                 vcopia.add(v.get(i).getType());// se mete en el vector de copias
-                                esta =true; //esta pasa a valer true(esto es para el que el for salte)
+                                esta = true; //esta pasa a valer true(esto es para el que el for salte)
                                 v.remove(v.get(i));//se quita de la lista, para que no siga contandolo
-                                
+
                             }
                         }
                     }
-                    
-                    for(TreasureKind svt : specificHiddenTreasures){
+
+                    for (TreasureKind svt : specificHiddenTreasures) {
                         boolean esta = false;
-                       // for(Treasure hTreasure : h){
-                        for(int i=0; i< h.size() || esta; i++){
-                            if(svt == h.get(i).getType()){
+                        // for(Treasure hTreasure : h){
+                        for (int i = 0; i < h.size() || esta; i++) {
+                            if (svt == h.get(i).getType()) {
                                 hcopia.add(h.get(i).getType());
                                 h.remove(h.get(i));
                             }
@@ -239,45 +257,46 @@ public class BadConsequence {
                     }
                 }
                 ///////////////////////////////////////////////////////////////////////////////////////////
-                
+
                 // si uno de ellos está vacio se hace lo mismo que antes
-                if(this.specificHiddenTreasures.isEmpty() && !this.specificVisibleTreasures.isEmpty()){
-                    for(TreasureKind sht : specificHiddenTreasures){ //de cada elemento de la lista de específicos ocultos
+                if (this.specificHiddenTreasures.isEmpty() && !this.specificVisibleTreasures.isEmpty()) {
+                    for (TreasureKind sht : specificHiddenTreasures) { //de cada elemento de la lista de específicos ocultos
                         boolean esta = false;
                         //for(Treasure vTreasure : v){ // Comprobamos si está en el otro 
-                        for(int i=0; i< v.size() || esta; i++){// Comprobamos si está en el otro 
-                            if(sht == v.get(i).getType()){ //si son iguales
+                        for (int i = 0; i < v.size() || esta; i++) {// Comprobamos si está en el otro 
+                            if (sht == v.get(i).getType()) { //si son iguales
                                 vcopia.add(v.get(i).getType());// se mete en el vector de copias
-                                esta =true; //esta pasa a valer true(esto es para el que el for salte)
+                                esta = true; //esta pasa a valer true(esto es para el que el for salte)
                                 v.remove(v.get(i));//se quita de la lista, para que no siga contandolo
-                                
+
                             }
                         }
                     }
                 }
                 ///////////////////////////////////////////////////////////////////////////////////////////
-                if(!this.specificHiddenTreasures.isEmpty() && this.specificVisibleTreasures.isEmpty()){
-                    for(TreasureKind svt : specificHiddenTreasures){
+                if (!this.specificHiddenTreasures.isEmpty() && this.specificVisibleTreasures.isEmpty()) {
+                    for (TreasureKind svt : specificHiddenTreasures) {
                         boolean esta = false;
-                       // for(Treasure hTreasure : h){
-                        for(int i=0; i< h.size() || esta; i++){
-                            if(svt == h.get(i).getType()){
+                        // for(Treasure hTreasure : h){
+                        for (int i = 0; i < h.size() || esta; i++) {
+                            if (svt == h.get(i).getType()) {
                                 hcopia.add(h.get(i).getType());
                                 h.remove(h.get(i));
                             }
                         }
                     }
                 }
-              return badConsequence = new BadConsequence(text,levels, vcopia, hcopia);// devolvemos ???
-                
+
+                badConsequence = new BadConsequence(text, levels, vcopia, hcopia);
+                return badConsequence;
+
             }
-            
-            
+
         }
-        
-        
-        return null; //cambiar
-        
+        //*** Cambiado provisional para no devolver null ****//
+        badConsequence = new BadConsequence("No mal royo",0,0,0);
+        return badConsequence; //cambiar
+
     }
     /**
      * Método getText() 
@@ -289,7 +308,6 @@ public class BadConsequence {
         return this.text;
     }
 
-   
 
     /**
      * Método isDeath() Devuelve true o false del mal royo de tipo muerte
@@ -304,7 +322,7 @@ public class BadConsequence {
 
     /**
      * Método toString()
-     * @return 
+     * @return una cadena
      */
     @Override
     public String toString() {

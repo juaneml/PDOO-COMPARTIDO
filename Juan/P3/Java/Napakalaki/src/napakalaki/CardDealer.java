@@ -8,7 +8,7 @@ import java.util.Collections;
 /**
  *
  * @author juane
- * @version 2.1
+ * @version 3.1
  */
 public class CardDealer {
     private static final CardDealer instance = null;
@@ -256,6 +256,7 @@ public class CardDealer {
     
     /**
      * Método shuffleMonsters()
+     * baraja la mazo de los monstruos
      */
     
     private void shuffleMonsters(){
@@ -263,7 +264,7 @@ public class CardDealer {
     }
     /**
      * Método getInstance()
-     * @return 
+     * @return devuelve la instancia
      */
     public static CardDealer getInstance(){
         return instance;
@@ -271,7 +272,7 @@ public class CardDealer {
     
     /**
      * Método nextTresure()
-     * @return 
+     * @return siguiente tesoro
      */
     public Treasure nextTreasure(){
         Treasure tesoro = unusedTreasures.get(0);
@@ -285,7 +286,7 @@ public class CardDealer {
     
     /**
      * Método nextMonster()
-     * @return 
+     * @return siguiente monstruo
      */
     public Monster nextMonster(){
         Monster monster = this.unusedMonster.get(0);
@@ -301,7 +302,9 @@ public class CardDealer {
     
     /**
      * Método giveTreasureBack(Treasure t)
-     * @param t 
+     * Da el siguiente Tesoro
+     * @param t de tipo Treasure
+     * 
      */
     public void giveTreasureBack(Treasure t){
        this.usedTreasures.add(t);
@@ -309,7 +312,8 @@ public class CardDealer {
     
     /**
      * Método giveMonsterBack(Monster m)
-     * @param m 
+     * Da el siguiente Monster
+     * @param m  de tipo Monster
      */
     public void giveMonsterBack(Monster m){
         this.usedMonsters.add(m);
@@ -317,6 +321,8 @@ public class CardDealer {
     
     /**
      * Método initCards()
+     * Inicia el mazo de cartas de tesoros
+     * Inicia el mazo de cartas de monstruos
      */
     public void initCards(){
         this.initTreasureCardDeck();

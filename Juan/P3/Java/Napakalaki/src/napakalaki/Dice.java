@@ -1,12 +1,11 @@
 package napakalaki;
 
-import static java.lang.Math.random;
 import java.util.Random;
 
 /**
  *
  * @author juane
- * @version 2.1
+ * @version 3.1
  */
 public class Dice {
     private static final Dice instance = null;

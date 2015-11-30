@@ -58,14 +58,31 @@ class Player
         @pendigBadConsequence = b
     end
     
-    
+         
     def applyPrize(m)
+        nLevels = m.getLevelsGained()
+        nTreasures = m.getTreasureGained()
+        incrementLevels(nLevels)       
         
+        if nTreasures > 0
+            dealer = CarDealer.instance
+            
+            (1..nTreasures).each do |i| 
+                treasure = dealer.nextTreasure
+                @hiddenTreasures << treasure
+                
+            end
+        end
     end
     
+
     
     def applyBadConsequence(m)
-        
+        badConsequence = getBadConsequence
+        nLevels = badConsequence.getLevels
+        decrementLevels(nLevels)        
+        pendingBad = badConsequence.adjustToFitTreasureList(@hiddenTreasures,@hiddenTreasures)
+        setPendingBadConsequence(pendingBad)
     end
     
      
@@ -104,43 +121,17 @@ class Player
     end
     
     def getHiddenTreasures()
-        
+        #Falta acabar
     end
     
     def getVisibleTreasuures()
-        
+        #Falta acabar
     end
-    
-    
-#        public CombatResult combat(Monster m){
-#        int myLevel = this.getCombatLevel(); // 1.1.1
-#        int monsterLevel;
-#        CombatResult combatResult;
-#        CardDealer dealer = CardDealer.getInstance();
-#        Monster currentMonster = m;
-#        monsterLevel = currentMonster.getCombatLevel();
-#        
-#        if(myLevel > monsterLevel){
-#            this.applyPrize(m);
-#                       
-#            if(this.getLevels() >= MAXLEVEL)
-#                combatResult = CombatResult.WINGAME;
-#            else
-#                combatResult = CombatResult.WIN;
-#        }
-#            
-#        else{
-#            this.applyBadConsequence(m);
-#            combatResult = CombatResult.LOSE;
-#        }
-#        
-#        return combatResult; 
-#    }
-    
+        
     def combat(m)
         myLevel = self.getCombatLevel()
-        dealer = CardDealer. #mirar
-        currentMonster = m
+        @dealer = CardDealer  #mirar
+        @currentMonster = m #mirar
         monsterLevel = @currentMonster.combatLevel
         
         if(myLevel > monsterLevel)
@@ -197,16 +188,60 @@ class Player
         valid 
     end
     
+ 
     def initTreasures()
+       
+        dealer = CardDealer.instance
+        dice = Dice.instance
+        bringToLife
+        treasure = dealer.nextTreasure
+        @hiddenTreasures << treasure
+        number = dice.nextNumber
+        
+        if number == 1
+            treasure = dealer.nextTreasure
+            @hiddenTreasures << treasure
+        end
+        
+        if number > 1 && number < 6
+            (0..2).each do |i| 
+                treasure = dealer.nextTreasure
+                @hiddenTreasures << treasure
+                
+            end
+        end
+        
+        if number == 6
+            (0..3).each do |i|
+                treasure = dealer.nextTreasure
+                @hiddenTreasures << treasure
+            end
+        end
         
     end
     
     def getLevels()
         @level
     end
+
+ 
     
     def stealTreasure()
         
+        treasure = null
+        canI = canISteal
+        @canISteal = canI
+        
+        if(canI)
+            canYou = @enemy.canYouGiveMeAtreasure
+            
+            if canYou
+                treasure = @enemy.giveMeAtreasure
+                @hiddenTreasures << treasure
+                haveStolen
+            end
+        end
+        return treasure
     end
     
     def setEnemy(enemy)
@@ -250,8 +285,17 @@ class Player
         end
     end
     
+
     public
     def discarAllTreasures()
+              
+        (1..@visibleTreasures).each do|i|
+                discardVisibleTreasure(i)
+        end
+
+        (1..@hiddenTreasures).each do |i|
+                discardHiddenTreasure(i)
+        end
         
     end
 end

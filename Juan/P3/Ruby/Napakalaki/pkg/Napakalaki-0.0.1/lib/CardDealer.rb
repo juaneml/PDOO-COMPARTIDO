@@ -1,10 +1,17 @@
+#encoding: utf-8
+
+#Versión 3.0
+
+require_relative 'Monster.rb'
+require_relative 'Prize.rb'
+require_relative 'TreasureKind.rb'
+require_relative 'BadConsequence.rb'
 include Singleton
 
 class CardDealer
-    @@instance = null
+#    @@instance = nil #null es #nil
     private
-    def initialize(dealer)
-        @dealer = dealer
+    def initialize()        
         @unusedMonsters = Array.new()   # Relación con Monster
         @usedMonsters  = Array.new()   # Relación con Monster
         @unusedTreasures = Array.new() # Relación con Treasure
@@ -78,7 +85,7 @@ class CardDealer
         # El gorrón en el umbral
 
         price = Prize.new(3,1)
-        badconsequence = BadConsequence.newLevelNumberOfTreasures('El gorron en el umbral',0,10,0)
+        badconsequence = BadConsequence.newLevelNumberOfTreasures('El gorron en el umbral',0,BadConsequence.MAXTREASURES,0)
         @unusedMonsters << Monster.new('El gorron en el umbra',10,badconsequence,price)
 
         # H.P. Munchcraft
@@ -168,24 +175,50 @@ class CardDealer
     end
     private
     def shuffleTreasures()
-        @unusedTreasures.shuffle
+        @unusedTreasures.shuffle!
     end
     
     def shuffleMonsters()
-        @unusedMonsters.shuffle
+        @unusedMonsters.shuffle!
     end
-    private 
+#    private 
     #Dudas
-    def self.getInstance()
-        @@instance = Napakalaki.instance
+#    def self.getInstance()
+#        @@instance = Napakalaki.instance
+#    end
+
+    
+#     public Treasure nextTreasure(){
+#        Treasure tesoro = unusedTreasures.get(0);
+#        unusedTreasures.remove(0);
+#        if(this.unusedTreasures.isEmpty()){
+#            this.unusedTreasures = this.usedTreasures;
+#            this.shuffleTreasures();
+#        }
+#        return tesoro; 
+#    }
+    public
+    def nextTreasure()
+        tesoro = @unusedTreasures[0]
+        @unusedTreasures.delete(0) { |unusedlocal|  }
+        if(@unusedTreasures.empty?)
+            @unusedTreasures = @usedTreasures
+            self.shuffleTreasures()
+            
+        end
+        return tesoro
     end
     
-    def nextTreasure()
-        
-    end
     
     def nextMonster()
-        
+        monstruo = @unusedMonsters[0]
+        @unusedMonsters.delete(0) { |unusedlocal|  }
+        if(@unusedMonsters.empty?)
+            @unusedMonsters = @usedMonsters
+            self.shuffleMonsters()
+            
+        end
+        return monstruo
     end
     
     def giveTreasureBack(t)
@@ -196,7 +229,8 @@ class CardDealer
         @usedMonsters << m
     end
     def initCards()
-        
+        self.initTreasureCardDeck()
+        self.initMonstersCardDeck()
     end
     
 end

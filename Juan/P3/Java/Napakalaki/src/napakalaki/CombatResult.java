@@ -1,7 +1,7 @@
 package napakalaki;
 
 /**
- *
+ * @version 3.1
  * @author juane
  */
 public enum CombatResult {

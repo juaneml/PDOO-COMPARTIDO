@@ -21,8 +21,7 @@ public class Treasure {
     
     /**
      * Constructor que recibe como parámetros
-     * @param n String
-     * @param g entero
+     * @param n String     
      * @param bonus entero
      * @param t TreasureKind
      
@@ -41,7 +40,7 @@ public class Treasure {
     /**
      * Método getName()
      * Devuelve el nombre
-     * @return 
+     * @return name String
      */
     
     public String getName() {
@@ -51,7 +50,7 @@ public class Treasure {
     /**
      * Método getBonus()
      * Devuelve los bonus
-     * @return 
+     * @return bonus int
      */
      public int getBonus() {
         return bonus;
@@ -60,7 +59,7 @@ public class Treasure {
      /**
       * Método getType()
       * Devuelve el tipo de TreasureKind
-      * @return 
+      * @return TreasureKind
       */
      public TreasureKind getType(){
          return this.type;

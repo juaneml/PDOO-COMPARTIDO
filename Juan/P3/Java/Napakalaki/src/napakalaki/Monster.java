@@ -19,6 +19,13 @@ public class Monster {
      
     /* Constructor*/
     
+    /**
+     * Constructor  Monster(String n, int l, BadConsequence b, Prize p)
+     * @param n Nombre del monstruo
+     * @param l nivel del monstruo
+     * @param b mal royo
+     * @param p buen royo
+     */
     Monster(String n, int l, BadConsequence b, Prize p){
         
         this.name = n;

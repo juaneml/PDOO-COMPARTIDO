@@ -1,6 +1,6 @@
 #encoding: utf-8
-# author: Juane
-#Versión 1.0
+#author: Juane
+#Versión 3.0
 require_relative 'TreasureKind.rb'
 require_relative 'Monster.rb'
 require_relative 'BadConsequence.rb'

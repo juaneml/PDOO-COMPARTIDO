@@ -1,11 +1,13 @@
 #encoding: utf-8
 
 #Versión 3.0
+
 require_relative 'Monster.rb'
 require_relative 'Prize.rb'
 require_relative 'TreasureKind.rb'
 require_relative 'BadConsequence.rb'
 include Singleton
+
 class CardDealer
 #    @@instance = nil #null es #nil
     private

@@ -1,12 +1,13 @@
 #encoding: utf-8
 
-#Versión 1.0
+#Versión 3.0
 
 require_relative 'BadConsequence.rb'
 require_relative 'Monster.rb'
 require_relative 'TreasureKind.rb'
-require_relative  'Prize.rb'
-
+require_relative 'Prize.rb'
+require_relative 'Napakalaki.rb'
+require_relative 'CombatResult.rb'
 #monsters = Array.new
 # PRÁCTICA 1
 ## Monstrous
@@ -198,3 +199,9 @@ require_relative  'Prize.rb'
 #
 ##Imprimimos el número de monstrous
 #puts "Total monstrous: #{num}"
+
+
+#napa = Napakalaki.instance
+#res = [CombatResult::LOSE]
+##res = [CombatResult::WINGAME]
+#puts napa.endOfGame(res)

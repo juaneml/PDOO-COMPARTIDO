@@ -26,6 +26,10 @@ public class Player {
 
     /* Constructor */
     
+    /**
+     * Constructor Player(String name)     * 
+     * @param name nombre del jugador
+     */
     public Player(String name) {
         this.name = name;
         this.level = 1;
@@ -54,8 +58,8 @@ public class Player {
     
     /**
      * Método getCombatLevel()
-     * @return el nivel de combate del jugador
-     * Recorremos el array con el número de tesoros visibles para añadirles el bonus
+     * @return el nivel de combate del jugador.
+     * Recorremos el array con el número de tesoros visibles para añadirles el bonus.
      */
     private int getCombatLevel() {
         int sum_bonus = 0;
@@ -68,7 +72,7 @@ public class Player {
     }
     /**
      * Método incrementLevels
-     * @param l 
+     * @param l incrementa l niveles
      */
     private void incrementLevels( int l){
         this.level = this.level+l;
@@ -76,7 +80,7 @@ public class Player {
     
     /**
      * Método decrementLevels
-     * @param l 
+     * @param l decrementa l niveles
      */
     private void decrementLevels (int l){
         if(this.level > 1){
@@ -86,7 +90,7 @@ public class Player {
     
     /**
      * Método setPendingBadConsequence(BadConsequence b)
-     * @param b 
+     * @param b BadConsequence mal royo.
      */
     private void setPendingBadConsequence(BadConsequence b){
         this.pendingBadConsequence = b;
@@ -94,16 +98,16 @@ public class Player {
     
     /**
      * Método applyPrize(Monster m)
-     * @param m 
+     * @param m Monster
      */
     private void applyPrize(Monster m){
         int nLevels = m.getLevelsGained();
-        this.incrementLevels(nLevels);
         int nTreasures = m.getTreasuresGained();
         
-        CardDealer dealer;
-        Treasure treasure;  
+        this.incrementLevels(nLevels);     
         
+        CardDealer dealer;
+        Treasure treasure;         
         
         if (nTreasures > 0){
             dealer = CardDealer.getInstance();
@@ -117,7 +121,7 @@ public class Player {
     
     /**
      * Método applyBadConsequence(Monster m)
-     * @param m 
+     * @param m Monster
      */
     private void applyBadConsequence (Monster m){
         BadConsequence badConsequence;
@@ -132,8 +136,8 @@ public class Player {
     
     /**
      * Método canMakeTreasureVisible(Treasure t)
-     * @param t
-     * @return 
+     * @param t Treasure
+     * @return true si puede hacer los tesoros ocultos a visibles
      */
     private boolean canMakeTreasureVisible(Treasure t){
         boolean puede=false;
@@ -167,8 +171,7 @@ public class Player {
         }
         
         if(t.getType()== TreasureKind.ARMOR ){
-            int numero=0;
-            int numerob=0;
+            int numero=0;            
             for(Treasure taux : visibleTreasures){
                 if(taux.getType() == TreasureKind.ARMOR){
                     numero++;
@@ -180,7 +183,6 @@ public class Player {
         
         if(t.getType()== TreasureKind.HELMET ){
             int numero=0;
-            int numerob=0;
             for(Treasure taux : visibleTreasures){
                 if(taux.getType() == TreasureKind.HELMET){
                     numero++;
@@ -192,7 +194,6 @@ public class Player {
         
         if(t.getType()== TreasureKind.SHOES ){
             int numero=0;
-            int numerob=0;
             for(Treasure taux : visibleTreasures){
                 if(taux.getType() == TreasureKind.SHOES){
                     numero++;
@@ -212,8 +213,9 @@ public class Player {
      * si el tipo de tesoro se encuentra en el array de
      * tesoros visibles incrementamos la variable local de
      * la función num, si no tenemos ese tipo devuelve 0
-     * @param tKind
-     * @return numero de tesoros visiblees de tipo @param tKind
+     * 
+     * @param tKind TreasureKind
+     * @return número de tesoros visiblees de tipo tKind
      */
     private int howManyVisibleTreasures(TreasureKind tKind){
         
@@ -228,6 +230,8 @@ public class Player {
     
     /**
      * Método dielfNoTreasures()
+     * Si el número de tesoros visibles y tesoros
+     * ocultos está vacio el jugador muere
      */
     private void dielfNoTreasures (){
         
@@ -249,20 +253,28 @@ public class Player {
      * @return un array con los tesoros ocultos
      */
     public Treasure[] getHiddenTreasures(){
-        return null; //cambiar
+        
+        return this.getHiddenTreasures(); 
     }
     /**
      * Método getVisibleTreasures()     * 
      * @return un array con los tesoros visibles
      */
+    
     public Treasure[] getVisibleTreasures(){
-        return null; //cambiar
+       
+        /** Sería asi pero no ha sido dicho en el guión*/
+//        int tam = this.visibleTreasures.size();
+//        Treasure [] v_visible  = new Treasure [tam];
+//            return v_visible;
+        return null;
+        
     }
     
     /**
      * Método CombatResult combat (Monster m)
-     * @param m
-     * @return 
+     * @param m Monster
+     * @return Devuelve el resultado del combate
      */
     public CombatResult combat(Monster m){
         int myLevel = this.getCombatLevel(); // 1.1.1
@@ -291,7 +303,8 @@ public class Player {
     
     /**
      * Método makeTreasureVisible(Treasure t)
-     * @param t 
+     * Hace los tesoros visibles.
+     * @param t de tipo treasure.
      */
     public void makeTreasureVisible(Treasure t){
         boolean canI = this.canMakeTreasureVisible(t);
@@ -305,7 +318,8 @@ public class Player {
     
     /**
      * Método discardVisibleTreasure(Treasure t)
-     * @param t 
+     * Descarta los tesoros visibles.
+     * @param t de tipo treasure
      */
     public void discardVisibleTreasure (Treasure t){
         this.visibleTreasures.remove(t);
@@ -319,7 +333,8 @@ public class Player {
     
     /**
      * Método discardHiddenTreasure(Treasure t)
-     * @param t 
+     * Descarta los tesoros ocultos.
+     * @param t Treasure
      */
     public void discardHiddenTreasure(Treasure t){
         this.hiddenTreasures.remove(t);
@@ -333,7 +348,8 @@ public class Player {
     
     /**
      * Método validState()
-     * @return 
+     * @return true  si pendingBandConsequence y hiddenTreasures está vacio
+     * false en caso contrario
      */
     public boolean validState(){
           
@@ -348,6 +364,9 @@ public class Player {
     
     /**
      * Método initTreasures()
+     * Crea una instancia con CardDealer
+     * Crea una instancia con Dice
+     * 
      */
     public void initTreasures(){
         CardDealer dealer = CardDealer.getInstance();
@@ -398,18 +417,17 @@ public class Player {
     public Treasure stealTreasure(){
        Treasure treasure = null; 
        boolean canI = this.canISteal();
+       boolean canYou;
        this.canISteal = canI;
         
         if(canI){
-            boolean canYou = this.enemy.canYouGiveMeAtreasure();
+            canYou = this.enemy.canYouGiveMeAtreasure();
             if(canYou){
                 treasure = this.enemy.giveMeAtreasure();
                 this.hiddenTreasures.add(treasure);
                 this.haveStolen();
                 
-        }
-       
-       
+        }       
            
        }
         return treasure; //cambiar

@@ -201,7 +201,7 @@ require_relative 'CombatResult.rb'
 #puts "Total monstrous: #{num}"
 
 
-napa = Napakalaki.instance
-res = [CombatResult::LOSE]
-#res = [CombatResult::WINGAME]
-puts napa.endOfGame(res)
+#napa = Napakalaki.instance
+#res = [CombatResult::LOSE]
+##res = [CombatResult::WINGAME]
+#puts napa.endOfGame(res)

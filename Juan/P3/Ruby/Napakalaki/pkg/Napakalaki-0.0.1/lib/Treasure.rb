@@ -1,4 +1,6 @@
+#encoding: utf-8
 
+#Versión 3.0
 class Treasure
     def initialize(n,bonus,t)
         @name = n

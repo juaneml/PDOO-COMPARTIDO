@@ -84,16 +84,21 @@ public class Napakalaki {
      *
      * @return
      */
-    private boolean nextTurnIsAllowed() {
+   private boolean nextTurnIsAllowed() {
 
         boolean next = false;
-
-        if (this.currentPlayer == null){//.validState()) {
-            next = true;
-            return next;
+        if(currentPlayer == null)
+            return true;
+        else{
+            if (this.currentPlayer.validState()) {
+                next = true;
+                return next;
+            }
+            else{
+                return next;
+            }
         }
-        else
-        return next;
+        
     }
 
     /**

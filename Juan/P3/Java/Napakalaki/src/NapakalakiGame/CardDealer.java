@@ -38,6 +38,7 @@ public class CardDealer {
      * Método initTreasureCardDeck()
      */
     private void initTreasureCardDeck(){
+        
         this.unusedTreasures.add(new Treasure("¡Si mi amo!",4,TreasureKind.HELMET));
         this.unusedTreasures.add(new Treasure("Botas de invetigación",3,TreasureKind.SHOES));
         this.unusedTreasures.add(new Treasure("Capucha de Cthulhu",3,TreasureKind.HELMET));
@@ -277,21 +278,22 @@ public class CardDealer {
     public Treasure nextTreasure(){
        
         Treasure aux; 
-            if (!unusedTreasures.isEmpty()) {
-                
+            if (this.unusedTreasures.isEmpty()) 
+            {
+                System.out.println("Entro");
                 for (Treasure tesoro: this.usedTreasures)
                 {                
                     this.unusedTreasures.add(tesoro);                
                 }
-            } 
-                this.shuffleTreasures(); //barajamos
-                this.unusedTreasures.clear();
             
+                this.shuffleTreasures(); //barajamos el mazo de tesoros
+                this.unusedTreasures.clear(); //quitamos las cartas de los descartes
+            }
             
-
-            aux = this.unusedTreasures.get(0);
+                //Ponemos la primera carta
+                aux = this.unusedTreasures.get(0);
             
-            this.unusedTreasures.remove(aux);
+                this.unusedTreasures.remove(aux);
         return aux;
         
     }

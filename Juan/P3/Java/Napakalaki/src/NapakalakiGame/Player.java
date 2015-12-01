@@ -356,7 +356,7 @@ public class Player {
         boolean valid = false;
         
 
-        if(this.pendingBadConsequence.isEmpty() || (this.pendingBadConsequence.isDeath() && this.hiddenTreasures.size()<= 4 )){
+        if(this.pendingBadConsequence.isEmpty()  && this.hiddenTreasures.size()<= 4 ){
           valid = true;
             return valid;
         }

@@ -11,16 +11,16 @@ import java.util.Collections;
  * @version 3.1
  */
 public class CardDealer {
-    private static final CardDealer instance = null;
+    private static final CardDealer instance = new CardDealer();
     
     
     /** Relaciones **/
     
-    private ArrayList <Monster> unusedMonster; // Relación con Monster
-    private ArrayList <Monster> usedMonsters; // Relación con Monster
+    private ArrayList <Monster> unusedMonsters = new ArrayList<Monster>(); // Relación con Monster
+    private ArrayList <Monster> usedMonsters = new ArrayList<Monster>(); // Relación con Monster
     
-    private ArrayList <Treasure> unusedTreasures; //Relación con Treasure
-    private ArrayList <Treasure> usedTreasures; // Relación con Treasure
+    private ArrayList <Treasure> unusedTreasures = new ArrayList<Treasure>(); //Relación con Treasure
+    private ArrayList <Treasure> usedTreasures = new ArrayList<Treasure>(); // Relación con Treasure
     
     
     
@@ -91,7 +91,7 @@ public class CardDealer {
        badConsequence = new BadConsequence("Pierdes tu armadura visible y otra oculta"
                + "",0,tVisible,tHidden);
        prize = new Prize(2,1);
-       this.unusedMonster.add(new Monster("3 Byakhees de bonanza ",8,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("3 Byakhees de bonanza ",8,badConsequence,prize));
        
        // Chibithulhu 
        
@@ -100,7 +100,7 @@ public class CardDealer {
        badConsequence = new BadConsequence("Embobados con el lindo primigenio te descartas de tu"
                + "casco visible",0,tVisible,tHidden);
        prize = new Prize(1,1);
-       this.unusedMonster.add(new Monster("Chibithulhu",2,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Chibithulhu",2,badConsequence,prize));
        
        // El sopor de Dunwich
        tVisible = new ArrayList(Arrays.asList(TreasureKind.SHOES));
@@ -108,7 +108,7 @@ public class CardDealer {
        badConsequence = new BadConsequence("El primordial bostezo contagioso.Pierdes el calzado visible"
                 ,0,tVisible,tHidden);
        prize = new Prize(1,1);
-       this.unusedMonster.add(new Monster("El sopor de Dunwich",2,badConsequence,prize));       
+       this.unusedMonsters.add(new Monster("El sopor de Dunwich",2,badConsequence,prize));       
        
        
         // Ángeles de la noche ibicenca
@@ -119,13 +119,13 @@ public class CardDealer {
                + "y te dejan caer en mitadl del vuelo. Descarta 1 mano visible "
                + "y 1 mano oculta",0,tVisible,tHidden);
        prize = new Prize(4,1);
-       this.unusedMonster.add(new Monster("Ángeles de la noche ibicenca",14,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Ángeles de la noche ibicenca",14,badConsequence,prize));
        
        //El gorrón en el umbral  
        
        badConsequence = new BadConsequence("Pierdes todos tus tesoros visibles",0,BadConsequence.MAXTREASURES,0);
        prize = new Prize(3,1);       
-       this.unusedMonster.add(new Monster("El gorrón en el umbral",10,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("El gorrón en el umbral",10,badConsequence,prize));
        
        // H.P. Munchcraft
        
@@ -133,7 +133,7 @@ public class CardDealer {
        tHidden = new ArrayList();
        badConsequence = new BadConsequence("Pierdes la armadura visible",0,tVisible,tHidden);
        prize = new Prize(2,1);
-       this.unusedMonster.add(new Monster("H.P Munchcraft",6,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("H.P Munchcraft",6,badConsequence,prize));
          
        
        // Bichgooth
@@ -142,21 +142,21 @@ public class CardDealer {
        badConsequence = new BadConsequence("Sientes bichos bajo la ropa.Descarta la armadura visible"
                ,0,tVisible,tHidden);
        prize = new Prize(1,1);
-       this.unusedMonster.add(new Monster("Bichgooth",2,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Bichgooth",2,badConsequence,prize));
        
        
         
        // El rey de rosa
        badConsequence = new BadConsequence("Pierdes 5 niveles y 3 tesoros visibles",5,3,0);
        prize = new Prize(4,2);
-       this.unusedMonster.add(new Monster("El rey de rosa",13,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("El rey de rosa",13,badConsequence,prize));
        
         //La que redacta en las tinieblas
        
        badConsequence = new BadConsequence("Toses los pulmones y "
                + "pierdes 2 niveles",2,0,0);
        prize = new Prize(1,1);
-       this.unusedMonster.add(new Monster("La que redacta en las tinieblas",2
+       this.unusedMonsters.add(new Monster("La que redacta en las tinieblas",2
                ,badConsequence,prize));
        
        
@@ -166,7 +166,7 @@ public class CardDealer {
                + "bastante superficiales y te aburren mortalmente."
                + "Estas muerto",true);
        prize = new Prize(2,1);
-       this.unusedMonster.add(new Monster("Los hondos",8,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Los hondos",8,badConsequence,prize));
        
        
        // Semillas Cthulhu
@@ -174,7 +174,7 @@ public class CardDealer {
        badConsequence = new BadConsequence("Pierdes 2 niveles y 2 tesoros "
                + "ocultos",2,0,2);
        prize = new Prize(2,1);
-       this.unusedMonster.add(new Monster("Semillas Cthulhu",4,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Semillas Cthulhu",4,badConsequence,prize));
        
        // Dameargo
        
@@ -184,28 +184,28 @@ public class CardDealer {
        badConsequence = new BadConsequence("Te intentas escaquear. Pierdes"
                + "una mano visible",0,tVisible,tHidden);
        
-       this.unusedMonster.add(new Monster("Dameargo",1,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Dameargo",1,badConsequence,prize));
        
        // Pollipólipo volante
        
        badConsequence = new BadConsequence("Da mucho asquito. Pierdes"
                + "3 niveles",3,0,0);
        prize = new Prize(1,1);
-       this.unusedMonster.add(new Monster("Pollipólipo volante",3,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Pollipólipo volante",3,badConsequence,prize));
        
        // Yskhtihyssg-Goth
        
        badConsequence = new BadConsequence("No le hace gracia que pronuncien mal "
                + "su nombre. Estas muerto",true);
        prize = new Prize(3,1);
-       this.unusedMonster.add(new Monster("Yskhtihyssg-Goth",12,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Yskhtihyssg-Goth",12,badConsequence,prize));
        
        // Familia feliz
        
        badConsequence = new BadConsequence("La familia te atrapa.Estás muerto"
                + "",true);
        prize = new Prize(4,1);
-       this.unusedMonster.add(new Monster("Familia Feliz",1,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Familia Feliz",1,badConsequence,prize));
        
        
        //Roboggoth
@@ -215,7 +215,7 @@ public class CardDealer {
        prize = new Prize(2,1);
        badConsequence = new BadConsequence("La quinta directiva primaria te obliga"
                + " a perder 2 niveles y un tesoro, 2 manos visibles",2,tVisible,tHidden);
-       this.unusedMonster.add(new Monster("Roboggoth",8,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Roboggoth",8,badConsequence,prize));
        
        //El espia
        
@@ -224,14 +224,14 @@ public class CardDealer {
        badConsequence = new BadConsequence("Te asusta en la noche. Pierdes un "
                + "casco visible",0,tVisible,tHidden);
        prize = new Prize(1,1);
-       this.unusedMonster.add(new Monster("El espia",5,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("El espia",5,badConsequence,prize));
        
        // El Lenguas
        
        badConsequence = new BadConsequence("Menudo susto te llevas."
                + " Pierdes 2 niveles y 5 tesoros visibles",2,5,0);
        prize = new Prize(1,1);
-       this.unusedMonster.add(new Monster("El Lenguas",20,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("El Lenguas",20,badConsequence,prize));
        
        // Bicéfalo
        tVisible = new ArrayList(Arrays.asList(TreasureKind.ONEHAND));
@@ -242,7 +242,7 @@ public class CardDealer {
        badConsequence = new BadConsequence("Te faltan manos para tanta cabeza. "
                + "Pierdes 3 niveles y tus tesoros visibles de las manos",3,tVisible,tHidden);
        prize = new Prize(1,1);
-       this.unusedMonster.add(new Monster("Bicéfalo",20,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Bicéfalo",20,badConsequence,prize));
        
     }
     
@@ -260,7 +260,7 @@ public class CardDealer {
      */
     
     private void shuffleMonsters(){
-        Collections.shuffle(this.usedMonsters);
+        Collections.shuffle(this.unusedMonsters);
     }
     /**
      * Método getInstance()
@@ -275,13 +275,21 @@ public class CardDealer {
      * @return siguiente tesoro
      */
     public Treasure nextTreasure(){
-        Treasure tesoro = unusedTreasures.get(0);
-        unusedTreasures.remove(0);
-        if(this.unusedTreasures.isEmpty()){
-            this.unusedTreasures = this.usedTreasures;
-            this.shuffleTreasures();
-        }
-        return tesoro; 
+       Treasure aux = null;
+            if (!unusedTreasures.isEmpty()) {
+                aux=unusedTreasures.get(0);
+                unusedTreasures.remove(aux);
+                return aux;
+            } else if (unusedTreasures.isEmpty()) {
+                unusedTreasures.addAll(usedTreasures);
+                shuffleTreasures();
+                usedTreasures.clear();
+
+                return aux=unusedTreasures.get(0);
+            }
+
+        return aux;
+        
     }
     
     /**
@@ -289,14 +297,20 @@ public class CardDealer {
      * @return siguiente monstruo
      */
     public Monster nextMonster(){
-        Monster monster = this.unusedMonster.get(0);
-        unusedMonster.remove(0);
-        if(this.unusedMonster.isEmpty()){
-            this.unusedMonster = this.usedMonsters;
-            this.shuffleMonsters();
-        }
+        Monster monster=null;
+            if (!unusedMonsters.isEmpty()) {
+                monster=unusedMonsters.get(0);
+                unusedMonsters.remove(monster);
+            return monster;
+
+            } else if (unusedMonsters.isEmpty()) {
+                unusedMonsters.addAll(usedMonsters);
+                shuffleMonsters();
+                usedMonsters.clear();
+                return unusedMonsters.get(0);
+            }
         
-        return monster; 
+        return monster;
         
     }
     
@@ -331,7 +345,7 @@ public class CardDealer {
 
     @Override
     public String toString() {
-        return "CardDealer{" + "unusedMonster=" + unusedMonster + ", usedMonsters=" + usedMonsters + ", unusedTreasures=" + unusedTreasures + ", usedTreasures=" + usedTreasures + '}';
+        return "CardDealer{" + "unusedMonster=" + unusedMonsters + ", usedMonsters=" + usedMonsters + ", unusedTreasures=" + unusedTreasures + ", usedTreasures=" + usedTreasures + '}';
     }
     
 }

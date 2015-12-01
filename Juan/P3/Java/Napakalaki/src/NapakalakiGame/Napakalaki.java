@@ -10,11 +10,11 @@ import java.util.Random;
  */
 public class Napakalaki {
 
-    private static final Napakalaki instance = null;
+    private static final Napakalaki instance = new Napakalaki();
 
     /* Relaciones con las clases */
     private Monster currentMonster ; // Relación con los monstruos    
-    private CardDealer dealer; // Relación con CardDealer
+    private CardDealer dealer = CardDealer.getInstance() ; // Relación con CardDealer
     private Player currentPlayer; // Relación con Player
     private ArrayList<Player> players = new ArrayList(); // Relación con Player
 
@@ -60,7 +60,7 @@ public class Napakalaki {
             players = aux;
             
             //aqui petaba
-            this.currentPlayer = aux.get(0);
+            this.currentPlayer = aux.get(numero);
             return currentPlayer;
             
         } else {
@@ -68,9 +68,9 @@ public class Napakalaki {
                 if (currentPlayer == players.get(i)) {
                     if (i == players.size() - 1) ///////si falla mirara aquí
                     {
-                        currentPlayer = players.get(0);
+                        currentPlayer = new Player(players.get(0).getName());
                     } else {
-                        currentPlayer = players.get(i + 1);
+                        currentPlayer = new Player(players.get(i + 1).getName());
                     }
                 }
             }
@@ -90,8 +90,9 @@ public class Napakalaki {
 
         if (this.currentPlayer.validState()) {
             next = true;
+            return next;
         }
-
+        else
         return next;
     }
 
@@ -119,6 +120,7 @@ public class Napakalaki {
      * @return
      */
     public static Napakalaki getInstance() {
+       
         return instance;
     }
 

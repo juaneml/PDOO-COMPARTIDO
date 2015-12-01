@@ -13,9 +13,9 @@ public class Player {
     Player enemy; //Relación asímismo 
     
     /*Relaciones */
-    private ArrayList<Treasure> hiddenTreasures;
-    private ArrayList<Treasure> visibleTreasures;
-    private BadConsequence pendingBadConsequence;
+    private ArrayList<Treasure> hiddenTreasures = new ArrayList();
+    private ArrayList<Treasure> visibleTreasures = new ArrayList();
+    private BadConsequence pendingBadConsequence ;
     /** Atributos de la clase
      * 
      */
@@ -37,7 +37,7 @@ public class Player {
         this.canISteal = false;
         this.visibleTreasures = new ArrayList();
         this.hiddenTreasures = new ArrayList();
-        this.pendingBadConsequence = null;
+        this.pendingBadConsequence = new BadConsequence(" ", 0, 0, 0);
         
     }
 
@@ -253,7 +253,8 @@ public class Player {
      */
     public ArrayList<Treasure> getHiddenTreasures(){
         
-        return this.getHiddenTreasures(); 
+       // return this.hiddenTreasures; 
+        return null;
     }
     /**
      * Método getVisibleTreasures()     * 
@@ -352,12 +353,16 @@ public class Player {
      */
     public boolean validState(){
           
-        if(this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size()<= 4 ){
-           return true;
+        boolean valid = false;
+        
+
+        if(this.pendingBadConsequence.isEmpty() || (this.pendingBadConsequence.isDeath() && this.hiddenTreasures.size()<= 4 )){
+          valid = true;
+            return valid;
         }
                     
         else
-           return false;
+           return valid;
         
     }
     

@@ -162,7 +162,6 @@ class Napakalaki
     def nextTurn()
         stateOK = self.nextTurnAllowed
         
-        stateOK = @currentPlayer.validState
         if(stateOK == true)
             @currentMonster = @dealer.nextMonster
             @currentPlayer = self.nextPlayer

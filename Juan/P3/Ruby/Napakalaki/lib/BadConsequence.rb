@@ -89,8 +89,8 @@ class BadConsequence
         nVisibleAux = @nVisibleTreasures;
         nHiddenAux = @nHiddenTreasures;
 
-        vaux # ArrayList<Treasure> Sin Usar ?? 
-        haux # ArrayList<Treasure>  Sin Usar ?? 
+        vaux = v # ArrayList<Treasure> Sin Usar ?? 
+        haux = h # ArrayList<Treasure>  Sin Usar ?? 
         badConsequence #BadConsequence Sin Usar ??
 
         if tamV > 0 || tamH > 0  # Si los vectores que recibimos tienen cosas entramos aqui
@@ -121,7 +121,8 @@ class BadConsequence
                         end
                     end
                 end
-                    badConsequence = BadConsequence.new(text, levels, nVisibleAux, nHiddenAux);
+                
+                badConsequence = BadConsequence.new(text, levels, nVisibleAux, nHiddenAux);
                 return badConsequence;
             end
 
@@ -134,68 +135,72 @@ class BadConsequence
                 # si ninguno de los dos arrays está vacío
                 if !@specificHiddenTreasures.empty? && !@specificVisibleTreasures.empty? 
                     #de cada elemento de la lista de específicos ocultos
-                    sht.each do|i| #for (TreasureKind sht : specificHiddenTreasures) 
-                        boolean esta = false;
-                        #for(Treasure vTreasure : v){ // Comprobamos si está en el otro 
+                    @specificHiddenTreasures.each do|sht| #for (TreasureKind sht : specificHiddenTreasures) 
+                        esta = false;                    
+                        for i in 0..(haux.size()-1) 
+                            if esta ==false
+                                if sht == haux.get(i).getType()  #si son iguales
+                                    hcopia << haux.get(i).getType() # se mete en el vector de copias
+                                    esta = true #esta pasa a valer true(esto es para el que el for salte)
+                                    haux.remove(haux.get(i)) #se quita de la lista, para que no siga contandolo
 
-                        # Comprobamos si está en el otro 
-                       (0..v.size() || esta).each do|i| 
-                            if sht == v.get(i).getType()  #si son iguales
-                                vcopia << v.get(i).getType() # se mete en el vector de copias
-                                esta = true #esta pasa a valer true(esto es para el que el for salte)
-                                v.remove(v.get(i)) #se quita de la lista, para que no siga contandolo
-
+                                end
                             end
                         end
                     end
 
-                    svt.each do |i| #for (TreasureKind svt : specificHiddenTreasures) 
-                        boolean esta = false;
+                    @specificVisibleTreasures.each do |svt| #for (TreasureKind svt : specificHiddenTreasures) 
+                        esta = false;
                         #for(Treasure hTreasure : h){
-                        (0..h.size() || esta).each do |i| 
-                            if (svt == h.get(i).getType()) 
-                                hcopia << h.get(i).getType()
-                                h.remove(h.get(i))
+                        for i in 0..(vaux.size()-1) 
+                           if esta ==false
+                                if (svt == haux.get(i).getType()) 
+                                    vcopia << vaux.get(i).getType()
+                                    esta=true
+                                    vaux.remove(vaux.get(i))
+                                end
                             end
                         end
                     end
+                    
+                    
+                    
                 end
                 #///////////////////////////////////////////////////////////////////////////////////////////
 
                 # si uno de ellos está vacio se hace lo mismo que antes
                 if @specificHiddenTreasures.empty? && !@specificVisibleTreasures.empty? 
-                    sht.each do |i| #for (TreasureKind sht : specificHiddenTreasures)  #de cada elemento de la lista de específicos ocultos
+                    @specificVisibleTreasures.each do |svt| #for (TreasureKind svt : specificHiddenTreasures) 
                         esta = false;
-                        #for(Treasure vTreasure : v){ # Comprobamos si está en el otro 
-                        (0..v.size() || esta).each do |i|   # Comprobamos si está en el otro 
-                            if sht == v.get(i).getType()  #si son iguales
-                                vcopia << v.get(i).getType() # se mete en el vector de copias
-                                esta = true; #esta pasa a valer true(esto es para el que el for salte)
-                                v.remove(v.get(i)) #se quita de la lista, para que no siga contandolo
-
+                        #for(Treasure hTreasure : h){
+                        for i in 0..(vaux.size()-1) 
+                           if esta ==false
+                                if (svt == haux.get(i).getType()) 
+                                    vcopia << vaux.get(i).getType()
+                                    esta =true
+                                    vaux.remove(vaux.get(i))
+                                end
                             end
                         end
                     end
                 end
-                (0..2).each do |i| 
-                treasure = dealer.nextTreasure
-                @hiddenTreasures << treasure
                 
-            end
                 #///////////////////////////////////////////////////////////////////////////////////////////
                 if !@specificHiddenTreasures.empty? && @specificVisibleTreasures.empty? 
-                    svt.each do |i| #for (TreasureKind svt : specificHiddenTreasures) 
-                        esta = false;
-                        # for(Treasure hTreasure : h){
-                        (0..h.size()|| esta).each do |i|
-                            if svt == h.get(i).getType() 
-                                hcopia << h.get(i).getType()
-                                h.remove(h.get(i));
-                            end
-                            
+                    @specificHiddenTreasures.each do|sht| #for (TreasureKind sht : specificHiddenTreasures) 
+                        esta = false;                    
+                        for i in 0..(haux.size()-1) 
+                            if esta ==false
+                                if sht == haux.get(i).getType()  #si son iguales
+                                    hcopia << haux.get(i).getType() # se mete en el vector de copias
+                                    esta = true #esta pasa a valer true(esto es para el que el for salte)
+                                    haux.remove(haux.get(i)) #se quita de la lista, para que no siga contandolo
+
+                                end
                             end
                         end
                     end
+               end
                 
 
                 badConsequence = new BadConsequence(text, levels, vcopia, hcopia);

@@ -509,7 +509,8 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player{" + "enemy=" + enemy + ", hiddenTreasures=" + hiddenTreasures + ", visibleTreasures=" + visibleTreasures + ", pendingBadConsequence=" + pendingBadConsequence + ", name=" + name + ", level=" + level + ", dead=" + dead + ", canISteal=" + canISteal + '}';
+       // return "Player{" + "enemy=" + enemy + ", hiddenTreasures=" + hiddenTreasures + ", visibleTreasures=" + visibleTreasures + ", pendingBadConsequence=" + pendingBadConsequence + ", name=" + name + ", level=" + level + ", dead=" + dead + ", canISteal=" + canISteal + '}';
+        return "Player: " + this.name + " Nivel: " + this.level;
     }
             
 }

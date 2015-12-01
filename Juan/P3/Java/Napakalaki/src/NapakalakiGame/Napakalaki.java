@@ -64,16 +64,16 @@ public class Napakalaki {
             return currentPlayer;
             
         } else {
-            //for (int i = 0; i < players.size(); i++) {
-              //  if (currentPlayer == players.get(i)) {
+            for (int i = 0; i < players.size(); i++) {
+                if (currentPlayer == players.get(i)) {
                     if (i == players.size() - 1) ///////si falla mirara aquí
                     {
                         currentPlayer = new Player(players.get(0).getName());
                     } else {
                         currentPlayer = new Player(players.get(i + 1).getName());
                     }
-              //  }
-            //}
+                }
+            }
 
             return currentPlayer;
         }
@@ -84,7 +84,7 @@ public class Napakalaki {
      *
      * @return
      */
-    private boolean nextTurnAllowed() {
+    private boolean nextTurnIsAllowed() {
 
         boolean next = false;
 
@@ -215,7 +215,7 @@ public class Napakalaki {
     public boolean nextTurn() {
         //MIRAR
         boolean stateOK;
-        stateOK = this.nextTurnAllowed();  
+        stateOK = this.nextTurnIsAllowed();  
              
         
         if (stateOK) {

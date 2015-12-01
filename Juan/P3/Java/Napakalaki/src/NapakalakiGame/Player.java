@@ -13,8 +13,8 @@ public class Player {
     Player enemy; //Relación asímismo 
     
     /*Relaciones */
-    private ArrayList<Treasure> hiddenTreasures = new ArrayList();
-    private ArrayList<Treasure> visibleTreasures = new ArrayList();
+    private ArrayList<Treasure> hiddenTreasures;
+    private ArrayList<Treasure> visibleTreasures;
     private BadConsequence pendingBadConsequence ;
     /** Atributos de la clase
      * 

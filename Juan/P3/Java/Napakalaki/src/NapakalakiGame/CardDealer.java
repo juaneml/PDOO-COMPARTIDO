@@ -275,19 +275,23 @@ public class CardDealer {
      * @return siguiente tesoro
      */
     public Treasure nextTreasure(){
-       Treasure aux = null;
+       
+        Treasure aux; 
             if (!unusedTreasures.isEmpty()) {
-                aux=unusedTreasures.get(0);
-                unusedTreasures.remove(aux);
-                return aux;
-            } else if (unusedTreasures.isEmpty()) {
-                unusedTreasures.addAll(usedTreasures);
-                shuffleTreasures();
-                usedTreasures.clear();
+                
+                for (Treasure tesoro: this.usedTreasures)
+                {                
+                    this.unusedTreasures.add(tesoro);                
+                }
+            } 
+                this.shuffleTreasures(); //barajamos
+                this.unusedTreasures.clear();
+            
+            
 
-                return aux=unusedTreasures.get(0);
-            }
-
+            aux = this.unusedTreasures.get(0);
+            
+            this.unusedTreasures.remove(aux);
         return aux;
         
     }

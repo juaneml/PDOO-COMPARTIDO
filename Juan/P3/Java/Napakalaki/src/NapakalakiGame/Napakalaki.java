@@ -42,7 +42,7 @@ public class Napakalaki {
      * @return
      */
     private Player nextPlayer() {
-
+        //aaaaaaaaa
         if (currentPlayer == null) {
             Random rand = new Random();
             int numero = rand.nextInt(players.size());

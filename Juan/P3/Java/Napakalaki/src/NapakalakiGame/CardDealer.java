@@ -303,19 +303,22 @@ public class CardDealer {
      * @return siguiente monstruo
      */
     public Monster nextMonster(){
-        Monster monster=null;
-            if (!unusedMonsters.isEmpty()) {
-                monster=unusedMonsters.get(0);
-                unusedMonsters.remove(monster);
-            return monster;
-
-            } else if (unusedMonsters.isEmpty()) {
-                unusedMonsters.addAll(usedMonsters);
-                shuffleMonsters();
-                usedMonsters.clear();
-                return unusedMonsters.get(0);
+        Monster monster;
+            if (unusedMonsters.isEmpty()) {
+                
+                for (Monster mons: this.usedMonsters){
+                    this.unusedMonsters.add(mons);
+                }
+                
+                this.shuffleMonsters();
+                
+                this.usedMonsters.clear();
             }
         
+            monster = this.unusedMonsters.get(0);
+            this.unusedMonsters.add(monster);
+            this.unusedMonsters.remove(monster);
+            
         return monster;
         
     }

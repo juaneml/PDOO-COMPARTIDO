@@ -13,7 +13,7 @@ public class Napakalaki {
     private static final Napakalaki instance = null;
 
     /* Relaciones con las clases */
-    private Monster currentMonster; // Relación con los monstruos    
+    private Monster currentMonster ; // Relación con los monstruos    
     private CardDealer dealer; // Relación con CardDealer
     private Player currentPlayer; // Relación con Player
     private ArrayList<Player> players = new ArrayList(); // Relación con Player
@@ -58,7 +58,9 @@ public class Napakalaki {
                 }
             }
             players = aux;
-
+            
+            //aqui petaba
+            this.currentPlayer = aux.get(0);
             return currentPlayer;
             
         } else {

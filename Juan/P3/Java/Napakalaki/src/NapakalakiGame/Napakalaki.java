@@ -42,7 +42,7 @@ public class Napakalaki {
      * @return
      */
     private Player nextPlayer() {
-        //aaaaaaaaa
+       
         if (currentPlayer == null) {
             Random rand = new Random();
             int numero = rand.nextInt(players.size());
@@ -59,21 +59,21 @@ public class Napakalaki {
             }
             players = aux;
             
-            //aqui petaba
+            
             this.currentPlayer = aux.get(numero);
             return currentPlayer;
             
         } else {
-            for (int i = 0; i < players.size(); i++) {
-                if (currentPlayer == players.get(i)) {
+            //for (int i = 0; i < players.size(); i++) {
+              //  if (currentPlayer == players.get(i)) {
                     if (i == players.size() - 1) ///////si falla mirara aquí
                     {
                         currentPlayer = new Player(players.get(0).getName());
                     } else {
                         currentPlayer = new Player(players.get(i + 1).getName());
                     }
-                }
-            }
+              //  }
+            //}
 
             return currentPlayer;
         }
@@ -88,7 +88,7 @@ public class Napakalaki {
 
         boolean next = false;
 
-        if (this.currentPlayer.validState()) {
+        if (this.currentPlayer == null){//.validState()) {
             next = true;
             return next;
         }

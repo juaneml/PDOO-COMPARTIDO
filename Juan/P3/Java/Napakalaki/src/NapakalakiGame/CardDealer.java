@@ -16,11 +16,11 @@ public class CardDealer {
     
     /** Relaciones **/
     
-    private ArrayList <Monster> unusedMonsters = new ArrayList<Monster>(); // Relación con Monster
-    private ArrayList <Monster> usedMonsters = new ArrayList<Monster>(); // Relación con Monster
+    private ArrayList <Monster> unusedMonsters = new ArrayList(); // Relación con Monster
+    private ArrayList <Monster> usedMonsters = new ArrayList(); // Relación con Monster
     
-    private ArrayList <Treasure> unusedTreasures = new ArrayList<Treasure>(); //Relación con Treasure
-    private ArrayList <Treasure> usedTreasures = new ArrayList<Treasure>(); // Relación con Treasure
+    private ArrayList <Treasure> unusedTreasures = new ArrayList(); //Relación con Treasure
+    private ArrayList <Treasure> usedTreasures = new ArrayList(); // Relación con Treasure
     
     
     

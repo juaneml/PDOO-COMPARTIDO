@@ -1,4 +1,4 @@
-package napakalaki;
+package NapakalakiGame;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -176,9 +176,10 @@ public class Napakalaki {
      * @param players
      */
     public void initGame(ArrayList<String> players) {
+        System.out.print("entra napa");
         this.initPlayers(players);
         this.setEnemies();
-        this.dealer.initCards();
+        dealer.initCards();
         this.nextTurn();
 
     }

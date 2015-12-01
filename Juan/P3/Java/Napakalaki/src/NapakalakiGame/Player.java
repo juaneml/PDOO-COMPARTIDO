@@ -1,4 +1,4 @@
-package napakalaki;
+package NapakalakiGame;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -251,7 +251,7 @@ public class Player {
      * Método getHiddenTreasures()
      * @return un array con los tesoros ocultos
      */
-    public Treasure[] getHiddenTreasures(){
+    public ArrayList<Treasure> getHiddenTreasures(){
         
         return this.getHiddenTreasures(); 
     }
@@ -260,7 +260,7 @@ public class Player {
      * @return un array con los tesoros visibles
      */
     
-    public Treasure[] getVisibleTreasures(){
+    public ArrayList<Treasure> getVisibleTreasures(){
        
         /** Sería asi pero no ha sido dicho en el guión*/
 //        int tam = this.visibleTreasures.size();

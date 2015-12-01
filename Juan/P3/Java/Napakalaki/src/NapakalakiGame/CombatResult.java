@@ -1,4 +1,4 @@
-package napakalaki;
+package NapakalakiGame;
 
 /**
  * @version 3.1

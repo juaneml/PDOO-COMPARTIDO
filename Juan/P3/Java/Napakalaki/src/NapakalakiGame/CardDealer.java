@@ -1,5 +1,5 @@
 
-package napakalaki;
+package NapakalakiGame;
 
 import java.util.ArrayList;
 import java.util.Arrays;

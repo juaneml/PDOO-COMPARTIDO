@@ -50,7 +50,7 @@ class Napakalaki
     #private_class_method :new
     
 #    Inicializa el array de jugadores que contiene Napakalaki, creando tantos jugadores como
-#    elementos haya en names, que es el array de String que contiene el nombre de los
+#    elementos haya en names, que es el array de String que contiene el nombre de losaa
 #    jugadores.
    
     def initPlayers(names)

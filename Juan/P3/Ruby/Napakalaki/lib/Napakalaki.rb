@@ -163,7 +163,9 @@ class Napakalaki
     def initGame(players)
         self.initPlayers(players)
         setEnemies()
+
         @dealer.initCards
+
         self.nextTurn
         
     end

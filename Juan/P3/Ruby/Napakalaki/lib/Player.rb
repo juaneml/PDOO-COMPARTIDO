@@ -19,7 +19,7 @@ class Player
         @dead = false
         @canISteal = false
         @enemy = self
-        @pendigBadConsequence = BadConsequence.new
+        @pendigBadConsequence = BadConsequence
         @hiddenTreasures = Array.new
         @visibleTreasures = Array.new
     

@@ -6,7 +6,7 @@ require 'Player.rb'
 require 'CardDealer.rb'
 require 'Dice.rb'
 require 'singleton'
-require 'Dice.rb'
+
 
 module NapakalakiGame
 
@@ -106,20 +106,20 @@ class Napakalaki
     
     private
     def setEnemies()
-        enemigo =Player.new
-        enemigo = @players[0]
+        enemigo =Player.new(@players[0])
+        #enemigo = @players[0]
         
-        numero = rand(6)+1
-        
+        puts 'entra'
         @players.each do |p|
+            
             loop do 
                  numero = rand(@players.size)
+                 puts numero  
                  enemigo.setEnemy(@players[numero])
-                break if (enemigo == p)
+                 puts 'enemigo'
+            break if (enemigo != p)
             end
-        end
-        
-        
+        end 
     end
     
 #    private 
@@ -162,7 +162,7 @@ class Napakalaki
     
     def initGame(players)
         self.initPlayers(players)
-        #self.setEnemies()
+        setEnemies()
         @dealer.initCards
         self.nextTurn
         

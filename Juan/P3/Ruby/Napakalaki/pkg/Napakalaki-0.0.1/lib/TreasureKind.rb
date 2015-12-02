@@ -3,7 +3,8 @@
 #Versión 3.0
 #Modulo para el tipo enumerado
 
-module TreasureKind
+module NapakalakiGame
+module TreasureKind 
 
     ARMOR = :armor
     ONEHAND = :onehand
@@ -12,5 +13,27 @@ module TreasureKind
     SHOES = :shoes
     
  
-  
+  def to_s
+      if [TreasureKind.ARMOR]          
+          return "ARMOR"
+      end
+                
+          if [TreasureKind.ONEHAND]
+             return "ONEHAND"
+          end
+          
+      if [TreasureKind.BOTHHANDS]
+          return "BOTHHANDS"
+      end
+      
+      if [TreasureKind.HELMET]
+          return "HELMET"
+      end
+      
+      if [TreasureKind.SHOES]
+          return "SHOES"
+      end
+    end
+end
+
 end

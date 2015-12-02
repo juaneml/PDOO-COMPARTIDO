@@ -8,7 +8,7 @@ require_relative 'Prize.rb'
 
 
 
-
+module NapakalakiGame
 class Monster
     # @@numMonster --> contar el número de monstruos
     #Atributos propios de la clase
@@ -50,4 +50,5 @@ class Monster
         "Monster =  #{@name}  , combatLevel =   #{@combatLevel} ,  #{@badconsequence} ,  Price:  #{@prize} "      
     end
   
+end
 end

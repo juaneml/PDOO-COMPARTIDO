@@ -4,6 +4,7 @@
 require_relative 'TreasureKind.rb'
 require_relative 'Monster.rb'
 require_relative 'BadConsequence.rb'
+module NapakalakiGame
 class Prize    
     
     def initialize(treasures,level)
@@ -27,4 +28,5 @@ class Prize
     # attr_reader	
     #Método solo escritura
     # attr_writer
+end
 end

@@ -3,6 +3,10 @@
 #Versión 3.0
 require 'singleton'
 include Singleton
+module NapakalakiGame
+
+
+
 class Napakalaki 
    
    
@@ -185,4 +189,5 @@ class Napakalaki
             return final
    end
     
+end
 end

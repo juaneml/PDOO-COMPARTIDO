@@ -1,6 +1,7 @@
 #encoding: utf-8
 
 #Versión 3.0
+module NapakalakiGame
 class Player   
     @@MAXLEVEL = 10
     #constructor
@@ -302,4 +303,5 @@ class Player
         end
         
     end
+end
 end

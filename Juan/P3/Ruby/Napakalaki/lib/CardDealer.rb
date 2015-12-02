@@ -7,13 +7,14 @@ require_relative 'Prize.rb'
 require_relative 'TreasureKind.rb'
 require_relative 'BadConsequence.rb'
 include Singleton
+module NapakalakiGame
 
 class CardDealer
 #    @@instance = nil #null es #nil
     private
     def initialize()        
-        @unusedMonsters = Array.new()   # Relación con Monster
-        @usedMonsters  = Array.new()   # Relación con Monster
+        @unusedMonsters  = Array.new()   # Relación con Monster
+        @usedMonsters    = Array.new()   # Relación con Monster
         @unusedTreasures = Array.new() # Relación con Treasure
         @usedTreasures   = Array.new() # Relación con Treasure
     end
@@ -225,4 +226,5 @@ class CardDealer
         self.initMonstersCardDeck()
     end
     
+end
 end

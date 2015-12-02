@@ -5,6 +5,7 @@
 require_relative 'Monster.rb'
 require_relative 'Prize.rb'
 require_relative 'TreasureKind.rb'
+module NapakalakiGame
 class BadConsequence
 
     # CONSTANTE
@@ -221,4 +222,5 @@ class BadConsequence
     end  
   
    
+end
 end

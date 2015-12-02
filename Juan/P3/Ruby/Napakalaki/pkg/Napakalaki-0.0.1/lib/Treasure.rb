@@ -1,6 +1,7 @@
 #encoding: utf-8
 
 #Versión 3.0
+module NapakalakiGame
 class Treasure
     def initialize(n,bonus,t)
         @name = n
@@ -13,4 +14,8 @@ class Treasure
    attr_reader :bonus
    attr_reader :type
    
+    def to_s
+        "Treasure =  #{@name}  , bonus =   #{@bonus} ,type =  #{@type}  "      
+    end
+end
 end

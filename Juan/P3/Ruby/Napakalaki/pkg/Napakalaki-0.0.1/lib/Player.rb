@@ -174,7 +174,7 @@ class Player
     end
     end
     
-    
+    end
     def howManyVisibleTreasures(tkind)
         num = 0
         

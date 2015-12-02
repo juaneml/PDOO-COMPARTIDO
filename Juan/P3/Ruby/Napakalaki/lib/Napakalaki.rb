@@ -32,7 +32,15 @@ class Napakalaki
         @dealer = CardDealer.instance
         @currentMonster     
     end
+    public
+    def getCurrentPlayer
+        
+        return @currentPlayer
+    end
     
+    def getCurrentMonster
+        return @currentMonster
+    end
     #attr_accesor :currentPlayer, :player, :dealer, :currentMonster
     
     ## getCurrentPlayer
@@ -48,7 +56,7 @@ class Napakalaki
    
     def initPlayers(names)
            names.each do |n|
-           @players << n
+           @players << Player.new(n)
           end
     end
     
@@ -83,6 +91,7 @@ class Napakalaki
                         @currentPlayer = @players[i+1]
                     end
                 end
+                i = i+1
             end
             return @currentPlayer
         end
@@ -177,11 +186,11 @@ class Napakalaki
         if(stateOK == true)
             @currentMonster = @dealer.nextMonster
             @currentPlayer = nextPlayer
-            dead = @currentPlayer.isDead
+           # dead = @currentPlayer.isDead
             
-            if(dead == true)
+            #if(dead == true)
                 @currentPlayer.initTreasures
-            end
+            #end
         end
         
         return stateOK
@@ -198,4 +207,5 @@ class Napakalaki
    end
     
 end
+
 end

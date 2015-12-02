@@ -7,33 +7,34 @@ require 'singleton'
 
 module NapakalakiGame
 class Dice
-    #include Singleton
-  @@instance = nil #1º Creamos la instancia
+    include Singleton
+#  @@instance = nil #1º Creamos la instancia
 
     
     private
     
     def initialize
-       # @@instance = nil
+        @@instance = nil
     end
     
-    public
+#    public
     
     #2º Creamos el método
-    def getInstance
-        if @@instance == nil
-            @@instance == new
-        end
-       return @@instance
-    end
+#    def getInstance
+#        if @@instance == nil
+#            @@instance == new
+#        end
+#       return @@instance
+#    end
     
     # 3º Para evitar que puedan existir mas objetos de esta clase
    # private_class_method :new
     
+    public
     def nextNumber()
-         numero = rand(6)+1
          
-        return numero 
+        number = rand(6)+1
+        return number 
     end
 end
 

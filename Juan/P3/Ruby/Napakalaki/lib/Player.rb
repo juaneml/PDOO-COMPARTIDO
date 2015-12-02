@@ -1,7 +1,14 @@
 #encoding: utf-8
 
 #Versión 3.0
+require_relative 'Treasure.rb'
+require_relative 'Monster.rb'
+require_relative 'TreasureKind.rb'
+require_relative 'CombatResult.rb'
+require_relative 'Dice.rb'
+require_relative 'GameTester.rb'
 module NapakalakiGame
+    
 class Player   
     @@MAXLEVEL = 10
     #constructor
@@ -17,12 +24,17 @@ class Player
         @visibleTreasures = Array.new
     
     end
+#    
+#    attr_accesor :name
+#    attr_accesor :visibleTreasures
+#    attr_accesor :hiddenTreasures
+#    attr_accesor :level
     
     ## Métodos get
     attr_reader :name
     attr_reader :visibleTreasures
-    atrr_reader :hiddenTreasures
-    atrr_reader :level
+    attr_reader :hiddenTreasures
+    attr_reader :level
     
    
     private
@@ -62,7 +74,7 @@ class Player
          
     def applyPrize(m)
         nLevels = m.getLevelsGained()
-        self.incrementLevels(nLevels)   
+        incrementLevels(nLevels)   
         nTreasures = m.getTreasureGained()
             
         
@@ -89,7 +101,77 @@ class Player
     
      
     def canMakeTreasureVisible(t)
+          puede=false;
         
+        if(t.getType()== [TreasureKind::ONEHAND] )
+            int numero=0;
+            int numerob=0;
+            (1..@visibleTreasures).each do |i|             
+                if @visibleTreasures.getType() == TreasureKind::ONEHAND
+                    numero= numero+1
+                end
+            end
+                if(taux.getType() == TreasureKind.BOTHHANDS)
+                    numerob = numerob+1
+            end
+            if numero<2 && numerob == 0
+                puede=true                
+            end
+        
+        if t.getType()== [TreasureKind::BOTHHANDS]
+             numero=0
+             numerob=0
+           (1..@visibleTreasures).echo do |i|
+                if@visibleTreasures.getType() == [TreasureKind::ONEHAND]
+                    numero = numero+1;
+                end
+           end
+                iftaux.getType() == TreasureKind.BOTHHANDS
+                    numerob = numerob+1
+            end
+            if(numero==0 && numerob == 0)
+                puede=true                
+            end
+        
+        if t.getType()== [TreasureKind.ARMOR]
+            numero=0
+            (1..@visibleTreasures).echo do |i|
+           
+                if @vivibleTreasures.getType() == [TreasureKind.ARMOR]
+                    numero =numero+1
+                end
+            end
+        end
+            if(numero==0)
+                puede=true;                
+        end
+        
+        if t.getType()== [TreasureKind.HELMET]
+            int numero=0;
+            (1..@visibleTreasures).echo do |i|            
+                if @vivisbleTreasuers.getType() == [TreasureKind::HELME]
+                    numero= numero+1
+                end
+            end
+            if(numero==0)
+                puede=true;                
+        end
+        end
+        if t.getType()== [TreasureKind::SHOES] 
+            int numero=0;
+            (1..@visibleTreasuers).echo do |i|           
+                if @visibleTreasures.getType() == [TreasureKind.SHOES]
+                    numero = numero+1;
+                end
+            end
+            if numero==0
+                puede=true                
+        end
+        
+        end
+        return puede
+        
+    end
     end
     
     

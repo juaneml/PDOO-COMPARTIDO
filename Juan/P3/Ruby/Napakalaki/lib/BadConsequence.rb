@@ -90,9 +90,9 @@ class BadConsequence
         nVisibleAux = @nVisibleTreasures;
         nHiddenAux = @nHiddenTreasures;
 
-        vaux = v # ArrayList<Treasure> Sin Usar ?? 
-        haux = h # ArrayList<Treasure>  Sin Usar ?? 
-        badConsequence #BadConsequence Sin Usar ??
+        vaux = v # ArrayList<Treasure>  
+        haux = h # ArrayList<Treasure>  
+        badConsequence #BadConsequence 
 
         if tamV > 0 || tamH > 0  # Si los vectores que recibimos tienen cosas entramos aqui
 

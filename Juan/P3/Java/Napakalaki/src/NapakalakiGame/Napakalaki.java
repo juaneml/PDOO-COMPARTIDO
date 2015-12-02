@@ -186,7 +186,7 @@ public class Napakalaki {
      * @param players
      */
     public void initGame(ArrayList<String> players) {
-        System.out.print("entra napa");
+        
         this.initPlayers(players);
         this.setEnemies();
         dealer.initCards();

@@ -1,14 +1,15 @@
 #encoding: utf-8
 
 #Versión 3.0
+require 'Player.rb'
+require 'CardDealer.rb'
 require 'singleton'
-include Singleton
+
 module NapakalakiGame
 
 
-
 class Napakalaki 
-   
+   include Singleton
    
     #@@instance = nil
 #    Constructor
@@ -23,8 +24,8 @@ class Napakalaki
 
     def initialize()
         @currentPlayer
-        @players
-        @dealer
+        @players = Array.new
+        @dealer = CardDealer.instance
         @currentMonster       
     end
     
@@ -90,7 +91,8 @@ class Napakalaki
     def nextTurnAllowed()
         sig = false
         
-        if(@currentPlayer.validState)
+        #if(@currentPlayer.validState)
+        if @currentPlayer == nil
             sig=true
         end
         
@@ -156,7 +158,7 @@ class Napakalaki
     
     def initGame(players)
         self.initPlayers(players)
-        self.setEnemies()
+        #self.setEnemies()
         @dealer.initCards
         self.nextTurn
         
@@ -164,7 +166,7 @@ class Napakalaki
     
 
     def nextTurn()
-        stateOK = self.nextTurnAllowed
+        stateOK = nextTurnAllowed
         
         if(stateOK == true)
             @currentMonster = @dealer.nextMonster

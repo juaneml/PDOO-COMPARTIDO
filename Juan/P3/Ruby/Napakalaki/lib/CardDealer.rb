@@ -1,7 +1,7 @@
 #encoding: utf-8
 ###
 #Versión 3.0
-
+require 'singleton'
 require_relative 'Monster.rb'
 require_relative 'Prize.rb'
 require_relative 'TreasureKind.rb'

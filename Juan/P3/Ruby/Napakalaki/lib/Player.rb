@@ -284,6 +284,7 @@ class Player
        
         dealer = CardDealer.instance
         dice = Dice.instance
+        puts ''
         self.bringToLife
         treasure = dealer.nextTreasure
         @hiddenTreasures << treasure

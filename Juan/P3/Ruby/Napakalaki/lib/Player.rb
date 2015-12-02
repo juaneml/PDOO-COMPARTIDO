@@ -96,9 +96,9 @@ class Player
     def applyBadConsequence(m)
         badConsequence = m.badconsequence
         nLevels = badConsequence.levels
-        self.decrementLevels(nLevels)        
+        decrementLevels(nLevels)        
         pendingBad = badConsequence.adjustToFitTreasureList(@hiddenTreasures,@hiddenTreasures)
-        self.setPendingBadConsequence(pendingBad)
+        setPendingBadConsequence(pendingBad)
     end
     
      
@@ -216,7 +216,7 @@ class Player
     end
         
     def combat(m)
-        myLevel = self.getCombatLevel()
+        myLevel = getCombatLevel()
         @dealer = CardDealer  #mirar
         @currentMonster = m #mirar
         monsterLevel = @currentMonster.combatLevel
@@ -230,7 +230,7 @@ class Player
                 combatResult = CombatResult.WIN
             end
         else
-            self.applyBadConsequence(m)
+            applyBadConsequence(m)
             combatResult = CombatResult.LOSE
         end
         

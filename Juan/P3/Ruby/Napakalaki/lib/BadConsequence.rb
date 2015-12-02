@@ -83,7 +83,7 @@ class BadConsequence
     end
     
     
-    def adjustToFitTreasure(v,h)
+    def adjustToFitTreasureList(v,h)
         tamV = v.size()
         tamH = h.size();
 
@@ -92,7 +92,7 @@ class BadConsequence
 
         vaux = v # ArrayList<Treasure>  
         haux = h # ArrayList<Treasure>  
-        badConsequence #BadConsequence 
+        #badConsequence #BadConsequence 
 
         if tamV > 0 || tamH > 0  # Si los vectores que recibimos tienen cosas entramos aqui
 
@@ -123,7 +123,7 @@ class BadConsequence
                     end
                 end
                 
-                badConsequence = BadConsequence.new(text, levels, nVisibleAux, nHiddenAux);
+                badConsequence = BadConsequence.nenewLevelNumberOfTreasures(@text, @levels, nVisibleAux, nHiddenAux);
                 return badConsequence;
             end
 
@@ -140,8 +140,8 @@ class BadConsequence
                         esta = false;                    
                         for i in 0..(haux.size()-1) 
                             if esta ==false
-                                if sht == haux.get(i).getType()  #si son iguales
-                                    hcopia << haux.get(i).getType() # se mete en el vector de copias
+                                if sht == haux[i].type #si son iguales
+                                    hcopia << haux[i].type # se mete en el vector de copias
                                     esta = true #esta pasa a valer true(esto es para el que el for salte)
                                     haux.remove(haux.get(i)) #se quita de la lista, para que no siga contandolo
 
@@ -155,8 +155,8 @@ class BadConsequence
                         #for(Treasure hTreasure : h){
                         for i in 0..(vaux.size()-1) 
                            if esta ==false
-                                if (svt == haux.get(i).getType()) 
-                                    vcopia << vaux.get(i).getType()
+                               if (svt == haux[i].type) 
+                                    vcopia << vaux[i].type
                                     esta=true
                                     vaux.remove(vaux.get(i))
                                 end
@@ -204,7 +204,10 @@ class BadConsequence
                end
                 
 
-                badConsequence = new BadConsequence(text, levels, vcopia, hcopia);
+                
+              
+                badConsequence = BadConsequence.newLevelSpecificTreasures(@text, @levels,vcopia, hcopia)
+                badConsequence = BadConsequence
                 return badConsequence;
 
             end

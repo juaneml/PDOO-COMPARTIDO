@@ -43,6 +43,7 @@ public class Napakalaki {
      */
     private Player nextPlayer() {
        
+       
         if (currentPlayer == null) {
             Random rand = new Random();
             int numero = rand.nextInt(players.size());
@@ -190,6 +191,7 @@ public class Napakalaki {
         this.setEnemies();
         dealer.initCards();
         this.nextTurn();
+       this.currentPlayer.initTreasures();
 
     }
 

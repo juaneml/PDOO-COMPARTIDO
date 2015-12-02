@@ -66,7 +66,11 @@ public class Treasure {
      }
 
     
-     
+    @Override
+     public String toString(){
+          return "Name: " + this.name + " tipo: " + this.type +"bonus" + this.bonus;
+        //return "Name:"+ this.name+ "tipo";
+     }
      
     
 }

@@ -8,7 +8,7 @@ import java.util.Random;
  * @version 3.1
  */
 public class Dice {
-    private static final Dice instance = null;
+    private static final Dice instance = new Dice();
     
     /**
      * Constructor

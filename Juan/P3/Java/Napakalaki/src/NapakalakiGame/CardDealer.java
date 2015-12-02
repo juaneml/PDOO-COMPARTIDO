@@ -280,7 +280,7 @@ public class CardDealer {
         Treasure aux; 
             if (this.unusedTreasures.isEmpty()) 
             {
-                System.out.println("Entro");
+              
                 for (Treasure tesoro: this.usedTreasures)
                 {                
                     this.unusedTreasures.add(tesoro);                
@@ -291,8 +291,10 @@ public class CardDealer {
             }
             
                 //Ponemos la primera carta
+                System.out.println("Entro");
                 aux = this.unusedTreasures.get(0);
-            
+                
+                this.usedTreasures.add(aux);
                 this.unusedTreasures.remove(aux);
         return aux;
         
@@ -316,7 +318,7 @@ public class CardDealer {
             }
         
             monster = this.unusedMonsters.get(0);
-            this.unusedMonsters.add(monster);
+            this.usedMonsters.add(monster);
             this.unusedMonsters.remove(monster);
             
         return monster;
@@ -349,12 +351,14 @@ public class CardDealer {
      */
     public void initCards(){
         this.initTreasureCardDeck();
+        this.shuffleTreasures();
         this.initMonsterCardDeck();
+        this.shuffleMonsters();
     }
-
+/*
     @Override
     public String toString() {
         return "CardDealer{" + "unusedMonster=" + unusedMonsters + ", usedMonsters=" + usedMonsters + ", unusedTreasures=" + unusedTreasures + ", usedTreasures=" + usedTreasures + '}';
-    }
+    }*/
     
 }

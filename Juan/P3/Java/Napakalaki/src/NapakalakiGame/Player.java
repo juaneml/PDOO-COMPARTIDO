@@ -21,7 +21,7 @@ public class Player {
      */
     private String name;
     private int level;
-    private boolean dead = true;
+    private boolean dead;
     private boolean canISteal = true;
 
     /* Constructor */
@@ -253,8 +253,8 @@ public class Player {
      */
     public ArrayList<Treasure> getHiddenTreasures(){
         
-       // return this.hiddenTreasures; 
-        return null;
+        return this.hiddenTreasures; 
+       // return null;
     }
     /**
      * Método getVisibleTreasures()     * 
@@ -263,12 +263,8 @@ public class Player {
     
     public ArrayList<Treasure> getVisibleTreasures(){
        
-        /** Sería asi pero no ha sido dicho en el guión*/
-//        int tam = this.visibleTreasures.size();
-//        Treasure [] v_visible  = new Treasure [tam];
-//            return v_visible;
-        return null;
-        
+            return this.visibleTreasures;
+ 
     }
     
     /**
@@ -463,7 +459,7 @@ public class Player {
      * @return 
      */
     public boolean canISteal(){
-        return false; //cambiar
+        return this.canISteal; 
     }
     /**
      * Método canYouGiveMeAtreasure()

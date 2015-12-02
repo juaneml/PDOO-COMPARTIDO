@@ -1,5 +1,5 @@
 #encoding: utf-8
-
+###
 #Versión 3.0
 
 require_relative 'Monster.rb'

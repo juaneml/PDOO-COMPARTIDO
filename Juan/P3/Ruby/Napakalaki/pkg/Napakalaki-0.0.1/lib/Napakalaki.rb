@@ -3,6 +3,7 @@
 #Versión 3.0
 require 'Player.rb'
 require 'CardDealer.rb'
+require 'Dice.rb'
 require 'singleton'
 
 module NapakalakiGame
@@ -23,10 +24,10 @@ class Napakalaki
 #    end
 
     def initialize()
-        @currentPlayer
+        @currentPlayer = Player.new
         @players = Array.new
         @dealer = CardDealer.instance
-        @currentMonster       
+        @currentMonster = Monster.new      
     end
     
     #attr_accesor :currentPlayer, :player, :dealer, :currentMonster

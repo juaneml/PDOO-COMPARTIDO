@@ -9,7 +9,7 @@ require_relative 'Treasure.rb'
 require_relative 'BadConsequence.rb'
 require_relative 'Dice.rb'
 require_relative 'Player.rb'
-
+require 'singleton'
 module NapakalakiGame
 
 class CardDealer

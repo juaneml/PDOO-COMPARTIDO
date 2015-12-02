@@ -3,11 +3,11 @@
 #Versión 3.0
 #include Singleton ## 1º y 2º y 3º lo evitamos con el uso de include Singleton
 
-
+require 'singleton'
 module NapakalakiGame
 class Dice
     include Singleton
-#   @@instance = nil #1º Creamos la instancia
+   @@instance = nil #1º Creamos la instancia
     
     private
     

@@ -6,7 +6,7 @@ require 'Player.rb'
 require 'CardDealer.rb'
 require 'Dice.rb'
 require 'singleton'
-require 'Dice.rb'
+
 
 module NapakalakiGame
 
@@ -37,29 +37,29 @@ class Napakalaki
     
     ## getCurrentPlayer
     ## getCurrentMonster
-    attr_reader :currentPlayer
-    attr_reader :currentMonster
+    #attr_reader :currentPlayer
+    #attr_reader :currentMonster
     
     #private_class_method :new
     
 #    Inicializa el array de jugadores que contiene Napakalaki, creando tantos jugadores como
-#    elementos haya en names, que es el array de String que contiene el nombre de los
+#    elementos haya en names, que es el array de String que contiene el nombre de losaa
 #    jugadores.
    
     def initPlayers(names)
            names.each do |n|
-           @players << n
+           @players << Player.new(n)
           end
     end
     
-
+    
 
     private 
     def nextPlayer()
         if(@currentPlayer == nil)
             numero = rand(@players.size)
             
-            @currentPlayer= @players.fetch(numero)
+            @currentPlayer = @players.fetch(numero)
             aux=Array.new
             
             aux << @currentPlayer
@@ -83,13 +83,23 @@ class Napakalaki
                         @currentPlayer = @players[i+1]
                     end
                 end
+                i = i+1
             end
-            return @currentPlayer
+            
         end
+        return @currentPlayer
     end
     
 
+    public
+    def getCurrentPlayer
+        
+        return @currentPlayer
+    end
     
+    def getCurrentMonster
+        return @currentMonster
+    end
     
     private
     def nextTurnAllowed()
@@ -106,20 +116,20 @@ class Napakalaki
     
     private
     def setEnemies()
-        enemigo =Player.new
-        enemigo = @players[0]
+        enemigo =Player.new(@players[0])
+        #enemigo = @players[0]
         
-        numero = rand(6)+1
-        
+        puts 'entra'
         @players.each do |p|
+            
             loop do 
                  numero = rand(@players.size)
+                 puts numero  
                  enemigo.setEnemy(@players[numero])
-                break if (enemigo == p)
+                 puts 'enemigo'
+            break if (enemigo != p)
             end
-        end
-        
-        
+        end 
     end
     
 #    private 
@@ -161,10 +171,13 @@ class Napakalaki
     end
     
     def initGame(players)
-        self.initPlayers(players)
-        #self.setEnemies()
+        initPlayers(players)
+        setEnemies()
+
         @dealer.initCards
-        self.nextTurn
+         nextTurn()
+        @currentPlayer.initTreasures
+       
         
     end
     
@@ -175,11 +188,11 @@ class Napakalaki
         if(stateOK == true)
             @currentMonster = @dealer.nextMonster
             @currentPlayer = nextPlayer
-            dead = @currentPlayer.isDead
+            #dead = @currentPlayer.isDead()
             
-            if(dead == true)
+            #if(dead == true)
                 @currentPlayer.initTreasures
-            end
+            #end
         end
         
         return stateOK
@@ -196,4 +209,5 @@ class Napakalaki
    end
     
 end
+
 end

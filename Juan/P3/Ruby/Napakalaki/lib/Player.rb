@@ -107,11 +107,11 @@ class Player
             int numero=0;
             int numerob=0;
             (1..@visibleTreasures).each do |i|             
-                if @visibleTreasures.getType() == TreasureKind::ONEHAND
+                if @visibleTreasures.getType() == [TreasureKind::ONEHAND]
                     numero= numero+1
                 end
             end
-                if(taux.getType() == TreasureKind.BOTHHANDS)
+                if taux.getType() == [TreasureKind.BOTHHANDS]
                     numerob = numerob+1
             end
             if numero<2 && numerob == 0
@@ -126,7 +126,7 @@ class Player
                     numero = numero+1;
                 end
            end
-                iftaux.getType() == TreasureKind.BOTHHANDS
+                if taux.getType() == [TreasureKind::BOTHHANDS]
                     numerob = numerob+1
             end
             if(numero==0 && numerob == 0)
@@ -137,7 +137,7 @@ class Player
             numero=0
             (1..@visibleTreasures).echo do |i|
            
-                if @vivibleTreasures.getType() == [TreasureKind.ARMOR]
+                if @vivibleTreasures.getType() == [TreasureKind::ARMOR]
                     numero =numero+1
                 end
             end
@@ -146,10 +146,10 @@ class Player
                 puede=true;                
         end
         
-        if t.getType()== [TreasureKind.HELMET]
+        if t.getType()== [TreasureKind::HELMET]
             int numero=0;
             (1..@visibleTreasures).echo do |i|            
-                if @vivisbleTreasuers.getType() == [TreasureKind::HELME]
+                if @vivisbleTreasuers.getType() == [TreasureKind::HELMET]
                     numero= numero+1
                 end
             end
@@ -160,7 +160,7 @@ class Player
         if t.getType()== [TreasureKind::SHOES] 
             int numero=0;
             (1..@visibleTreasuers).echo do |i|           
-                if @visibleTreasures.getType() == [TreasureKind.SHOES]
+                if @visibleTreasures.getType() == [TreasureKind::SHOES]
                     numero = numero+1;
                 end
             end

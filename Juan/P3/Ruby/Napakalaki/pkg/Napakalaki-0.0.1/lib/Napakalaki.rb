@@ -1,10 +1,12 @@
 #encoding: utf-8
 
 #Versión 3.0
+require 'singleton'
 require 'Player.rb'
 require 'CardDealer.rb'
 require 'Dice.rb'
 require 'singleton'
+require 'Dice.rb'
 
 module NapakalakiGame
 
@@ -23,11 +25,12 @@ class Napakalaki
 #        @unusedMonsters = unusedMonsters
 #    end
 
+
     def initialize()
-        @currentPlayer = Player.new
+        @currentPlayer 
         @players = Array.new
         @dealer = CardDealer.instance
-        @currentMonster = Monster.new      
+        @currentMonster     
     end
     
     #attr_accesor :currentPlayer, :player, :dealer, :currentMonster
@@ -56,7 +59,7 @@ class Napakalaki
         if(@currentPlayer == nil)
             numero = rand(@players.size)
             
-            @currentPlayer=players[numero]
+            @currentPlayer= @players.fetch(numero)
             aux=Array.new
             
             aux << @currentPlayer
@@ -171,7 +174,7 @@ class Napakalaki
         
         if(stateOK == true)
             @currentMonster = @dealer.nextMonster
-            @currentPlayer = self.nextPlayer
+            @currentPlayer = nextPlayer
             dead = @currentPlayer.isDead
             
             if(dead == true)

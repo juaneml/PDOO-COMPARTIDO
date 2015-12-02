@@ -201,15 +201,15 @@ class Player
     
     public
     def idDead()
-        @dead
+       return @dead
     end
     
     def getHiddenTreasures()
-        #Falta acabar
+        return @hiddenTreasures
     end
     
     def getVisibleTreasuures()
-        #Falta acabar
+        return @visibleTreasures
     end
         
     def combat(m)
@@ -284,6 +284,7 @@ class Player
        
         dealer = CardDealer.instance
         dice = Dice.instance
+        puts ''
         self.bringToLife
         treasure = dealer.nextTreasure
         @hiddenTreasures << treasure

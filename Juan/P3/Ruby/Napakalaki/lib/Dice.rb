@@ -2,26 +2,19 @@
 
 #Versión 3.0
 #include Singleton ## 1º y 2º y 3º lo evitamos con el uso de include Singleton
-<<<<<<< HEAD
 
-require 'singleton'
-module NapakalakiGame
-class Dice
-    include Singleton
-   @@instance = nil #1º Creamos la instancia
-=======
 require 'singleton'
 
 module NapakalakiGame
 class Dice
     #include Singleton
   @@instance = nil #1º Creamos la instancia
->>>>>>> origin/master
+
     
     private
     
     def initialize
-        
+        @@instance = nil
     end
     
     public

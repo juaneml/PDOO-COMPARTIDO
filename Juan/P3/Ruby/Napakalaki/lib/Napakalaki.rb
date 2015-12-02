@@ -25,19 +25,12 @@ class Napakalaki
 #        @unusedMonsters = unusedMonsters
 #    end
 
-<<<<<<< HEAD
+
     def initialize()
-        @currentPlayer = Player.new
+        @currentPlayer 
         @players = Array.new
         @dealer = CardDealer.instance
-        @currentMonster = Monster.new      
-=======
-    def initializ()
-        @currentPlayer = Player.new
-        @players = Array.new
-        @dealer = CardDealer.instance
-        @currentMonster = Monster.new
->>>>>>> origin/master
+        @currentMonster     
     end
     
     #attr_accesor :currentPlayer, :player, :dealer, :currentMonster
@@ -66,7 +59,7 @@ class Napakalaki
         if(@currentPlayer == nil)
             numero = rand(@players.size)
             
-            @currentPlayer=players[numero]
+            @currentPlayer= @players.fetch(numero)
             aux=Array.new
             
             aux << @currentPlayer
@@ -181,7 +174,7 @@ class Napakalaki
         
         if(stateOK == true)
             @currentMonster = @dealer.nextMonster
-            @currentPlayer = self.nextPlayer
+            @currentPlayer = nextPlayer
             dead = @currentPlayer.isDead
             
             if(dead == true)

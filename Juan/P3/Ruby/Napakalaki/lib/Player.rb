@@ -7,6 +7,7 @@ require_relative 'TreasureKind.rb'
 require_relative 'CombatResult.rb'
 require_relative 'Dice.rb'
 require_relative 'GameTester.rb'
+require_relative 'BadConsequence.rb'
 module NapakalakiGame
     
 class Player   
@@ -19,7 +20,7 @@ class Player
         @dead = false
         @canISteal = false
         @enemy = self
-        @pendigBadConsequence = BadConsequence.new
+        @pendigBadConsequence #= BadConsequence.new(' ', 0, 0, 0)
         @hiddenTreasures = Array.new
         @visibleTreasures = Array.new
     
@@ -276,7 +277,7 @@ class Player
             valid = false      
         end
         
-        valid 
+        return valid 
     end
     
  
@@ -387,4 +388,7 @@ class Player
         
     end
 end
+def to_s 
+        "BadConsequence =  #{@name}  , Levels =  #{@level} "     
+    end
 end

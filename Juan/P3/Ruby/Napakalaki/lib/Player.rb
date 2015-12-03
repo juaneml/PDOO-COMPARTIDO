@@ -213,7 +213,7 @@ class Player
         return @hiddenTreasures
     end
     
-    def getVisibleTreasuures()
+    def getVisibleTreasures()
         return @visibleTreasures
     end
         

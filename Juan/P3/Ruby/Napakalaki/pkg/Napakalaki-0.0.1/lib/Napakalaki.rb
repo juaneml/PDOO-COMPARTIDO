@@ -32,7 +32,7 @@ class Napakalaki
         @dealer = CardDealer.instance
         @currentMonster     
     end
-    
+
     #attr_accesor :currentPlayer, :player, :dealer, :currentMonster
     
     ## getCurrentPlayer
@@ -52,7 +52,11 @@ class Napakalaki
           end
     end
     
-    
+    public
+    def getCurrentPlayer
+        
+        return @currentPlayer
+    end
 
     private 
     def nextPlayer()
@@ -207,6 +211,8 @@ class Napakalaki
        end
             return final
    end
+   
+    
     
 end
 

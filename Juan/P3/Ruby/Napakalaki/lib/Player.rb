@@ -20,10 +20,12 @@ class Player
         @canISteal = false
         @enemy = self
 
-        @pendigBadConsequence #= BadConsequence
+        @pendigBadConsequence = BadConsequence.new('',0,0,0)
 
         @hiddenTreasures = Array.new
         @visibleTreasures = Array.new
+        
+        
     
     end
 #    
@@ -396,7 +398,8 @@ class Player
         
     end
 end
+public
 def to_s 
-        "Jugador =  #{@name}  , Levels =  #{@level} "     
+        "Nombre = #{@name} , Levels =#{@level} "     
     end
 end

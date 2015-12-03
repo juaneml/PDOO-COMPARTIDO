@@ -32,13 +32,13 @@ class Napakalaki
         @dealer = CardDealer.instance
         @currentMonster     
     end
-   
+
     #attr_accesor :currentPlayer, :player, :dealer, :currentMonster
     
     ## getCurrentPlayer
     ## getCurrentMonster
-    attr_reader :currentPlayer
-    attr_reader :currentMonster
+    #attr_reader :currentPlayer
+    #attr_reader :currentMonster
     
     #private_class_method :new
     
@@ -51,24 +51,19 @@ class Napakalaki
            @players << Player.new(n)
           end
     end
-     
+    
     public
     def getCurrentPlayer
         
         return @currentPlayer
     end
-    
-    def getCurrentMonster
-        return @currentMonster
-    end
-
 
     private 
     def nextPlayer()
         if(@currentPlayer == nil)
             numero = rand(@players.size)
             
-            @currentPlayer= @players.fetch(numero)
+            @currentPlayer = @players.fetch(numero)
             aux=Array.new
             
             aux << @currentPlayer
@@ -94,12 +89,21 @@ class Napakalaki
                 end
                 i = i+1
             end
-            return @currentPlayer
+            
         end
+        return @currentPlayer
     end
     
 
+    public
+    def getCurrentPlayer
+        
+        return @currentPlayer
+    end
     
+    def getCurrentMonster
+        return @currentMonster
+    end
     
     private
     def nextTurnAllowed()
@@ -171,12 +175,13 @@ class Napakalaki
     end
     
     def initGame(players)
-        self.initPlayers(players)
+        initPlayers(players)
         setEnemies()
 
         @dealer.initCards
-
-        self.nextTurn
+         nextTurn()
+        @currentPlayer.initTreasures
+       
         
     end
     
@@ -187,7 +192,7 @@ class Napakalaki
         if(stateOK == true)
             @currentMonster = @dealer.nextMonster
             @currentPlayer = nextPlayer
-           # dead = @currentPlayer.isDead
+            #dead = @currentPlayer.isDead()
             
             #if(dead == true)
                 @currentPlayer.initTreasures

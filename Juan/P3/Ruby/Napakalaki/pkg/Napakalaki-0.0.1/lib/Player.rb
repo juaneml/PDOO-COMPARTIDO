@@ -20,7 +20,7 @@ class Player
         @canISteal = false
         @enemy = self
 
-        @pendigBadConsequence = BadConsequence.new('',0,0,0)
+        @pendigBadConsequence = nil
 
         @hiddenTreasures = Array.new
         @visibleTreasures = Array.new
@@ -218,7 +218,7 @@ class Player
     end
         
     def combat(m)
-        myLevel = self.getCombatLevel()
+        myLevel = getCombatLevel()
         @dealer = CardDealer  #mirar
         @currentMonster = m #mirar
         monsterLevel = @currentMonster.combatLevel

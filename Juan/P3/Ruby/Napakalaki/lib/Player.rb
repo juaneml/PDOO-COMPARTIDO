@@ -397,9 +397,10 @@ class Player
         end
         
     end
-end
-public
-def to_s 
+    public
+    def to_s 
         "Nombre = #{@name} , Levels =#{@level} "     
     end
+end
+
 end

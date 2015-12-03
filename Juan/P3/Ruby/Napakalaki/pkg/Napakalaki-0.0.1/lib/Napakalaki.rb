@@ -28,12 +28,12 @@ class Napakalaki
 
     def initialize()
         @currentPlayer 
-        @players = Array.new
+        @players 
         @dealer = CardDealer.instance
-        @currentMonster     
+        @currentMonster  
     end
 
-    #attr_accesor :currentPlayer, :player, :dealer, :currentMonster
+    attr_accessor :currentPlayer , :player, :dealer, :currentMonster
     
     ## getCurrentPlayer
     ## getCurrentMonster
@@ -47,9 +47,12 @@ class Napakalaki
 #    jugadores.
    
     def initPlayers(names)
+         @players = Array.new
            names.each do |n|
-           @players << Player.new(n)
+           @players <<  Player.new(n)
+           
           end
+         
     end
     
     public
@@ -62,8 +65,11 @@ class Napakalaki
     def nextPlayer()
         if(@currentPlayer == nil)
             numero = rand(@players.size)
-            
-            @currentPlayer = @players.fetch(numero)
+            puts @players.size
+            puts @players.fetch(0)
+            puts @players.fetch(1)
+            @currentPlayer = @players[numero]
+           
             aux=Array.new
             
             aux << @currentPlayer
@@ -123,14 +129,13 @@ class Napakalaki
         enemigo =Player.new(@players[0])
         #enemigo = @players[0]
         
-        puts 'entra'
         @players.each do |p|
             
             loop do 
                  numero = rand(@players.size)
-                 puts numero  
+                  
                  enemigo.setEnemy(@players[numero])
-                 puts 'enemigo'
+                 
             break if (enemigo != p)
             end
         end 
@@ -180,7 +185,7 @@ class Napakalaki
 
         @dealer.initCards
          nextTurn()
-        @currentPlayer.initTreasures
+       # @currentPlayer.initTreasures
        
         
     end

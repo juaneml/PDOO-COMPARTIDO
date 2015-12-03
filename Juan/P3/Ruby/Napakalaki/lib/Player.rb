@@ -107,41 +107,41 @@ class Player
     def canMakeTreasureVisible(t)
           puede=false;
         
-        if(t.getType()== [TreasureKind::ONEHAND] )
+        if(t.type == TreasureKind::ONEHAND )
             int numero=0;
             int numerob=0;
             (1..@visibleTreasures).each do |i|             
-                if @visibleTreasures.getType() == [TreasureKind::ONEHAND]
+                if @visibleTreasures.type == TreasureKind::ONEHAND
                     numero= numero+1
                 end
             end
-                if taux.getType() == [TreasureKind.BOTHHANDS]
+                if taux.type == TreasureKind::BOTHHANDS
                     numerob = numerob+1
             end
             if numero<2 && numerob == 0
                 puede=true                
             end
         
-        if t.getType()== [TreasureKind::BOTHHANDS]
+        if t.type == TreasureKind::BOTHHANDS
              numero=0
              numerob=0
            (1..@visibleTreasures).echo do |i|
-                if@visibleTreasures.getType() == [TreasureKind::ONEHAND]
+                if@visibleTreasures.type == TreasureKind::ONEHAND
                     numero = numero+1;
                 end
            end
-                if taux.getType() == [TreasureKind::BOTHHANDS]
+                if taux.type  == TreasureKind::BOTHHANDS
                     numerob = numerob+1
             end
             if(numero==0 && numerob == 0)
                 puede=true                
             end
         
-        if t.getType()== [TreasureKind.ARMOR]
+        if t.type== TreasureKind.ARMOR
             numero=0
             (1..@visibleTreasures).echo do |i|
            
-                if @vivibleTreasures.getType() == [TreasureKind::ARMOR]
+                if @vivibleTreasures.getType() == TreasureKind::ARMOR
                     numero =numero+1
                 end
             end
@@ -150,10 +150,10 @@ class Player
                 puede=true;                
         end
         
-        if t.getType()== [TreasureKind::HELMET]
+        if t.type == TreasureKind::HELMET
             int numero=0;
             (1..@visibleTreasures).echo do |i|            
-                if @vivisbleTreasuers.getType() == [TreasureKind::HELMET]
+                if @vivisbleTreasuers.type == TreasureKind::HELMET
                     numero= numero+1
                 end
             end
@@ -161,10 +161,10 @@ class Player
                 puede=true;                
         end
         end
-        if t.getType()== [TreasureKind::SHOES] 
+        if t.getType()== TreasureKind::SHOES
             int numero=0;
             (1..@visibleTreasuers).echo do |i|           
-                if @visibleTreasures.getType() == [TreasureKind::SHOES]
+                if @visibleTreasures.type == [TreasureKind::SHOES]
                     numero = numero+1;
                 end
             end
@@ -227,13 +227,13 @@ class Player
             self.applyPrize(m)
             
             if(@levels >= @@MAXLEVEL)
-                combatResult = CombatResult.WINGAME
+                combatResult = CombatResult::WINGAME
             else    
-                combatResult = CombatResult.WIN
+                combatResult = CombatResult::WIN
             end
         else
             applyBadConsequence(m)
-            combatResult = CombatResult.LOSE
+            combatResult = CombatResult::LOSE
         end
         
         return combatResult
@@ -261,7 +261,7 @@ class Player
                 @pendingBadConsequence.substractVisibleTreasure(t)
         end
         
-        return self.dieIfNoTreasures
+        return dieIfNoTreasures
     end
     
     def discarHiddenTreasure(t)
@@ -271,7 +271,7 @@ class Player
                 @pendingBadConsequence.substractVisibleTreasure(t)
         end
         
-        return self.dieIfNoTreasures
+        return dieIfNoTreasures
     end
     
     def validState()          

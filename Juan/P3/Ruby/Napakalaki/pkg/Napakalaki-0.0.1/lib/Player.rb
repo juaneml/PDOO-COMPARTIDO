@@ -6,7 +6,7 @@ require_relative 'Monster.rb'
 require_relative 'TreasureKind.rb'
 require_relative 'CombatResult.rb'
 require_relative 'Dice.rb'
-require_relative 'GameTester.rb'
+require_relative 'BadConsequence.rb'
 module NapakalakiGame
     
 class Player   
@@ -19,9 +19,13 @@ class Player
         @dead = false
         @canISteal = false
         @enemy = self
-        @pendigBadConsequence = BadConsequence.new
+
+        @pendigBadConsequence = BadConsequence.new('',0,0,0)
+
         @hiddenTreasures = Array.new
         @visibleTreasures = Array.new
+        
+        
     
     end
 #    
@@ -195,6 +199,7 @@ class Player
             @dead = false
         end
         
+        return @dead
     end
     
     #final método privados
@@ -243,6 +248,8 @@ class Player
             @visibleTreasures << t
             @hiddenTreasures.delete(t) 
         end
+        
+        return canI
     end
     
 
@@ -276,16 +283,16 @@ class Player
             valid = false      
         end
         
-        valid 
+        return valid 
     end
     
  
     def initTreasures()
        
         dealer = CardDealer.instance
-        dice = Dice.instance
-        puts ''
-        self.bringToLife
+        dice = Dice.instance 
+        
+        bringToLife
         treasure = dealer.nextTreasure
         @hiddenTreasures << treasure
         number = dice.nextNumber
@@ -308,7 +315,7 @@ class Player
     end
     
     def getLevels()
-        @level
+       return @level
     end
 
  
@@ -327,13 +334,14 @@ class Player
                 @hiddenTreasures << treasure
                 haveStolen
             end
-            return treasure
+            
         end
-        return nil
+        return treasure
     end
     
     def setEnemy(enemy)
         @enemy = enemy
+        return @enemy
     end
     
    
@@ -350,6 +358,7 @@ class Player
     public
     def canISteal()
         @canISteal = false
+        return @canISteal
     end
     
     private
@@ -361,7 +370,8 @@ class Player
             puedes = true
         
           end
-          puedes #no se necesita return
+          return puedes 
+          
     end
     
     def haveStolen()
@@ -371,6 +381,7 @@ class Player
         else
             @canISteal = true
         end
+        return @canISteal
     end
     
 
@@ -387,4 +398,8 @@ class Player
         
     end
 end
+public
+def to_s 
+        "Nombre = #{@name} , Levels =#{@level} "     
+    end
 end

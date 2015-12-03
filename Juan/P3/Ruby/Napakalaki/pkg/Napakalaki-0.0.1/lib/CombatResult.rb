@@ -9,15 +9,15 @@ module CombatResult
     LOSE = :LOSE
  
     def to_s
-      if [CombatResult.WINGAME]          
+      if [CombatResult::WINGAME]          
           return "Has ganado el juego"
       end
                 
-          if [CombatResult.WIN]
+          if [CombatResult::WIN]
              return "Has ganado"
           end
           
-      if [CombatResult.LOSE]
+      if [CombatResult::LOSE]
           return "Has perdido"
       end
      

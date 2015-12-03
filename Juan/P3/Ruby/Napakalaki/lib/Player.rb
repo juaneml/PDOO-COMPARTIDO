@@ -98,62 +98,63 @@ class Player
     def applyBadConsequence(m)
         badConsequence = m.badconsequence
         nLevels = badConsequence.levels
-        self.decrementLevels(nLevels)        
+        decrementLevels(nLevels)        
         pendingBad = badConsequence.adjustToFitTreasureList(@hiddenTreasures,@hiddenTreasures)
-        self.setPendingBadConsequence(pendingBad)
+        setPendingBadConsequence(pendingBad)
     end
     
      
     def canMakeTreasureVisible(t)
           puede=false;
         
-        if(t.getType()== [TreasureKind::ONEHAND] )
-            int numero=0;
-            int numerob=0;
-            (1..@visibleTreasures).each do |i|             
-                if @visibleTreasures.getType() == [TreasureKind::ONEHAND]
+        if(t.type == TreasureKind::ONEHAND )
+            numero=0
+            numerob=0
+            @visibleTreasures.each do |taux|             
+                if taux.type == TreasureKind::ONEHAND
                     numero= numero+1
                 end
             end
-                if taux.getType() == [TreasureKind.BOTHHANDS]
+                if taux.type == TreasureKind.BOTHHANDS
                     numerob = numerob+1
             end
             if numero<2 && numerob == 0
                 puede=true                
             end
-        
-        if t.getType()== [TreasureKind::BOTHHANDS]
+        end
+        if t.type== TreasureKind::BOTHHANDS
              numero=0
              numerob=0
-           (1..@visibleTreasures).echo do |i|
-                if@visibleTreasures.getType() == [TreasureKind::ONEHAND]
-                    numero = numero+1;
+           @visibleTreasures.each do |taux|
+                if taux.type == TreasureKind::ONEHAND
+                    numero = numero+1
                 end
            end
-                if taux.getType() == [TreasureKind::BOTHHANDS]
+                if taux.type == TreasureKind::BOTHHANDS
                     numerob = numerob+1
             end
             if(numero==0 && numerob == 0)
                 puede=true                
             end
-        
-        if t.getType()== [TreasureKind.ARMOR]
+        end
+        if t.type == TreasureKind::ARMOR
             numero=0
-            (1..@visibleTreasures).echo do |i|
+            @visibleTreasures.each do |taux|
            
-                if @vivibleTreasures.getType() == [TreasureKind::ARMOR]
+                if taux.type == TreasureKind::ARMOR
                     numero =numero+1
                 end
             end
-        end
+        
             if(numero==0)
                 puede=true;                
         end
+        end
         
-        if t.getType()== [TreasureKind::HELMET]
-            int numero=0;
-            (1..@visibleTreasures).echo do |i|            
-                if @vivisbleTreasuers.getType() == [TreasureKind::HELMET]
+        if t.type== TreasureKind::HELMET
+             numero=0
+            @visibleTreasures.each do |taux|            
+                if taux.type == TreasureKind::HELMET
                     numero= numero+1
                 end
             end
@@ -161,11 +162,11 @@ class Player
                 puede=true;                
         end
         end
-        if t.getType()== [TreasureKind::SHOES] 
-            int numero=0;
-            (1..@visibleTreasuers).echo do |i|           
-                if @visibleTreasures.getType() == [TreasureKind::SHOES]
-                    numero = numero+1;
+        if t.type == TreasureKind::SHOES
+            numero=0
+            @visibleTreasuers.each do |taux|           
+                if taux.type == TreasureKind::SHOES
+                    numero = numero+1
                 end
             end
             if numero==0
@@ -173,12 +174,9 @@ class Player
         end
         
         end
-        return puede
-        
-    end
+     return puede
     end
     
-    end
     def howManyVisibleTreasures(tkind)
         num = 0
         
@@ -227,13 +225,13 @@ class Player
             self.applyPrize(m)
             
             if(@levels >= @@MAXLEVEL)
-                combatResult = CombatResult.WINGAME
+                combatResult = CombatResult::WINGAME
             else    
-                combatResult = CombatResult.WIN
+                combatResult = CombatResult::WIN
             end
         else
-            self.applyBadConsequence(m)
-            combatResult = CombatResult.LOSE
+            applyBadConsequence(m)
+            combatResult = CombatResult::LOSE
         end
         
         return combatResult
@@ -241,9 +239,10 @@ class Player
     
 
     
-    def makeTreasuresVisible(t)
-        canI = self.canMakeTreasureVisible(t)
-        
+    def makeTreasureVisible(t)
+        puts 'Entra makeTreasure'
+        canI = canMakeTreasureVisible(t)
+        puts 'sale canMakeTreasureV'
         if canI
             @visibleTreasures << t
             @hiddenTreasures.delete(t) 
@@ -251,7 +250,10 @@ class Player
         
         return canI
     end
-    
+    def discardAllTreasures()
+        discardVisibleTreasure(@visibleTreasures)
+        discardHiddenTreasure(@hiddenTreasures)
+    end
 
     
     def discardVisibleTreasure(t)
@@ -261,7 +263,7 @@ class Player
                 @pendingBadConsequence.substractVisibleTreasure(t)
         end
         
-        return self.dieIfNoTreasures
+        return dieIfNoTreasures
     end
     
     def discarHiddenTreasure(t)

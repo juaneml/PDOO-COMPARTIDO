@@ -50,9 +50,10 @@ class Player
     def getCombatLevel
          sum_bonus = 0
          i = 0
-         while i < @visibleTreasures.size
-             i = i+1
-             sum_bonus = @visibleTreasures.fetch(i).bonus + sum_bonus
+         puts @visibleTreasures.size
+
+         @visibleTreasures.each do |v|
+             sum_bonus = v.bonus + sum_bonus
          end
          
         @level = @level+sum_bonus
@@ -116,7 +117,7 @@ class Player
         if(t.type == TreasureKind::ONEHAND )
              numero=0
              numerob=0
-            (1..@visibleTreasures.size()-1).each do |taux|             
+            @visibleTreasures.each do |taux|             
                 if taux.type == TreasureKind::ONEHAND
                     numero= numero+1
                 end
@@ -134,14 +135,15 @@ class Player
              numero=0
              numerob=0
 
-           (1..@visibleTreasures.size()-1).each do |taux|
+           @visibleTreasures.each do |taux|
 
                 if taux.type == TreasureKind::ONEHAND
                     numero = numero+1
                 end
-           end
+           
                 if taux.type == TreasureKind::BOTHHANDS
                     numerob = numerob+1
+                end
             end
             if(numero==0 && numerob == 0)
                 puede=true                
@@ -150,9 +152,9 @@ class Player
 
         if t.type== TreasureKind::ARMOR
             numero=0
-            (1..@visibleTreasures.size()-1).each do |taux|
+            @visibleTreasures.each do |taux|
            
-                if @visibleTreasures.type() == TreasureKind::ARMOR
+                if taux.type == TreasureKind::ARMOR
 
                     numero =numero+1
                 end
@@ -167,8 +169,8 @@ class Player
         if t.type== TreasureKind::HELMET
             puts 'Entra helmet'
             numero=0
-            (1..@visibleTreasures.size()-1).each do |taux|            
-                if @visibleTreasures.type == TreasureKind::HELMET
+            @visibleTreasures.each do |taux|            
+                if taux.type == TreasureKind::HELMET
 
                     numero= numero+1
                 end
@@ -180,8 +182,8 @@ class Player
 
         if t.type== TreasureKind::SHOES 
              numero=0;
-            (1..@visibleTreasuers.size()-1).each do |i|           
-                if @visibleTreasures.type == TreasureKind::SHOES
+            @visibleTreasuers.each do |i|           
+                if i.type == TreasureKind::SHOES
 
                     numero = numero+1
                 end
@@ -294,7 +296,7 @@ class Player
                 @pendingBadConsequence.substractVisibleTreasure(t)
         end
         
-        return self.dieIfNoTreasures
+        return dieIfNoTreasures
     end
     
     def validState()          

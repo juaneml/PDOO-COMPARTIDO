@@ -90,8 +90,8 @@ class BadConsequence
         nVisibleAux = @nVisibleTreasures;
         nHiddenAux = @nHiddenTreasures;
 
-        vaux = Treasure.new('',0,[TreasureKind::ARMOR])
-        haux = Treasure.new('',0,[TreasureKind::ARMOR])
+#        vaux = Treasure.new('',0,[TreasureKind::ARMOR])
+#        haux = Treasure.new('',0,[TreasureKind::ARMOR])
         vaux = Array.new(v) # ArrayList<Treasure>  
         haux = Array.new(h) # ArrayList<Treasure>  
         #badConsequence #BadConsequence 
@@ -149,7 +149,7 @@ class BadConsequence
                                 if sht == haux[i].type #si son iguales
                                     hcopia << haux[i].type # se mete en el vector de copias
                                     esta = true #esta pasa a valer true(esto es para el que el for salte)
-                                    haux.remove(haux.fetch(i)) #se quita de la lista, para que no siga contandolo
+                                    haux.remove(sht) #se quita de la lista, para que no siga contandolo
 
                                 end
                             end
@@ -160,11 +160,11 @@ class BadConsequence
                         esta = false;
                         #for(Treasure hTreasure : h){
                         for i in 0..(vaux.size()-1) 
-                           if esta ==false
-                               if (svt == haux[i].type) 
+                           if esta == false
+                               if (svt == vaux[i].type) 
                                     vcopia << vaux[i].type
                                     esta=true
-                                    vaux.remove(vaux.get(i))
+                                    vaux.remove(vaux.fetch(i))
                                 end
                             end
                         end

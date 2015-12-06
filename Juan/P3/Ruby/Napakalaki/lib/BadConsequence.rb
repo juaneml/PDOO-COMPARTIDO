@@ -86,14 +86,17 @@ class BadConsequence
     def adjustToFitTreasureList(v,h)
         tamV = v.size()
         tamH = h.size();
-
+        puts 'tamH #{tamH}'
         nVisibleAux = @nVisibleTreasures;
         nHiddenAux = @nHiddenTreasures;
 
-        vaux = v # ArrayList<Treasure>  
-        haux = h # ArrayList<Treasure>  
+        vaux = Treasure.new('',0,[TreasureKind::ARMOR])
+        haux = Treasure.new('',0,[TreasureKind::ARMOR])
+        vaux = Array.new(v) # ArrayList<Treasure>  
+        haux = Array.new(h) # ArrayList<Treasure>  
         #badConsequence #BadConsequence 
-
+        
+        puts 'haux'
         if tamV > 0 || tamH > 0  # Si los vectores que recibimos tienen cosas entramos aqui
 
             #si los arrays de tesoros especificos a perder estan vacíos entramos
@@ -134,16 +137,19 @@ class BadConsequence
                  hcopia = Array.new #ArrayList<TreasureKind>
 
                 # si ninguno de los dos arrays está vacío
-                if !@specificHiddenTreasures.empty? && !@specificVisibleTreasures.empty? 
+                if !@specificHiddenTreasures.empty? || !@specificVisibleTreasures.empty? 
                     #de cada elemento de la lista de específicos ocultos
                     @specificHiddenTreasures.each do|sht| #for (TreasureKind sht : specificHiddenTreasures) 
-                        esta = false;                    
+                        esta = false;    
+                        puts haux.size
                         for i in 0..(haux.size()-1) 
+                            puts i
+                            puts haux[i]
                             if esta ==false
                                 if sht == haux[i].type #si son iguales
                                     hcopia << haux[i].type # se mete en el vector de copias
                                     esta = true #esta pasa a valer true(esto es para el que el for salte)
-                                    haux.remove(haux.get(i)) #se quita de la lista, para que no siga contandolo
+                                    haux.remove(haux.fetch(i)) #se quita de la lista, para que no siga contandolo
 
                                 end
                             end

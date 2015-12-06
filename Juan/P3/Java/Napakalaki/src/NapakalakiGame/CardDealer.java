@@ -291,7 +291,7 @@ public class CardDealer {
             }
             
                 //Ponemos la primera carta
-                System.out.println("Entro");
+                
                 aux = this.unusedTreasures.get(0);
                 
                 this.usedTreasures.add(aux);

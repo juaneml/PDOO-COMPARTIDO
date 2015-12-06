@@ -99,12 +99,17 @@ class Player
         badConsequence = m.badconsequence
         nLevels = badConsequence.levels
         decrementLevels(nLevels)        
+<<<<<<< HEAD
         pendingBad = badConsequence.adjustToFitTreasureList(@visibleTreasures,@hiddenTreasures)
+=======
+        pendingBad = badConsequence.adjustToFitTreasureList(@hiddenTreasures,@hiddenTreasures)
+>>>>>>> origin/master
         setPendingBadConsequence(pendingBad)
     end
     
      
     def canMakeTreasureVisible(t)
+<<<<<<< HEAD
           puede=false
           
         puts 'entra equipar'
@@ -119,6 +124,19 @@ class Player
                 end
             
                 if taux.type ==TreasureKind::BOTHHANDS
+=======
+          puede=false;
+        
+        if(t.type == TreasureKind::ONEHAND )
+            numero=0
+            numerob=0
+            @visibleTreasures.each do |taux|             
+                if taux.type == TreasureKind::ONEHAND
+                    numero= numero+1
+                end
+            end
+                if taux.type == TreasureKind.BOTHHANDS
+>>>>>>> origin/master
                     numerob = numerob+1
                 end
             end
@@ -129,7 +147,11 @@ class Player
         if t.type== TreasureKind::BOTHHANDS
              numero=0
              numerob=0
+<<<<<<< HEAD
            (1..@visibleTreasures.size()-1).each do |taux|
+=======
+           @visibleTreasures.each do |taux|
+>>>>>>> origin/master
                 if taux.type == TreasureKind::ONEHAND
                     numero = numero+1
                 end
@@ -141,11 +163,19 @@ class Player
                 puede=true                
             end
         end
+<<<<<<< HEAD
         if t.type== TreasureKind::ARMOR
             numero=0
             (1..@visibleTreasures.size()-1).each do |taux|
            
                 if @vivibleTreasures.type() == TreasureKind::ARMOR
+=======
+        if t.type == TreasureKind::ARMOR
+            numero=0
+            @visibleTreasures.each do |taux|
+           
+                if taux.type == TreasureKind::ARMOR
+>>>>>>> origin/master
                     numero =numero+1
                 end
             end
@@ -154,12 +184,21 @@ class Player
                 puede=true                
             end
         end
+<<<<<<< HEAD
         puts t.type
         if t.type== TreasureKind::HELMET
             puts 'Entra helmet'
             numero=0
             (1..@visibleTreasures.size()-1).each do |taux|            
                 if @vivisbleTreasures.type == TreasureKind::HELMET
+=======
+        end
+        
+        if t.type== TreasureKind::HELMET
+             numero=0
+            @visibleTreasures.each do |taux|            
+                if taux.type == TreasureKind::HELMET
+>>>>>>> origin/master
                     numero= numero+1
                 end
             end
@@ -167,10 +206,18 @@ class Player
                 puede=true;                
             end
         end
+<<<<<<< HEAD
         if t.type== TreasureKind::SHOES 
              numero=0;
             (1..@visibleTreasuers.size()-1).each do |i|           
                 if @visibleTreasures.type == TreasureKind::SHOES
+=======
+        end
+        if t.type == TreasureKind::SHOES
+            numero=0
+            @visibleTreasuers.each do |taux|           
+                if taux.type == TreasureKind::SHOES
+>>>>>>> origin/master
                     numero = numero+1
                 end
             end
@@ -179,7 +226,11 @@ class Player
         end
         
         end
+<<<<<<< HEAD
         return puede
+=======
+     return puede
+>>>>>>> origin/master
     end
     
     def howManyVisibleTreasures(tkind)
@@ -245,8 +296,14 @@ class Player
 
     
     def makeTreasureVisible(t)
+<<<<<<< HEAD
         canI = canMakeTreasureVisible(t)
         
+=======
+        puts 'Entra makeTreasure'
+        canI = canMakeTreasureVisible(t)
+        puts 'sale canMakeTreasureV'
+>>>>>>> origin/master
         if canI
             puts 'Entra en CanI'
             @visibleTreasures << t
@@ -255,7 +312,10 @@ class Player
         
         return canI
     end
-    
+    def discardAllTreasures()
+        discardVisibleTreasure(@visibleTreasures)
+        discardHiddenTreasure(@hiddenTreasures)
+    end
 
     
     def discardVisibleTreasure(t)
@@ -265,7 +325,7 @@ class Player
                 @pendingBadConsequence.substractVisibleTreasure(t)
         end
         
-        return self.dieIfNoTreasures
+        return dieIfNoTreasures
     end
     
     def discarHiddenTreasure(t)

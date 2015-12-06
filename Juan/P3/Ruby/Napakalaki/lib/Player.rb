@@ -94,144 +94,16 @@ class Player
     end
     
 
-    
     def applyBadConsequence(m)
         badConsequence = m.badconsequence
         nLevels = badConsequence.levels
-        decrementLevels(nLevels)        
-<<<<<<< HEAD
+        decrementLevels(nLevels)
         pendingBad = badConsequence.adjustToFitTreasureList(@visibleTreasures,@hiddenTreasures)
-=======
-        pendingBad = badConsequence.adjustToFitTreasureList(@hiddenTreasures,@hiddenTreasures)
->>>>>>> origin/master
         setPendingBadConsequence(pendingBad)
     end
     
-     
-    def canMakeTreasureVisible(t)
-<<<<<<< HEAD
-          puede=false
-          
-        puts 'entra equipar'
-        puts t
-        puts t.type
-        if(t.type == TreasureKind::ONEHAND )
-             numero=0
-             numerob=0
-            (1..@visibleTreasures.size()-1).each do |taux|             
-                if taux.type == TreasureKind::ONEHAND
-                    numero= numero+1
-                end
-            
-                if taux.type ==TreasureKind::BOTHHANDS
-=======
-          puede=false;
-        
-        if(t.type == TreasureKind::ONEHAND )
-            numero=0
-            numerob=0
-            @visibleTreasures.each do |taux|             
-                if taux.type == TreasureKind::ONEHAND
-                    numero= numero+1
-                end
-            end
-                if taux.type == TreasureKind.BOTHHANDS
->>>>>>> origin/master
-                    numerob = numerob+1
-                end
-            end
-            if numero<2 && numerob == 0
-                puede=true                
-            end
-        end
-        if t.type== TreasureKind::BOTHHANDS
-             numero=0
-             numerob=0
-<<<<<<< HEAD
-           (1..@visibleTreasures.size()-1).each do |taux|
-=======
-           @visibleTreasures.each do |taux|
->>>>>>> origin/master
-                if taux.type == TreasureKind::ONEHAND
-                    numero = numero+1
-                end
-           end
-                if taux.type == TreasureKind::BOTHHANDS
-                    numerob = numerob+1
-            end
-            if(numero==0 && numerob == 0)
-                puede=true                
-            end
-        end
-<<<<<<< HEAD
-        if t.type== TreasureKind::ARMOR
-            numero=0
-            (1..@visibleTreasures.size()-1).each do |taux|
-           
-                if @vivibleTreasures.type() == TreasureKind::ARMOR
-=======
-        if t.type == TreasureKind::ARMOR
-            numero=0
-            @visibleTreasures.each do |taux|
-           
-                if taux.type == TreasureKind::ARMOR
->>>>>>> origin/master
-                    numero =numero+1
-                end
-            end
-        
-            if(numero==0)
-                puede=true                
-            end
-        end
-<<<<<<< HEAD
-        puts t.type
-        if t.type== TreasureKind::HELMET
-            puts 'Entra helmet'
-            numero=0
-            (1..@visibleTreasures.size()-1).each do |taux|            
-                if @vivisbleTreasures.type == TreasureKind::HELMET
-=======
-        end
-        
-        if t.type== TreasureKind::HELMET
-             numero=0
-            @visibleTreasures.each do |taux|            
-                if taux.type == TreasureKind::HELMET
->>>>>>> origin/master
-                    numero= numero+1
-                end
-            end
-            if(numero==0)
-                puede=true;                
-            end
-        end
-<<<<<<< HEAD
-        if t.type== TreasureKind::SHOES 
-             numero=0;
-            (1..@visibleTreasuers.size()-1).each do |i|           
-                if @visibleTreasures.type == TreasureKind::SHOES
-=======
-        end
-        if t.type == TreasureKind::SHOES
-            numero=0
-            @visibleTreasuers.each do |taux|           
-                if taux.type == TreasureKind::SHOES
->>>>>>> origin/master
-                    numero = numero+1
-                end
-            end
-            if numero==0
-                puede=true                
-        end
-        
-        end
-<<<<<<< HEAD
-        return puede
-=======
-     return puede
->>>>>>> origin/master
-    end
+    
+
     
     def howManyVisibleTreasures(tkind)
         num = 0

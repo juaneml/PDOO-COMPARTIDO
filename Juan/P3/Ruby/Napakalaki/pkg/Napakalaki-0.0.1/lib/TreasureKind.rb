@@ -6,31 +6,31 @@
 module NapakalakiGame
 module TreasureKind 
 
-    ARMOR = :ARMOR
-    ONEHAND = :ONEHAND
-    BOTHHANDS = :BOTHHANDS
-    HELMET = :HELMET
-    SHOES = :SHOES
+    ARMOR = :armor
+    ONEHAND = :onehand
+    BOTHHANDS = :bothhands
+    HELMET = :helmet
+    SHOES = :shoes
     
  
   def to_s
-      if TreasureKind::ARMOR          
+      if [TreasureKind.ARMOR]          
           return "ARMOR"
       end
                 
-          if TreasureKind::ONEHAND
+          if [TreasureKind.ONEHAND]
              return "ONEHAND"
           end
           
-      if TreasureKind::BOTHHANDS
+      if [TreasureKind.BOTHHANDS]
           return "BOTHHANDS"
       end
       
-      if TreasureKind::HELMET
+      if [TreasureKind.HELMET]
           return "HELMET"
       end
       
-      if TreasureKind::SHOES
+      if [TreasureKind.SHOES]
           return "SHOES"
       end
     end

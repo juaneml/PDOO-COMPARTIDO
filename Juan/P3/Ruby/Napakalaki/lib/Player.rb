@@ -94,18 +94,10 @@ class Player
     end
     
 
+    
     def applyBadConsequence(m)
         badConsequence = m.badconsequence
         nLevels = badConsequence.levels
-<<<<<<< HEAD
-        decrementLevels(nLevels)
-        pendingBad = badConsequence.adjustToFitTreasureList(@visibleTreasures,@hiddenTreasures)
-        setPendingBadConsequence(pendingBad)
-    end
-    
-    
-
-=======
         decrementLevels(nLevels)        
 
         pendingBad = badConsequence.adjustToFitTreasureList(@visibleTreasures,@hiddenTreasures)
@@ -203,7 +195,6 @@ class Player
         return puede
 
     end
->>>>>>> origin/master
     
     def howManyVisibleTreasures(tkind)
         num = 0

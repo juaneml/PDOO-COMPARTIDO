@@ -157,23 +157,22 @@ class Napakalaki
 
     
     def discardVisibleTreasures (treasures)
-        treasures.each do |t|
+        @treasures.each do |t|
             @currentPlayer.discardVisibleTreasure(t)
             @dealer.giveTreasureBack(t)
         end
     end
     
     def discarHiddenTreasures(treasures)
-        treasures.each do |t|
+        @treasures.each do |t|
             @currentPlayer.discardHiddenTreasure(t)
             @dealer.giveTreasureBack(t)
         end
     end
     
-    def makeTreasureVisible(treasures)
-
-    
-        treasures.each do |t|
+   
+    def makeTreasuresVisible(treasures)
+        @treasures.each do |t|
             @currentPlayer.discardHiddenTreasure(t)
             @dealer.giveTreasureBack(t)
         end

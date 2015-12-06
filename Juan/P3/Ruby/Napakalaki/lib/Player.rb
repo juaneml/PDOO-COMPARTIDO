@@ -97,6 +97,7 @@ class Player
     def applyBadConsequence(m)
         badConsequence = m.badconsequence
         nLevels = badConsequence.levels
+<<<<<<< HEAD
         decrementLevels(nLevels)
         pendingBad = badConsequence.adjustToFitTreasureList(@visibleTreasures,@hiddenTreasures)
         setPendingBadConsequence(pendingBad)
@@ -104,6 +105,105 @@ class Player
     
     
 
+=======
+        decrementLevels(nLevels)        
+
+        pendingBad = badConsequence.adjustToFitTreasureList(@visibleTreasures,@hiddenTreasures)
+
+        setPendingBadConsequence(pendingBad)
+    end
+    
+     
+    def canMakeTreasureVisible(t)
+
+          puede=false
+          
+        puts 'entra equipar'
+        puts t
+        puts t.type
+        if(t.type == TreasureKind::ONEHAND )
+             numero=0
+             numerob=0
+            (1..@visibleTreasures.size()-1).each do |taux|             
+                if taux.type == TreasureKind::ONEHAND
+                    numero= numero+1
+                end
+            
+                if taux.type ==TreasureKind::BOTHHANDS
+
+                    numerob = numerob+1
+                end
+            end
+            if numero<2 && numerob == 0
+                puede=true                
+            end
+        end
+        if t.type== TreasureKind::BOTHHANDS
+             numero=0
+             numerob=0
+
+           (1..@visibleTreasures.size()-1).each do |taux|
+
+                if taux.type == TreasureKind::ONEHAND
+                    numero = numero+1
+                end
+           end
+                if taux.type == TreasureKind::BOTHHANDS
+                    numerob = numerob+1
+            end
+            if(numero==0 && numerob == 0)
+                puede=true                
+            end
+        end
+
+        if t.type== TreasureKind::ARMOR
+            numero=0
+            (1..@visibleTreasures.size()-1).each do |taux|
+           
+                if @visibleTreasures.type() == TreasureKind::ARMOR
+
+                    numero =numero+1
+                end
+            end
+        
+            if(numero==0)
+                puede=true                
+            end
+        end
+
+        puts t.type
+        if t.type== TreasureKind::HELMET
+            puts 'Entra helmet'
+            numero=0
+            (1..@visibleTreasures.size()-1).each do |taux|            
+                if @visibleTreasures.type == TreasureKind::HELMET
+
+                    numero= numero+1
+                end
+            end
+            if(numero==0)
+                puede=true;                
+            end
+        end
+
+        if t.type== TreasureKind::SHOES 
+             numero=0;
+            (1..@visibleTreasuers.size()-1).each do |i|           
+                if @visibleTreasures.type == TreasureKind::SHOES
+
+                    numero = numero+1
+                end
+            end
+            if numero==0
+                puede=true                
+        end
+        
+        end
+
+        return puede
+
+    end
+>>>>>>> origin/master
     
     def howManyVisibleTreasures(tkind)
         num = 0
@@ -168,14 +268,10 @@ class Player
 
     
     def makeTreasureVisible(t)
-<<<<<<< HEAD
+
         canI = canMakeTreasureVisible(t)
         
-=======
-        puts 'Entra makeTreasure'
-        canI = canMakeTreasureVisible(t)
-        puts 'sale canMakeTreasureV'
->>>>>>> origin/master
+
         if canI
             puts 'Entra en CanI'
             @visibleTreasures << t

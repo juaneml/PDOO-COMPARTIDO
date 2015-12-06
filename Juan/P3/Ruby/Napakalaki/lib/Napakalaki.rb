@@ -158,7 +158,7 @@ class Napakalaki
     
     def discardVisibleTreasures (treasures)
         treasures.each do |t|
-            @currentPlayer.discardVisibleTreasure(t)
+            @currentPlayer.discardVisibleTreasures(t)
             @dealer.giveTreasureBack(t)
         end
     end

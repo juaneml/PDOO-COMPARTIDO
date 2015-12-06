@@ -161,7 +161,7 @@ class BadConsequence
                         #for(Treasure hTreasure : h){
                         for i in 0..(vaux.size()-1) 
                            if esta ==false
-                               if (svt == haux[i].type) 
+                               if (svt == vaux[i].type) 
                                     vcopia << vaux[i].type
                                     esta=true
                                     vaux.remove(vaux.get(i))

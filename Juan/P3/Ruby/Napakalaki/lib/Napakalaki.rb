@@ -171,11 +171,9 @@ class Napakalaki
     end
     
    
-<<<<<<< HEAD
+
     def makeTreasureVisible(treasures)
-=======
-    def makeTreasuresVisible(treasures)
->>>>>>> origin/master
+
         treasures.each do |t|
             @currentPlayer.discardHiddenTreasure(t)
             @dealer.giveTreasureBack(t)

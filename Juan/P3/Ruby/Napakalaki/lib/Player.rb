@@ -20,7 +20,7 @@ class Player
         @canISteal = false
         @enemy = self
 
-        @pendigBadConsequence = nil
+        @pendingBadConsequence = []
 
         @hiddenTreasures = Array.new
         @visibleTreasures = Array.new
@@ -50,10 +50,12 @@ class Player
     def getCombatLevel
          sum_bonus = 0
          i = 0
+
          puts @visibleTreasures.size
 
          @visibleTreasures.each do |v|
              sum_bonus = v.bonus + sum_bonus
+
          end
          
         @level = @level+sum_bonus
@@ -84,8 +86,9 @@ class Player
             
         
         if nTreasures > 0
-            dealer = CarDealer.instance
-            
+            dealer = CardDealer.instance
+            puts 'nTreasures'
+            puts nTreasures
             (1..nTreasures).each do |i| 
                 treasure = dealer.nextTreasure
                 @hiddenTreasures << treasure
@@ -117,7 +120,9 @@ class Player
         if(t.type == TreasureKind::ONEHAND )
              numero=0
              numerob=0
+
             @visibleTreasures.each do |taux|             
+
                 if taux.type == TreasureKind::ONEHAND
                     numero= numero+1
                 end
@@ -144,9 +149,11 @@ class Player
                 if taux.type == TreasureKind::BOTHHANDS
                     numerob = numerob+1
                 end
+
             end
             if(numero==0 && numerob == 0)
                 puede=true                
+
             end
         end
 
@@ -169,8 +176,10 @@ class Player
         if t.type== TreasureKind::HELMET
             puts 'Entra helmet'
             numero=0
+
             @visibleTreasures.each do |taux|            
                 if taux.type == TreasureKind::HELMET
+
 
                     numero= numero+1
                 end
@@ -182,8 +191,10 @@ class Player
 
         if t.type== TreasureKind::SHOES 
              numero=0;
+
             @visibleTreasuers.each do |i|           
                 if i.type == TreasureKind::SHOES
+
 
                     numero = numero+1
                 end
@@ -224,7 +235,7 @@ class Player
     #final método privados
     
     public
-    def idDead()
+    def isDead()
        return @dead
     end
     
@@ -245,7 +256,7 @@ class Player
         if myLevel > monsterLevel
             applyPrize(m)
             
-            if(@levels >= @@MAXLEVEL)
+            if(@level >= @@MAXLEVEL)
                 combatResult = CombatResult::WINGAME
             else    
                 combatResult = CombatResult::WIN
@@ -273,13 +284,10 @@ class Player
         
         return canI
     end
-    def discardAllTreasures()
-        discardVisibleTreasure(@visibleTreasures)
-        discardHiddenTreasure(@hiddenTreasures)
-    end
+   
 
     
-    def discardVisibleTreasure(t)
+    def discardVisibleTreasures(t)
         @visibleTreasures.delete(t)
         
         if( (@pendingBadConsequence != nil) && (!@pendingBadConsequence.empty?))
@@ -289,24 +297,26 @@ class Player
         return dieIfNoTreasures
     end
     
-    def discarHiddenTreasure(t)
+    def discardHiddenTreasures(t)
         @hiddenTreasures.delete(t)
         
         if( (@pendingBadConsequence != nil) && (!@pendingBadConsequence.empty?))
-                @pendingBadConsequence.substractVisibleTreasure(t)
+                @pendingBadConsequence.substractHiddenTreasure(t)
         end
         
         return dieIfNoTreasures
     end
     
     def validState()          
-        valid        
-        if @pendingBadConsequence.empty? && @hiddenTreasures.size <= 4
-            valid = true
+        valid =false
+        puts "@pendingBadConsequence"
+        puts @pendigBadConsequence
+            if @pendingBadConsequence.empty? && @hiddenTreasures.size <= 4
+                valid = true
+            else
+                valid = false      
+            end
         
-        else
-            valid = false      
-        end
         
         return valid 
     end
@@ -411,14 +421,16 @@ class Player
     
 
     public
-    def discarAllTreasures()
-              
-        (1..@visibleTreasures).each do|i|
-                discardVisibleTreasure(i)
+    def discardAllTreasures()
+        vaux= Array.new(@visibleTreasures)
+        vaux.each do |v|
+                discardVisibleTreasures(v)
         end
-
-        (1..@hiddenTreasures).each do |i|
-                discardHiddenTreasure(i)
+        haux=Array.new(@hiddenTreasures)
+        haux.each do |h|
+            puts 'Entro hidden'
+            puts @hiddenTreasures.size
+                discardHiddenTreasures(h)
         end
         
     end

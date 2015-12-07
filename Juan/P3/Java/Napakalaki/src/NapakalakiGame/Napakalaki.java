@@ -66,14 +66,17 @@ public class Napakalaki {
             
         } else {
             for (int i = 0; i < players.size(); i++) {
-                if (currentPlayer == players.get(i)) {
+                //if (currentPlayer == players.get(i)) {
                     if (i == players.size() - 1) ///////si falla mirara aquí
                     {
+                        System.out.print("vuelve al primero" + i);
                         currentPlayer = new Player(players.get(0).getName());
-                    } else {
+                    } 
+                    else {
+                        System.out.print("Entra al segundo" + i);
                         currentPlayer = new Player(players.get(i + 1).getName());
                     }
-                }
+               // }
             }
 
             return currentPlayer;

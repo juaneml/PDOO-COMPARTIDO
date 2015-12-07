@@ -336,7 +336,7 @@ public class Player {
         this.hiddenTreasures.remove(t);
         
         if((this.pendingBadConsequence != null ) && (!this.pendingBadConsequence.isEmpty())){
-            this.pendingBadConsequence.substractVisibleTreasure(t);
+            this.pendingBadConsequence.substractHiddenTreasure(t);
         }
         
         this.dielfNoTreasures();
@@ -495,10 +495,12 @@ public class Player {
      * Método discardAllTreasures()
      */
     public void discardAllTreasures() {
-        for (Treasure t : this.visibleTreasures) {
+        ArrayList<Treasure> vaux = new ArrayList(visibleTreasures);
+        for (Treasure t : vaux) {
             this.discardVisibleTreasure(t);
         }
-        for (Treasure t : this.hiddenTreasures) {
+        ArrayList<Treasure> haux = new ArrayList(hiddenTreasures);
+        for (Treasure t : haux) {
             this.discardHiddenTreasure(t);
         }
     }

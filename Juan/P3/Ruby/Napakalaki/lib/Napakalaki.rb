@@ -86,8 +86,8 @@ class Napakalaki
         else
             i=0
             while( i< @players.size)
-                if(@currentPlayer == @player[i])
-                    if(i==(@players.size -1))
+                if(@currentPlayer == @players[i])
+                    if(i ==(@players.size-1))
                         @currentPlayer = @players[0]
                     else
                         @currentPlayer = @players[i+1]
@@ -114,9 +114,11 @@ class Napakalaki
     private
     def nextTurnAllowed()
         sig = false
+        puts 'Este es el currentPlayer'
+        puts @currentPlayer
         
-        #if(@currentPlayer.validState)
-        if @currentPlayer == nil
+        if(@currentPlayer.validState)
+        #if @currentPlayer == nil
             sig=true
         end
         
@@ -158,7 +160,7 @@ class Napakalaki
     
     def discardVisibleTreasures (treasures)
         treasures.each do |t|
-            @currentPlayer.discardVisibleTreasure(t)
+            @currentPlayer.discardVisibleTreasures(t)
             @dealer.giveTreasureBack(t)
         end
     end
@@ -186,8 +188,9 @@ class Napakalaki
         setEnemies()
 
         @dealer.initCards
+        nextPlayer
          nextTurn()
-       # @currentPlayer.initTreasures
+        @currentPlayer.initTreasures
        
         
     end
@@ -199,11 +202,11 @@ class Napakalaki
         if(stateOK == true)
             @currentMonster = @dealer.nextMonster
             @currentPlayer = nextPlayer
-            #dead = @currentPlayer.isDead()
+            dead = @currentPlayer.isDead()
             
-            #if(dead == true)
+            if(dead == true)
                 @currentPlayer.initTreasures
-            #end
+            end
         end
         
         return stateOK

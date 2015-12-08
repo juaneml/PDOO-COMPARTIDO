@@ -224,7 +224,7 @@ class BadConsequence
 
         end
         #*** Cambiado provisional para no devolver null ****//
-        badConsequence = new BadConsequence("No mal royo",0,0,0)
+        badConsequence = BadConsequence.newLevelSpecificTreasures("No mal royo",0,0,0)
         return badConsequence; #//cambiar
 
     

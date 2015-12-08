@@ -16,7 +16,7 @@ class Player
     def initialize(name)
         @name = name
         @level = 1
-        @dead = false
+        @dead = true
         @canISteal = false
         @enemy = self
 
@@ -225,10 +225,12 @@ class Player
     end
      
     def dieIfNoTreasures()
-        if @visibleTreasures.empty? &&@hiddenTreasures.empty?
+        if @visibleTreasures.empty? && @hiddenTreasures.empty?
+            puts "muere"
             @dead = true
             
         else
+            puts "no muere"
             @dead = false
         end
         

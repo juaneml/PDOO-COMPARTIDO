@@ -21,7 +21,7 @@ public class Player {
      */
     private String name;
     private int level;
-    private boolean dead;
+    private boolean dead = true;
     private boolean canISteal = true;
 
     /* Constructor */
@@ -33,7 +33,7 @@ public class Player {
     public Player(String name) {
         this.name = name;
         this.level = 1;
-        this.dead = false;
+        this.dead = true;
         this.canISteal = false;
         this.visibleTreasures = new ArrayList();
         this.hiddenTreasures = new ArrayList();
@@ -274,6 +274,7 @@ public class Player {
      */
     public CombatResult combat(Monster m){
         int myLevel = this.getCombatLevel(); // 1.1.1
+        System.out.println("Nivel combate "+ myLevel);
         int monsterLevel;
         CombatResult combatResult;
         CardDealer dealer = CardDealer.getInstance();

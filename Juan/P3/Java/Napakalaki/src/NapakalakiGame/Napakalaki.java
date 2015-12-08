@@ -64,19 +64,26 @@ public class Napakalaki {
             this.currentPlayer = aux.get(numero);
             return currentPlayer;
             
-        } else {
-            for (int i = 0; i < players.size(); i++) {
-                //if (currentPlayer == players.get(i)) {
-                    if (i == players.size() - 1) ///////si falla mirara aquí
+        } 
+        else {
+            boolean cambiado = false;
+            for (int i = 0; i < players.size() && !cambiado; i++) {
+               if(currentPlayer == players.get(i)){
+                    if (i == players.size() - 1) ///////si falla mirar aquí
                     {
                         System.out.print("vuelve al primero" + i);
-                        currentPlayer = new Player(players.get(0).getName());
+                        currentPlayer = players.get(0);
+                        cambiado=true;
                     } 
                     else {
                         System.out.print("Entra al segundo" + i);
-                        currentPlayer = new Player(players.get(i + 1).getName());
+                        currentPlayer = players.get(i + 1);
+                        cambiado=true;
                     }
-               // }
+                
+                
+                }
+                
             }
 
             return currentPlayer;
@@ -194,7 +201,7 @@ public class Napakalaki {
         this.setEnemies();
         dealer.initCards();
         this.nextTurn();
-       this.currentPlayer.initTreasures();
+        
 
     }
 
@@ -227,14 +234,15 @@ public class Napakalaki {
         boolean stateOK;
         stateOK = this.nextTurnIsAllowed();  
              
-        
+         System.out.print(" nextTurn stateOK\n");
         if (stateOK) {
             boolean dead;
             this.currentMonster = this.dealer.nextMonster();
             this.currentPlayer = this.nextPlayer();
             dead = this.currentPlayer.isDead();
-
+            System.out.print(" Entra stateOK\n");
             if (dead) {
+                System.out.print(" Entra Esta muerto\n");
                 this.currentPlayer.initTreasures();
             }
         }

@@ -85,12 +85,17 @@ class Napakalaki
             
         else
             i=0
+            cambiado= false
             while( i< @players.size)
                 if(@currentPlayer == @players[i])
-                    if(i ==(@players.size-1))
-                        @currentPlayer = @players[0]
-                    else
-                        @currentPlayer = @players[i+1]
+                    if(cambiado == false)
+                        if(i ==(@players.size-1))
+                            @currentPlayer = @players[0]
+                            cambiado=true
+                        else
+                            @currentPlayer = @players[i+1]
+                            cambiado=true
+                        end
                     end
                 end
                 i = i+1
@@ -186,12 +191,10 @@ class Napakalaki
     def initGame(players)
         initPlayers(players)
         setEnemies()
-
         @dealer.initCards
         nextPlayer
-         nextTurn()
-        @currentPlayer.initTreasures
-       
+        nextTurn()
+            
         
     end
     

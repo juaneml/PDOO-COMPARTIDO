@@ -78,15 +78,16 @@ class Player
     
          
     def applyPrize(m)
-        nLevels = m.getLevelsGained()
+        nLevels = m.getLevelsGained
         incrementLevels(nLevels)   
-        nTreasures = m.getTreasureGained()
+        nTreasures = m.getTreasureGained
             
         
+         dealer = CarDealer.instance
         if nTreasures > 0
-            dealer = CarDealer.instance
+           
             
-            (1..nTreasures).each do |i| 
+            (1..nTreasures).each do |treasure| 
                 treasure = dealer.nextTreasure
                 @hiddenTreasures << treasure
                 
@@ -157,7 +158,7 @@ class Player
             numero=0
             @visibleTreasures.each do |taux|
            
-                if @visibleTreasures.type() == TreasureKind::ARMOR
+                if taux.type == TreasureKind::ARMOR
 
                     numero =numero+1
                 end
@@ -173,7 +174,7 @@ class Player
             puts 'Entra helmet'
             numero=0
             @visibleTreasures.each do |taux|          
-                if @visibleTreasures.type == TreasureKind::HELMET
+                if taux.type == TreasureKind::HELMET
 
                     numero= numero+1
                 end
@@ -186,7 +187,7 @@ class Player
         if t.type== TreasureKind::SHOES 
              numero=0;
             @visibleTreasures.each do |taux|           
-                if @visibleTreasures.type == TreasureKind::SHOES
+                if taux.type == TreasureKind::SHOES
 
                     numero = numero+1
                 end
@@ -227,7 +228,7 @@ class Player
     #final método privados
     
     public
-    def idDead()
+    def isDead()
        return @dead
     end
     
@@ -268,18 +269,14 @@ class Player
         canI = canMakeTreasureVisible(t)
         
 
-        if canI
-            puts 'Entra en CanI'
+        if canI            
             @visibleTreasures << t
             @hiddenTreasures.delete(t) 
         end
         
         return canI
     end
-    def discardAllTreasures()
-        discardVisibleTreasures(@visibleTreasures)
-        discardHiddenTreasures(@hiddenTreasures)
-    end
+    
 
     
     def discardVisibleTreasures(t)
@@ -296,7 +293,7 @@ class Player
         @hiddenTreasures.delete(t)
         
         if( (@pendingBadConsequence != nil) && (!@pendingBadConsequence.empty?))
-                @pendingBadConsequence.substractVisibleTreasure(t)
+                @pendingBadConsequence.substractHiddenTreasure(t)
         end
         
         return dieIfNoTreasures
@@ -414,14 +411,14 @@ class Player
     
 
     public
-    def discarAllTreasures()
+    def discardAllTreasures()
               
-        (1..@visibleTreasures).each do|i|
-                discardVisibleTreasure(i)
+        @visibleTreasures.each do|i|
+                discardVisibleTreasures(i)
         end
 
-        (1..@hiddenTreasures).each do |i|
-                discardHiddenTreasure(i)
+        @hiddenTreasures.each do |i|
+                discardHiddenTreasures(i)
         end
         
     end

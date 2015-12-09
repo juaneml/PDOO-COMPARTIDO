@@ -115,8 +115,8 @@ class Napakalaki
     def nextTurnAllowed()
         sig = false
         
-        #if(@currentPlayer.validState)
-        if @currentPlayer == nil
+        if(@currentPlayer.validState)
+        #if @currentPlayer == nil
             sig=true
         end
         
@@ -163,9 +163,9 @@ class Napakalaki
         end
     end
     
-    def discarHiddenTreasures(treasures)
+    def discardHiddenTreasures(treasures)
         treasures.each do |t|
-            @currentPlayer.discardHiddenTreasure(t)
+            @currentPlayer.discardHiddenTreasures(t)
             @dealer.giveTreasureBack(t)
         end
     end
@@ -175,7 +175,7 @@ class Napakalaki
     def makeTreasureVisible(treasures)
 
         treasures.each do |t|
-            @currentPlayer.discardHiddenTreasure(t)
+            @currentPlayer.discardHiddenTreasures(t)
             @dealer.giveTreasureBack(t)
         end
         
@@ -187,7 +187,7 @@ class Napakalaki
 
         @dealer.initCards
          nextTurn()
-       # @currentPlayer.initTreasures
+        @currentPlayer.initTreasures
        
         
     end
@@ -199,11 +199,11 @@ class Napakalaki
         if(stateOK == true)
             @currentMonster = @dealer.nextMonster
             @currentPlayer = nextPlayer
-            #dead = @currentPlayer.isDead()
+            dead = @currentPlayer.isDead()
             
-            #if(dead == true)
+            if(dead == true)
                 @currentPlayer.initTreasures
-            #end
+            end
         end
         
         return stateOK

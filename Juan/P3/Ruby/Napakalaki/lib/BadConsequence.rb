@@ -149,7 +149,7 @@ class BadConsequence
                                 if sht == haux[i].type #si son iguales
                                     hcopia << haux[i].type # se mete en el vector de copias
                                     esta = true #esta pasa a valer true(esto es para el que el for salte)
-                                    haux.remove(haux.fetch(i)) #se quita de la lista, para que no siga contandolo
+                                    haux.delete(haux.fetch(i)) #se quita de la lista, para que no siga contandolo
 
                                 end
                             end
@@ -164,7 +164,7 @@ class BadConsequence
                                if (svt == vaux[i].type) 
                                     vcopia << vaux[i].type
                                     esta=true
-                                    vaux.remove(vaux.get(i))
+                                    vaux.delete(vaux.fetch(i))
                                 end
                             end
                         end
@@ -182,10 +182,10 @@ class BadConsequence
                         #for(Treasure hTreasure : h){
                         for i in 0..(vaux.size()-1) 
                            if esta ==false
-                                if (svt == haux.get(i).getType()) 
-                                    vcopia << vaux.get(i).getType()
+                                if svt == haux.fetch(i).type 
+                                    vcopia << vaux.fetch(i).type
                                     esta =true
-                                    vaux.remove(vaux.get(i))
+                                    vaux.delete.vaux.fetch(i)
                                 end
                             end
                         end
@@ -201,7 +201,7 @@ class BadConsequence
                                 if sht == haux.get(i).getType()  #si son iguales
                                     hcopia << haux.get(i).getType() # se mete en el vector de copias
                                     esta = true #esta pasa a valer true(esto es para el que el for salte)
-                                    haux.remove(haux.get(i)) #se quita de la lista, para que no siga contandolo
+                                    haux.delete(haux.get(i)) #se quita de la lista, para que no siga contandolo
 
                                 end
                             end

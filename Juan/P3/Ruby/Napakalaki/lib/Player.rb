@@ -85,18 +85,13 @@ class Player
         nTreasures = m.getTreasureGained
             
         
-         dealer = CarDealer.instance
+         dealer = CardDealer.instance
         if nTreasures > 0
-<<<<<<< HEAD
-           
-            
-            (1..nTreasures).each do |treasure| 
-=======
             dealer = CardDealer.instance
             puts 'nTreasures'
             puts nTreasures
             (1..nTreasures).each do |i| 
->>>>>>> origin/master
+
                 treasure = dealer.nextTreasure
                 @hiddenTreasures << treasure
                 
@@ -187,12 +182,6 @@ class Player
         if t.type== TreasureKind::HELMET
             puts 'Entra helmet'
             numero=0
-<<<<<<< HEAD
-            @visibleTreasures.each do |taux|          
-                if taux.type == TreasureKind::HELMET
-=======
->>>>>>> origin/master
-
 
             @visibleTreasures.each do |taux|            
                 if taux.type == TreasureKind::HELMET
@@ -206,16 +195,9 @@ class Player
 
         if t.type== TreasureKind::SHOES 
              numero=0;
-<<<<<<< HEAD
-            @visibleTreasures.each do |taux|           
-                if taux.type == TreasureKind::SHOES
-=======
 
-
-            @visibleTreasuers.each do |i|           
+            @visibleTreasures.each do |i|           
                 if i.type == TreasureKind::SHOES
->>>>>>> origin/master
-
                     numero = numero+1
                 end
             end
@@ -305,10 +287,6 @@ class Player
         
         return canI
     end
-<<<<<<< HEAD
-    
-=======
->>>>>>> origin/master
 
     
     def discardVisibleTreasures(t)
@@ -446,15 +424,7 @@ class Player
 
     public
     def discardAllTreasures()
-<<<<<<< HEAD
-              
-        @visibleTreasures.each do|i|
-                discardVisibleTreasures(i)
-        end
 
-        @hiddenTreasures.each do |i|
-                discardHiddenTreasures(i)
-=======
         vaux= Array.new(@visibleTreasures)
         vaux.each do |v|
                 discardVisibleTreasures(v)
@@ -464,7 +434,7 @@ class Player
             puts 'Entro hidden'
             puts @hiddenTreasures.size
                 discardHiddenTreasures(h)
->>>>>>> origin/master
+
         end
         
     end

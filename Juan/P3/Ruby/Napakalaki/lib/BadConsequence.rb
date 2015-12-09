@@ -149,12 +149,7 @@ class BadConsequence
                                 if sht == haux[i].type #si son iguales
                                     hcopia << haux[i].type # se mete en el vector de copias
                                     esta = true #esta pasa a valer true(esto es para el que el for salte)
-<<<<<<< HEAD
-                                    haux.delete(haux.fetch(i)) #se quita de la lista, para que no siga contandolo
-=======
                                     haux.delete(sht) #se quita de la lista, para que no siga contandolo
->>>>>>> origin/master
-
                                 end
                             end
                         end
@@ -172,11 +167,7 @@ class BadConsequence
                                if (svt == vaux[i].type) 
                                     vcopia << vaux[i].type
                                     esta=true
-<<<<<<< HEAD
-                                    vaux.delete(vaux.fetch(i))
-=======
                                     vaux.delete(svt)
->>>>>>> origin/master
                                 end
                             end
                         end
@@ -194,17 +185,10 @@ class BadConsequence
                         #for(Treasure hTreasure : h){
                         for i in 0..(vaux.size()-1) 
                            if esta ==false
-<<<<<<< HEAD
-                                if svt == haux.fetch(i).type 
-                                    vcopia << vaux.fetch(i).type
-                                    esta =true
-                                    vaux.delete.vaux.fetch(i)
-=======
-                                if (svt == haux.get(i).type) 
-                                    vcopia << vaux.get[i].type
+                                if (svt == vaux.fetch(i).type) 
+                                    vcopia << vaux[i].type
                                     esta =true
                                     vaux.delete(vaux[i])
->>>>>>> origin/master
                                 end
                             end
                         end

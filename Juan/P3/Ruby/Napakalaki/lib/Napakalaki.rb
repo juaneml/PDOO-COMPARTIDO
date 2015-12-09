@@ -192,15 +192,10 @@ class Napakalaki
         initPlayers(players)
         setEnemies()
         @dealer.initCards
-<<<<<<< HEAD
-         nextTurn()
-        @currentPlayer.initTreasures
-       
-=======
         nextPlayer
         nextTurn()
             
->>>>>>> origin/master
+
         
     end
     

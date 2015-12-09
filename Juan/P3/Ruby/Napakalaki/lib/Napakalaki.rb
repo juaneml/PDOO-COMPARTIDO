@@ -85,12 +85,17 @@ class Napakalaki
             
         else
             i=0
+            cambiado= false
             while( i< @players.size)
-                if(@currentPlayer == @player[i])
-                    if(i==(@players.size -1))
-                        @currentPlayer = @players[0]
-                    else
-                        @currentPlayer = @players[i+1]
+                if(@currentPlayer == @players[i])
+                    if(cambiado == false)
+                        if(i ==(@players.size-1))
+                            @currentPlayer = @players[0]
+                            cambiado=true
+                        else
+                            @currentPlayer = @players[i+1]
+                            cambiado=true
+                        end
                     end
                 end
                 i = i+1
@@ -114,6 +119,8 @@ class Napakalaki
     private
     def nextTurnAllowed()
         sig = false
+        puts 'Este es el currentPlayer'
+        puts @currentPlayer
         
         if(@currentPlayer.validState)
         #if @currentPlayer == nil
@@ -184,11 +191,16 @@ class Napakalaki
     def initGame(players)
         initPlayers(players)
         setEnemies()
-
         @dealer.initCards
+<<<<<<< HEAD
          nextTurn()
         @currentPlayer.initTreasures
        
+=======
+        nextPlayer
+        nextTurn()
+            
+>>>>>>> origin/master
         
     end
     

@@ -90,8 +90,8 @@ class BadConsequence
         nVisibleAux = @nVisibleTreasures;
         nHiddenAux = @nHiddenTreasures;
 
-        vaux = Treasure.new('',0,[TreasureKind::ARMOR])
-        haux = Treasure.new('',0,[TreasureKind::ARMOR])
+#        vaux = Treasure.new('',0,[TreasureKind::ARMOR])
+#        haux = Treasure.new('',0,[TreasureKind::ARMOR])
         vaux = Array.new(v) # ArrayList<Treasure>  
         haux = Array.new(h) # ArrayList<Treasure>  
         #badConsequence #BadConsequence 
@@ -126,7 +126,7 @@ class BadConsequence
                     end
                 end
                 
-                badConsequence = BadConsequence.nenewLevelNumberOfTreasures(@text, @levels, nVisibleAux, nHiddenAux);
+                badConsequence = BadConsequence.newLevelNumberOfTreasures(@text, @levels, nVisibleAux, nHiddenAux);
                 return badConsequence;
             end
 
@@ -149,7 +149,11 @@ class BadConsequence
                                 if sht == haux[i].type #si son iguales
                                     hcopia << haux[i].type # se mete en el vector de copias
                                     esta = true #esta pasa a valer true(esto es para el que el for salte)
+<<<<<<< HEAD
                                     haux.delete(haux.fetch(i)) #se quita de la lista, para que no siga contandolo
+=======
+                                    haux.delete(sht) #se quita de la lista, para que no siga contandolo
+>>>>>>> origin/master
 
                                 end
                             end
@@ -160,11 +164,19 @@ class BadConsequence
                         esta = false;
                         #for(Treasure hTreasure : h){
                         for i in 0..(vaux.size()-1) 
-                           if esta ==false
+
+
+                           if esta == false
+
+
                                if (svt == vaux[i].type) 
                                     vcopia << vaux[i].type
                                     esta=true
+<<<<<<< HEAD
                                     vaux.delete(vaux.fetch(i))
+=======
+                                    vaux.delete(svt)
+>>>>>>> origin/master
                                 end
                             end
                         end
@@ -182,10 +194,17 @@ class BadConsequence
                         #for(Treasure hTreasure : h){
                         for i in 0..(vaux.size()-1) 
                            if esta ==false
+<<<<<<< HEAD
                                 if svt == haux.fetch(i).type 
                                     vcopia << vaux.fetch(i).type
                                     esta =true
                                     vaux.delete.vaux.fetch(i)
+=======
+                                if (svt == haux.get(i).type) 
+                                    vcopia << vaux.get[i].type
+                                    esta =true
+                                    vaux.delete(vaux[i])
+>>>>>>> origin/master
                                 end
                             end
                         end
@@ -220,7 +239,7 @@ class BadConsequence
 
         end
         #*** Cambiado provisional para no devolver null ****//
-        badConsequence = new BadConsequence("No mal royo",0,0,0)
+        badConsequence = BadConsequence.newLevelSpecificTreasures("No mal royo",0,0,0)
         return badConsequence; #//cambiar
 
     

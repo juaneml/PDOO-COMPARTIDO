@@ -16,11 +16,11 @@ class Player
     def initialize(name)
         @name = name
         @level = 1
-        @dead = false
+        @dead = true
         @canISteal = false
         @enemy = self
 
-        @pendigBadConsequence = nil
+        @pendingBadConsequence = []
 
         @hiddenTreasures = Array.new
         @visibleTreasures = Array.new
@@ -50,10 +50,12 @@ class Player
     def getCombatLevel
          sum_bonus = 0
          i = 0
-         while i < @visibleTreasures.size
-             
-             sum_bonus = @visibleTreasures.fetch(i).bonus + sum_bonus
-             i = i+1
+
+
+         puts @visibleTreasures.size
+
+         @visibleTreasures.each do |v|
+             sum_bonus = v.bonus + sum_bonus
          end
          
         @level = @level+sum_bonus
@@ -85,9 +87,16 @@ class Player
         
          dealer = CarDealer.instance
         if nTreasures > 0
+<<<<<<< HEAD
            
             
             (1..nTreasures).each do |treasure| 
+=======
+            dealer = CardDealer.instance
+            puts 'nTreasures'
+            puts nTreasures
+            (1..nTreasures).each do |i| 
+>>>>>>> origin/master
                 treasure = dealer.nextTreasure
                 @hiddenTreasures << treasure
                 
@@ -118,9 +127,11 @@ class Player
         if(t.type == TreasureKind::ONEHAND )
              numero=0
              numerob=0
-             
-             @visibleTreasures.each do |taux|
-                     
+
+
+            @visibleTreasures.each do |taux|             
+
+
                 if taux.type == TreasureKind::ONEHAND
                     numero= numero+1
                 end
@@ -147,10 +158,13 @@ class Player
                 if taux.type == TreasureKind::BOTHHANDS
                     numerob = numerob+1
                 end
-            
-                if(numero==0 && numerob == 0)
-                    puede=true                
-                end
+
+
+            end
+            if(numero==0 && numerob == 0)
+                puede=true                
+
+
             end
         end
 
@@ -173,9 +187,15 @@ class Player
         if t.type== TreasureKind::HELMET
             puts 'Entra helmet'
             numero=0
+<<<<<<< HEAD
             @visibleTreasures.each do |taux|          
                 if taux.type == TreasureKind::HELMET
+=======
+>>>>>>> origin/master
 
+
+            @visibleTreasures.each do |taux|            
+                if taux.type == TreasureKind::HELMET
                     numero= numero+1
                 end
             end
@@ -186,8 +206,15 @@ class Player
 
         if t.type== TreasureKind::SHOES 
              numero=0;
+<<<<<<< HEAD
             @visibleTreasures.each do |taux|           
                 if taux.type == TreasureKind::SHOES
+=======
+
+
+            @visibleTreasuers.each do |i|           
+                if i.type == TreasureKind::SHOES
+>>>>>>> origin/master
 
                     numero = numero+1
                 end
@@ -215,10 +242,12 @@ class Player
     end
      
     def dieIfNoTreasures()
-        if @visibleTreasures.empty? &&@hiddenTreasures.empty?
+        if @visibleTreasures.empty? && @hiddenTreasures.empty?
+            puts "muere"
             @dead = true
             
         else
+            puts "no muere"
             @dead = false
         end
         
@@ -249,7 +278,7 @@ class Player
         if myLevel > monsterLevel
             applyPrize(m)
             
-            if(@levels >= @@MAXLEVEL)
+            if(@level >= @@MAXLEVEL)
                 combatResult = CombatResult::WINGAME
             else    
                 combatResult = CombatResult::WIN
@@ -276,7 +305,10 @@ class Player
         
         return canI
     end
+<<<<<<< HEAD
     
+=======
+>>>>>>> origin/master
 
     
     def discardVisibleTreasures(t)
@@ -300,13 +332,15 @@ class Player
     end
     
     def validState()          
-        valid        
-        if @pendingBadConsequence.empty? && @hiddenTreasures.size <= 4
-            valid = true
+        valid =false
+        puts "@pendingBadConsequence"
+        puts @pendigBadConsequence
+            if @pendingBadConsequence.empty? && @hiddenTreasures.size <= 4
+                valid = true
+            else
+                valid = false      
+            end
         
-        else
-            valid = false      
-        end
         
         return valid 
     end
@@ -412,6 +446,7 @@ class Player
 
     public
     def discardAllTreasures()
+<<<<<<< HEAD
               
         @visibleTreasures.each do|i|
                 discardVisibleTreasures(i)
@@ -419,6 +454,17 @@ class Player
 
         @hiddenTreasures.each do |i|
                 discardHiddenTreasures(i)
+=======
+        vaux= Array.new(@visibleTreasures)
+        vaux.each do |v|
+                discardVisibleTreasures(v)
+        end
+        haux=Array.new(@hiddenTreasures)
+        haux.each do |h|
+            puts 'Entro hidden'
+            puts @hiddenTreasures.size
+                discardHiddenTreasures(h)
+>>>>>>> origin/master
         end
         
     end

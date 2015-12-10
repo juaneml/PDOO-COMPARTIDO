@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class Player {
     static final int MAXLEVEL = 10; // <<constant>>
-    Player enemy; //Relación asímismo 
+    protected Player enemy; //Relación asímismo 
     
     /*Relaciones */
     private ArrayList<Treasure> hiddenTreasures;
@@ -40,6 +40,10 @@ public class Player {
         this.pendingBadConsequence = new BadConsequence(" ", 0, 0, 0);
         
     }
+    
+    public Player(Player p){
+        
+    }
 
     /**
      * Método getName()
@@ -61,7 +65,7 @@ public class Player {
      * @return el nivel de combate del jugador.
      * Recorremos el array con el número de tesoros visibles para añadirles el bonus.
      */
-    private int getCombatLevel() {
+    protected int getCombatLevel() {
         int sum_bonus = 0;
         for(int i=0; i < this.visibleTreasures.size();i++){
             sum_bonus = visibleTreasures.get(i).getBonus()+sum_bonus;
@@ -505,6 +509,15 @@ public class Player {
             this.discardHiddenTreasure(t);
         }
     }
+    
+    protected int getOponentLevel(Monster m){
+        return 5;
+    }
+    
+    protected boolean shouldConvert(){
+        return true;
+    }
+    
 
     @Override
     public String toString() {

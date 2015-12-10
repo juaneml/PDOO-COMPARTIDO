@@ -12,6 +12,7 @@ public class Monster {
     
     private String name; // nombre del monstruo
     private int combatLevel; // nivel de combate del monstruo
+    private int levelChangeAganistCultistPlayer = 0;
 
     /* Relaciones atributo de tipo Prize y BadConsequence */
     private Prize prize; 
@@ -32,6 +33,15 @@ public class Monster {
         this.combatLevel = l;
         this.badConsequence = b;
         this.prize = p;
+        this.levelChangeAganistCultistPlayer=0;
+    }
+    
+    Monster(String n, int l, BadConsequence b, Prize p, int IC){
+        this.name = n;
+        this.combatLevel = l;
+        this.badConsequence = b;
+        this.prize = p;
+        this.levelChangeAganistCultistPlayer = IC;
     }
     
     /**
@@ -51,6 +61,11 @@ public class Monster {
     public int getCombatLevel() {
         return combatLevel;
     }
+
+    public int getCombatLevelAganistCultistPlayer() {
+        return levelChangeAganistCultistPlayer;
+    }
+    
 
     /**
      * Método getBadConsequence()

@@ -22,6 +22,8 @@ public class CardDealer {
     private ArrayList <Treasure> unusedTreasures = new ArrayList(); //Relación con Treasure
     private ArrayList <Treasure> usedTreasures = new ArrayList(); // Relación con Treasure
     
+    private ArrayList <Cultist> unusedCultists = new ArrayList();
+    
     
     
     /** Constructor ****/
@@ -245,6 +247,73 @@ public class CardDealer {
        prize = new Prize(1,1);
        this.unusedMonsters.add(new Monster("Bicéfalo",20,badConsequence,prize));
        
+       // El mal indecible impronunciable
+       tVisible = new ArrayList(Arrays.asList(TreasureKind.ONEHAND));
+       tHidden = new ArrayList();
+       badConsequence = new BadConsequence("Pierdes una mano visible",0,tVisible,tHidden);
+       prize = new Prize(3,1);
+       this.unusedMonsters.add(new Monster("El mal indecible impronunciable",10,badConsequence,prize,-2));
+       
+       // Testigos Oculares
+       
+       badConsequence = new BadConsequence("Pierdes tus tesoros visibles. Jajaja",0,10,0);
+       prize = new Prize(2,1);
+       this.unusedMonsters.add(new Monster("Testigos Oculares",6,badConsequence,prize,2));
+       
+       //El gran cthulhu
+       badConsequence = new BadConsequence("Hoy no es tu dia de suerte. Mueres",true);
+       prize = new Prize(2,5);
+       this.unusedMonsters.add(new Monster("El gran cthulhu",20,badConsequence,prize,4));
+       
+       //Serpiente Político
+       badConsequence = new BadConsequence("Tu gobierno te recorta 2 niveles",2,0,0);
+       prize = new Prize(2,1);
+       this.unusedMonsters.add(new Monster("Serpiente Político",8,badConsequence,prize,-2));
+       
+       //Felpuggoth
+       tVisible = new ArrayList(Arrays.asList(TreasureKind.HELMET));
+       tVisible.add(TreasureKind.ARMOR);
+       tHidden = new ArrayList(Arrays.asList(TreasureKind.ONEHAND));
+       tHidden.add(TreasureKind.ONEHAND);
+       tHidden.add(TreasureKind.BOTHHANDS);
+       badConsequence = new BadConsequence("Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas",2,tVisible,tHidden);
+       prize = new Prize(1,1);
+       this.unusedMonsters.add(new Monster("Serpiente Político",8,badConsequence,prize,5));
+       
+       //Shogooth
+       badConsequence = new BadConsequence("Pierdes 2 niveles",2,0,0);
+       prize = new Prize(4,2);
+       this.unusedMonsters.add(new Monster("Serpiente Político",16,badConsequence,prize,-4));
+       
+       //Lolitagooth
+       badConsequence = new BadConsequence("Pintalabios negro. Pierdes 2 niveles",2,0,0);
+       prize = new Prize(1,1);
+       this.unusedMonsters.add(new Monster("Lolitagooth",2,badConsequence,prize,3));
+       
+    }
+    
+    private void initCultists(){
+
+        Cultist cultist; 
+        cultist = new Cultist("Sectario",+1);
+        this.unusedCultists.add(cultist);
+        
+        cultist = new Cultist("Sectario",+2);
+        this.unusedCultists.add(cultist);
+        
+        cultist = new Cultist("Sectario",+1);
+        this.unusedCultists.add(cultist);
+        
+        cultist = new Cultist("Sectario",+2);
+        this.unusedCultists.add(cultist);
+        
+        cultist = new Cultist("Sectario",+1);
+        this.unusedCultists.add(cultist);
+        
+        cultist = new Cultist("Sectario",+1);
+        this.unusedCultists.add(cultist);
+        
+        
     }
     
     /**
@@ -262,6 +331,10 @@ public class CardDealer {
     
     private void shuffleMonsters(){
         Collections.shuffle(this.unusedMonsters);
+    }
+    
+    private void shuffleCultists(){
+        
     }
     /**
      * Método getInstance()
@@ -323,6 +396,10 @@ public class CardDealer {
             
         return monster;
         
+    }
+    
+    public Cultist nextCultist(){
+        return this.unusedCultists.get(0);
     }
     
     /**

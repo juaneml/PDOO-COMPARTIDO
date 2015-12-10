@@ -152,15 +152,20 @@ public class Napakalaki {
             
             CultistPlayer cultistPlayer = new CultistPlayer(currentPlayer,dealer.nextCultist());
             
-            for( Player p : players){
-                if(p == currentPlayer)
-                    currentPlayer = cultistPlayer;
-                    cultistPlayer.enemy = p.enemy;
-                    p = cultistPlayer;
+            for(int i=0; i< players.size(); i++){
+                if(players.get(i) == currentPlayer){
+                   players.add(i, cultistPlayer);
+                   players.remove(players.get(i+1));
                     
                     
                 }
+                if(players.get(i).enemy == currentPlayer)
+                    players.get(i).enemy = cultistPlayer;
+                    
+            }
+             currentPlayer = cultistPlayer;
         }
+       
         return combatResult;
     }
 

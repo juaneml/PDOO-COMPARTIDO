@@ -16,6 +16,8 @@ public class Player {
     private ArrayList<Treasure> hiddenTreasures;
     private ArrayList<Treasure> visibleTreasures;
     private BadConsequence pendingBadConsequence ;
+    
+    protected ArrayList<Treasure> visibleCultist = visibleTreasures;
     /** Atributos de la clase
      * 
      */
@@ -283,7 +285,8 @@ public class Player {
         CombatResult combatResult;
         CardDealer dealer = CardDealer.getInstance();
         Monster currentMonster = m;
-        monsterLevel = currentMonster.getCombatLevel();
+        //monsterLevel = currentMonster.getCombatLevel();
+        monsterLevel = this.getOponentLevel(currentMonster);
         
         if(myLevel > monsterLevel){
             this.applyPrize(m);
@@ -296,7 +299,10 @@ public class Player {
             
         else{
             this.applyBadConsequence(m);
-            combatResult = CombatResult.LOSE;
+            if(shouldConvert() == true)
+                combatResult = CombatResult.LOSEANDCONVERT;
+            else
+                combatResult = CombatResult.LOSE;
         }
         
         return combatResult; 
@@ -473,9 +479,9 @@ public class Player {
      * false en caso contrario
      * @return 
      */
-    private boolean canYouGiveMeAtreasure(){
+    protected boolean canYouGiveMeAtreasure(){
       
-        if(!this.hiddenTreasures.isEmpty())
+        if(!enemy.hiddenTreasures.isEmpty())
             return true;
         
         else
@@ -511,11 +517,17 @@ public class Player {
     }
     
     protected int getOponentLevel(Monster m){
-        return 5;
+        return m.getCombatLevel();
     }
     
     protected boolean shouldConvert(){
-        return true;
+        Dice dice = Dice.getInstance();
+        int number = dice.nextNumber();
+        
+        if(number ==1)
+            return true;
+        else
+            return false;
     }
     
 

@@ -63,7 +63,7 @@ public class Monster {
     }
 
     public int getCombatLevelAganistCultistPlayer() {
-        return levelChangeAganistCultistPlayer;
+        return levelChangeAganistCultistPlayer + combatLevel;
     }
     
 

@@ -6,6 +6,8 @@
 
 package NapakalakiGame;
 
+import java.util.Random;
+
 /**
  *
  * @author Raul
@@ -17,36 +19,53 @@ public class CultistPlayer extends Player {
     
     CultistPlayer(Player p, Cultist c){
         super(p);
-        this.totalCultistPlayers = this.totalCultistPlayers + 1;
         this.myCultistCard = c;
+        this.totalCultistPlayers = this.totalCultistPlayers + 1;
     }
     
     @Override
     protected int getCombatLevel() {
-        return 5;
+        int suma;
+        double veintexciento;
+        
+        veintexciento = super.getCombatLevel()*0.2;
+        
+        suma = super.getCombatLevel() + (int)veintexciento + myCultistCard.getGainedLevels();
+        return suma;
     }
     
     @Override
     protected int getOponentLevel(Monster m){
-        return 5;
+        return m.getCombatLevelAganistCultistPlayer();
     }
     
     @Override
     protected boolean shouldConvert(){
-        return true;
+        return false;
     }
     
     private Treasure giveMeATreasure(){
+        Random rand = new Random();
+        int numero = rand.nextInt(visibleCultist.size()-1); 
         
+        return  visibleCultist.get(numero);
     }
     
-    private void canYouGiveMeATreasure(){
+    @Override
+    protected boolean canYouGiveMeAtreasure(){
+        if(!enemy.getVisibleTreasures().isEmpty())
+            return true;
         
+        else
+           return false;
+           
+    }
+
+    public static int getTotalCultistPlayers() {
+        return totalCultistPlayers;
     }
     
-    public int getTotalCultistPlayers(){
-        
-    }
+  
     
     
     

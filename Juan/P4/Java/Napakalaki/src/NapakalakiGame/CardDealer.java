@@ -334,7 +334,7 @@ public class CardDealer {
     }
     
     private void shuffleCultists(){
-        
+        Collections.shuffle(this.unusedCultists);
     }
     /**
      * Método getInstance()
@@ -431,6 +431,8 @@ public class CardDealer {
         this.shuffleTreasures();
         this.initMonsterCardDeck();
         this.shuffleMonsters();
+        this.initCultists();
+        this.shuffleCultists();
     }
 /*
     @Override

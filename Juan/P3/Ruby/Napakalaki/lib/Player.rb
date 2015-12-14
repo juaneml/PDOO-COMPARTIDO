@@ -73,6 +73,13 @@ class Player
        end
     end
     
+    #Examen
+    def self.setHiddenTreasures
+        
+    end
+    
+    #fin Examen
+    
      
     def setPendingBadConsequence(b)
         @pendigBadConsequence = b
@@ -252,10 +259,17 @@ class Player
     end
         
     def combat(m)
+       
+        
         myLevel = getCombatLevel()
         @dealer = CardDealer  #mirar
         @currentMonster = m #mirar
-        monsterLevel = @currentMonster.combatLevel
+        #EXAMEN
+        monsterLevel = @currentMonster.getCombatLevel
+              
+        
+        
+        #FIN EXAMEN
         
         if myLevel > monsterLevel
             applyPrize(m)

@@ -190,6 +190,20 @@ class CardDealer
     def shuffleMonsters()
         @unusedMonsters.shuffle!
     end
+    
+    #EXAMEN
+    def getRandomUnusedMonster()
+        if @unusedMonsters.empty?
+            return nil
+        else 
+            number = rand(@unusedMonsters.size-1)
+            return @unusedMonsters[number]
+        end
+    end
+    
+    #Fin Examen
+    
+    
 #    private 
     #Dudas
 #    def self.getInstance()

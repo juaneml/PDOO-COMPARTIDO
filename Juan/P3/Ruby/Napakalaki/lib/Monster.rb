@@ -45,7 +45,29 @@ class Monster
     def getTreasureGained
         @prize.treasures
     end
+    #EXAMEN
+    def getCombatLevel
+        dice = Dice.instance
+        dealer = CardDealer.instance 
+        r = dice.nextNumber
+        friend = nil
+        
+        if r > 5
+            
+            friend = dealer.getRandomUnusedMonster()
+            
+            if friend != nil ####
+                cl = friend.combatLevel
+            else
+                cl =0
+            end
+            
+            
+        end
+        return cl
+    end     
 
+    #Fin EXamen
     def to_s
         "Monster =  #{@name}  , combatLevel =   #{@combatLevel} ,  #{@badconsequence} ,  Price:  #{@prize} "      
     end

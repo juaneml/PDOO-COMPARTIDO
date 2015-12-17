@@ -28,6 +28,10 @@ class Player
         
     
     end
+    
+    def self.newPlayer(p)
+        
+    end
 #    
 #    attr_accesor :name
 #    attr_accesor :visibleTreasures
@@ -61,6 +65,8 @@ class Player
         @level = @level+sum_bonus
        
     end
+    
+    
     
     
     def incrementLevels(l)
@@ -255,7 +261,7 @@ class Player
         myLevel = getCombatLevel()
         @dealer = CardDealer  #mirar
         @currentMonster = m #mirar
-        monsterLevel = @currentMonster.combatLevel
+        monsterLevel = getOponentLevel
         
         if myLevel > monsterLevel
             applyPrize(m)
@@ -266,8 +272,12 @@ class Player
                 combatResult = CombatResult::WIN
             end
         else
-            applyBadConsequence(m)
-            combatResult = CombatResult::LOSE
+            if(shouldConvert() == true)
+                combatResult = CombatResult::LOSEANDCONVERT
+            else
+                applyBadConsequence(m)
+                combatResult = CombatResult::LOSE
+            end
         end
         
         return combatResult
@@ -438,6 +448,27 @@ class Player
         end
         
     end
+    
+    protected
+    def getOponentLevel(m)
+        m.combatLevel
+    end
+    
+    def shouldConvert()
+        dice = Dice.instance
+        number = dice.nextNumber
+        
+        if(number ==1)
+            return true
+        else
+            return false
+        end
+    end
+    
+    def getCombatLevel
+        
+    end
+    
     public
     def to_s 
         "Nombre = #{@name} , Levels =#{@level} "     

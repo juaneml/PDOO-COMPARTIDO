@@ -2,6 +2,7 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
+<<<<<<< HEAD
 #EXAMEN
 class Runme
     
@@ -41,3 +42,32 @@ class Runme
 end
 
 #FIN EXAMEN
+=======
+
+
+require_relative "Napakalaki"
+require_relative "Examen"
+
+module NapakalakiGame
+
+  class Runme
+   
+      def prueba
+        
+       test = Examen.instance
+     
+       game = Napakalaki.instance
+   
+       #Se prueba el juego con 2 jugadores
+   
+       
+       
+      end
+      
+  end
+  
+    e = Examen.instance
+    e.run
+
+end
+>>>>>>> origin/master

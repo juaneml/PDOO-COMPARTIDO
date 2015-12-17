@@ -7,6 +7,7 @@ module CombatResult
     WINGAME = :WINGAME
     WIN = :WIN
     LOSE = :LOSE
+    LOSEANDCONVERT = :LOSEANDCONVERT
  
     def to_s
       if [CombatResult::WINGAME]          
@@ -21,6 +22,9 @@ module CombatResult
           return "Has perdido"
       end
      
+        if [CombatResult::LOSEANDCONVERT]
+            return "Te conviertes"
+        end
       
     end
 end

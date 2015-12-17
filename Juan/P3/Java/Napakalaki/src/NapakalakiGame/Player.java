@@ -3,12 +3,28 @@ package NapakalakiGame;
 import java.util.ArrayList;
 import java.util.Random;
 
+/*
+private static numPlayer;
+acceder al numero de elementos del constructor
+
+public static int getPlayers(){
+ 
+    numPlayer++;
+        return numPlayer;
+    }
+}
+*/
 /**
  *
  * @author juane
  * @version 3.1
  */
+
+
 public class Player {
+
+  
+    
     static final int MAXLEVEL = 10; // <<constant>>
     Player enemy; //Relación asímismo 
     
@@ -497,6 +513,7 @@ public class Player {
      */
     public void discardAllTreasures() {
         ArrayList<Treasure> vaux = new ArrayList(visibleTreasures);
+        
         for (Treasure t : vaux) {
             this.discardVisibleTreasure(t);
         }

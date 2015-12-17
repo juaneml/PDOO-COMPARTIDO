@@ -188,7 +188,7 @@ public class BadConsequence {
 
         ArrayList<Treasure> vaux = new ArrayList(v); //Para no tocar el valor de v
         ArrayList<Treasure> haux = new ArrayList(h); //Para no tocar el valor de h
-        BadConsequence badConsequence; //Sin Usar ??
+        BadConsequence badConsequence; 
 
         if (tamV > 0 || tamH > 0) { // Si los vectores que recibimos tienen cosas entramos aqui
 

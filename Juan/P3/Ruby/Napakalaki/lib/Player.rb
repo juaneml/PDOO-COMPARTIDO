@@ -7,11 +7,22 @@ require_relative 'TreasureKind.rb'
 require_relative 'CombatResult.rb'
 require_relative 'Dice.rb'
 require_relative 'BadConsequence.rb'
+
 module NapakalakiGame
     
+#Definimos el atributo para el número de 
+#elementos de la clase que queramos
+#@@atributo
+#definimos el método equivalente static en java
+#     
+# #def self.nombre_metodo
+# @@atributo
+# 
+# end
 class Player   
     @@MAXLEVEL = 10
     #constructor
+    
     
     def initialize(name)
         @name = name
@@ -59,6 +70,8 @@ class Player
          end
          
         @level = @level+sum_bonus
+        
+        # return @level opcional
        
     end
     
@@ -438,6 +451,28 @@ class Player
         end
         
     end
+    
+    #EXAMEN
+    
+    def combat(m)
+        monsterLevel = m.getCombatLevel()
+        
+        return monsterLevel
+        
+    end
+    
+    
+    
+    
+    @@setHiddenTreasures
+    
+    def self.setHiddenTreasures(hiddenTreasures)
+        
+    end
+    #FIN EXAMEN
+    
+    
+    
     public
     def to_s 
         "Nombre = #{@name} , Levels =#{@level} "     

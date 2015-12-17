@@ -227,7 +227,11 @@ class Napakalaki
    end
    
     
+   
+    #EXAMEN
+        @currenPlayer.combat(@currentMonster)
     
+    #FIN EXAMEN
 end
 
 end

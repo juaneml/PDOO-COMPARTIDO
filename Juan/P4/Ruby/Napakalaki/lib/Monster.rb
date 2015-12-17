@@ -22,7 +22,7 @@ class Monster
  
   
   
-    def initialize(name,level,bc,price,ic)
+    def initialize(name,level,bc,price,ic=0)
         @name = name
         @combatLevel = level    
         @prize = price
@@ -31,13 +31,14 @@ class Monster
     
     end
     
-    def self.oldMonster(name, level,bc,price)
-        new(name,level,bc,price,0)
-    end
-    
-    def self.newMonster(name, level,bc,price,ic)
-        new(name,level,bc,price,ic)
-    end
+#    private_class_method :new
+#    def self.oldMonster(name, level,bc,price)
+#        new(name,level,bc,price,0)
+#    end
+#    
+#    def self.newMonster(name, level,bc,price,ic)
+#        new(name,level,bc,price,ic)
+#    end
   
     ## Métodos get
     attr_reader :name

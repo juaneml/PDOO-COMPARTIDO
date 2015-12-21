@@ -54,13 +54,21 @@ class CultistPlayer < Player
         return false
     end
     
+    
     private
     def giveMeATreasure
+        number = rand(@visibleTreasures.size-1)
         
+        return @visibleTreasures[number]
     end
     
+    protected
     def canYouGiveMeATreasure
-        
+        if (!enemy.getVisibleTreasures.empty?)
+            return true
+        else
+            return false
+        end
     end
     
     public

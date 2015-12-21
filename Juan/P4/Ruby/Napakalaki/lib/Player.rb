@@ -50,6 +50,7 @@ class Player
     attr_reader :visibleTreasures
     attr_reader :hiddenTreasures
     attr_reader :level
+    attr_reader :enemy
     
    
     private

@@ -2,7 +2,7 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-<<<<<<< HEAD
+
 #EXAMEN
 class Runme
     
@@ -42,7 +42,7 @@ class Runme
 end
 
 #FIN EXAMEN
-=======
+
 
 
 require_relative "Napakalaki"
@@ -70,4 +70,3 @@ module NapakalakiGame
     e.run
 
 end
->>>>>>> origin/master

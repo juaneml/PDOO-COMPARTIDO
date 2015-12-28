@@ -12,14 +12,29 @@ package NapakalakiGame;
  */
 public class Cultist {
     
+    /* Atributos*/
+    
     private String name;
     private int gainedLevels;
+    
+    /* Constructor */
+    
+    /**
+     * Constructor
+     * @param name String
+     * @param gainedLevels int
+     */
     
     Cultist(String name, int gainedLevels){
         this.name=name;
         this.gainedLevels=gainedLevels;        
     }
 
+    /**
+     * Método getGainedLevels()
+     * @return gainedLevels de tipo int
+     */
+    
     public int getGainedLevels() {
         return gainedLevels;
     }

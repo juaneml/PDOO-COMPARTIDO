@@ -18,6 +18,7 @@ public class Player {
     private BadConsequence pendingBadConsequence ;
     
     protected ArrayList<Treasure> visibleCultist = visibleTreasures;
+    
     /** Atributos de la clase
      * 
      */
@@ -454,8 +455,9 @@ public class Player {
     /**
      * Método giveMeAtreasure()
      * @return 
+     * private
      */
-    private Treasure giveMeAtreasure() {
+    protected Treasure giveMeAtreasure() {
 
         Treasure tesoro;
         Random rand = new Random();
@@ -530,7 +532,16 @@ public class Player {
             return false;
     }
     
-
+    /**
+     * consultor protected para la variable enemy  para que
+     * pueda ser consultada también por CultistPlayer.
+     * @return enemy de tipo Player
+     */
+    
+    protected Player getEnemy(){
+       return this.enemy;
+    }
+    
     @Override
     public String toString() {
        // return "Player{" + "enemy=" + enemy + ", hiddenTreasures=" + hiddenTreasures + ", visibleTreasures=" + visibleTreasures + ", pendingBadConsequence=" + pendingBadConsequence + ", name=" + name + ", level=" + level + ", dead=" + dead + ", canISteal=" + canISteal + '}';

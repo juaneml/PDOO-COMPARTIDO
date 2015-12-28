@@ -292,7 +292,7 @@ public class CardDealer {
        
     }
     
-    private void initCultists(){
+    private void initCultistsCardDeck(){
 
         Cultist cultist; 
         cultist = new Cultist("Sectario",+1);
@@ -431,7 +431,7 @@ public class CardDealer {
         this.shuffleTreasures();
         this.initMonsterCardDeck();
         this.shuffleMonsters();
-        this.initCultists();
+        this.initCultistsCardDeck();
         this.shuffleCultists();
     }
 /*

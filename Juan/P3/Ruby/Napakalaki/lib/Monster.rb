@@ -68,7 +68,7 @@ class Monster
         return cl
     end     
 
-<<<<<<< HEAD
+
     #EXAMEN
     
     def getCombatLevel
@@ -94,9 +94,8 @@ class Monster
          
     end
     #FIN EXAMEN
-=======
-    #Fin EXamen
->>>>>>> origin/master
+
+
     def to_s
         "Monster =  #{@name}  , combatLevel =   #{@combatLevel} ,  #{@badconsequence} ,  Price:  #{@prize} "      
     end

@@ -44,8 +44,17 @@ public class Player {
         
     }
     
+    /**
+     *   Constructor de Copias
+     */
     public Player(Player p){
-        
+        this.name = p.name;
+        this.level = p.level;
+        this.dead = p.dead;
+        this.canISteal = p.canISteal;
+        this.visibleTreasures = p.visibleTreasures;
+        this.hiddenTreasures = p.hiddenTreasures;
+        this.pendingBadConsequence = p.pendingBadConsequence;
     }
 
     /**

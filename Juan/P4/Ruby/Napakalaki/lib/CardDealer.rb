@@ -187,32 +187,32 @@ class CardDealer
         
         price = Prize.new(2,1)
         badconsequence = BadConsequence.newLevelNumberOfTreasures('Pierdes tus tesoros visibles',0,10,0)
-        @unusedMonsters << newMonster.new('Testigos oculares',6,badconsequence,price,+2)
+        @unusedMonsters << Monster.new('Testigos oculares',6,badconsequence,price,+2)
         
         
         price = Prize.new(2,5)
         badconsequence = BadConsequence.newDeath('Hoy no es tu dia de suerte. Mueres.')
-        @unusedMonsters << newMonster.new('El gran cthulhu',20,badconsequence,price,+4)
+        @unusedMonsters << Monster.new('El gran cthulhu',20,badconsequence,price,+4)
         
         
         price = Prize.new(2,1)
         badconsequence = BadConsequence.newLevelNumberOfTreasures('Tu gobierno te recorta 2 niveles',2,0,0)
-        @unusedMonsters << newMonster.new('Serpiente politico',8,badconsequence,price,-2)
+        @unusedMonsters << Monster.new('Serpiente politico',8,badconsequence,price,-2)
         
         
         price = Prize.new(1,1)
         badconsequence = BadConsequence.newLevelSpecificTreasures('Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas.',0,[TreasureKind::HELMET,TreasureKind::ARMOR],[TreasureKind::ONEHAND,TreasureKind::ONEHAND,TreasureKind::BOTHHANDS])
-        @unusedMonsters << newMonster.new('Felpuggoth',2,badconsequence,price,+5)
+        @unusedMonsters << Monster.new('Felpuggoth',2,badconsequence,price,+5)
         
         
         price = Prize.new(4,2)
         badconsequence = BadConsequence.newLevelNumberOfTreasures('Pierdes 2 niveles',2,0,0)
-        @unusedMonsters << newMonster.new('Shoggoth',16,badconsequence,price,-4)
+        @unusedMonsters << Monster.new('Shoggoth',16,badconsequence,price,-4)
         
         
         price = Prize.new(1,1)
         badconsequence = BadConsequence.newLevelNumberOfTreasures('Pierdes 2 niveles',2,0,0)
-        @unusedMonsters << newMonster.new('Lolitagooth',2,badconsequence,price,+3)
+        @unusedMonsters << Monster.new('Lolitagooth',2,badconsequence,price,+3)
 
     end
     

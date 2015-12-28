@@ -29,9 +29,15 @@ class Player
     
     end
     
-    def self.newPlayer(p)
-        
-    end
+#    private_class_method :new
+#    
+#    def self.oldPlayer(name)
+#        new(name)
+#    end
+#    
+#    def self.newPlayer(p)
+#        
+#    end
 #    
 #    attr_accesor :name
 #    attr_accesor :visibleTreasures
@@ -39,10 +45,12 @@ class Player
 #    attr_accesor :level
     
     ## Métodos get
+    protected
     attr_reader :name
     attr_reader :visibleTreasures
     attr_reader :hiddenTreasures
     attr_reader :level
+    attr_reader :enemy
     
    
     private

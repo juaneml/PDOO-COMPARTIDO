@@ -16,9 +16,19 @@ class CultistPlayer < Player
     @myCultistCard = Cultist.new('nada',0)
     
     def initialize(p,c)
-        super(p)
+        @name = p.name
+        @level = p.level
+        @dead = p.dead
+        @canISteal = p.canISteal
+        @enemy = p.enemy
+
+        @pendingBadConsequence = p.pendingBadConsequence
+
+        @hiddenTreasures = p.hiddenTreasures
+        @visibleTreasures = p.visibleTreasures
+        @myCultistCard = c
+        
         incTotal
-        @ic = c
     end 
     
     def self.incTotal
@@ -42,13 +52,21 @@ class CultistPlayer < Player
         return false
     end
     
+    
     private
     def giveMeATreasure
+        number = rand(@visibleTreasures.size-1)
         
+        return @visibleTreasures[number]
     end
     
+    protected
     def canYouGiveMeATreasure
-        
+        if (!enemy.getVisibleTreasures.empty?)
+            return true
+        else
+            return false
+        end
     end
     
     public

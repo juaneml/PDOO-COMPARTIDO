@@ -6,7 +6,7 @@ require 'Player.rb'
 require 'CardDealer.rb'
 require 'Dice.rb'
 require 'singleton'
-
+require 'Monster.rb'
 
 module NapakalakiGame
 
@@ -29,7 +29,7 @@ class Napakalaki
     def initialize()
         @currentPlayer 
         @players 
-        @dealer = CardDealer.instance
+        @dealer = CardDealer.instance()
         @currentMonster  
     end
 
@@ -85,12 +85,17 @@ class Napakalaki
             
         else
             i=0
+            cambiado= false
             while( i< @players.size)
-                if(@currentPlayer == @player[i])
-                    if(i==(@players.size -1))
-                        @currentPlayer = @players[0]
-                    else
-                        @currentPlayer = @players[i+1]
+                if(@currentPlayer == @players[i])
+                    if(cambiado == false)
+                        if(i ==(@players.size-1))
+                            @currentPlayer = @players[0]
+                            cambiado=true
+                        else
+                            @currentPlayer = @players[i+1]
+                            cambiado=true
+                        end
                     end
                 end
                 i = i+1
@@ -114,13 +119,16 @@ class Napakalaki
     private
     def nextTurnAllowed()
         sig = false
+        puts 'Este es el currentPlayer'
+        puts @currentPlayer
         
-        #if(@currentPlayer.validState)
         if @currentPlayer == nil
             sig=true
         end
+        if(@currentPlayer.validState)        
         
         return sig
+        end
     end
     
     
@@ -147,9 +155,27 @@ class Napakalaki
 #    end
 #   
 
+    
     public
     def developCombat()
         combatResult = @currentPlayer.combat(@currentMonster)
+        
+        if combatResult == CombatResult::LOSEANDCONVERT
+              dealer=CardDealer.instance 
+              cultistPlayer = CultistPlayer(@currentPlayer,dealer.nextCultist())
+              
+            @players.each do |p|
+                if (p == @currentPlayer)
+                    p = cultistPlayer
+                end
+                
+                if p.enemy == @currentPlayer
+                    p.enemy = cultistPlayer
+                end
+            end
+              
+            @currentPlayer = cultistPlayer
+        end
         
         return combatResult
     end
@@ -157,23 +183,25 @@ class Napakalaki
 
     
     def discardVisibleTreasures (treasures)
-        @treasures.each do |t|
-            @currentPlayer.discardVisibleTreasure(t)
+        treasures.each do |t|
+            @currentPlayer.discardVisibleTreasures(t)
             @dealer.giveTreasureBack(t)
         end
     end
     
-    def discarHiddenTreasures(treasures)
-        @treasures.each do |t|
-            @currentPlayer.discardHiddenTreasure(t)
+    def discardHiddenTreasures(treasures)
+        treasures.each do |t|
+            @currentPlayer.discardHiddenTreasures(t)
             @dealer.giveTreasureBack(t)
         end
     end
     
    
-    def makeTreasuresVisible(treasures)
-        @treasures.each do |t|
-            @currentPlayer.discardHiddenTreasure(t)
+
+    def makeTreasureVisible(treasures)
+
+        treasures.each do |t|
+            @currentPlayer.discardHiddenTreasures(t)
             @dealer.giveTreasureBack(t)
         end
         
@@ -182,11 +210,11 @@ class Napakalaki
     def initGame(players)
         initPlayers(players)
         setEnemies()
-
         @dealer.initCards
-         nextTurn()
-       # @currentPlayer.initTreasures
-       
+        nextPlayer
+        nextTurn()
+            
+
         
     end
     
@@ -197,11 +225,11 @@ class Napakalaki
         if(stateOK == true)
             @currentMonster = @dealer.nextMonster
             @currentPlayer = nextPlayer
-            #dead = @currentPlayer.isDead()
+            dead = @currentPlayer.isDead()
             
-            #if(dead == true)
+            if(dead == true)
                 @currentPlayer.initTreasures
-            #end
+            end
         end
         
         return stateOK

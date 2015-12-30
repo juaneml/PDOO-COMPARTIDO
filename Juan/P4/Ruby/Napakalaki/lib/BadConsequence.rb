@@ -8,8 +8,7 @@ require_relative 'TreasureKind.rb'
 module NapakalakiGame
 class BadConsequence
 
-    # CONSTANTE
-    @@MAXTREASURES = 10
+   
     
     #  @text #String que representa lo que dice el mal royo
     #  @levels # int para representar los niveles que se pierden
@@ -25,8 +24,7 @@ class BadConsequence
     # Constructor #
     #LevelNumberOfTreasures
 
-    def  initialize(aText,someLevels,someVisibleTreasures,someHiddenTreasures,
-            someSpecificVisibleTreasures,someSpecificHiddenTreasures, death)
+    def  initialize(aText,someLevels,someVisibleTreasures,someHiddenTreasures,someSpecificVisibleTreasures,someSpecificHiddenTreasures, death)
         @text = aText
         @levels = someLevels
         @nVisibleTreasures = someVisibleTreasures
@@ -36,35 +34,46 @@ class BadConsequence
         @death = death
    
     end 
-
+ # CONSTANTE
+    MAXTREASURES = 10
     ## Métodos solo lectura, get
     
+    attr_reader :text
     attr_reader :levels
     attr_reader :nVisibleTreasures
     attr_reader :nHiddenTreasures
     attr_reader :specificHiddenTreasures
     attr_reader :specificVisibleTreasures
-  
-   
+    attr_reader :MAXTREASURES
+#       
+#    attr_accessor :text
+#    attr_accessor :levels
+#    attr_accessor :nVisibleTreasures
+#    attr_accessor :nHiddenTreasures
+#    attr_accessor :specificHiddenTreasure
+#    attr_accessor :specificVisibleTreasure
+#    attr_accessor :death
     
     private_class_method :new
 
-    def self.newLevelNumberOfTreasures(aText, someLevels,someVisibleTreasures,
-            someHiddenTreasures)
-        new(aText,someLevels,someVisibleTreasures,someHiddenTreasures,[],[],false)
+    def BadConsequence.newLevelNumberOfTreasures(aText, someLevels,someVisibleTreasures,someHiddenTreasures)
+       new(aText,someLevels,someVisibleTreasures,someHiddenTreasures,[],[],false)
     end
     
-    def  self.newLevelSpecificTreasures (aText, someLevels,
-            someSpecificVisibleTreasures, someSpecificHiddenTreasures)
-
-        new(aText,someLevels,0,0,someSpecificVisibleTreasures,someSpecificHiddenTreasures,false)
+    private_class_method :new
+    
+    def  BadConsequence.newLevelSpecificTreasures (aText,someLevels,someSpecificVisibleTreasures,someSpecificHiddenTreasures)
+      
+       new(aText,someLevels,0,0,someSpecificVisibleTreasures,someSpecificHiddenTreasures,false)
     end
     
-    def self.newDeath(aText)
-        new(aText,0,0,0,[],[],true)
+    private_class_method :new
+    
+    def BadConsequence.newDeath(aText)
+         new(aText,0,0,0,[],[],true)
     end
    
-    
+    public
     def isEmpty()
         vacio = false
         if @nHiddenTreasures == 0 && @nVisibleTreasures==0  && @death == false  && @specificVisibleTreasures.empty?  && @specificHiddenTreasures.empty?

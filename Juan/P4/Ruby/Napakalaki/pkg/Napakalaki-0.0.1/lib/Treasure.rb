@@ -14,6 +14,9 @@ class Treasure
    attr_reader :bonus
    attr_reader :type
    
+#    def type
+#        return @type
+#    end
     def to_s
         "Treasure =  #{@name}  , bonus =   #{@bonus} ,type =  #{@type}  "      
     end

@@ -8,8 +8,7 @@ require_relative 'TreasureKind.rb'
 module NapakalakiGame
 class BadConsequence
 
-    # CONSTANTE
-    @@MAXTREASURES = 10
+   
     
     #  @text #String que representa lo que dice el mal royo
     #  @levels # int para representar los niveles que se pierden
@@ -25,8 +24,7 @@ class BadConsequence
     # Constructor #
     #LevelNumberOfTreasures
 
-    def  initialize(aText,someLevels,someVisibleTreasures,someHiddenTreasures,
-            someSpecificVisibleTreasures,someSpecificHiddenTreasures, death)
+    def  initialize(aText,someLevels,someVisibleTreasures,someHiddenTreasures,someSpecificVisibleTreasures,someSpecificHiddenTreasures, death)
         @text = aText
         @levels = someLevels
         @nVisibleTreasures = someVisibleTreasures
@@ -36,35 +34,46 @@ class BadConsequence
         @death = death
    
     end 
-
+ # CONSTANTE
+    MAXTREASURES = 10
     ## Métodos solo lectura, get
     
+    attr_reader :text
     attr_reader :levels
     attr_reader :nVisibleTreasures
     attr_reader :nHiddenTreasures
     attr_reader :specificHiddenTreasures
     attr_reader :specificVisibleTreasures
-  
-   
+    attr_reader :MAXTREASURES
+#       
+#    attr_accessor :text
+#    attr_accessor :levels
+#    attr_accessor :nVisibleTreasures
+#    attr_accessor :nHiddenTreasures
+#    attr_accessor :specificHiddenTreasure
+#    attr_accessor :specificVisibleTreasure
+#    attr_accessor :death
     
     private_class_method :new
 
-    def self.newLevelNumberOfTreasures(aText, someLevels,someVisibleTreasures,
-            someHiddenTreasures)
-        new(aText,someLevels,someVisibleTreasures,someHiddenTreasures,[],[],false)
+    def BadConsequence.newLevelNumberOfTreasures(aText, someLevels,someVisibleTreasures,someHiddenTreasures)
+       new(aText,someLevels,someVisibleTreasures,someHiddenTreasures,[],[],false)
     end
     
-    def  self.newLevelSpecificTreasures (aText, someLevels,
-            someSpecificVisibleTreasures, someSpecificHiddenTreasures)
-
-        new(aText,someLevels,0,0,someSpecificVisibleTreasures,someSpecificHiddenTreasures,false)
+    private_class_method :new
+    
+    def  BadConsequence.newLevelSpecificTreasures (aText,someLevels,someSpecificVisibleTreasures,someSpecificHiddenTreasures)
+      
+       new(aText,someLevels,0,0,someSpecificVisibleTreasures,someSpecificHiddenTreasures,false)
     end
     
-    def self.newDeath(aText)
-        new(aText,0,0,0,[],[],true)
+    private_class_method :new
+    
+    def BadConsequence.newDeath(aText)
+         new(aText,0,0,0,[],[],true)
     end
    
-    
+    public
     def isEmpty()
         vacio = false
         if @nHiddenTreasures == 0 && @nVisibleTreasures==0  && @death == false  && @specificVisibleTreasures.empty?  && @specificHiddenTreasures.empty?
@@ -86,14 +95,17 @@ class BadConsequence
     def adjustToFitTreasureList(v,h)
         tamV = v.size()
         tamH = h.size();
-
+        puts 'tamH #{tamH}'
         nVisibleAux = @nVisibleTreasures;
         nHiddenAux = @nHiddenTreasures;
 
-        vaux = v # ArrayList<Treasure>  
-        haux = h # ArrayList<Treasure>  
+#        vaux = Treasure.new('',0,[TreasureKind::ARMOR])
+#        haux = Treasure.new('',0,[TreasureKind::ARMOR])
+        vaux = Array.new(v) # ArrayList<Treasure>  
+        haux = Array.new(h) # ArrayList<Treasure>  
         #badConsequence #BadConsequence 
-
+        
+        puts 'haux'
         if tamV > 0 || tamH > 0  # Si los vectores que recibimos tienen cosas entramos aqui
 
             #si los arrays de tesoros especificos a perder estan vacíos entramos
@@ -123,7 +135,7 @@ class BadConsequence
                     end
                 end
                 
-                badConsequence = BadConsequence.nenewLevelNumberOfTreasures(@text, @levels, nVisibleAux, nHiddenAux);
+                badConsequence = BadConsequence.newLevelNumberOfTreasures(@text, @levels, nVisibleAux, nHiddenAux);
                 return badConsequence;
             end
 
@@ -134,17 +146,19 @@ class BadConsequence
                  hcopia = Array.new #ArrayList<TreasureKind>
 
                 # si ninguno de los dos arrays está vacío
-                if !@specificHiddenTreasures.empty? && !@specificVisibleTreasures.empty? 
+                if !@specificHiddenTreasures.empty? || !@specificVisibleTreasures.empty? 
                     #de cada elemento de la lista de específicos ocultos
                     @specificHiddenTreasures.each do|sht| #for (TreasureKind sht : specificHiddenTreasures) 
-                        esta = false;                    
+                        esta = false;    
+                        puts haux.size
                         for i in 0..(haux.size()-1) 
+                            puts i
+                            puts haux[i]
                             if esta ==false
                                 if sht == haux[i].type #si son iguales
                                     hcopia << haux[i].type # se mete en el vector de copias
                                     esta = true #esta pasa a valer true(esto es para el que el for salte)
-                                    haux.remove(haux.get(i)) #se quita de la lista, para que no siga contandolo
-
+                                    haux.delete(sht) #se quita de la lista, para que no siga contandolo
                                 end
                             end
                         end
@@ -154,11 +168,15 @@ class BadConsequence
                         esta = false;
                         #for(Treasure hTreasure : h){
                         for i in 0..(vaux.size()-1) 
-                           if esta ==false
-                               if (svt == haux[i].type) 
+
+
+                           if esta == false
+
+
+                               if (svt == vaux[i].type) 
                                     vcopia << vaux[i].type
                                     esta=true
-                                    vaux.remove(vaux.get(i))
+                                    vaux.delete(svt)
                                 end
                             end
                         end
@@ -176,10 +194,10 @@ class BadConsequence
                         #for(Treasure hTreasure : h){
                         for i in 0..(vaux.size()-1) 
                            if esta ==false
-                                if (svt == haux.get(i).getType()) 
-                                    vcopia << vaux.get(i).getType()
+                                if (svt == vaux.fetch(i).type) 
+                                    vcopia << vaux[i].type
                                     esta =true
-                                    vaux.remove(vaux.get(i))
+                                    vaux.delete(vaux[i])
                                 end
                             end
                         end
@@ -195,7 +213,7 @@ class BadConsequence
                                 if sht == haux.get(i).getType()  #si son iguales
                                     hcopia << haux.get(i).getType() # se mete en el vector de copias
                                     esta = true #esta pasa a valer true(esto es para el que el for salte)
-                                    haux.remove(haux.get(i)) #se quita de la lista, para que no siga contandolo
+                                    haux.delete(haux.get(i)) #se quita de la lista, para que no siga contandolo
 
                                 end
                             end
@@ -214,7 +232,7 @@ class BadConsequence
 
         end
         #*** Cambiado provisional para no devolver null ****//
-        badConsequence = new BadConsequence("No mal royo",0,0,0)
+        badConsequence = BadConsequence.newLevelSpecificTreasures("No mal royo",0,0,0)
         return badConsequence; #//cambiar
 
     

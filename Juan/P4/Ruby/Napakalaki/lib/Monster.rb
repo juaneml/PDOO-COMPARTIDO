@@ -22,7 +22,7 @@ class Monster
  
   
   
-    def initialize(name,level,bc,price,ic=0)
+    def initialize(name,level,bc,price,ic)
         @name = name
         @combatLevel = level    
         @prize = price
@@ -61,8 +61,9 @@ class Monster
     end
 
     def to_s
-        "Monster =  #{@name}  , combatLevel =   #{@combatLevel} ,  #{@badconsequence} ,  Price:  #{@prize} "      
+       return "Monster =  #{@name}  , combatLevel =   #{@combatLevel} , bc = #{@badconsequence} ,  Price:  #{@prize} , levelChanged: #{@ic}"      
     end
-  
+   
+   
 end
 end

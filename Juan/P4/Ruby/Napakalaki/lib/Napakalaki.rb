@@ -6,7 +6,7 @@ require 'Player.rb'
 require 'CardDealer.rb'
 require 'Dice.rb'
 require 'singleton'
-
+require 'Monster.rb'
 
 module NapakalakiGame
 
@@ -29,7 +29,7 @@ class Napakalaki
     def initialize()
         @currentPlayer 
         @players 
-        @dealer = CardDealer.instance
+        @dealer = CardDealer.instance()
         @currentMonster  
     end
 
@@ -122,12 +122,13 @@ class Napakalaki
         puts 'Este es el currentPlayer'
         puts @currentPlayer
         
-        if(@currentPlayer.validState)
-        #if @currentPlayer == nil
+        if @currentPlayer == nil
             sig=true
         end
+        if(@currentPlayer.validState)        
         
         return sig
+        end
     end
     
     

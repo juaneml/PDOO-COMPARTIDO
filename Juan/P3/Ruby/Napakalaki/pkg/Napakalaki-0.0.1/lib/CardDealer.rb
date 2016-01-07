@@ -25,37 +25,37 @@ class CardDealer
     
     private 
     def initTreasureCardDeck()
-        @unusedTreasures << Treasure.new("¡Si mi amo!",4,[TreasureKind::HELMET] )
-        @unusedTreasures << Treasure.new("Botas de invetigacion",3,[TreasureKind::SHOES] )
-        @unusedTreasures << Treasure.new("Capucha de Cthulhu",3,[TreasureKind::HELMET] )
-        @unusedTreasures << Treasure.new("A prueba de babas",2,[TreasureKind::ARMOR] )
-        @unusedTreasures << Treasure.new("Botas de lluvia ácida",1,[TreasureKind::BOTHHANDS] )
-        @unusedTreasures << Treasure.new("Casco minero",2, [TreasureKind::HELMET] )
-        @unusedTreasures << Treasure.new("Amatralladora Thompson",4,[TreasureKind::BOTHHANDS] )
-        @unusedTreasures << Treasure.new("Camiseta de la UGR",1,[TreasureKind::ARMOR] )
-        @unusedTreasures << Treasure.new("Clavo de rail ferroviario",3,[TreasureKind::ONEHAND] )
-        @unusedTreasures << Treasure.new("Cuchillo de sushi arcano",2,[TreasureKind::ONEHAND] )
-        @unusedTreasures << Treasure.new("Fez alopdo",3,[TreasureKind::HELMET] )
-        @unusedTreasures << Treasure.new("Hacha prehistorica",2, [TreasureKind::ONEHAND] )
-        @unusedTreasures << Treasure.new("El aparato del Pr. Tesla",4, [TreasureKind::ARMOR] )
-        @unusedTreasures << Treasure.new("Gaita",4,[TreasureKind::BOTHHANDS] )
-        @unusedTreasures << Treasure.new("Insecticida",2,[TreasureKind::ONEHAND] )
-        @unusedTreasures << Treasure.new("Escopeta de 3 cañones",4,[TreasureKind::BOTHHANDS] )
-        @unusedTreasures << Treasure.new("Garabato mistico",2,[TreasureKind::ONEHAND] )
-        @unusedTreasures << Treasure.new("La rebeca metalica",2,[TreasureKind::ARMOR] )
-        @unusedTreasures << Treasure.new("Lanzallamas",4,[TreasureKind::BOTHHANDS] )
-        @unusedTreasures << Treasure.new("Necro-comicon",1,[TreasureKind::ONEHAND] )
-        @unusedTreasures << Treasure.new("Necronomicon",5,[TreasureKind::BOTHHANDS] )
-        @unusedTreasures << Treasure.new("Linterna a 2 manos",3,[TreasureKind::BOTHHANDS] )
-        @unusedTreasures << Treasure.new("Necrognomicon",2, [TreasureKind::ONEHAND] )
-        @unusedTreasures << Treasure.new("Necrotelecom",2,[TreasureKind::HELMET] )
-        @unusedTreasures << Treasure.new("Mazo de los antiguos",3,[TreasureKind::ONEHAND] )
-        @unusedTreasures << Treasure.new("Necro-playbocón",3,[TreasureKind::ONEHAND] )
-        @unusedTreasures << Treasure.new("Porra preternatural",2,[TreasureKind::ONEHAND] )        
-        @unusedTreasures << Treasure.new("Shogulador",1,[TreasureKind::BOTHHANDS] )
-        @unusedTreasures << Treasure.new("Varita de atizamiento",3, [TreasureKind::ONEHAND] )
-        @unusedTreasures << Treasure.new("Tentaculo de pega",2,[TreasureKind::HELMET] )
-        @unusedTreasures << Treasure.new("Zapato deja-amigos",1,[TreasureKind::SHOES] )
+        @unusedTreasures << Treasure.new("¡Si mi amo!",4,TreasureKind::HELMET )
+        @unusedTreasures << Treasure.new("Botas de invetigacion",3,TreasureKind::SHOES )
+        @unusedTreasures << Treasure.new("Capucha de Cthulhu",3,TreasureKind::HELMET )
+        @unusedTreasures << Treasure.new("A prueba de babas",2,TreasureKind::ARMOR )
+        @unusedTreasures << Treasure.new("Botas de lluvia ácida",1,TreasureKind::BOTHHANDS )
+        @unusedTreasures << Treasure.new("Casco minero",2, TreasureKind::HELMET )
+        @unusedTreasures << Treasure.new("Amatralladora Thompson",4,TreasureKind::BOTHHANDS )
+        @unusedTreasures << Treasure.new("Camiseta de la UGR",1,TreasureKind::ARMOR )
+        @unusedTreasures << Treasure.new("Clavo de rail ferroviario",3,TreasureKind::ONEHAND )
+        @unusedTreasures << Treasure.new("Cuchillo de sushi arcano",2,TreasureKind::ONEHAND )
+        @unusedTreasures << Treasure.new("Fez alopdo",3,TreasureKind::HELMET )
+        @unusedTreasures << Treasure.new("Hacha prehistorica",2, TreasureKind::ONEHAND )
+        @unusedTreasures << Treasure.new("El aparato del Pr. Tesla",4, TreasureKind::ARMOR )
+        @unusedTreasures << Treasure.new("Gaita",4,TreasureKind::BOTHHANDS )
+        @unusedTreasures << Treasure.new("Insecticida",2,TreasureKind::ONEHAND )
+        @unusedTreasures << Treasure.new("Escopeta de 3 cañones",4,TreasureKind::BOTHHANDS )
+        @unusedTreasures << Treasure.new("Garabato mistico",2,TreasureKind::ONEHAND )
+        @unusedTreasures << Treasure.new("La rebeca metalica",2,TreasureKind::ARMOR )
+        @unusedTreasures << Treasure.new("Lanzallamas",4,TreasureKind::BOTHHANDS )
+        @unusedTreasures << Treasure.new("Necro-comicon",1,TreasureKind::ONEHAND )
+        @unusedTreasures << Treasure.new("Necronomicon",5,TreasureKind::BOTHHANDS )
+        @unusedTreasures << Treasure.new("Linterna a 2 manos",3,TreasureKind::BOTHHANDS )
+        @unusedTreasures << Treasure.new("Necrognomicon",2, TreasureKind::ONEHAND )
+        @unusedTreasures << Treasure.new("Necrotelecom",2,TreasureKind::HELMET )
+        @unusedTreasures << Treasure.new("Mazo de los antiguos",3,TreasureKind::ONEHAND )
+        @unusedTreasures << Treasure.new("Necro-playbocón",3,TreasureKind::ONEHAND)
+        @unusedTreasures << Treasure.new("Porra preternatural",2,TreasureKind::ONEHAND )        
+        @unusedTreasures << Treasure.new("Shogulador",1,TreasureKind::BOTHHANDS)
+        @unusedTreasures << Treasure.new("Varita de atizamiento",3, TreasureKind::ONEHAND )
+        @unusedTreasures << Treasure.new("Tentaculo de pega",2,TreasureKind::HELMET )
+        @unusedTreasures << Treasure.new("Zapato deja-amigos",1,TreasureKind::SHOES )
     
     end
     
@@ -176,6 +176,10 @@ class CardDealer
         price = Prize.new(1,1)
         badconsequence = BadConsequence.newLevelSpecificTreasures('Te faltan manos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos',3,[TreasureKind::ONEHAND,TreasureKind::ONEHAND,TreasureKind::BOTHHANDS],[])
         @unusedMonsters << Monster.new('Bicefalo',20,badconsequence,price)
+        
+        @unusedTreasures.each do |i|
+          puts  i
+        end
 
     end
     private
@@ -186,6 +190,20 @@ class CardDealer
     def shuffleMonsters()
         @unusedMonsters.shuffle!
     end
+    
+    #EXAMEN
+    def getRandomUnusedMonster()
+        if @unusedMonsters.empty?
+            return nil
+        else 
+            number = rand(@unusedMonsters.size-1)
+            return @unusedMonsters[number]
+        end
+    end
+    
+    #Fin Examen
+    
+    
 #    private 
     #Dudas
 #    def self.getInstance()
@@ -193,17 +211,43 @@ class CardDealer
 #    end
 
     
-
+    
+#    
+#              
+#                
+#            
+#               
+#            
+#                
+#        
+    
     public
     def nextTreasure()
-        tesoro = @unusedTreasures[0]
-        @unusedTreasures.delete(tesoro) 
-        if(@unusedTreasures.empty?)
+        
+        
+        
+        aux = @unusedTreasures[0]
+        puts aux
+        @unusedTreasures.delete(aux)
+        if @unusedTreasures.empty?
+            tmp = @unusedTreasures
             @unusedTreasures = @usedTreasures
-            self.shuffleTreasures()
-            
+            @usedTreasures = tmp
+#            @usedTreasures.each  do |i|
+#                @unusedTreasures << i
+#            end
+#            @usedTreasures.clear #quitamos las cartas de los descartes
         end
-        return tesoro
+        shuffleTreasures() #barajamos el mazo de tesoros
+        
+
+        #Ponemos la primera carta               
+        #aux = @unusedTreasures.fetch(0)
+        
+        
+              
+      
+        return aux
     end
     
     

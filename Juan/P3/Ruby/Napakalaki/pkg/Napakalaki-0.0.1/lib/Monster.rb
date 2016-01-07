@@ -20,6 +20,7 @@ class Monster
     # @badconsequence  # de tipo BadConsequence
     # @price # de tipo Prize
  
+    
   
   
     def initialize(name,level,bc,price)
@@ -39,12 +40,61 @@ class Monster
    
     
     def getLevelsGained
-        @prize.level
+        @prize.levels
     end
     
     def getTreasureGained
         @prize.treasures
     end
+    #EXAMEN
+    def getCombatLevel
+        dice = Dice.instance
+        dealer = CardDealer.instance 
+        r = dice.nextNumber
+        friend = nil
+        
+        if r > 5
+            
+            friend = dealer.getRandomUnusedMonster()
+            
+            if friend != nil ####
+                cl = friend.combatLevel
+            else
+                cl =0
+            end
+            
+            
+        end
+        return cl
+    end     
+
+
+    #EXAMEN
+    
+    def getCombatLevel
+        dice = Dice.instance  
+        cardealer = CardDealer.instance
+        
+        friend = self
+        
+       
+        r = dice.NextNumber
+        if r > 5
+            cardealer.getRandomUnusedMonster
+            
+        end
+        
+        if friend != nil
+          cl =  friend.getCombatLevel
+             
+        else
+            cl = 0
+         return cl  # monsterLelevl
+        end
+         
+    end
+    #FIN EXAMEN
+
 
     def to_s
         "Monster =  #{@name}  , combatLevel =   #{@combatLevel} ,  #{@badconsequence} ,  Price:  #{@prize} "      

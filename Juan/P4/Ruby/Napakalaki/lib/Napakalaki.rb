@@ -122,12 +122,10 @@ class Napakalaki
         puts 'Este es el currentPlayer'
         puts @currentPlayer
         
-        if @currentPlayer == nil
-            sig=true
-        end
         if(@currentPlayer.validState)        
-        
+            sig=true
         return sig
+        
         end
     end
     
@@ -223,6 +221,7 @@ class Napakalaki
         stateOK = nextTurnAllowed
         
         if(stateOK == true)
+            puts 'entra stateOK'
             @currentMonster = @dealer.nextMonster
             @currentPlayer = nextPlayer
             dead = @currentPlayer.isDead()

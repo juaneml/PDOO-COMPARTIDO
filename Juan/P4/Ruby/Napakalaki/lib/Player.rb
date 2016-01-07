@@ -46,12 +46,13 @@ class Player
     
     ## Métodos get
     protected
-    attr_reader :name
+    
     attr_reader :visibleTreasures
     attr_reader :hiddenTreasures
     attr_reader :level
     attr_reader :enemy
-    
+    public
+    attr_reader :name
    
     private
     def bringToLife
@@ -269,7 +270,7 @@ class Player
         myLevel = getCombatLevel()
         @dealer = CardDealer  #mirar
         @currentMonster = m #mirar
-        monsterLevel = getOponentLevel
+        monsterLevel = getOponentLevel(@currentMonster)
         
         if myLevel > monsterLevel
             applyPrize(m)
@@ -473,10 +474,7 @@ class Player
         end
     end
     
-    def getCombatLevel
-        
-    end
-    
+  
     public
     def to_s 
         "Nombre = #{@name} , Levels =#{@level} "     

@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 /**
  *
- * @author juane
+ * @author juane y Raúl
  * @version 1.1
  */
 public class PruebaNapakalaki {
@@ -151,7 +151,7 @@ public class PruebaNapakalaki {
        tVisible = new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS));
        tHidden = new ArrayList();
        prize = new Prize(2,1);
-       badConsequence = new BadConsequence("La quinta directiva primaria te obliba"
+       badConsequence = new BadConsequence("La quinta directiva primaria te obliga"
                + " a perder 2 niveles y un tesoro, 2 manos visibles",2,tVisible,tHidden);
        monstruos.add(new Monster("Roboggoth",8,badConsequence,prize));
        
@@ -172,8 +172,12 @@ public class PruebaNapakalaki {
        monstruos.add(new Monster("El Lenguas",20,badConsequence,prize));
        
        // Bicéfalo
+       tVisible = new ArrayList(Arrays.asList(TreasureKind.ONEHAND));
+       tVisible.add(TreasureKind.ONEHAND);
+       tVisible.add(TreasureKind.BOTHHANDS);
+       tHidden = new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS));
        badConsequence = new BadConsequence("Te faltan manos para tanta cabeza. "
-               + "Pierdes 3 niveles y tus tesoros visibles de las manos",3,10,0);
+               + "Pierdes 3 niveles y tus tesoros visibles de las manos",3,tVisible,tHidden);
        prize = new Prize(1,1);
        monstruos.add(new Monster("Bicéfalo",20,badConsequence,prize));
        
@@ -200,12 +204,18 @@ public class PruebaNapakalaki {
        int perLevel;
        
        total = 0;
+       int nivel_pV;
+       int nivel_pH;
        System.out.println("Mal rollo que implica sólo la pérdida de niveles"+"\n");
        
        for(int i = 0; i < monstruos.size();i++){
            perLevel = monstruos.get(i).getBadConsequence().getLevels();
-         
-           if(perLevel > 0 ){
+           tVisible = monstruos.get(i).getBadConsequence().getSpecificVisibleTreasures();
+           tHidden = monstruos.get(i).getBadConsequence().getSpecificHiddenTreasures();
+           nivel_pV = monstruos.get(i).getBadConsequence().getnVisibleTreasures();
+           nivel_pH =monstruos.get(i).getBadConsequence().getnHiddenTreasures();
+           if( perLevel > 0 && (tVisible.isEmpty() && tHidden.isEmpty() ) && (nivel_pV == 0  && nivel_pH == 0) ) {
+               
                System.out.println(monstruos.get(i)+"\n");
                total++;
            }

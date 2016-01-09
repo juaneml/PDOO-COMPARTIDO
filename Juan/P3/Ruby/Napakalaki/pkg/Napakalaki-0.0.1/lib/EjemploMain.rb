@@ -2,6 +2,9 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
+# casting
+# a = 10.5
+# puts a.to_i
 require_relative "Napakalaki"
 require_relative "GameTester"
 
@@ -22,7 +25,8 @@ module NapakalakiGame
       end
       
   end
-  
+ 
+ puts a
     e = EjemploMain.new
     e.prueba()
 

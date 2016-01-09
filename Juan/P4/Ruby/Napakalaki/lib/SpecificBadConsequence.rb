@@ -1,94 +1,30 @@
-#encoding: utf-8
-
-#Versión 3.0
-
+require_relative 'BadConsequence.rb'
 require_relative 'Monster.rb'
 require_relative 'Prize.rb'
 require_relative 'TreasureKind.rb'
 module NapakalakiGame
-class BadConsequence
 
-   
+class SpecificBadConsequence < BadConsequence
     
-    #  @text #String que representa lo que dice el mal royo
-    #  @levels # int para representar los niveles que se pierden
-    #  @nVisibleTreasures # de tipo int, número de tesoros que se pierden
-    #  @nHiddenTreasures # de tipo int, número de tesoros ocultos que se pierden
-    #  @death # de tipo booleano, representa el mal rollo de tipo muerte
-    #  
-    #  #Para el tipo TreasureKind
-    #  @specificHiddenTreasures
-    #  @specificVisibleTreasures
-  
-  
-    # Constructor #
-    #LevelNumberOfTreasures
-
-    def  initialize(aText,someLevels,someVisibleTreasures,someHiddenTreasures,someSpecificVisibleTreasures,someSpecificHiddenTreasures, death)
-        @text = aText
-        @levels = someLevels
-        @nVisibleTreasures = someVisibleTreasures
-        @nHiddenTreasures = someHiddenTreasures
-        @specificVisibleTreasures = someSpecificVisibleTreasures
-        @specificHiddenTreasures = someSpecificHiddenTreasures
-        @death = death
-   
-    end 
-    
-    ##### Constructor para la herencia ######
-    def initialize(aText,someLevels)
-        @text = aText
-        @levels = someLevels
+    def initialize( text,  levels,  tVisible,  tHidden)
+        @specificVisibleTreasures = tVisible
+        @specificHiddenTreasures = tHidden
+        super(text,levels)
+        
     end
- # CONSTANTE
-    MAXTREASURES = 10
-    ## Métodos solo lectura, get
     
-    attr_reader :text
-    attr_reader :levels
-    attr_reader :nVisibleTreasures
-    attr_reader :nHiddenTreasures
     attr_reader :specificHiddenTreasures
     attr_reader :specificVisibleTreasures
-    attr_reader :MAXTREASURES
-#       
-#    attr_accessor :text
-#    attr_accessor :levels
-#    attr_accessor :nVisibleTreasures
-#    attr_accessor :nHiddenTreasures
-#    attr_accessor :specificHiddenTreasure
-#    attr_accessor :specificVisibleTreasure
-#    attr_accessor :death
     
-    private_class_method :new
-
-    def BadConsequence.newLevelNumberOfTreasures(aText, someLevels,someVisibleTreasures,someHiddenTreasures)
-       new(aText,someLevels,someVisibleTreasures,someHiddenTreasures,[],[],false)
-    end
-    
-    private_class_method :new
-    
-    def  BadConsequence.newLevelSpecificTreasures (aText,someLevels,someSpecificVisibleTreasures,someSpecificHiddenTreasures)
-      
-       new(aText,someLevels,0,0,someSpecificVisibleTreasures,someSpecificHiddenTreasures,false)
-    end
-    
-    private_class_method :new
-    
-    def BadConsequence.newDeath(aText)
-         new(aText,0,0,0,[],[],true)
-    end
-   
     public
     def isEmpty()
         vacio = false
-        if @nHiddenTreasures == 0 && @nVisibleTreasures==0  && @death == false  && @specificVisibleTreasures.empty?  && @specificHiddenTreasures.empty?
+        if @specificVisibleTreasures.empty?  && @specificHiddenTreasures.empty?
             vacio = true;
          end
             vacio
     end
     
-
     def substractVisibleTreasure(t)
         @specificVisibleTreasures.delete(t)
     end
@@ -96,7 +32,6 @@ class BadConsequence
     def substractHiddenTreasure(t)
         @specificHiddenTreasures.delete(t)
     end
-    
     
     def adjustToFitTreasureList(v,h)
         tamV = v.size()
@@ -113,40 +48,40 @@ class BadConsequence
         
         puts 'haux'
         if tamV > 0 || tamH > 0  # Si los vectores que recibimos tienen cosas entramos aqui
-
-            #si los arrays de tesoros especificos a perder estan vacíos entramos
-            if @specificHiddenTreasures.empty? && @specificVisibleTreasures.empty? 
-
-                #si perdemos un numero de ocultos o visibles mayor de lo que tenemos
-                if @nHiddenTreasures > 0 || @nVisibleTreasures > 0 
-
-                    #y se pierden más de lo que tenemos de uno u otro 
-                    if @nVisibleTreasures > v.size() || @nHiddenTreasures > h.size() 
-
-                        #Puede darse que se pierdan mas de los visibles pero los otros no
-                        if @nVisibleTreasures > v.size() && @nHiddenTreasures <= h.size() 
-                            nVisibleAux = v.size(); #igualamos el valor
-
-                        end
-                        #Puede darse que se pierdan mas de los ocultos pero los otros no
-                        if @nVisibleTreasures <= v.size() && @nHiddenTreasures > h.size() 
-                            nHiddenAux = h.size(); #igualamos el valor
-
-                        end
-                        #Puede darse que se pierdan más de ambos
-                        if @nVisibleTreasures > v.size() && @nHiddenTreasures > h.size() 
-                            nHiddenAux = h.size() #igualamos el valor
-                            nVisibleAux = v.size()
-                        end
-                    end
-                end
-                
-                badConsequence = BadConsequence.newLevelNumberOfTreasures(@text, @levels, nVisibleAux, nHiddenAux);
-                return badConsequence;
-            end
-
-            # si se pierden 0 tesoros es porque se pierden especificos
-            if @nVisibleTreasures == 0 && @nHiddenTreasures == 0 
+#
+#            #si los arrays de tesoros especificos a perder estan vacíos entramos
+#            if @specificHiddenTreasures.empty? && @specificVisibleTreasures.empty? 
+#
+#                #si perdemos un numero de ocultos o visibles mayor de lo que tenemos
+#                if @nHiddenTreasures > 0 || @nVisibleTreasures > 0 
+#
+#                    #y se pierden más de lo que tenemos de uno u otro 
+#                    if @nVisibleTreasures > v.size() || @nHiddenTreasures > h.size() 
+#
+#                        #Puede darse que se pierdan mas de los visibles pero los otros no
+#                        if @nVisibleTreasures > v.size() && @nHiddenTreasures <= h.size() 
+#                            nVisibleAux = v.size(); #igualamos el valor
+#
+#                        end
+#                        #Puede darse que se pierdan mas de los ocultos pero los otros no
+#                        if @nVisibleTreasures <= v.size() && @nHiddenTreasures > h.size() 
+#                            nHiddenAux = h.size(); #igualamos el valor
+#
+#                        end
+#                        #Puede darse que se pierdan más de ambos
+#                        if @nVisibleTreasures > v.size() && @nHiddenTreasures > h.size() 
+#                            nHiddenAux = h.size() #igualamos el valor
+#                            nVisibleAux = v.size()
+#                        end
+#                    end
+#                end
+#                
+#                badConsequence = BadConsequence.newLevelNumberOfTreasures(@text, @levels, nVisibleAux, nHiddenAux);
+#                return badConsequence;
+#            end
+#
+#            # si se pierden 0 tesoros es porque se pierden especificos
+          
 
                  vcopia = Array.new #ArrayList<TreasureKind>
                  hcopia = Array.new #ArrayList<TreasureKind>
@@ -231,10 +166,10 @@ class BadConsequence
                 
               
                 badConsequence = BadConsequence.newLevelSpecificTreasures(@text, @levels,vcopia, hcopia)
-                badConsequence = BadConsequence
+                
                 return badConsequence;
 
-            end
+            
 
         end
         #*** Cambiado provisional para no devolver null ****//
@@ -245,9 +180,7 @@ class BadConsequence
     end
 
     def to_s 
-        "BadConsequence =  #{@text}  , Levels =  #{@levels}  , nVisibleTreasure = #{@nVisibleTreasures}  nHiddenTreasures =  #{@nHiddenTreasures} , specificVisibleTreasures = #{@specificVisibleTreasures} , specicHiddenTreasures = #{@specificHiddenTreasures}, death =  #{@death}"     
+        "BadConsequence =  #{@text}  , Levels =  #{@levels}  , specificVisibleTreasures = #{@specificVisibleTreasures} , specicHiddenTreasures = #{@specificHiddenTreasures}, death =  #{@death}"     
     end  
-  
-   
 end
 end

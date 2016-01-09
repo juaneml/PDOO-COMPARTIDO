@@ -18,8 +18,8 @@ public class BadConsequence {
      * Atributos propios de la clase *
      */
 
-    private String text; //lo que dice el mal royo
-    private int levels; // niveles que se pierden 
+    protected String text; //lo que dice el mal royo
+    protected int levels; // niveles que se pierden 
     private int nVisibleTreasures; // número de tesoros visibles que si pierden
     private int nHiddenTreasures; // número de tesoros ocultos que se pierden
     private boolean death; // representa un mal royo de tipo muerte
@@ -35,13 +35,26 @@ public class BadConsequence {
      * constructores 
      * Todos los atributos hay que inicializarlos
      */
+    
+    /**
+     * 
+     * @param text
+     * @param levels 
+     */
+    public BadConsequence(String text, int levels) {
+        this.text = text;
+        this.levels = levels;
+    }
+    
     /**
      * Constructor BadConsequence(String text, int levels, int nVisible, int nHidden)
      * @param text título del mal royo
      * @param levels número de los niveles a perder
      * @param nVisible número de tesoros visibles
      * @param nHidden  número de tesoros ocultos
-     */
+     * 
+     *
+     */    
     BadConsequence(String text, int levels, int nVisible, int nHidden) {
         this.text = text;
         this.levels = levels;
@@ -327,13 +340,5 @@ public class BadConsequence {
      * Método toString()
      * @return una cadena
      */
-    @Override
-    public String toString() {
-        return "BadConsequence = " +  this.text + ", levels = " +  this.levels 
-                + ", nVisibleTreasures = "  + this.nVisibleTreasures 
-                + ", nHiddenTreasures = " +  this.nHiddenTreasures 
-                + ", death = " +  this.death + ", specificVisibleTreasures = " 
-                +  this.specificVisibleTreasures + ", specificHiddenTreasures = " 
-                +  this.specificHiddenTreasures  ;
-    }
+//     
 }

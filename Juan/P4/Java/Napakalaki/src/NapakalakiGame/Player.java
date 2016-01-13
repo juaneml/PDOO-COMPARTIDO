@@ -40,7 +40,7 @@ public class Player {
         this.canISteal = false;
         this.visibleTreasures = new ArrayList();
         this.hiddenTreasures = new ArrayList();
-        this.pendingBadConsequence = new BadConsequence(" ", 0, 0, 0);
+        this.pendingBadConsequence = new NumericBadConsequence(" ", 0, 0, 0);
         
     }
     
@@ -79,11 +79,12 @@ public class Player {
      */
     protected int getCombatLevel() {
         int sum_bonus = 0;
+        int nivel;
         for(int i=0; i < this.visibleTreasures.size();i++){
             sum_bonus = visibleTreasures.get(i).getBonus()+sum_bonus;
         }
-        this.level = level+sum_bonus;
-        return this.level;
+        nivel = this.level+sum_bonus;
+        return nivel;
         
     }
     /**
@@ -373,7 +374,7 @@ public class Player {
         boolean valid = false;
         
 
-        if(this.pendingBadConsequence.isEmpty()  && this.hiddenTreasures.size()<= 4 ){
+        if(this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size()<= 4 ){
           valid = true;
             return valid;
         }

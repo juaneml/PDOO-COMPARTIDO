@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * 
  * Clase BadConsequence para el mal rollo del monstruo
  */
-public class BadConsequence {
+public abstract class BadConsequence {
    /* si no se pone nada visibilidad de package*/ 
    /*constante*/
    static final int MAXTREASURES = 10;
@@ -46,59 +46,59 @@ public class BadConsequence {
         this.levels = levels;
     }
     
-    /**
-     * Constructor BadConsequence(String text, int levels, int nVisible, int nHidden)
-     * @param text título del mal royo
-     * @param levels número de los niveles a perder
-     * @param nVisible número de tesoros visibles
-     * @param nHidden  número de tesoros ocultos
-     * 
-     *
-     */    
-    BadConsequence(String text, int levels, int nVisible, int nHidden) {
-        this.text = text;
-        this.levels = levels;
-        this.nVisibleTreasures = nVisible;
-        this.nHiddenTreasures = nHidden;
-        this.death = false;
-        this.specificVisibleTreasures = new ArrayList();
-        this.specificVisibleTreasures = new ArrayList();
-    }
-
-    /**
-     * Constructor BadConsequence(String text, boolean death)
-     * @param text título del mal royo
-     * @param death true o false para el tipo muerte
-     */
-    BadConsequence(String text, boolean death) {
-        this.text = text;
-        this.death = death;
-        this.levels = 0;
-        this.nVisibleTreasures = 10;
-        this.nHiddenTreasures = 10; 
-        this.specificVisibleTreasures = new ArrayList();        
-        this.specificHiddenTreasures  = new ArrayList();
-       
-        
-    }
-    /**
-     * Constructor BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible,
-     *      ArrayList<TreasureKind> tHidden)
-     * @param text título del mal royo
-     * @param levels número de niveles
-     * @param tVisible arraylist de los tipos de tesoros visibles
-     * @param tHidden arraylist de los tipos de tesoros ocultos
-     */
-    BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible,
-            ArrayList<TreasureKind> tHidden) {
-        this.text = text;
-        this.levels = levels;
-        this.nVisibleTreasures = 10; // valor por defecto que no va a a ser nunca así
-        this.nHiddenTreasures = 10;
-        this.death = false;
-        this.specificVisibleTreasures = tVisible;
-        this.specificHiddenTreasures = tHidden;
-    }
+//    /**
+//     * Constructor BadConsequence(String text, int levels, int nVisible, int nHidden)
+//     * @param text título del mal royo
+//     * @param levels número de los niveles a perder
+//     * @param nVisible número de tesoros visibles
+//     * @param nHidden  número de tesoros ocultos
+//     * 
+//     *
+//     */    
+//    BadConsequence(String text, int levels, int nVisible, int nHidden) {
+//        this.text = text;
+//        this.levels = levels;
+//        this.nVisibleTreasures = nVisible;
+//        this.nHiddenTreasures = nHidden;
+//        this.death = false;
+//        this.specificVisibleTreasures = new ArrayList();
+//        this.specificVisibleTreasures = new ArrayList();
+//    }
+//
+//    /**
+//     * Constructor BadConsequence(String text, boolean death)
+//     * @param text título del mal royo
+//     * @param death true o false para el tipo muerte
+//     */
+//    BadConsequence(String text, boolean death) {
+//        this.text = text;
+//        this.death = death;
+//        this.levels = 0;
+//        this.nVisibleTreasures = 10;
+//        this.nHiddenTreasures = 10; 
+//        this.specificVisibleTreasures = new ArrayList();        
+//        this.specificHiddenTreasures  = new ArrayList();
+//       
+//        
+//    }
+//    /**
+//     * Constructor BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible,
+//     *      ArrayList<TreasureKind> tHidden)
+//     * @param text título del mal royo
+//     * @param levels número de niveles
+//     * @param tVisible arraylist de los tipos de tesoros visibles
+//     * @param tHidden arraylist de los tipos de tesoros ocultos
+//     */
+//    BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible,
+//            ArrayList<TreasureKind> tHidden) {
+//        this.text = text;
+//        this.levels = levels;
+//        this.nVisibleTreasures = 10; // valor por defecto que no va a a ser nunca así
+//        this.nHiddenTreasures = 10;
+//        this.death = false;
+//        this.specificVisibleTreasures = tVisible;
+//        this.specificHiddenTreasures = tHidden;
+//    }
 
     /** Consultores **/
 
@@ -191,32 +191,7 @@ public class BadConsequence {
      * @param h vector de tesoros ocultos
      * @return BadConsequence
      */
-    
-    public BadConsequence adjustToFitTreasureList(ArrayList<Treasure> v, ArrayList <Treasure> h){
-        
-        ArrayList <TreasureKind> tesoro_visible = new ArrayList();
-        ArrayList <TreasureKind> tesoro_oculto = new ArrayList();
-        
-        for (Treasure t: v){
-            
-            if (!tesoro_visible.contains(t.getType())){
-                tesoro_visible.add(t.getType());
-            }
-        }
-        
-        for(Treasure t: h){
-            if (!tesoro_oculto.contains(t.getType())){
-                tesoro_oculto.add(t.getType());
-            }
-                    
-        }
-        
-        
-        BadConsequence badconsequence = new BadConsequence(this.text,0,tesoro_visible,tesoro_oculto);
-        return badconsequence;
-    }
-    
-//    public BadConsequence adjustToFitTreasureList(ArrayList<Treasure> v, ArrayList<Treasure> h) {
+    public abstract BadConsequence adjustToFitTreasureList(ArrayList<Treasure> v, ArrayList<Treasure> h);
 //        int tamV = v.size();
 //        int tamH = h.size();
 //
@@ -339,6 +314,7 @@ public class BadConsequence {
 //        return badConsequence; //cambiar
 //
 //    }
+        
     
     /**
      * Método getText() 

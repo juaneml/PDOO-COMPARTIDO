@@ -2,11 +2,12 @@
 
 #Versión 3.0
 require 'singleton'
-require 'Player.rb'
-require 'CardDealer.rb'
-require 'Dice.rb'
-require 'singleton'
-require 'Monster.rb'
+require_relative 'Player.rb'
+require_relative 'CardDealer.rb'
+require_relative 'Dice.rb'
+require_relative 'Monster.rb'
+require_relative 'CultistPlayer.rb'
+require_relative 'Cultist.rb'
 
 module NapakalakiGame
 
@@ -54,13 +55,7 @@ class Napakalaki
           end
          
     end
-    
-    public
-    def getCurrentPlayer
-        
-        return @currentPlayer
-    end
-
+   
     private 
     def nextPlayer()
         if(@currentPlayer == nil)
@@ -160,7 +155,7 @@ class Napakalaki
         
         if combatResult == CombatResult::LOSEANDCONVERT
               dealer=CardDealer.instance 
-              cultistPlayer = CultistPlayer(@currentPlayer,dealer.nextCultist())
+              cultistPlayer = CultistPlayer.new(@currentPlayer,dealer.nextCultist())
               
             @players.each do |p|
                 if (p == @currentPlayer)

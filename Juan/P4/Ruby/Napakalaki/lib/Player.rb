@@ -71,7 +71,7 @@ class Player
              sum_bonus = v.bonus + sum_bonus
          end
          
-        @level = @level+sum_bonus
+        nivel = @level+sum_bonus
        
     end
     

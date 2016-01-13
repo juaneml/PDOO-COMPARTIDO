@@ -66,7 +66,7 @@ public class CultistPlayer extends Player {
      */
     @Override
     protected boolean shouldConvert(){        
-        return  super.shouldConvert();
+        return  false;
     }
     /**
      * Método giveMeAtreasure()

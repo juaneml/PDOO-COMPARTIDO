@@ -35,12 +35,16 @@ class BadConsequence
 #        @death = death
 #   
 #    end 
+
+    
     
     ##### Constructor para la herencia ######
     def initialize(aText,someLevels)
         @text = aText
         @levels = someLevels
     end
+    
+    private_class_method :new
  # CONSTANTE
     @@MAXTREASURES = 10
     ## Métodos solo lectura, get

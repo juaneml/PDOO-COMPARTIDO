@@ -51,6 +51,8 @@ class Player
     attr_reader :hiddenTreasures
     attr_reader :level
     attr_reader :enemy
+    attr_reader :dead
+    attr_reader :pendingBadConsequence
     public
     attr_reader :name
    

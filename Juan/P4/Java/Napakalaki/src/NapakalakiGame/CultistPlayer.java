@@ -65,7 +65,8 @@ public class CultistPlayer extends Player {
      * @return boolean
      */
     @Override
-    protected boolean shouldConvert(){        
+    protected boolean shouldConvert(){  
+       
         return  false;
     }
     /**

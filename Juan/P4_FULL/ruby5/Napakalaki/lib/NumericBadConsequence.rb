@@ -15,6 +15,8 @@ class NumericBadConsequence < BadConsequence
         
     end
     
+    public_class_method :new
+    
     attr_reader :nVisibleTreasures
     attr_reader :nHiddenTreasures
     
@@ -34,6 +36,8 @@ class NumericBadConsequence < BadConsequence
         
         nVisibleAux = @nVisibleTreasures
         nHiddenAux = @nHiddenTreasures
+        
+        puts 'Entra adjust Numeric'
         
         if(nVisibleAux < tamV)
             nuevoV = nVisibleAux

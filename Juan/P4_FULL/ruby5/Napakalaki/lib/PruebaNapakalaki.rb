@@ -205,4 +205,3 @@ require_relative 'CombatResult.rb'
 #res = [CombatResult::LOSE]
 ##res = [CombatResult::WINGAME]
 #puts napa.endOfGame(res)
-

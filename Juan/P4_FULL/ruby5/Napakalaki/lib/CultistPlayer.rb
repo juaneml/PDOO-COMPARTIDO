@@ -28,7 +28,7 @@ class CultistPlayer < Player
         @visibleTreasures = p.visibleTreasures
         @myCultistCard = c
         
-        incTotal
+        #incTotal
     end 
     
     def self.incTotal

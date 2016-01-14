@@ -63,7 +63,7 @@ public class NumericBadConsequence extends BadConsequence{
         else
             nuevoO=tamH;
         
-         badConsequence = new NumericBadConsequence(text, levels, nVisibleAux, nHiddenAux);
+         badConsequence = new NumericBadConsequence(text, levels, nuevoV, nuevoO);
          return badConsequence;
         
     } 

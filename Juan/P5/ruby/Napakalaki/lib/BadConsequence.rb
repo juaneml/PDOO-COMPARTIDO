@@ -51,10 +51,10 @@ class BadConsequence
     
     attr_reader :text
     attr_reader :levels
-    attr_reader :nVisibleTreasures
-    attr_reader :nHiddenTreasures
-    attr_reader :specificHiddenTreasures
-    attr_reader :specificVisibleTreasures
+#    attr_reader :nVisibleTreasures
+#    attr_reader :nHiddenTreasures
+#    attr_reader :specificHiddenTreasures
+#    attr_reader :specificVisibleTreasures
     attr_reader :MAXTREASURES
 #       
 #    attr_accessor :text
@@ -85,12 +85,14 @@ class BadConsequence
 #    end
    
     public
-    def isEmpty()
-        vacio = false
-        if @nHiddenTreasures == 0 && @nVisibleTreasures==0  && @death == false  && @specificVisibleTreasures.empty?  && @specificHiddenTreasures.empty?
-            vacio = true;
-         end
-            vacio
+   def isEmpty()
+#        vacio = false
+#        if @nHiddenTreasures == 0 && @nVisibleTreasures==0  && @death == false  && @specificVisibleTreasures.empty?  && @specificHiddenTreasures.empty?
+#            vacio = true;
+#         end
+#            vacio
+    
+       rasie NotImplementedError.new
     end
     
 

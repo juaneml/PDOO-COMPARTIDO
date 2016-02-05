@@ -82,7 +82,7 @@ class SpecificBadConsequence < BadConsequence
     end
 
     def to_s 
-        "BadConsequence =  #{@text}  , Levels =  #{@levels}  , specificVisibleTreasures = #{@specificVisibleTreasures} , specicHiddenTreasures = #{@specificHiddenTreasures}, death =  #{@death}"     
+        "BadConsequence = #{super} , specificVisibleTreasures = #{@specificVisibleTreasures} , specicHiddenTreasures = #{@specificHiddenTreasures}, death =  #{@death}"     
     end  
 end
 end

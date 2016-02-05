@@ -13,11 +13,11 @@ module NapakalakiGame
 class DeathBadConsequence < NumericBadConsequence 
     
     def initialize(text)
-        super(text,0,0,0)
-        @death = true
+        super(text,99,BadConsequence.maxtreasures,BadConsequence.maxtreasures)
+        
     end
     
-    attr_reader :death
+    
     
 end
 end

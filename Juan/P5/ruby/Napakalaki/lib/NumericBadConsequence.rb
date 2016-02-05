@@ -23,10 +23,18 @@ class NumericBadConsequence < BadConsequence
     public
     def isEmpty()
         vacio = false
-        if @nHiddenTreasures == 0 && @nVisibleTreasures==0  && @death == false 
+        if @nHiddenTreasures == 0 && @nVisibleTreasures==0 
             vacio = true;
         end
             vacio
+    end
+    
+    def substractVisibleTreasure(t)
+        @specificVisibleTreasures.delete(t)
+    end
+    
+    def substractHiddenTreasure(t)
+        @specificHiddenTreasures.delete(t)
     end
     
     def adjustToFitTreasureList(v,h)
@@ -57,7 +65,7 @@ class NumericBadConsequence < BadConsequence
     end
     
     def to_s 
-        "BadConsequence =  #{@text}  , Levels =  #{@levels}  , nVisibleTreasure = #{@nVisibleTreasures}  nHiddenTreasures =  #{@nHiddenTreasures} , death =  #{@death}"     
+        "BadConsequence =  #{super}, nVisibleTreasure = #{@nVisibleTreasures}  nHiddenTreasures =  #{@nHiddenTreasures} , death =  #{@death}"     
     end  
     
     

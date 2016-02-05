@@ -30,12 +30,12 @@ public class SpecificBadConsequence extends BadConsequence{
             return false; 
     }
     
-    @Override
+    
     public ArrayList<TreasureKind> getSpecificHiddenTreasures() {
         return specificHiddenTreasures;
     }
     
-    @Override
+    
     public ArrayList<TreasureKind> getSpecificVisibleTreasures() {
         return specificVisibleTreasures;
     }
@@ -143,8 +143,8 @@ public class SpecificBadConsequence extends BadConsequence{
        
     @Override
     public String toString() {
-        return "BadConsequence = " +  this.text 
-                + ", levels = " +  this.levels
+        return "BadConsequence = "
+                + super.toString()
                 + ", specificVisibleTreasures = " +  this.specificVisibleTreasures 
                 + ", specificHiddenTreasures = " +  this.specificHiddenTreasures  ;
     }

@@ -9,18 +9,16 @@ import java.util.ArrayList;
  */
 public class DeathBadConsequence extends NumericBadConsequence{
     
-    private boolean death;
+   
  
 
     public DeathBadConsequence(String text, boolean death) {
-       super( text, 0, 0, 0);
-       this.death=death;
+       super( text, 99, BadConsequence.MAXTREASURES, BadConsequence.MAXTREASURES);
+       
         
     }
     
-    @Override
-    public boolean isDeath() {
-        return death;
-    }
+    
+    
     
 }

@@ -11,7 +11,7 @@ public class NumericBadConsequence extends BadConsequence{
     
     private int nVisibleTreasures; // número de tesoros visibles que si pierden
     private int nHiddenTreasures; // número de tesoros ocultos que se pierden
-    private boolean death;
+
 
     public NumericBadConsequence(String text, int levels, int nVisible, int nHidden) {
         super(text, levels);
@@ -23,21 +23,39 @@ public class NumericBadConsequence extends BadConsequence{
     @Override
     public boolean isEmpty(){
         
-        if(nHiddenTreasures==0 && nVisibleTreasures==0 && this.death == false ){
+        if(nHiddenTreasures==0 && nVisibleTreasures==0 ){
             return true;
         }
         else
             return false; 
     }
     
-    @Override
+    
     public int geNVisibleTreasures() {
         return nVisibleTreasures;
     }
     
-    @Override
+    
     public int getNHiddenTreasures() {
         return nHiddenTreasures;
+    }
+    
+      /**
+     * Método substractVisibleTreasure(Treasure t)
+     * @param t 
+     */
+    @Override
+    public void substractVisibleTreasure(Treasure t){
+       // this.specificVisibleTreasures.remove(t);
+    }
+    
+    /**
+     * Método  substractHiddenTreasure(Treasure t)
+     * @param t 
+     */
+    @Override
+    public void substractHiddenTreasure(Treasure t){
+        //this.specificHiddenTreasures.remove(t);
     }
     
     @Override
@@ -75,9 +93,7 @@ public class NumericBadConsequence extends BadConsequence{
     @Override
     public String toString() {
         return "NumericBadConsequence{" 
-                + "BadConsequence = " +  this.text 
-                + ", levels = " +  this.levels
-                + ", death = " +  this.death
+                + super.toString()
                 + "nVisibleTreasures=" + nVisibleTreasures 
                 + ", nHiddenTreasures=" + nHiddenTreasures + '}';
     }

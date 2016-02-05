@@ -20,16 +20,16 @@ public abstract class BadConsequence {
 
     protected String text; //lo que dice el mal royo
     protected int levels; // niveles que se pierden 
-    private int nVisibleTreasures; // número de tesoros visibles que si pierden
+    /*private int nVisibleTreasures; // número de tesoros visibles que si pierden
     private int nHiddenTreasures; // número de tesoros ocultos que se pierden
-    private boolean death; // representa un mal royo de tipo muerte
+    private boolean death; // representa un mal royo de tipo muerte*/
 
     /**
      * Atributos de tipo lista de TreasureKind 
      *
      */
-    private ArrayList<TreasureKind> specificHiddenTreasures = new ArrayList();
-    private ArrayList<TreasureKind> specificVisibleTreasures = new ArrayList();
+    /*private ArrayList<TreasureKind> specificHiddenTreasures = new ArrayList();
+    private ArrayList<TreasureKind> specificVisibleTreasures = new ArrayList();*/
 
     /**
      * constructores 
@@ -138,9 +138,9 @@ public abstract class BadConsequence {
      *
      * @return nVisibleTreasures de tipo int
      */
-    public int geNVisibleTreasures() {
+    /*public int geNVisibleTreasures() {
         return this.nVisibleTreasures;
-    }
+    }*/
     
     /**
      * Método getnHiddenTreasures() 
@@ -149,43 +149,43 @@ public abstract class BadConsequence {
      *
      * @return nHiddenTreasures de tipo int
      */
-    public int getNHiddenTreasures() {
+   /* public int getNHiddenTreasures() {
         return this.nHiddenTreasures;
-    }
+    }*/
     
     /**
      * Método getSpecificHiddenTreasures()
      * Devuelve una lista con los Tesoros Ocultos
      * @return specificHiddenTreasures de tipo ArrayList
      */
-    public ArrayList<TreasureKind> getSpecificHiddenTreasures() {
+    /*public ArrayList<TreasureKind> getSpecificHiddenTreasures() {
         return specificHiddenTreasures;
-    }
+    }*/
 
     /**
      * Método getSpecificVisibleTreasures
      * Devuelve una lista con los Tesoros Visibles
      * @return specificVisibleTreasures de tipo ArrayList
      */
-    public ArrayList<TreasureKind> getSpecificVisibleTreasures() {
+    /*public ArrayList<TreasureKind> getSpecificVisibleTreasures() {
         return specificVisibleTreasures;
-    }
+    }*/
     
     /**
      * Método substractVisibleTreasure(Treasure t)
      * @param t 
      */
-    public void substractVisibleTreasure(Treasure t){
+    public abstract void substractVisibleTreasure(Treasure t);/*{
         this.specificVisibleTreasures.remove(t);
-    }
+    }*/
     
     /**
      * Método  substractHiddenTreasure(Treasure t)
      * @param t 
      */
-    public void substractHiddenTreasure(Treasure t){
+    public abstract void substractHiddenTreasure(Treasure t);/*{
         this.specificHiddenTreasures.remove(t);
-    }
+    }*/
     
     /**
      * Método adjustToFitTreasureList(ArrayList<Treasure> v,ArrayList<Treasure> h)
@@ -336,9 +336,9 @@ public abstract class BadConsequence {
      *
      * @return death de tipo boolean
      */
-    public boolean isDeath() {
+    /*public boolean isDeath() {
         return death;
-    }
+    }*/
 
     
 

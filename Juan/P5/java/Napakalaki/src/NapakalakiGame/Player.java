@@ -1,5 +1,6 @@
 package NapakalakiGame;
 
+import GUI.Dice;
 import java.util.ArrayList;
 import java.util.Random;
 

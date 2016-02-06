@@ -92,15 +92,8 @@ public class NumericBadConsequence extends BadConsequence{
     
     @Override
     public String toString() {
-<<<<<<< HEAD
-        return  super.getText()+"NumericBadConsequence{" 
-                +  this.text 
-                + ", levels = " +  this.levels
-                + ", death = " +   this.death
-=======
         return "NumericBadConsequence{" 
                 + super.toString()
->>>>>>> origin/master
                 + "nVisibleTreasures=" + nVisibleTreasures 
                 + ", nHiddenTreasures=" + nHiddenTreasures + '}';
     }

@@ -22,11 +22,13 @@ public class CultistPlayer extends Player {
      * @param p de tipo Player
      * @param c de tipo Cultist
      */
-    CultistPlayer(Player p, Cultist c){
-        super(p);
+    public CultistPlayer(Player p, Cultist c) throws CloneNotSupportedException{
+       super(p);
         this.myCultistCard = c;
         this.totalCultistPlayers = this.totalCultistPlayers + 1;
     }
+
+    
     
     /**
      * Método getCombatLevel()

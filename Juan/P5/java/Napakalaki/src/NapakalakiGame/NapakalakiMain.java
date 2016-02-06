@@ -13,24 +13,30 @@ import java.util.ArrayList;
  * @author Raul
  */
 public class NapakalakiMain {
+    /*Variable local de tipo ArrayList para añadir los nombre*/
+    
+    
     
     public static void main(String[] args) {
+     ArrayList names = new ArrayList();
         
-        Napakalaki game = Napakalaki.getInstance();
-        NapakalakiView napakalakiView = new NapakalakiView();
-        
-        Dice.createInstance(napakalakiView);
-        
-        napakalakiView.setNapakalaki(game);
-        
-        
-        //Apartado D
-        ArrayList<String> names = new ArrayList();
-        PlayerNamesCapture namesCapture = new PlayerNamesCapture(napakalakiView,true);
-        names = namesCapture.getNames();
-        game.initGame(names);
-        
-        napakalakiView.setVisible(true);//Esta siempre tiene que ser la ultima instruccion
+   /*1*/     Napakalaki game = Napakalaki.getInstance();   
+   /*2*/     NapakalakiView napakalakiView = new NapakalakiView();        
+   /*3*/     Dice.createInstance(napakalakiView);        
+   /*4*/     napakalakiView.setNapakalaki(game);
+   
+     
+   
+   /*D) comenzar el juego leyendo los nombres*/
+   
+   /*3*/ PlayerNamesCapture namesCapture = new PlayerNamesCapture(napakalakiView,true);
+         namesCapture.setVisible(true);
+   /*4*/ names = namesCapture.getNames();
+   /*5*/ game.initGame(names);
+   
+   
+   /*6*/ napakalakiView.setVisible(true);
     }
+    
     
 }

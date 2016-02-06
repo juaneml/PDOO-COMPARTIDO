@@ -42,12 +42,12 @@ public class SpecificBadConsequence extends BadConsequence{
     
     @Override
     public void substractVisibleTreasure(Treasure t){
-        specificVisibleTreasures.remove(t);
+        specificVisibleTreasures.remove(t.getType());
     }
     
     @Override
     public void substractHiddenTreasure(Treasure t){
-        specificHiddenTreasures.remove(t);
+        specificHiddenTreasures.remove(t.getType());
     }
     
     @Override
@@ -140,20 +140,12 @@ public class SpecificBadConsequence extends BadConsequence{
 //        
 //    }
     
-  
-    //CAMBIADO
-    
+       
     @Override
     public String toString() {
-<<<<<<< HEAD
-        
-        return super.toString()+ ", specificVisibleTreasures = " +  this.specificVisibleTreasures 
-=======
         return "BadConsequence = "
                 + super.toString()
                 + ", specificVisibleTreasures = " +  this.specificVisibleTreasures 
->>>>>>> origin/master
                 + ", specificHiddenTreasures = " +  this.specificHiddenTreasures  ;
     }
-
 }

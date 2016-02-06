@@ -35,11 +35,19 @@ public class Monster {
         this.prize = p;
         this.levelChangeAgainstCultistPlayer=0;
     }
-    
-    Monster(String n, int l, BadConsequence b, Prize p, int IC){
+    /**
+     * Constructor  Monster(String n, int l, BadConsequence badconsequence, Prize p, int IC)
+     * @param n String  
+     * @param l int
+     * @param badconsequence Badconsequence
+     * @param p Prize
+     * @param IC int , incremento y decremento cuando combate con un
+     * cultisplayer
+     */
+    Monster(String n, int l, BadConsequence badconsequence, Prize p, int IC){
         this.name = n;
         this.combatLevel = l;
-        this.badConsequence = b;
+        this.badConsequence = badconsequence;
         this.prize = p;
         this.levelChangeAgainstCultistPlayer = IC;
     }

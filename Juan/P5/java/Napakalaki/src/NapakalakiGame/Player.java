@@ -3,13 +3,12 @@ package NapakalakiGame;
 import GUI.Dice;
 import java.util.ArrayList;
 import java.util.Random;
-
 /**
  *
  * @author juane
  * @version 3.1
  */
-public class Player {
+public class Player implements Cloneable  {
     static final int MAXLEVEL = 10; // <<constant>>
     protected Player enemy; //Relación asímismo 
     
@@ -45,19 +44,33 @@ public class Player {
         
     }
     
+   
     /**
-     *   Constructor de Copias
+     * Constructor de copia superficial
+     * Utilización de Clone 
+     * @return  
+     * @throws java.lang.CloneNotSupportedException  
      */
-    public Player(Player p){
-        this.name = p.name;
-        this.level = p.level;
-        this.dead = p.dead;
-        this.canISteal = p.canISteal;
-        this.visibleTreasures = p.visibleTreasures;
-        this.hiddenTreasures = p.hiddenTreasures;
-        this.pendingBadConsequence = p.pendingBadConsequence;
+   
+    
+    @Override
+    public Object clone () throws CloneNotSupportedException{ 
+        Player clone = null;
+        
+        try{
+            clone = (Player) super.clone();
+        }
+        
+        catch(CloneNotSupportedException e){
+        System.out.println(e);
+    }
+        clone.enemy = (Player)clone.enemy.clone();
+        return clone;
     }
 
+     public Player (Player p) throws CloneNotSupportedException{
+         p = (Player) super.clone();
+     }
     /**
      * Método getName()
      * @return el nombre del jugador
@@ -292,12 +305,18 @@ public class Player {
      */
     public CombatResult combat(Monster m){
         int myLevel = this.getCombatLevel(); // 1.1.1
-        System.out.println("Nivel combate "+ myLevel);
         int monsterLevel;
+        
+       // CardDealer dealer = CardDealer.getInstance();
+        
         CombatResult combatResult;
-        CardDealer dealer = CardDealer.getInstance();
+        
+        System.out.println("Nivel combate "+ myLevel);
+       
         Monster currentMonster = m;
+        
         //monsterLevel = currentMonster.getCombatLevel();
+        
         monsterLevel = this.getOponentLevel(currentMonster);
         
         if(myLevel > monsterLevel){
@@ -553,12 +572,10 @@ public class Player {
        return this.enemy;
     }
     
-    // CAMBIADO
     @Override
     public String toString() {
        // return "Player{" + "enemy=" + enemy + ", hiddenTreasures=" + hiddenTreasures + ", visibleTreasures=" + visibleTreasures + ", pendingBadConsequence=" + pendingBadConsequence + ", name=" + name + ", level=" + level + ", dead=" + dead + ", canISteal=" + canISteal + '}';
-        return "Player: " + this.name + " Nivel: " + " " + this.level + " "+ this.pendingBadConsequence;
-        
+        return "Player: " + this.name + " Nivel: " + this.level;
     }
             
 }

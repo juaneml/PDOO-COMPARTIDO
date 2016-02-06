@@ -342,16 +342,7 @@ public abstract class BadConsequence {
     }*/
 
     
-   @Override
-    public String toString(){
-        
-         return "BadConsequence = " +  this.text 
-                + ", levels = " +  this.levels;
-    
-    }
-        
-    
-    
+
     /**
      * Método toString()
      * @return una cadena

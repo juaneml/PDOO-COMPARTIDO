@@ -34,11 +34,13 @@
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="Play" min="-2" max="-2" attributes="0"/>
-                  <Component id="player3" min="-2" max="-2" attributes="0"/>
-                  <Component id="player2" min="-2" max="-2" attributes="0"/>
-                  <Component id="player1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="player1" alignment="0" pref="40" max="32767" attributes="0"/>
+                      <Component id="player2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="player3" alignment="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -87,22 +89,16 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="player1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="player1"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="player1ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="player2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="player2"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="player2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="player3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="player3"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="Cancel">
       <Properties>

@@ -7,6 +7,7 @@
 package NapakalakiGame;
 
 import GUI.*;
+import java.util.ArrayList;
 /**
  *
  * @author Raul
@@ -21,8 +22,15 @@ public class NapakalakiMain {
         Dice.createInstance(napakalakiView);
         
         napakalakiView.setNapakalaki(game);
-        napakalakiView.setVisible(true);
         
+        
+        //Apartado D
+        ArrayList<String> names = new ArrayList();
+        PlayerNamesCapture namesCapture = new PlayerNamesCapture(napakalakiView,true);
+        names = namesCapture.getNames();
+        game.initGame(names);
+        
+        napakalakiView.setVisible(true);//Esta siempre tiene que ser la ultima instruccion
     }
     
 }

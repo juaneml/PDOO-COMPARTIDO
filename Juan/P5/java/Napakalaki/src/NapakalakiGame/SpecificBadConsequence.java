@@ -140,12 +140,20 @@ public class SpecificBadConsequence extends BadConsequence{
 //        
 //    }
     
-       
+  
+    //CAMBIADO
+    
     @Override
     public String toString() {
+<<<<<<< HEAD
+        
+        return super.toString()+ ", specificVisibleTreasures = " +  this.specificVisibleTreasures 
+=======
         return "BadConsequence = "
                 + super.toString()
                 + ", specificVisibleTreasures = " +  this.specificVisibleTreasures 
+>>>>>>> origin/master
                 + ", specificHiddenTreasures = " +  this.specificHiddenTreasures  ;
     }
+
 }

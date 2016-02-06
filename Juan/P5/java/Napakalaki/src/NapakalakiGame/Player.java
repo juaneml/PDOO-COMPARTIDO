@@ -553,10 +553,12 @@ public class Player {
        return this.enemy;
     }
     
+    // CAMBIADO
     @Override
     public String toString() {
        // return "Player{" + "enemy=" + enemy + ", hiddenTreasures=" + hiddenTreasures + ", visibleTreasures=" + visibleTreasures + ", pendingBadConsequence=" + pendingBadConsequence + ", name=" + name + ", level=" + level + ", dead=" + dead + ", canISteal=" + canISteal + '}';
-        return "Player: " + this.name + " Nivel: " + this.level;
+        return "Player: " + this.name + " Nivel: " + " " + this.level + " "+ this.pendingBadConsequence;
+        
     }
             
 }

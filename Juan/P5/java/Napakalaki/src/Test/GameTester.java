@@ -1,6 +1,7 @@
 
 package Test;
 
+import NapakalakiGame.BadConsequence;
 import NapakalakiGame.Napakalaki;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +26,7 @@ public class GameTester {
   public void play (Napakalaki aGame, int numberOfPlayers) {
     Command command;
     CombatResult combatResult;
-    Player currentPlayer;
+    Player currentPlayer;   
     ArrayList<String> names;
 
     game = aGame;
@@ -62,6 +63,7 @@ public class GameTester {
               break;
             case LOSE :
               System.out.println ("\n\n Has perdido el combate, te toca cumplir el mal rollo");
+              System.out.println("\n\n " + currentPlayer.toString());
               break;
           }
           if (combatResult != CombatResult.WINGAME) {

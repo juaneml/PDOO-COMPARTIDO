@@ -44,78 +44,84 @@ public class MonsterView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        etiqueta_name = new javax.swing.JLabel();
-        etiqueta_level = new javax.swing.JLabel();
-        name = new javax.swing.JLabel();
-        nivel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        carta = new javax.swing.JLabel();
         etiqueta_monster = new javax.swing.JLabel();
+        etiqueta_name = new javax.swing.JLabel();
+        name = new javax.swing.JLabel();
+        etiqueta_level = new javax.swing.JLabel();
+        nivel = new javax.swing.JLabel();
         badConsequencePanel = new GUI.BadConsequenceView();
         prizePanel = new GUI.PrizeView();
-        carta = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        setLayout(new java.awt.BorderLayout());
 
-        etiqueta_name.setText("Name");
-
-        etiqueta_level.setText("Nivel");
-
-        name.setText("nombre");
-
-        nivel.setText("level");
-
-        etiqueta_monster.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        etiqueta_monster.setText("Monster");
-
-        badConsequencePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        prizePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         carta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Monsters/3 Byakhees de bonanza.png"))); // NOI18N
         carta.setMaximumSize(new java.awt.Dimension(100, 331));
         carta.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(prizePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(badConsequencePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(etiqueta_monster)
-                                .addComponent(etiqueta_name)
-                                .addComponent(name)
-                                .addComponent(etiqueta_level, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nivel))
-                            .addGap(18, 18, 18)
-                            .addComponent(carta, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+        etiqueta_monster.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        etiqueta_monster.setText("Monster");
+
+        etiqueta_name.setText("Name");
+
+        name.setText("nombre");
+
+        etiqueta_level.setText("Nivel");
+
+        nivel.setText("level");
+
+        badConsequencePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        prizePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(etiqueta_monster)
+                            .addComponent(etiqueta_name)
+                            .addComponent(name)
+                            .addComponent(etiqueta_level, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nivel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(carta, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(prizePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(badConsequencePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addComponent(etiqueta_monster)
-                        .addGap(24, 24, 24)
-                        .addComponent(etiqueta_name)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(etiqueta_name)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(name)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(etiqueta_level)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nivel)
-                        .addGap(0, 213, Short.MAX_VALUE))
-                    .addComponent(carta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0)
+                        .addComponent(nivel))
+                    .addComponent(carta, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(badConsequencePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(prizePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -125,6 +131,7 @@ public class MonsterView extends javax.swing.JPanel {
     private javax.swing.JLabel etiqueta_level;
     private javax.swing.JLabel etiqueta_monster;
     private javax.swing.JLabel etiqueta_name;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel name;
     private javax.swing.JLabel nivel;
     private GUI.PrizeView prizePanel;

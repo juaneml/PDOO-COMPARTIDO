@@ -7,6 +7,8 @@
 package GUI;
 
 import NapakalakiGame.Treasure;
+import java.net.URL;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -28,6 +30,10 @@ public class TreasureView extends javax.swing.JPanel {
         nombre.setText(treasureModel.getName() ); 
         bonus.setText(Integer.toString(treasureModel.getBonus()));
         tipo.setText(treasureModel.getType().toString());
+        
+        URL url = getClass().getResource(treasureModel.getIcon());
+        this.carta.setIcon(new ImageIcon(url));
+        
         repaint();
         
     }
@@ -48,7 +54,7 @@ public class TreasureView extends javax.swing.JPanel {
         bonus = new javax.swing.JLabel();
         label_bonus = new javax.swing.JLabel();
         tipo = new javax.swing.JLabel();
-        imagen = new javax.swing.JLabel();
+        carta = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -66,7 +72,7 @@ public class TreasureView extends javax.swing.JPanel {
 
         tipo.setText("TIPO");
 
-        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Treasures/A prueba de babas.jpg"))); // NOI18N
+        carta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Treasures/A prueba de babas.jpg"))); // NOI18N
 
         javax.swing.GroupLayout panel_datosLayout = new javax.swing.GroupLayout(panel_datos);
         panel_datos.setLayout(panel_datosLayout);
@@ -81,7 +87,7 @@ public class TreasureView extends javax.swing.JPanel {
                     .addComponent(label_nombre)
                     .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imagen)
+                .addComponent(carta)
                 .addGap(0, 0, 0))
         );
         panel_datosLayout.setVerticalGroup(
@@ -89,7 +95,7 @@ public class TreasureView extends javax.swing.JPanel {
             .addGroup(panel_datosLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(panel_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imagen)
+                    .addComponent(carta)
                     .addGroup(panel_datosLayout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(label_nombre)
@@ -112,7 +118,7 @@ public class TreasureView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bonus;
-    private javax.swing.JLabel imagen;
+    private javax.swing.JLabel carta;
     private javax.swing.JLabel label_bonus;
     private javax.swing.JLabel label_nombre;
     private javax.swing.JLabel label_tipo;

@@ -118,6 +118,10 @@ public class Monster {
         return prize;
     }
 
+    /**
+     * Método getIcon
+     * @return Devuelve el path de la imagen
+     */
     public String getIcon(){
         String path="/Monsters/";
    

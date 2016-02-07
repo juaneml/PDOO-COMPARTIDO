@@ -65,11 +65,18 @@ public class Treasure {
          return this.type;
      }
 
+    /**
+     * Método getIcon
+     * @return Devuelve el path de la imagen
+     */
     public String getIcon(){
-        String path = null;
-        return path;
+        String path="/Treasures/";
+   
         
+        path = path.concat(getName()+".jpg");
+        return path;
     }
+    
     @Override
      public String toString(){
           return "Name: " + this.name + " tipo: " + this.type +"bonus" + this.bonus;

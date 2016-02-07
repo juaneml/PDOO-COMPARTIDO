@@ -245,7 +245,7 @@ public class CardDealer {
        badConsequence = new SpecificBadConsequence("Te faltan manos para tanta cabeza. "
                + "Pierdes 3 niveles y tus tesoros visibles de las manos",3,tVisible,tHidden);
        prize = new Prize(1,1);
-       this.unusedMonsters.add(new Monster("Bicéfalo",20,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Bicefalo",20,badConsequence,prize));
        
        // El mal indecible impronunciable
        tVisible = new ArrayList(Arrays.asList(TreasureKind.ONEHAND));

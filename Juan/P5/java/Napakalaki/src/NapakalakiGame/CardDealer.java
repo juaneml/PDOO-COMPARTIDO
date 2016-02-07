@@ -63,7 +63,7 @@ public class CardDealer {
         this.unusedTreasures.add(new Treasure("Necro-comicon",1,TreasureKind.ONEHAND));
         this.unusedTreasures.add(new Treasure("Necronomicon",5,TreasureKind.BOTHHANDS));
         this.unusedTreasures.add(new Treasure("Linterna a 2 manos",3,TreasureKind.BOTHHANDS));
-        this.unusedTreasures.add(new Treasure("Necrognomicon",2,TreasureKind.ONEHAND));
+        this.unusedTreasures.add(new Treasure("Necro-gnomicon",2,TreasureKind.ONEHAND));
         this.unusedTreasures.add(new Treasure("Necrotelecom",2,TreasureKind.HELMET));
         this.unusedTreasures.add(new Treasure("Mazo de los antiguos",3,TreasureKind.ONEHAND));
         this.unusedTreasures.add(new Treasure("Necro-playbocón",3,TreasureKind.ONEHAND));

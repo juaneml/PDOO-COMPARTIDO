@@ -7,6 +7,7 @@
 package GUI;
 
 import NapakalakiGame.Treasure;
+import java.awt.Color;
 import java.net.URL;
 import javax.swing.ImageIcon;
 
@@ -17,6 +18,7 @@ import javax.swing.ImageIcon;
 public class TreasureView extends javax.swing.JPanel {
 
     private Treasure treasureModel;
+    private boolean selected = false;
     /**
      * Creates new form TreasureView
      */
@@ -36,6 +38,14 @@ public class TreasureView extends javax.swing.JPanel {
         
         repaint();
         
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public Treasure getTreasureModel() {
+        return treasureModel;
     }
     
     /**
@@ -59,6 +69,11 @@ public class TreasureView extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         panel_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panel_datos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel_datosMouseClicked(evt);
+            }
+        });
 
         label_tipo.setText("Tipo");
 
@@ -114,6 +129,18 @@ public class TreasureView extends javax.swing.JPanel {
 
         add(panel_datos, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void panel_datosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_datosMouseClicked
+        if(selected == true){
+            selected = false;
+            this.panel_datos.setBackground(Color.green);
+        }
+        else{
+            selected = true;
+            this.panel_datos.setBackground(Color.red);
+        }
+        repaint();
+    }//GEN-LAST:event_panel_datosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

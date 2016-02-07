@@ -289,11 +289,29 @@ public class PlayerView extends javax.swing.JPanel {
     }//GEN-LAST:event_makeVisibleActionPerformed
 
     private void discardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardActionPerformed
-        // TODO add your handling code here:
+         ArrayList<Treasure> selHidden = this.getSelectedTreasures(hiddenTreasures);
+         ArrayList<Treasure> selVisibles = this.getSelectedTreasures(visibleTreasures);
+         int i=0;
+         for (Treasure t : selHidden){
+            playerModel.discardHiddenTreasure(t);
+            hiddenTreasures.remove(i);
+            i++;
+         }
+         i=0;
+         for(Treasure t : selVisibles){
+             playerModel.discardVisibleTreasure(t);
+             visibleTreasures.remove(i);
+             i++;
+         }
+         repaint();
     }//GEN-LAST:event_discardActionPerformed
 
     private void discardAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardAllActionPerformed
-        // TODO add your handling code here:
+       
+        this.hiddenTreasures.removeAll();
+        this.visibleTreasures.removeAll();
+        playerModel.discardAllTreasures();
+        repaint();
     }//GEN-LAST:event_discardAllActionPerformed
 
 

@@ -17,15 +17,18 @@ public class NapakalakiView extends javax.swing.JFrame {
      */
     
     private Napakalaki napakalakiModel;
+    private boolean meet_m;
     public NapakalakiView() {
         initComponents();
         this.setLocationRelativeTo(null); //ponemos ventana Centrada
     }
 
     public void setNapakalaki(Napakalaki n){
+        meet_m = false;
         napakalakiModel = n;
         this.currentPlayer.setPlayer(n.getCurrentPlayer());
-        this.currentMonster.setMonster(n.getCurrentMonster());
+        
+        
         
         this.currentPlayer.setNapakalakiModel(napakalakiModel);
         this.repaint();
@@ -122,7 +125,13 @@ public class NapakalakiView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void meet_monsterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meet_monsterActionPerformed
-        //codigo
+        
+        if (this.meet_m == false){
+            this.currentMonster.setEnabled(true);
+            this.currentMonster.setMonster(napakalakiModel.getCurrentMonster());
+        }
+        
+            repaint();
     }//GEN-LAST:event_meet_monsterActionPerformed
 
     private void combatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatActionPerformed

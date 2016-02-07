@@ -59,7 +59,7 @@ public class MonsterView extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        carta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Monsters/3 Byakhees de bonanza.png"))); // NOI18N
+        carta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Monsters/espalda_baraja.jpg"))); // NOI18N
         carta.setMaximumSize(new java.awt.Dimension(100, 331));
         carta.setPreferredSize(new java.awt.Dimension(100, 100));
 

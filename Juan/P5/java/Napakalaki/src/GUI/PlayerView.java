@@ -6,14 +6,10 @@
 
 package GUI;
 
-import NapakalakiGame.Napakalaki;
-import NapakalakiGame.Player;
-import NapakalakiGame.Treasure;
+import NapakalakiGame.*;
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.event.ComponentListener;
 import java.util.ArrayList;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -28,8 +24,8 @@ public class PlayerView extends javax.swing.JPanel {
     /**
      * Creates new form PlayerView
      */
-    TreasureView nuevo = new TreasureView();
     
+    private CombatResult combate;
     public PlayerView() {
         initComponents();
         
@@ -42,6 +38,7 @@ public class PlayerView extends javax.swing.JPanel {
         this.level.setText(Integer.toString(playerModel.getLevels()));
         this.combatLevel.setText(Integer.toString(playerModel.getCombatLevel()));
         if(playerModel.getEnemy()!=null)
+//        this.resultado.setText(napakalakiModel
         this.enemigo.setText(playerModel.getEnemy().getName());
         // Incluir instrucciones para actualizar su nombre, nivel, etc.
         // A continuación se actualizan sus tesoros
@@ -100,6 +97,9 @@ public class PlayerView extends javax.swing.JPanel {
             }
         }
         return output;
+    }
+     public String getCombate() {
+        return combate.toString();
     }
     /**
      * This method is called from within the constructor to initialize the form.

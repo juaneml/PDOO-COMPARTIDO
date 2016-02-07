@@ -36,8 +36,9 @@ public class CultistPlayer extends Player {
      * @return suma
      */
     
+    /*Antes protected*/
     @Override
-    protected int getCombatLevel() {
+    public int getCombatLevel() {
         int suma;
         double veintexciento;
         

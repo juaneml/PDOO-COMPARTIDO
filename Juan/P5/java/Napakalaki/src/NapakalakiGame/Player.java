@@ -91,7 +91,8 @@ public class Player implements Cloneable  {
      * @return el nivel de combate del jugador.
      * Recorremos el array con el número de tesoros visibles para añadirles el bonus.
      */
-    protected int getCombatLevel() {
+    /*Estaba a protected */
+    public int getCombatLevel() {
         int sum_bonus = 0;
         int nivel;
         for(int i=0; i < this.visibleTreasures.size();i++){
@@ -568,7 +569,8 @@ public class Player implements Cloneable  {
      * @return enemy de tipo Player
      */
     
-    protected Player getEnemy(){
+    /*antes protected*/
+    public Player getEnemy(){
        return this.enemy;
     }
     

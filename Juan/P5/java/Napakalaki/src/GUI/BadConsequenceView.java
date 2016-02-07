@@ -20,7 +20,8 @@ public class BadConsequenceView extends javax.swing.JPanel {
     public BadConsequenceView() {
         initComponents();
     }
-     public void setBadConsequence(BadConsequence treasureModel){
+     public void setBadConsequence(BadConsequence badconsequence){
+         badConsequenceModel = badconsequence;
          this.niveles.setText(Integer.toString(badConsequenceModel.getLevels()));
          this.texto.setText(badConsequenceModel.getText());
      }

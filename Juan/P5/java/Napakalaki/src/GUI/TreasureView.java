@@ -24,12 +24,12 @@ public class TreasureView extends javax.swing.JPanel {
 
     public void setTreasure(Treasure treasureModel) {
         this.treasureModel = treasureModel;
-        
+        System.out.println(treasureModel.getName());
         //Atributos del tesoro
         nombre.setText(treasureModel.getName() ); 
         bonus.setText(Integer.toString(treasureModel.getBonus()));
         tipo.setText(treasureModel.getType().toString());
-        
+        repaint();
         
     }
     

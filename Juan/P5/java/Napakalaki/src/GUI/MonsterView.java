@@ -8,6 +8,8 @@ package GUI;
 import NapakalakiGame.BadConsequence;
 import NapakalakiGame.Monster;
 import NapakalakiGame.Prize;
+import java.net.URL;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -16,16 +18,21 @@ import NapakalakiGame.Prize;
 public class MonsterView extends javax.swing.JPanel {
 
     
-    Monster MonsterModel;
+    Monster monsterModel;
     public MonsterView() {
         initComponents();
     }
 
-    public void setMonster(Monster MonsterModel){
-        this.MonsterModel = MonsterModel;      
+    public void setMonster(Monster monsterModel){
+        this.monsterModel = monsterModel;      
       
-        this.name.setText(MonsterModel.getName());
-        this.nivel.setText(Integer.toString(MonsterModel.getLevelsGained()));
+        this.name.setText(monsterModel.getName());
+        this.nivel.setText(Integer.toString(monsterModel.getLevelsGained()));
+        URL url = getClass().getResource(monsterModel.getIcon());
+        this.carta.setIcon(new ImageIcon(url));
+        /*Actualizar badConsequence*/
+        this.badConsequencePanel.setBadConsequence(monsterModel.getBadConsequence());
+        this.prizePanel.setPrize(monsterModel.getPrice());
         repaint();
     }
     /**
@@ -42,9 +49,9 @@ public class MonsterView extends javax.swing.JPanel {
         name = new javax.swing.JLabel();
         nivel = new javax.swing.JLabel();
         etiqueta_monster = new javax.swing.JLabel();
-        badConsequenceView1 = new GUI.BadConsequenceView();
-        prizeView1 = new GUI.PrizeView();
-        jLabel1 = new javax.swing.JLabel();
+        badConsequencePanel = new GUI.BadConsequenceView();
+        prizePanel = new GUI.PrizeView();
+        carta = new javax.swing.JLabel();
 
         etiqueta_name.setText("Name");
 
@@ -57,11 +64,11 @@ public class MonsterView extends javax.swing.JPanel {
         etiqueta_monster.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         etiqueta_monster.setText("Monster");
 
-        badConsequenceView1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        badConsequencePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        prizeView1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        prizePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Monsters/3 Byakhees de bonanza.png"))); // NOI18N
+        carta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Monsters/3 Byakhees de bonanza.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -70,15 +77,11 @@ public class MonsterView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(badConsequencePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(prizePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(badConsequenceView1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(prizeView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(etiqueta_name)
                                     .addComponent(etiqueta_level, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -87,7 +90,7 @@ public class MonsterView extends javax.swing.JPanel {
                                     .addComponent(nivel)
                                     .addComponent(name))))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1))
+                        .addComponent(carta))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(140, 140, 140)
                         .addComponent(etiqueta_monster)))
@@ -100,32 +103,32 @@ public class MonsterView extends javax.swing.JPanel {
                 .addComponent(etiqueta_monster)
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
+                    .addComponent(carta)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(etiqueta_name)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(etiqueta_name, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(name))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(etiqueta_level)
                             .addComponent(nivel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(badConsequenceView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(badConsequencePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(prizeView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(prizePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GUI.BadConsequenceView badConsequenceView1;
+    private GUI.BadConsequenceView badConsequencePanel;
+    private javax.swing.JLabel carta;
     private javax.swing.JLabel etiqueta_level;
     private javax.swing.JLabel etiqueta_monster;
     private javax.swing.JLabel etiqueta_name;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel name;
     private javax.swing.JLabel nivel;
-    private GUI.PrizeView prizeView1;
+    private GUI.PrizeView prizePanel;
     // End of variables declaration//GEN-END:variables
 }

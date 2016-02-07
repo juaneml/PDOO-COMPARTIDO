@@ -19,12 +19,12 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
      * Creates new form PlayerNamesCapture
      */
     
-    /*2*/ ArrayList<String> names = new ArrayList();
+    /*2*/ private ArrayList<String> names = new ArrayList();
     
     public PlayerNamesCapture(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); //centrar la ventana
         /*3*/
         this.addWindowListener(new WindowAdapter() {
         @Override

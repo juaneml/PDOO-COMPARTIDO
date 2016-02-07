@@ -1,5 +1,7 @@
 package NapakalakiGame;
 
+import java.net.URL;
+
 /**
  *
  * @author juane
@@ -105,16 +107,25 @@ public class Monster {
     }
     
     
-//    
-//    /**
-//     * Método getPrice()
-//     * Devuelve el buen royo
-//     * @return  price de tipo Prize
-//     */
-//    public Prize getPrice() {
-//        return price;
-//    }
+    
+    /**
+     * Método getPrice()
+     * Devuelve el buen royo
+     * @return  price de tipo Prize
+     */
+    /*No está en el diagrama pero deveria estar!!!*/
+    public Prize getPrice() {
+        return prize;
+    }
 
+    public String getIcon(){
+        String path ="Source Packages/GUI/Monster/";
+   
+        
+        path = path.concat(getName()+".jpg");
+        return path;
+    }
+    
     
     /**
      * Método toString

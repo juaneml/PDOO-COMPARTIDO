@@ -2,6 +2,10 @@
 package GUI;
 
 import NapakalakiGame.Napakalaki;
+import NapakalakiGame.Treasure;
+import java.awt.Component;
+import java.util.ArrayList;
+import javax.swing.JPanel;
 /**
  *
  * @author Raul
@@ -23,7 +27,23 @@ public class NapakalakiView extends javax.swing.JFrame {
         this.currentPlayer.setPlayer(n.getCurrentPlayer());
         this.currentMonster.setMonster(n.getCurrentMonster());
         
+        this.currentPlayer.setNapakalakiModel(napakalakiModel);
         this.repaint();
+    }
+    
+    private ArrayList<Treasure> getSelectedTreasures(JPanel aPanel) {
+// Se recorren los tesoros que contiene el panel,
+// almacenando en un vector aquellos que están seleccionados.
+// Finalmente se devuelve dicho vector.
+        TreasureView tv;
+        ArrayList<Treasure> output = new ArrayList();
+        for (Component c : aPanel.getComponents()) {
+            tv = (TreasureView) c;
+            if (tv.isSelected()) {
+                output.add(tv.getTreasureModel());
+            }
+        }
+        return output;
     }
     /**
      * This method is called from within the constructor to initialize the form.

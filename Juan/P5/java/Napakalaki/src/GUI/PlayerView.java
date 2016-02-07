@@ -6,6 +6,7 @@
 
 package GUI;
 
+import NapakalakiGame.Napakalaki;
 import NapakalakiGame.Player;
 import NapakalakiGame.Treasure;
 import java.awt.BorderLayout;
@@ -21,7 +22,7 @@ import javax.swing.JPanel;
 public class PlayerView extends javax.swing.JPanel {
 
     private Player playerModel;
-    
+    private Napakalaki napakalakiModel ;
     
     /**
      * Creates new form PlayerView
@@ -79,6 +80,10 @@ public class PlayerView extends javax.swing.JPanel {
         // Se fuerza la actualización visual del panel
         aPanel.repaint();
         aPanel.revalidate();
+    }
+
+    public void setNapakalakiModel(Napakalaki napakalakiModel) {
+        this.napakalakiModel = napakalakiModel;
     }
     
     /**

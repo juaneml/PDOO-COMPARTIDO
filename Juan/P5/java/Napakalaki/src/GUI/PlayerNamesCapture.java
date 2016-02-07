@@ -69,12 +69,6 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
 
         jugadores.setText("JUGADORES");
 
-        name1.setText("Player1");
-
-        name2.setText("Player2");
-
-        name3.setText("Player 3");
-
         play.setBackground(new java.awt.Color(0, 255, 0));
         play.setText("Play");
         play.addActionListener(new java.awt.event.ActionListener() {

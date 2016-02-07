@@ -106,19 +106,10 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="name1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Player1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="name2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Player2"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="name3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Player 3"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JToggleButton" name="play">
       <Properties>

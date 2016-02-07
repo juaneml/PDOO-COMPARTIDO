@@ -45,9 +45,9 @@ public class CardDealer {
         this.unusedTreasures.add(new Treasure("Botas de invetigacion",3,TreasureKind.SHOES));
         this.unusedTreasures.add(new Treasure("Capucha de Cthulhu",3,TreasureKind.HELMET));
         this.unusedTreasures.add(new Treasure("A prueba de babas",2,TreasureKind.ARMOR));
-        this.unusedTreasures.add(new Treasure("Botas de lluvia cida",1,TreasureKind.BOTHHANDS));
+        this.unusedTreasures.add(new Treasure("Botas de lluvia acida",1,TreasureKind.BOTHHANDS));
         this.unusedTreasures.add(new Treasure("Casco minero",2,TreasureKind.HELMET));
-        this.unusedTreasures.add(new Treasure("Amatralladora Thompson",4,TreasureKind.BOTHHANDS));
+        this.unusedTreasures.add(new Treasure("Ametralladora Thompson",4,TreasureKind.BOTHHANDS));
         this.unusedTreasures.add(new Treasure("Camiseta de la UGR",1,TreasureKind.ARMOR));
         this.unusedTreasures.add(new Treasure("Clavo de rail ferroviario",3,TreasureKind.ONEHAND));
         this.unusedTreasures.add(new Treasure("Cuchillo de sushi arcano",2,TreasureKind.ONEHAND));
@@ -58,7 +58,7 @@ public class CardDealer {
         this.unusedTreasures.add(new Treasure("Insecticida",2,TreasureKind.ONEHAND));
         this.unusedTreasures.add(new Treasure("Escopeta de 3 cañones",4,TreasureKind.BOTHHANDS));
         this.unusedTreasures.add(new Treasure("Garabato mistico",2,TreasureKind.ONEHAND));
-        this.unusedTreasures.add(new Treasure("La rebeca metálica",2,TreasureKind.ARMOR));
+        this.unusedTreasures.add(new Treasure("La rebeca metalica",2,TreasureKind.ARMOR));
         this.unusedTreasures.add(new Treasure("Lanzallamas",4,TreasureKind.BOTHHANDS));
         this.unusedTreasures.add(new Treasure("Necro-comicon",1,TreasureKind.ONEHAND));
         this.unusedTreasures.add(new Treasure("Necronomicon",5,TreasureKind.BOTHHANDS));
@@ -122,7 +122,7 @@ public class CardDealer {
                + "y te dejan caer en mitadl del vuelo. Descarta 1 mano visible "
                + "y 1 mano oculta",0,tVisible,tHidden);
        prize = new Prize(4,1);
-       this.unusedMonsters.add(new Monster("Ángeles de la noche ibicenca",14,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Angeles de la noche ibicenca",14,badConsequence,prize));
        
        //El gorrón en el umbral  
        
@@ -194,7 +194,7 @@ public class CardDealer {
        badConsequence = new NumericBadConsequence("Da mucho asquito. Pierdes"
                + "3 niveles",3,0,0);
        prize = new Prize(1,1);
-       this.unusedMonsters.add(new Monster("Pollipólipo volante",3,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("Pollipolipo volante",3,badConsequence,prize));
        
        // Yskhtihyssg-Goth
        
@@ -278,12 +278,12 @@ public class CardDealer {
        tHidden.add(TreasureKind.BOTHHANDS);
        badConsequence = new SpecificBadConsequence("Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas",2,tVisible,tHidden);
        prize = new Prize(1,1);
-       this.unusedMonsters.add(new Monster("Serpiente Político",8,badConsequence,prize,5));
+       this.unusedMonsters.add(new Monster("Felpuggoth",8,badConsequence,prize,5));
        
        //Shogooth
        badConsequence = new NumericBadConsequence("Pierdes 2 niveles",2,0,0);
        prize = new Prize(4,2);
-       this.unusedMonsters.add(new Monster("Serpiente Político",16,badConsequence,prize,-4));
+       this.unusedMonsters.add(new Monster("Shogooth",16,badConsequence,prize,-4));
        
        //Lolitagooth
        badConsequence = new NumericBadConsequence("Pintalabios negro. Pierdes 2 niveles",2,0,0);

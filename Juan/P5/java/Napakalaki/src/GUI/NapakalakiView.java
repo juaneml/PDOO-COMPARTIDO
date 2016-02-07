@@ -23,6 +23,8 @@ public class NapakalakiView extends javax.swing.JFrame {
     
     public NapakalakiView() {
         initComponents();
+        this.next_turn.setEnabled(false);
+        this.combat.setEnabled(false);
         this.setLocationRelativeTo(null); //ponemos ventana Centrada
     }
 
@@ -150,7 +152,7 @@ public class NapakalakiView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void meet_monsterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meet_monsterActionPerformed
-        
+        this.combat.setEnabled(true);
         this.pulsado_monster=evt.getModifiers();
         if (this.meet_m == false){
             this.currentMonster.setEnabled(true);
@@ -165,6 +167,8 @@ public class NapakalakiView extends javax.swing.JFrame {
     private void combatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatActionPerformed
         if (this.pulsado_monster > 1) {
             try {
+                this.pulsado_combate=evt.getModifiers();
+               this.next_turn.setEnabled(true);
                this.meet_monster.setEnabled(false);
                this.resultado.setText(this.napakalakiModel.developCombat().toString());
             } catch (CloneNotSupportedException ex) {
@@ -175,7 +179,17 @@ public class NapakalakiView extends javax.swing.JFrame {
     }//GEN-LAST:event_combatActionPerformed
 
     private void next_turnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_turnActionPerformed
-        // TODO add your handling code here:
+        if(this.pulsado_combate > 1){
+            this.next_turn.setEnabled(true);
+            this.meet_monster.setEnabled(true);
+            this.combat.setEnabled(false);
+            this.napakalakiModel.nextTurn();
+            this.setNapakalaki(napakalakiModel);
+            this.currentMonster.setMonster(napakalakiModel.getCurrentMonster());
+        }
+        else
+            this.next_turn.setEnabled(false);
+        repaint();
     }//GEN-LAST:event_next_turnActionPerformed
 
     

@@ -28,254 +28,224 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,119,0,0,4,65"/>
   </AuxValues>
 
-  <Layout>
-    <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="label_sectario" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="label_nivel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="label_nombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="nombre" min="-2" max="-2" attributes="0"/>
-                                          <Component id="level" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="principal">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="Before"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="visibleTreasures" max="32767" attributes="0"/>
+              <Component id="hiddenTreasures" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="label_enemigo" min="-2" max="-2" attributes="0"/>
+                              <Component id="label_sectario" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="enemigo" min="-2" max="-2" attributes="0"/>
+                              <Component id="sectario" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="label_n_combate" min="-2" max="-2" attributes="0"/>
+                              <Component id="label_nivel" min="-2" max="-2" attributes="0"/>
+                              <Component id="label_nombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="nombre" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="level" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="combatLevel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="label_n_combate" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="label_enemigo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="enemigo" min="-2" max="-2" attributes="0"/>
-                                          <Component id="combatLevel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="sectario" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <EmptySpace min="-2" pref="325" max="-2" attributes="0"/>
+                                  <Component id="discard" min="-2" pref="133" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="makeVisible" min="-2" pref="133" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="steal" min="-2" pref="133" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="discardAll" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="makeVisible" min="-2" pref="133" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="discard" min="-2" pref="133" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="discardAll" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="steal" min="-2" pref="133" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="visibleTreasures" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="hiddenTreasures" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace pref="88" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="26" max="32767" attributes="0"/>
           </Group>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Component id="visibleTreasures" min="-2" pref="249" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="hiddenTreasures" pref="258" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="label_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="label_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="nombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="label_nivel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="level" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="level" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="label_nivel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="label_n_combate" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="combatLevel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="discard" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="makeVisible" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="steal" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="discardAll" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="label_enemigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="enemigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <Component id="label_sectario" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="discardAll" min="-2" max="-2" attributes="0"/>
+                          <Component id="sectario" min="-2" pref="14" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="steal" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="label_n_combate" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="combatLevel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="37" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="label_enemigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="enemigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="makeVisible" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="discard" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="label_sectario" min="-2" max="-2" attributes="0"/>
-                  <Component id="sectario" min="-2" pref="14" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="visibleTreasures" min="-2" max="-2" attributes="0"/>
-                  <Component id="hiddenTreasures" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-          </Group>
-      </Group>
-    </DimensionLayout>
-  </Layout>
-  <SubComponents>
-    <Component class="javax.swing.JLabel" name="label_nombre">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="label_nivel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nivel"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="label_n_combate">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nivel de combate"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="label_enemigo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Enemigo"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="label_sectario">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Sectario"/>
-      </Properties>
-    </Component>
-    <Container class="javax.swing.JPanel" name="visibleTreasures">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Visibles"/>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="332" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="215" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
-    </Container>
-    <Container class="javax.swing.JPanel" name="hiddenTreasures">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Ocultos"/>
-          </Border>
-        </Property>
-      </Properties>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="hiddenTreasures">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Ocultos"/>
+              </Border>
+            </Property>
+          </Properties>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="342" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="235" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+        </Container>
+        <Component class="javax.swing.JButton" name="steal">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Steal Treasure"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stealActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="discard">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Discard Treasures"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="discardAll">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Discard All Treasures"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="makeVisible">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Make Visible"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JPanel" name="visibleTreasures">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Visibles"/>
+              </Border>
+            </Property>
+          </Properties>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+        </Container>
+        <Component class="javax.swing.JLabel" name="label_nombre">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="nombre">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="NOMBRE"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="label_nivel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nivel"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="level">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="LEVEL"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="combatLevel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="NIVEL COMBATE"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="enemigo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="ENEMIGO"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="label_enemigo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Enemigo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="label_n_combate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nivel de combate"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="sectario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="SECTARIO"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="label_sectario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sectario"/>
+          </Properties>
+        </Component>
+      </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="steal">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Steal Treasure"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stealActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="makeVisible">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Make Visible"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="discard">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Discard Treasures"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="discardAll">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Discard All Treasures"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="nombre">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="NOMBRE"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="level">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="LEVEL"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="combatLevel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="NIVEL COMBATE"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="enemigo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="ENEMIGO"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="sectario">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="SECTARIO"/>
-      </Properties>
-    </Component>
   </SubComponents>
 </Form>

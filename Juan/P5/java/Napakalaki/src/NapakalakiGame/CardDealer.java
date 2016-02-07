@@ -94,7 +94,7 @@ public class CardDealer {
        badConsequence = new SpecificBadConsequence("Pierdes tu armadura visible y otra oculta"
                + "",0,tVisible,tHidden);
        prize = new Prize(2,1);
-       this.unusedMonsters.add(new Monster("3 Byakhees de bonanza ",8,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("3 Byakhees de bonanza",8,badConsequence,prize));
        
        // Chibithulhu 
        
@@ -128,7 +128,7 @@ public class CardDealer {
        
        badConsequence = new NumericBadConsequence("Pierdes todos tus tesoros visibles",0,BadConsequence.MAXTREASURES,0);
        prize = new Prize(3,1);       
-       this.unusedMonsters.add(new Monster("El gorrón en el umbral",10,badConsequence,prize));
+       this.unusedMonsters.add(new Monster("El gorron en el umbral",10,badConsequence,prize));
        
        // H.P. Munchcraft
        
@@ -268,7 +268,7 @@ public class CardDealer {
        //Serpiente Político
        badConsequence = new NumericBadConsequence("Tu gobierno te recorta 2 niveles",2,0,0);
        prize = new Prize(2,1);
-       this.unusedMonsters.add(new Monster("Serpiente Político",8,badConsequence,prize,-2));
+       this.unusedMonsters.add(new Monster("Serpiente Politico",8,badConsequence,prize,-2));
        
        //Felpuggoth
        tVisible = new ArrayList(Arrays.asList(TreasureKind.HELMET));

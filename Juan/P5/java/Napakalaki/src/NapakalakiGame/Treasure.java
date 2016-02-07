@@ -65,7 +65,11 @@ public class Treasure {
          return this.type;
      }
 
-    
+    public String getIcon(){
+        String path = null;
+        return path;
+        
+    }
     @Override
      public String toString(){
           return "Name: " + this.name + " tipo: " + this.type +"bonus" + this.bonus;

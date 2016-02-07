@@ -119,7 +119,7 @@ public class Monster {
     }
 
     public String getIcon(){
-        String path ="Source Packages/GUI/Monster/";
+        String path="/Monsters/";
    
         
         path = path.concat(getName()+".jpg");

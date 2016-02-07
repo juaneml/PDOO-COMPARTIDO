@@ -23,8 +23,7 @@ public class TreasureView extends javax.swing.JPanel {
     }
 
     public void setTreasure(Treasure treasureModel) {
-        this.treasureModel = treasureModel;
-        System.out.println(treasureModel.getName());
+        this.treasureModel = treasureModel;       
         //Atributos del tesoro
         nombre.setText(treasureModel.getName() ); 
         bonus.setText(Integer.toString(treasureModel.getBonus()));
@@ -42,84 +41,72 @@ public class TreasureView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        label_nombre = new javax.swing.JLabel();
-        label_bonus = new javax.swing.JLabel();
+        panel_datos = new javax.swing.JPanel();
         label_tipo = new javax.swing.JLabel();
-        titulo = new javax.swing.JLabel();
-        imagen = new javax.swing.JLabel();
+        label_nombre = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
         bonus = new javax.swing.JLabel();
+        label_bonus = new javax.swing.JLabel();
         tipo = new javax.swing.JLabel();
+        imagen = new javax.swing.JLabel();
 
-        label_nombre.setText("Nombre");
+        setLayout(new java.awt.BorderLayout());
 
-        label_bonus.setText("Bonus");
+        panel_datos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         label_tipo.setText("Tipo");
 
-        titulo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        titulo.setText("Tesoro");
-
-        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Treasures/A prueba de babas.jpg"))); // NOI18N
+        label_nombre.setText("Nombre");
 
         nombre.setText("NAME");
 
         bonus.setText("BONUS");
 
+        label_bonus.setText("Bonus");
+
         tipo.setText("TIPO");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label_nombre)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nombre))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label_bonus)
-                                .addGap(18, 18, 18)
-                                .addComponent(bonus))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(titulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(label_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(tipo)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(imagen)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(titulo)
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Treasures/A prueba de babas.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout panel_datosLayout = new javax.swing.GroupLayout(panel_datos);
+        panel_datos.setLayout(panel_datosLayout);
+        panel_datosLayout.setHorizontalGroup(
+            panel_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_datosLayout.createSequentialGroup()
+                .addGroup(panel_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_bonus, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bonus)
+                    .addComponent(nombre)
+                    .addComponent(label_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label_nombre)
-                    .addComponent(nombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_bonus, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bonus))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_tipo)
-                    .addComponent(tipo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(imagen)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
+        panel_datosLayout.setVerticalGroup(
+            panel_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_datosLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(panel_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imagen)
+                    .addGroup(panel_datosLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(label_nombre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label_bonus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bonus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label_tipo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, 0))
+        );
+
+        add(panel_datos, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -130,7 +117,7 @@ public class TreasureView extends javax.swing.JPanel {
     private javax.swing.JLabel label_nombre;
     private javax.swing.JLabel label_tipo;
     private javax.swing.JLabel nombre;
+    private javax.swing.JPanel panel_datos;
     private javax.swing.JLabel tipo;
-    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

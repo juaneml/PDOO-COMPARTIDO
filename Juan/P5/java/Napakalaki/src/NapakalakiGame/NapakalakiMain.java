@@ -44,13 +44,13 @@ public class NapakalakiMain {
    PlayerView playerModel = new PlayerView();  
    
    System.out.println(game.getCurrentPlayer().getName());
-//   playerModel.setPlayer(currentPlayer);
-//   playerModel.setVisible(true);
+   playerModel.setPlayer(currentPlayer);
+   playerModel.setVisible(true);
    /*Treasure*/
    Treasure treasure;
    TreasureView treasureModel = new TreasureView();
    treasure = a.nextTreasure();
-   treasureModel.setTreasure(treasure);
+   //treasureModel.setTreasure(treasure);
    
    /*Monstrous*/
    

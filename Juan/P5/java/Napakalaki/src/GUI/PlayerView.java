@@ -64,7 +64,7 @@ public class PlayerView extends javax.swing.JPanel {
         // Se recorre la lista de tesoros construyendo y añadiendo sus vistas
         // al panel
         for (Treasure t : aList) {
-            System.out.println("Tesorillos");
+           
             TreasureView aTreasureView = new TreasureView();
             aTreasureView.setTreasure (t);
             
@@ -134,10 +134,25 @@ public class PlayerView extends javax.swing.JPanel {
         });
 
         discard.setText("Discard Treasures");
+        discard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                discardActionPerformed(evt);
+            }
+        });
 
         discardAll.setText("Discard All Treasures");
+        discardAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                discardAllActionPerformed(evt);
+            }
+        });
 
         makeVisible.setText("Make Visible");
+        makeVisible.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                makeVisibleActionPerformed(evt);
+            }
+        });
 
         visibleTreasures.setBorder(javax.swing.BorderFactory.createTitledBorder("Visibles"));
         visibleTreasures.setLayout(new java.awt.BorderLayout());
@@ -247,6 +262,18 @@ public class PlayerView extends javax.swing.JPanel {
     private void stealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stealActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_stealActionPerformed
+
+    private void makeVisibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeVisibleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_makeVisibleActionPerformed
+
+    private void discardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_discardActionPerformed
+
+    private void discardAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardAllActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_discardAllActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

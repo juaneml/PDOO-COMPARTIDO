@@ -173,16 +173,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Discard Treasures"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="discardActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="discardAll">
           <Properties>
             <Property name="text" type="java.lang.String" value="Discard All Treasures"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="discardAllActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="makeVisible">
           <Properties>
             <Property name="text" type="java.lang.String" value="Make Visible"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="makeVisibleActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="visibleTreasures">
           <Properties>

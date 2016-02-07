@@ -31,20 +31,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         this.repaint();
     }
     
-    private ArrayList<Treasure> getSelectedTreasures(JPanel aPanel) {
-// Se recorren los tesoros que contiene el panel,
-// almacenando en un vector aquellos que están seleccionados.
-// Finalmente se devuelve dicho vector.
-        TreasureView tv;
-        ArrayList<Treasure> output = new ArrayList();
-        for (Component c : aPanel.getComponents()) {
-            tv = (TreasureView) c;
-            if (tv.isSelected()) {
-                output.add(tv.getTreasureModel());
-            }
-        }
-        return output;
-    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

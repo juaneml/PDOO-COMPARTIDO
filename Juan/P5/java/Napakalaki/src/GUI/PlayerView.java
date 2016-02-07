@@ -10,6 +10,7 @@ import NapakalakiGame.Napakalaki;
 import NapakalakiGame.Player;
 import NapakalakiGame.Treasure;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.ComponentListener;
 import java.util.ArrayList;
 import javax.swing.JLabel;
@@ -75,7 +76,7 @@ public class PlayerView extends javax.swing.JPanel {
 //            a.setText("mis cojones");
 //            aPanel.add(a);
 //            nuevo.add(aTreasureView);
-              hiddenTreasures.add(BorderLayout.CENTER,aTreasureView);
+              aPanel.add(BorderLayout.CENTER,aTreasureView);
         }
         // Se fuerza la actualización visual del panel
         aPanel.repaint();
@@ -86,6 +87,20 @@ public class PlayerView extends javax.swing.JPanel {
         this.napakalakiModel = napakalakiModel;
     }
     
+    private ArrayList<Treasure> getSelectedTreasures(JPanel aPanel) {
+    // Se recorren los tesoros que contiene el panel,
+    // almacenando en un vector aquellos que están seleccionados.
+    // Finalmente se devuelve dicho vector.
+        TreasureView tv;
+        ArrayList<Treasure> output = new ArrayList();
+        for (Component c : aPanel.getComponents()) {
+            tv = (TreasureView) c;
+            if (tv.isSelected()) {
+                output.add(tv.getTreasureModel());
+            }
+        }
+        return output;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -160,7 +175,6 @@ public class PlayerView extends javax.swing.JPanel {
         });
 
         visibleTreasures.setBorder(javax.swing.BorderFactory.createTitledBorder("Visibles"));
-        visibleTreasures.setLayout(new java.awt.BorderLayout());
 
         label_nombre.setText("Nombre");
 
@@ -269,7 +283,9 @@ public class PlayerView extends javax.swing.JPanel {
     }//GEN-LAST:event_stealActionPerformed
 
     private void makeVisibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeVisibleActionPerformed
-        // TODO add your handling code here:
+        ArrayList<Treasure> selHidden = this.getSelectedTreasures(hiddenTreasures);
+        this.napakalakiModel.makeTreasuresVisible(selHidden);
+        this.setPlayer(napakalakiModel.getCurrentPlayer());
     }//GEN-LAST:event_makeVisibleActionPerformed
 
     private void discardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardActionPerformed

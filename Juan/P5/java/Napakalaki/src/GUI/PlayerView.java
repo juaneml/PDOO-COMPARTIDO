@@ -50,13 +50,11 @@ public class PlayerView extends javax.swing.JPanel {
         /*Cambiar icono jugador*/
        
        
-        String path = null;
-      
-      
-    
+        String path = null;  
+        
         String aux = playerModel.getName();
-        int n = aux.length();
-        aux =aux.substring(n-1);
+        int n = aux.length(); // obtenemos el tamaño de la cadena
+        aux =aux.substring(n-1); // obtenemos el último carácter
 
         
         if(this.playerModel.getName().contains("b")){//){
@@ -77,9 +75,8 @@ public class PlayerView extends javax.swing.JPanel {
         
         
         
-       
-        if(playerModel.getEnemy()!=null)
-//        this.resultado.setText(napakalakiModel
+   //     this.resultado.setText(napakalakiModel
+        if(playerModel.getEnemy()!=null)   
         this.enemigo.setText(playerModel.getEnemy().getName());
         // Incluir instrucciones para actualizar su nombre, nivel, etc.
         // A continuación se actualizan sus tesoros
@@ -88,8 +85,6 @@ public class PlayerView extends javax.swing.JPanel {
         
         this.fillTreasurePanel(visibleTreasures,playerModel.getVisibleTreasures());
         this.fillTreasurePanel(hiddenTreasures,playerModel.getHiddenTreasures());
-        
-
         
         repaint();
         

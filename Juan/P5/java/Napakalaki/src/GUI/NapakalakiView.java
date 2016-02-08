@@ -193,10 +193,14 @@ public class NapakalakiView extends javax.swing.JFrame {
             } catch (CloneNotSupportedException ex) {
                 Logger.getLogger(NapakalakiView.class.getName()).log(Level.SEVERE, null, ex);
             }
-            this.currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
+           
+            
 
         }
-
+        this.napakalakiModel.discardHiddenTreasures(napakalakiModel.getCurrentPlayer().getHiddenTreasures());
+        this.napakalakiModel.discardVisibleTreasures(napakalakiModel.getCurrentPlayer().getVisibleTreasures());
+         
+         this.currentPlayer.setNapakalakiModel(napakalakiModel);
 
     }//GEN-LAST:event_combatActionPerformed
 

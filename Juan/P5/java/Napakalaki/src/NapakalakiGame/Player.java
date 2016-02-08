@@ -290,7 +290,7 @@ public class Player implements Cloneable  {
     public ArrayList<Treasure> getHiddenTreasures(){
         
         return this.hiddenTreasures; 
-       // return null;
+      
     }
     /**
      * Método getVisibleTreasures()     * 

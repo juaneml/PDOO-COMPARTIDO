@@ -45,7 +45,7 @@ public class CultistPlayer extends Player {
         int suma;
         double veintexciento;
         
-        veintexciento = super.getCombatLevel()*0.2;
+        veintexciento = (super.getCombatLevel())*0.2;
         
         suma = super.getCombatLevel() + (int)veintexciento + myCultistCard.getGainedLevels();
         return suma;

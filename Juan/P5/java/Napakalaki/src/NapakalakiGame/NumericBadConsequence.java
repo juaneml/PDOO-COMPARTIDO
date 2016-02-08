@@ -76,7 +76,7 @@ public class NumericBadConsequence extends BadConsequence{
         
         int nVisibleAux = nVisibleTreasures;
             int nHiddenAux = nHiddenTreasures;
-        if (v.size() > 0) {
+        if (v != null) {
             int tamV = v.size();
             
 
@@ -87,7 +87,7 @@ public class NumericBadConsequence extends BadConsequence{
                 nuevoV = tamV;
             }
         }
-        if (h.size() > 0) {
+        if (h != null) {
             int tamH = h.size();
             // Para los tesoros ocultos
             if (nHiddenAux <= tamH) {

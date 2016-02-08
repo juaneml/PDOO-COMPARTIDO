@@ -49,7 +49,7 @@ public class PlayerView extends javax.swing.JPanel {
         
         /*Cambiar icono jugador*/
        
-       
+       if(playerModel.getName() !=null){
         String path = null;  
         
         String aux = playerModel.getName();
@@ -70,7 +70,7 @@ public class PlayerView extends javax.swing.JPanel {
        
         URL url = this.getClass().getResource(path);
         this.jugador.setIcon(new ImageIcon(url));
-                
+    }        
         this.sectario.setText("No");
         
         
@@ -84,7 +84,8 @@ public class PlayerView extends javax.swing.JPanel {
         System.out.println(playerModel.getHiddenTreasures());
         
         this.fillTreasurePanel(visibleTreasures,playerModel.getVisibleTreasures());
-        this.fillTreasurePanel(hiddenTreasures,playerModel.getHiddenTreasures());
+        this.fillTreasurePanel(hiddenTreasures,playerModel.getHiddenTreasures());        
+        
         
         repaint();
         
@@ -102,6 +103,7 @@ public class PlayerView extends javax.swing.JPanel {
         aPanel.removeAll();
         // Se recorre la lista de tesoros construyendo y añadiendo sus vistas
         // al panel
+        if(aList != null){
         for (Treasure t : aList) {
            
             TreasureView aTreasureView = new TreasureView();
@@ -109,15 +111,14 @@ public class PlayerView extends javax.swing.JPanel {
             
             aTreasureView.setVisible (true);
             aPanel.add(aTreasureView);
-//            JLabel a = new JLabel();
-//            a.setText("mis cojones");
-//            aPanel.add(a);
-//            nuevo.add(aTreasureView);
+            
+//           
               aPanel.add(BorderLayout.CENTER,aTreasureView);
         }
         // Se fuerza la actualización visual del panel
         aPanel.repaint();
         aPanel.revalidate();
+    }
     }
 
     public void setNapakalakiModel(Napakalaki napakalakiModel) {
@@ -350,6 +351,7 @@ public class PlayerView extends javax.swing.JPanel {
          int contador = 0;
          for (Treasure t : selHidden){            
             playerModel.discardHiddenTreasure(t);
+            napakalakiModel.discardHiddenTreasures(selHidden);
             if(contador ==0){
                 hiddenTreasures.remove(i);
                 i++;
@@ -361,16 +363,16 @@ public class PlayerView extends javax.swing.JPanel {
          for(Treasure t : selVisibles){
              if(contador == 0){
                 playerModel.discardVisibleTreasure(t);
+                napakalakiModel.discardVisibleTreasures(selVisibles);
                 visibleTreasures.remove(i);
                 i++;
                 contador++;
              }
          }
-
          
          
-         napakalakiModel.discardHiddenTreasures(selHidden);
-         napakalakiModel.discardVisibleTreasures(selVisibles);
+         
+       
          
 
          repaint();

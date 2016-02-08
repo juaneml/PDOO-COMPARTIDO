@@ -95,7 +95,7 @@ public class Player implements Cloneable  {
     public int getCombatLevel() {
         int sum_bonus = 0;
         int nivel;
-        if(this.visibleTreasures.size()>0){
+        if(this.visibleTreasures != null){
         for (Treasure visibleTreasure : this.visibleTreasures) {
             sum_bonus = visibleTreasure.getBonus() + sum_bonus;
         }
@@ -128,6 +128,7 @@ public class Player implements Cloneable  {
      * Método setPendingBadConsequence(BadConsequence b)
      * @param b BadConsequence mal royo.
      */
+   
     private void setPendingBadConsequence(BadConsequence b){
         this.pendingBadConsequence = b;
     }
@@ -365,8 +366,9 @@ public class Player implements Cloneable  {
      * @param t de tipo treasure
      */
     public void discardVisibleTreasure (Treasure t){
+        if(visibleTreasures != null){
         this.visibleTreasures.remove(t);
-        
+        }
         if((this.pendingBadConsequence != null ) && (!this.pendingBadConsequence.isEmpty())){
             this.pendingBadConsequence.substractVisibleTreasure(t);
         }
@@ -380,12 +382,13 @@ public class Player implements Cloneable  {
      * @param t Treasure
      */
     public void discardHiddenTreasure(Treasure t){
-        this.hiddenTreasures.remove(t);
-        
-        if((this.pendingBadConsequence != null ) && (!this.pendingBadConsequence.isEmpty())){
+        if (hiddenTreasures != null) {
+            this.hiddenTreasures.remove(t);
+        }
+        if ((this.pendingBadConsequence != null) && (!this.pendingBadConsequence.isEmpty())) {
             this.pendingBadConsequence.substractHiddenTreasure(t);
         }
-        
+
         this.dielfNoTreasures();
     }
     
@@ -398,12 +401,12 @@ public class Player implements Cloneable  {
           
         boolean valid = false;
         
-
-        if(this.pendingBadConsequence.isEmpty()  && this.hiddenTreasures.size()<= 4 ){
-          valid = true;
-            return valid;
-        }
-                    
+        if(this.hiddenTreasures != null){
+            if(this.pendingBadConsequence.isEmpty()  && this.hiddenTreasures.size() <= 4  ){
+              valid = true;
+                
+            }return valid;
+        }           
         else
            return valid;
        

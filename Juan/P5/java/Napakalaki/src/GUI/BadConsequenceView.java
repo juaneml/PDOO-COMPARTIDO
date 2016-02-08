@@ -30,6 +30,7 @@ public class BadConsequenceView extends javax.swing.JPanel {
              this.niveles.setText("niveles perdidos");
              this.texto.setText("Mal rollo");
          }
+         
          repaint();
      }
 

@@ -175,6 +175,8 @@ public class NapakalakiView extends javax.swing.JFrame {
             this.next_turn.setEnabled(false);
             this.meet_monster.setEnabled(false);
         }  
+             this.napakalakiModel.getCurrentMonster().getBadConsequence().adjustToFitTreasureList(napakalakiModel.getCurrentPlayer().getVisibleTreasures(), napakalakiModel.getCurrentPlayer().getVisibleTreasures());
+       
             repaint();
     }//GEN-LAST:event_meet_monsterActionPerformed
 
@@ -193,15 +195,15 @@ public class NapakalakiView extends javax.swing.JFrame {
             } catch (CloneNotSupportedException ex) {
                 Logger.getLogger(NapakalakiView.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
+
             
-
         }
-        this.napakalakiModel.discardHiddenTreasures(napakalakiModel.getCurrentPlayer().getHiddenTreasures());
-        this.napakalakiModel.discardVisibleTreasures(napakalakiModel.getCurrentPlayer().getVisibleTreasures());
-         
-         this.currentPlayer.setNapakalakiModel(napakalakiModel);
-
+        
+//        this.napakalakiModel.discardHiddenTreasures(napakalakiModel.getCurrentPlayer().getHiddenTreasures());
+//        this.napakalakiModel.discardVisibleTreasures(napakalakiModel.getCurrentPlayer().getVisibleTreasures());
+        this.napakalakiModel.getCurrentMonster().getBadConsequence().adjustToFitTreasureList(napakalakiModel.getCurrentPlayer().getVisibleTreasures(), napakalakiModel.getCurrentPlayer().getVisibleTreasures());
+        this.currentPlayer.setNapakalakiModel(napakalakiModel);
+        repaint();
     }//GEN-LAST:event_combatActionPerformed
 
     private void next_turnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_turnActionPerformed

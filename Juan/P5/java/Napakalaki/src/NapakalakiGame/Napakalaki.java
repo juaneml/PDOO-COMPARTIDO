@@ -176,10 +176,13 @@ public class Napakalaki {
      * @param treasures
      */
     public void discardVisibleTreasures(ArrayList<Treasure> treasures) {
-        for (Treasure t : treasures) {
-            this.currentPlayer.discardVisibleTreasure(t);
+        
+        if (currentPlayer.getVisibleTreasures() != null && treasures != null){
+            for (Treasure t : treasures) {
+                this.currentPlayer.discardVisibleTreasure(t);
 
-            this.dealer.giveTreasureBack(t);
+                this.dealer.giveTreasureBack(t);
+            }
         }
     }
 
@@ -189,10 +192,12 @@ public class Napakalaki {
      * @param treasures
      */
     public void discardHiddenTreasures(ArrayList<Treasure> treasures) {
-        for (Treasure t : treasures) {
-            this.currentPlayer.discardHiddenTreasure(t);
+        if(currentPlayer.getVisibleTreasures() !=null && treasures != null){
+            for (Treasure t : treasures) {
+                this.currentPlayer.discardHiddenTreasure(t);
 
-            this.dealer.giveTreasureBack(t);
+                this.dealer.giveTreasureBack(t);
+            }
         }
     }
 

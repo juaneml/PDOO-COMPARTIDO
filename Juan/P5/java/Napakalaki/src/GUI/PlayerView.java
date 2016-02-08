@@ -23,7 +23,9 @@ public class PlayerView extends javax.swing.JPanel {
 
     private Player playerModel;
     private Napakalaki napakalakiModel ;
+
     private boolean robado = false;
+
     
     /**
      * Creates new form PlayerView
@@ -322,11 +324,20 @@ public class PlayerView extends javax.swing.JPanel {
         add(principal, java.awt.BorderLayout.LINE_START);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Función Para robar tesoros
+     * @param evt 
+     */
     private void stealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stealActionPerformed
-               if(this.robado==false){        // TODO add your handling code here:
-            playerModel.stealTreasure();
-            this.robado=true;
-            repaint();
+
+        if (this.robado == false) {        // TODO add your handling code here:
+
+            if (this.robado == false) {        // TODO add your handling code here:
+
+                playerModel.stealTreasure();
+                this.robado = true;
+                repaint();
+            }
         }
     }//GEN-LAST:event_stealActionPerformed
 
@@ -339,6 +350,7 @@ public class PlayerView extends javax.swing.JPanel {
     private void discardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardActionPerformed
          ArrayList<Treasure> selHidden = this.getSelectedTreasures(hiddenTreasures);
          ArrayList<Treasure> selVisibles = this.getSelectedTreasures(visibleTreasures);
+
          int i=0;
          int contador = 0;
          for (Treasure t : selHidden){            
@@ -359,6 +371,13 @@ public class PlayerView extends javax.swing.JPanel {
                 contador++;
              }
          }
+
+         
+         
+         napakalakiModel.discardHiddenTreasures(selHidden);
+         napakalakiModel.discardVisibleTreasures(selVisibles);
+         
+
          repaint();
     }//GEN-LAST:event_discardActionPerformed
 

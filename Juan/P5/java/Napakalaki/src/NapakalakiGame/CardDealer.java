@@ -66,8 +66,9 @@ public class CardDealer {
         this.unusedTreasures.add(new Treasure("Necro-gnomicon",2,TreasureKind.ONEHAND));
         this.unusedTreasures.add(new Treasure("Necrotelecom",2,TreasureKind.HELMET));
         this.unusedTreasures.add(new Treasure("Mazo de los antiguos",3,TreasureKind.ONEHAND));
-        this.unusedTreasures.add(new Treasure("Necro-playbocon",3,TreasureKind.ONEHAND));
-        this.unusedTreasures.add(new Treasure("Porra preternatural",2,TreasureKind.ONEHAND));        
+        this.unusedTreasures.add(new Treasure("Necro-playbocon", 3, TreasureKind.ONEHAND));
+        this.unusedTreasures.add(new Treasure("Necro-playboycon", 3, TreasureKind.ONEHAND));
+        this.unusedTreasures.add(new Treasure("Porra preternatural", 2, TreasureKind.ONEHAND));        
         this.unusedTreasures.add(new Treasure("Shogulador",1,TreasureKind.BOTHHANDS));
         this.unusedTreasures.add(new Treasure("Varita de atizamiento",3,TreasureKind.ONEHAND));
         this.unusedTreasures.add(new Treasure("Tentaculo de pega",2,TreasureKind.HELMET));

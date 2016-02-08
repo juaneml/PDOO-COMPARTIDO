@@ -28,9 +28,10 @@ public class NapakalakiView extends javax.swing.JFrame {
     }
 
     public void setNapakalaki(Napakalaki n){
+        
         meet_m = false;
         napakalakiModel = n;
-       
+
         this.currentPlayer.setPlayer(n.getCurrentPlayer());
         
         
@@ -210,10 +211,18 @@ public class NapakalakiView extends javax.swing.JFrame {
             this.napakalakiModel.nextTurn();
             this.currentPlayer.getMakeVisible().setEnabled(true);
             this.setNapakalaki(napakalakiModel);
-            
+
        
+
+           // this.currentMonster.setMonster(napakalakiModel.getCurrentMonster());
+            currentMonster.getInicialIcon();
+            repaint();
+        }
+        else
+            this.next_turn.setEnabled(false);
+
         repaint();
-           }
+           
     }//GEN-LAST:event_next_turnActionPerformed
 
     

@@ -272,7 +272,7 @@ public class Player implements Cloneable  {
         
         if(this.visibleTreasures.isEmpty() && this.hiddenTreasures.isEmpty())
             this.dead = true;
-                
+        
     }
     
     /**

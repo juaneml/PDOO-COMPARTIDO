@@ -3,8 +3,10 @@ package GUI;
 
 import NapakalakiGame.CombatResult;
 import NapakalakiGame.Napakalaki;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Raul
@@ -29,8 +31,10 @@ public class NapakalakiView extends javax.swing.JFrame {
     }
 
     public void setNapakalaki(Napakalaki n){
+        
         meet_m = false;
         napakalakiModel = n;
+        
         this.currentPlayer.setPlayer(n.getCurrentPlayer());
         
         this.currentPlayer.setNapakalakiModel(napakalakiModel);
@@ -183,7 +187,9 @@ public class NapakalakiView extends javax.swing.JFrame {
             this.combat.setEnabled(false);
             this.napakalakiModel.nextTurn();
             this.setNapakalaki(napakalakiModel);
-            this.currentMonster.setMonster(napakalakiModel.getCurrentMonster());
+           // this.currentMonster.setMonster(napakalakiModel.getCurrentMonster());
+            currentMonster.getInicialIcon();
+            repaint();
         }
         else
             this.next_turn.setEnabled(false);

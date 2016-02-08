@@ -20,6 +20,7 @@ public class PlayerView extends javax.swing.JPanel {
 
     private Player playerModel;
     private Napakalaki napakalakiModel ;
+    private boolean robado=false;
     
     /**
      * Creates new form PlayerView
@@ -282,8 +283,16 @@ public class PlayerView extends javax.swing.JPanel {
         add(principal, java.awt.BorderLayout.LINE_START);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Función Para robar tesoros
+     * @param evt 
+     */
     private void stealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stealActionPerformed
-        // TODO add your handling code here:
+        if(this.robado==false){        // TODO add your handling code here:
+            playerModel.stealTreasure();
+            this.robado=true;
+            repaint();
+        }
     }//GEN-LAST:event_stealActionPerformed
 
     private void makeVisibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeVisibleActionPerformed

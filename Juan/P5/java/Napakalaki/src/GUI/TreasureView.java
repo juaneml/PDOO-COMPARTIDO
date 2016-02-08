@@ -34,6 +34,7 @@ public class TreasureView extends javax.swing.JPanel {
         tipo.setText(treasureModel.getType().toString());
         
         URL url = getClass().getResource(treasureModel.getIcon());
+        if(url!=null)
         this.carta.setIcon(new ImageIcon(url));
         
         repaint();
@@ -58,13 +59,14 @@ public class TreasureView extends javax.swing.JPanel {
     private void initComponents() {
 
         panel_datos = new javax.swing.JPanel();
-        label_tipo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        carta = new javax.swing.JLabel();
         label_nombre = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
-        bonus = new javax.swing.JLabel();
         label_bonus = new javax.swing.JLabel();
+        bonus = new javax.swing.JLabel();
+        label_tipo = new javax.swing.JLabel();
         tipo = new javax.swing.JLabel();
-        carta = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -74,58 +76,73 @@ public class TreasureView extends javax.swing.JPanel {
                 panel_datosMouseClicked(evt);
             }
         });
-
-        label_tipo.setText("Tipo");
-
-        label_nombre.setText("Nombre");
-
-        nombre.setText("NAME");
-
-        bonus.setText("BONUS");
-
-        label_bonus.setText("Bonus");
-
-        tipo.setText("TIPO");
+        panel_datos.setLayout(new java.awt.BorderLayout());
 
         carta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Treasures/A prueba de babas.jpg"))); // NOI18N
 
-        javax.swing.GroupLayout panel_datosLayout = new javax.swing.GroupLayout(panel_datos);
-        panel_datos.setLayout(panel_datosLayout);
-        panel_datosLayout.setHorizontalGroup(
-            panel_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_datosLayout.createSequentialGroup()
-                .addGroup(panel_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_bonus, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bonus)
-                    .addComponent(nombre)
-                    .addComponent(label_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label_nombre)
-                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+        label_nombre.setText("Nombre");
+
+        nombre.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        nombre.setText("NAME");
+
+        label_bonus.setText("Bonus");
+
+        bonus.setText("BONUS");
+
+        label_tipo.setText("Tipo");
+
+        tipo.setText("TIPO");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label_nombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(nombre)
+                .addGap(84, 84, 84))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(bonus))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tipo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_bonus, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(label_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(carta)
-                .addGap(0, 0, 0))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        panel_datosLayout.setVerticalGroup(
-            panel_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_datosLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(panel_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(carta)
-                    .addGroup(panel_datosLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(label_nombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label_nombre)
+                    .addComponent(nombre))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addComponent(label_bonus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bonus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(23, 23, 23)
                         .addComponent(label_tipo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(carta, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, 0))
         );
+
+        panel_datos.add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         add(panel_datos, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -146,6 +163,7 @@ public class TreasureView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bonus;
     private javax.swing.JLabel carta;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_bonus;
     private javax.swing.JLabel label_nombre;
     private javax.swing.JLabel label_tipo;

@@ -13,7 +13,7 @@ public class DeathBadConsequence extends NumericBadConsequence{
  
 
     public DeathBadConsequence(String text, boolean death) {
-       super( text, 99, BadConsequence.MAXTREASURES, BadConsequence.MAXTREASURES);
+       super( text, Player.MAXLEVEL, BadConsequence.MAXTREASURES, BadConsequence.MAXTREASURES);
        
         
     }

@@ -8,6 +8,7 @@ package GUI;
 import NapakalakiGame.BadConsequence;
 import NapakalakiGame.Monster;
 import NapakalakiGame.Prize;
+import java.awt.BorderLayout;
 import java.net.URL;
 import javax.swing.ImageIcon;
 
@@ -24,15 +25,29 @@ public class MonsterView extends javax.swing.JPanel {
     }
 
     public void setMonster(Monster monsterModel){
-        this.monsterModel = monsterModel;      
-      
-        this.name.setText(monsterModel.getName());
-        this.nivel.setText(Integer.toString(monsterModel.getLevelsGained()));
-        URL url = getClass().getResource(monsterModel.getIcon());
-        this.carta.setIcon(new ImageIcon(url));
-        /*Actualizar badConsequence*/
-        this.badConsequencePanel.setBadConsequence(monsterModel.getBadConsequence());
-        this.prizePanel.setPrize(monsterModel.getPrice());
+        
+        if(monsterModel !=null){
+            this.monsterModel = monsterModel;      
+
+            this.name.setText(monsterModel.getName());
+            this.nivel.setText(Integer.toString(monsterModel.getCombatLevel()));
+            URL url = getClass().getResource(monsterModel.getIcon());
+            if(url!=null)
+            this.carta.setIcon(new ImageIcon(url));
+            /*Actualizar badConsequence*/
+            this.badConsequencePanel.setBadConsequence(monsterModel.getBadConsequence());
+            this.prizePanel.setPrize(monsterModel.getPrice());
+            
+        }
+        if(monsterModel==null){
+            this.name.setText("Name");
+            this.nivel.setText("Nivel");
+            String path = "/Monsters/espalda_baraja.jpg";
+            URL url = getClass().getResource(path);
+            this.carta.setIcon(new ImageIcon(url));            
+            this.badConsequencePanel.setBadConsequence(null);            
+            this.prizePanel.setPrize(null);
+        }
         repaint();
     }
     /**
@@ -80,24 +95,23 @@ public class MonsterView extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(badConsequencePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nivel)
                             .addComponent(etiqueta_level, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(59, 59, 59)
-                        .addComponent(carta, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(prizePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(badConsequencePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(8, 8, 8)
-                            .addComponent(etiqueta_monster)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(name)))))
+                        .addGap(28, 28, 28)
+                        .addComponent(carta, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(etiqueta_monster)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(name)))
+                .addContainerGap(120, Short.MAX_VALUE))
+            .addComponent(prizePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,17 +119,14 @@ public class MonsterView extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiqueta_monster)
                     .addComponent(name))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(etiqueta_level)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nivel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(carta, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(nivel))
+                    .addComponent(carta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(badConsequencePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(prizePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

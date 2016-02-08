@@ -22,7 +22,7 @@ public class CardDealer {
     private ArrayList <Treasure> unusedTreasures = new ArrayList(); //Relación con Treasure
     private ArrayList <Treasure> usedTreasures = new ArrayList(); // Relación con Treasure
     
-    private ArrayList <Cultist> unusedCultists = new ArrayList();
+    private ArrayList <Cultist> unusedCultists = new ArrayList(); //Relación de cultis
     
     
     
@@ -66,7 +66,7 @@ public class CardDealer {
         this.unusedTreasures.add(new Treasure("Necro-gnomicon",2,TreasureKind.ONEHAND));
         this.unusedTreasures.add(new Treasure("Necrotelecom",2,TreasureKind.HELMET));
         this.unusedTreasures.add(new Treasure("Mazo de los antiguos",3,TreasureKind.ONEHAND));
-        this.unusedTreasures.add(new Treasure("Necro-playbocón",3,TreasureKind.ONEHAND));
+        this.unusedTreasures.add(new Treasure("Necro-playbocon",3,TreasureKind.ONEHAND));
         this.unusedTreasures.add(new Treasure("Porra preternatural",2,TreasureKind.ONEHAND));        
         this.unusedTreasures.add(new Treasure("Shogulador",1,TreasureKind.BOTHHANDS));
         this.unusedTreasures.add(new Treasure("Varita de atizamiento",3,TreasureKind.ONEHAND));
@@ -283,7 +283,7 @@ public class CardDealer {
        //Shogooth
        badConsequence = new NumericBadConsequence("Pierdes 2 niveles",2,0,0);
        prize = new Prize(4,2);
-       this.unusedMonsters.add(new Monster("Shogooth",16,badConsequence,prize,-4));
+       this.unusedMonsters.add(new Monster("Shoggoth",16,badConsequence,prize,-4));
        
        //Lolitagooth
        badConsequence = new NumericBadConsequence("Pintalabios negro. Pierdes 2 niveles",2,0,0);
@@ -294,24 +294,24 @@ public class CardDealer {
     
     private void initCultistsCardDeck(){
 
-        Cultist cultist; 
-        cultist = new Cultist("Sectario",+1);
-        this.unusedCultists.add(cultist);
+//        Cultist cultist = null; 
+//        cultist = new Cultist("Sectario",+1);
+        this.unusedCultists.add(new Cultist("Sectario",+1));
         
-        cultist = new Cultist("Sectario",+2);
-        this.unusedCultists.add(cultist);
+//        cultist = new Cultist("Sectario",+2);
+        this.unusedCultists.add(new Cultist("Sectario",+2));
         
-        cultist = new Cultist("Sectario",+1);
-        this.unusedCultists.add(cultist);
+//        cultist = new Cultist("Sectario",+1);
+        this.unusedCultists.add(new Cultist("Sectario",+1));
         
-        cultist = new Cultist("Sectario",+2);
-        this.unusedCultists.add(cultist);
+//        cultist = new Cultist("Sectario",+2);
+        this.unusedCultists.add(new Cultist("Sectario",+2));
         
-        cultist = new Cultist("Sectario",+1);
-        this.unusedCultists.add(cultist);
+//        cultist = new Cultist("Sectario",+1);
+        this.unusedCultists.add(new Cultist("Sectario",+1));
         
-        cultist = new Cultist("Sectario",+1);
-        this.unusedCultists.add(cultist);
+//        cultist = new Cultist("Sectario",+1);
+        this.unusedCultists.add(new Cultist("Sectario",+1));
         
         
     }
@@ -399,7 +399,17 @@ public class CardDealer {
     }
     
     public Cultist nextCultist(){
-        return this.unusedCultists.get(0);
+        Cultist cultist = unusedCultists.get(0) ;
+        int contador = 0;
+        if(this.unusedCultists.isEmpty()){
+             cultist =this.unusedCultists.get(0);
+             contador++;
+            }
+        else if(contador < 6){
+            cultist = this.unusedCultists.get(contador);
+        }
+        
+        return cultist;
     }
     
     /**

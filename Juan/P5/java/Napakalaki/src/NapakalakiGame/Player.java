@@ -95,10 +95,14 @@ public class Player implements Cloneable  {
     public int getCombatLevel() {
         int sum_bonus = 0;
         int nivel;
-        for(int i=0; i < this.visibleTreasures.size();i++){
-            sum_bonus = visibleTreasures.get(i).getBonus()+sum_bonus;
+        if(this.visibleTreasures.size()>0){
+        for (Treasure visibleTreasure : this.visibleTreasures) {
+            sum_bonus = visibleTreasure.getBonus() + sum_bonus;
         }
         nivel = this.level+sum_bonus;
+        }
+        else
+            nivel = 0;
         return nivel;
         
     }
@@ -316,7 +320,7 @@ public class Player implements Cloneable  {
        
         Monster currentMonster = m;
         
-        //monsterLevel = currentMonster.getCombatLevel();
+//        monsterLevel = currentMonster.getCombatLevel();
         
         monsterLevel = this.getOponentLevel(currentMonster);
         
@@ -402,6 +406,7 @@ public class Player implements Cloneable  {
                     
         else
            return valid;
+       
         
     }
     

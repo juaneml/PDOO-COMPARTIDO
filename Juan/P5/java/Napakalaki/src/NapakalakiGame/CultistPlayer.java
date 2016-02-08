@@ -21,13 +21,16 @@ public class CultistPlayer extends Player {
      * CultisPlayer(Player p, Cultist c)
      * @param p de tipo Player
      * @param c de tipo Cultist
+     * @throws java.lang.CloneNotSupportedException
      */
-    public CultistPlayer(Player p, Cultist c) throws CloneNotSupportedException{
+    public CultistPlayer(Player p, Cultist c) throws CloneNotSupportedException {
        super(p);
         this.myCultistCard = c;
         this.totalCultistPlayers = this.totalCultistPlayers + 1;
     }
 
+    
+    
     
     
     /**

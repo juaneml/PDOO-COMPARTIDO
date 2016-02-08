@@ -21,9 +21,16 @@ public class BadConsequenceView extends javax.swing.JPanel {
         initComponents();
     }
      public void setBadConsequence(BadConsequence badconsequence){
-         badConsequenceModel = badconsequence;
-         this.niveles.setText(Integer.toString(badConsequenceModel.getLevels()));
-         this.texto.setText(badConsequenceModel.getText());
+         if(badconsequence !=null){
+            badConsequenceModel = badconsequence;
+            this.niveles.setText(Integer.toString(badConsequenceModel.getLevels()));
+            this.texto.setText(badConsequenceModel.getText());
+         }
+         else{
+             this.niveles.setText("niveles perdidos");
+             this.texto.setText("Mal rollo");
+         }
+         repaint();
      }
 
     /**
@@ -35,58 +42,62 @@ public class BadConsequenceView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        etiqueta_texto = new javax.swing.JLabel();
-        etiqueta_niveles = new javax.swing.JLabel();
-        texto = new javax.swing.JLabel();
-        niveles = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
+        etiqueta_texto = new javax.swing.JLabel();
+        texto = new javax.swing.JLabel();
+        etiqueta_niveles = new javax.swing.JLabel();
+        niveles = new javax.swing.JLabel();
 
-        etiqueta_texto.setText("Texto");
-
-        etiqueta_niveles.setText("Niveles");
-
-        texto.setText("Mal rollo");
-
-        niveles.setText("Niveles perdidos");
+        setLayout(new java.awt.BorderLayout());
 
         titulo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         titulo.setText("BadConsequence");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(niveles)
-                    .addComponent(texto)
+        etiqueta_texto.setText("Texto");
+
+        texto.setText("Mal rollo");
+
+        etiqueta_niveles.setText("Niveles");
+
+        niveles.setText("Niveles perdidos");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titulo)
                     .addComponent(etiqueta_texto)
-                    .addComponent(etiqueta_niveles))
-                .addContainerGap(210, Short.MAX_VALUE))
+                    .addComponent(texto)
+                    .addComponent(etiqueta_niveles)
+                    .addComponent(niveles))
+                .addGap(0, 88, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(etiqueta_texto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(texto)
-                .addGap(13, 13, 13)
-                .addComponent(etiqueta_niveles)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(etiqueta_niveles)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(niveles)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(0, 43, Short.MAX_VALUE))
         );
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel etiqueta_niveles;
     private javax.swing.JLabel etiqueta_texto;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel niveles;
     private javax.swing.JLabel texto;
     private javax.swing.JLabel titulo;

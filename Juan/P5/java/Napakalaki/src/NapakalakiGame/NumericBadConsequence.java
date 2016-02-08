@@ -46,7 +46,11 @@ public class NumericBadConsequence extends BadConsequence{
      */
     @Override
     public void substractVisibleTreasure(Treasure t){
-       // this.specificVisibleTreasures.remove(t);
+        
+        for (int i=0;i<this.nVisibleTreasures;i++){            
+                if(nVisibleTreasures>0)
+            this.nVisibleTreasures--;
+        }
     }
     
     /**
@@ -56,33 +60,43 @@ public class NumericBadConsequence extends BadConsequence{
     @Override
     public void substractHiddenTreasure(Treasure t){
         //this.specificHiddenTreasures.remove(t);
+        
+        for (int i=0;i<this.nHiddenTreasures;i++){
+           if(nHiddenTreasures>0)
+            this.nHiddenTreasures--;
+        }       
     }
     
     @Override
     public BadConsequence adjustToFitTreasureList(ArrayList<Treasure> v, ArrayList<Treasure> h) {
         NumericBadConsequence badConsequence;
         
+        int nuevoV = nVisibleTreasures;
+        int nuevoO = nHiddenTreasures;
         
-        int tamV = v.size();
-        int tamH = h.size();
-        int nuevoV;
-        int nuevoO;
-
         int nVisibleAux = nVisibleTreasures;
-        int nHiddenAux = nHiddenTreasures;
+            int nHiddenAux = nHiddenTreasures;
+        if (v.size() > 0) {
+            int tamV = v.size();
+            
 
-        // Para los tesoros visibles
-        if(nVisibleAux < tamV)
-            nuevoV = nVisibleAux;
-        else
-            nuevoV=tamV;
-        
-        // Para los tesoros ocultos
-        if(nHiddenAux < tamH)
-            nuevoO=nHiddenAux;
-        else
-            nuevoO=tamH;
-        
+            // Para los tesoros visibles
+            if (nVisibleAux <= tamV) {
+                nuevoV = nVisibleAux;
+            } else if (tamV > nVisibleAux) {
+                nuevoV = tamV;
+            }
+        }
+        if (h.size() > 0) {
+            int tamH = h.size();
+            // Para los tesoros ocultos
+            if (nHiddenAux <= tamH) {
+                nuevoO = nHiddenAux;
+            } else if (tamH > nVisibleAux) {
+                nuevoO = tamH;
+            }
+
+        }
          badConsequence = new NumericBadConsequence(text, levels, nuevoV, nuevoO);
          return badConsequence;
         

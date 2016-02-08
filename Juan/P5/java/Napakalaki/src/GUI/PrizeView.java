@@ -23,14 +23,20 @@ public class PrizeView extends javax.swing.JPanel {
     }
 
      public void setPrize(Prize prizeModel) {
-        this.prizeModel = prizeModel;
         
-        //Atributos de prize
-        this.nivel.setText(Integer.toString(prizeModel.getLevels()));
-        this.tesoro.setText(Integer.toString(prizeModel.getTreasures()));        
-        repaint();
+         if(prizeModel!=null){
+            this.prizeModel = prizeModel;
+
+           //Atributos de prize
+           this.nivel.setText(Integer.toString(prizeModel.getLevels()));
+           this.tesoro.setText(Integer.toString(prizeModel.getTreasures()));        
+           repaint();
+         }
         
-        
+         else{
+             this.nivel.setText("nivel");
+             this.tesoro.setText("Tipo tesoro");
+         }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,56 +47,61 @@ public class PrizeView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         etiqueta_prize = new javax.swing.JLabel();
-        etiqueta_level = new javax.swing.JLabel();
         tesoro = new javax.swing.JLabel();
         nivel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        etiqueta_level = new javax.swing.JLabel();
+
+        setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Prize");
 
         etiqueta_prize.setText("Tesoros");
-
-        etiqueta_level.setText("Nivel");
 
         tesoro.setText("Tipo tesoro");
 
         nivel.setText("nivel");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Prize");
+        etiqueta_level.setText("Nivel");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(etiqueta_prize)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tesoro))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(etiqueta_level, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(202, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(etiqueta_prize)
+                            .addComponent(etiqueta_level, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tesoro))))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiqueta_prize, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tesoro))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etiqueta_level)
-                    .addComponent(nivel))
-                .addGap(21, 21, 21))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nivel)
+                    .addComponent(etiqueta_level))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -98,6 +109,7 @@ public class PrizeView extends javax.swing.JPanel {
     private javax.swing.JLabel etiqueta_level;
     private javax.swing.JLabel etiqueta_prize;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nivel;
     private javax.swing.JLabel tesoro;
     // End of variables declaration//GEN-END:variables

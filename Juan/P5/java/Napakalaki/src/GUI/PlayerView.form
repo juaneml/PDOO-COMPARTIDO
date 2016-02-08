@@ -241,7 +241,8 @@
         </Component>
         <Component class="javax.swing.JLabel" name="sectario">
           <Properties>
-            <Property name="text" type="java.lang.String" value="SECTARIO"/>
+            <Property name="text" type="java.lang.String" value="NO"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="label_sectario">

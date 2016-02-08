@@ -13,8 +13,8 @@ public class Player implements Cloneable  {
     protected Player enemy; //Relación asímismo 
     
     /*Relaciones */
-    private ArrayList<Treasure> hiddenTreasures;
-    private ArrayList<Treasure> visibleTreasures;
+    private ArrayList<Treasure> hiddenTreasures = new ArrayList();
+    private ArrayList<Treasure> visibleTreasures = new ArrayList();
     private BadConsequence pendingBadConsequence ;
     
     protected ArrayList<Treasure> visibleCultist = visibleTreasures;
@@ -95,14 +95,17 @@ public class Player implements Cloneable  {
     public int getCombatLevel() {
         int sum_bonus = 0;
         int nivel;
-        if(this.visibleTreasures != null){
-        for (Treasure visibleTreasure : this.visibleTreasures) {
-            sum_bonus = visibleTreasure.getBonus() + sum_bonus;
+        if (this.visibleTreasures != null) {
+            for (Treasure visibleTreasure : this.visibleTreasures) {
+                sum_bonus = visibleTreasure.getBonus() + sum_bonus;
+            }
+            nivel = this.level + sum_bonus;
+        } else {
+            nivel = this.level;
+            
         }
-        nivel = this.level+sum_bonus;
-        }
-        else
-            nivel = 0;
+        
+
         return nivel;
         
     }
@@ -150,6 +153,7 @@ public class Player implements Cloneable  {
         
             for (int i = 1;i<nTreasures;i++){
                 treasure = dealer.nextTreasure();
+                if(dealer.nextTreasure()!=null)
                 this.hiddenTreasures.add(treasure);
             }
         }
@@ -309,6 +313,7 @@ public class Player implements Cloneable  {
      * @param m Monster
      * @return Devuelve el resultado del combate
      */
+    
     public CombatResult combat(Monster m){
         int myLevel = this.getCombatLevel(); // 1.1.1
         int monsterLevel;
@@ -327,11 +332,16 @@ public class Player implements Cloneable  {
         
         if(myLevel > monsterLevel){
             this.applyPrize(m);
-                       
-            if(this.getLevels() >= MAXLEVEL)
+         
+            if (this.getLevels() >= MAXLEVEL) {
                 combatResult = CombatResult.WINGAME;
-            else
+                
+            }
+            
+            else{
                 combatResult = CombatResult.WIN;
+                
+                }
         }
             
         else{
@@ -341,9 +351,10 @@ public class Player implements Cloneable  {
             else
                 combatResult = CombatResult.LOSE;
         }
-        
+        ;
         return combatResult; 
     }
+    
     
     /**
      * Método makeTreasureVisible(Treasure t)
@@ -399,18 +410,18 @@ public class Player implements Cloneable  {
      */
     public boolean validState(){
           
-        boolean valid = false;
-        
-        if(this.hiddenTreasures != null){
-            if(this.pendingBadConsequence.isEmpty()  && this.hiddenTreasures.size() <= 4  ){
-              valid = true;
-                
-            }return valid;
-        }           
-        else
-           return valid;
-       
-        
+//        boolean valid = false;
+//        
+//        if(this.hiddenTreasures != null){
+//            if(this.pendingBadConsequence!= null || this.pendingBadConsequence.isEmpty()  && this.hiddenTreasures.size() <= 4  ){
+//              valid = true;
+//                
+//            }return valid;
+//        }           
+//        else
+//           return valid;
+//       
+        return this.pendingBadConsequence == null || (this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size() <=4);
     }
     
     /**
@@ -547,13 +558,15 @@ public class Player implements Cloneable  {
      * Método discardAllTreasures()
      */
     public void discardAllTreasures() {
-        ArrayList<Treasure> vaux = new ArrayList(visibleTreasures);
-        for (Treasure t : vaux) {
-            this.discardVisibleTreasure(t);
-        }
-        ArrayList<Treasure> haux = new ArrayList(hiddenTreasures);
-        for (Treasure t : haux) {
-            this.discardHiddenTreasure(t);
+        if (!this.visibleTreasures.isEmpty() && !this.hiddenTreasures.isEmpty()) {
+            ArrayList<Treasure> vaux = new ArrayList(visibleTreasures);
+            for (Treasure t : vaux) {
+                this.discardVisibleTreasure(t);
+            }
+            ArrayList<Treasure> haux = new ArrayList(hiddenTreasures);
+            for (Treasure t : haux) {
+                this.discardHiddenTreasure(t);
+            }
         }
     }
     

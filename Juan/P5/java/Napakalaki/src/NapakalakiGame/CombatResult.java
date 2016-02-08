@@ -7,23 +7,33 @@ package NapakalakiGame;
 public enum CombatResult {
     WINGAME,WIN,LOSE, LOSEANDCONVERT;
     
+    
     @Override
     public String toString(){
         
         if(this.equals(WIN)){
+            
             return "Ganas";
         }
         else if (this.equals(LOSE)){
-            return "Has perdido ohh";
+            
+            return "Pierdes";
         }
         
         else if(this.equals(WINGAME)){
-            return "Enhorabuena has ganado";
+           
+            return "WINGAME";
         }
         else if(this.equals(LOSEANDCONVERT)){
-            return "Pasas a ser un CultistPlayer";
+           
+            return "CultistPlayer";
         }
         else
             return "HA OCURRIDO UN ERROR";
     }
+
+   
+
+  
+    
 }

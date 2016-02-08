@@ -70,21 +70,20 @@ public class NumericBadConsequence extends BadConsequence{
     @Override
     public BadConsequence adjustToFitTreasureList(ArrayList<Treasure> v, ArrayList<Treasure> h) {
         NumericBadConsequence badConsequence;
-        
+
         int nuevoV = nVisibleTreasures;
         int nuevoO = nHiddenTreasures;
-        
+
         int nVisibleAux = nVisibleTreasures;
-            int nHiddenAux = nHiddenTreasures;
+        int nHiddenAux = nHiddenTreasures;
         if (v != null) {
             int tamV = v.size();
-            
 
             // Para los tesoros visibles
             if (nVisibleAux <= tamV) {
                 nuevoV = nVisibleAux;
-            } else if (tamV > nVisibleAux) {
-                nuevoV = tamV;
+            } else if ( nVisibleAux > tamV ) {
+                nuevoV = nVisibleAux -tamV ; //pruebas antes nuevo = tamV;
             }
         }
         if (h != null) {
@@ -92,15 +91,25 @@ public class NumericBadConsequence extends BadConsequence{
             // Para los tesoros ocultos
             if (nHiddenAux <= tamH) {
                 nuevoO = nHiddenAux;
-            } else if (tamH > nVisibleAux) {
-                nuevoO = tamH;
+            } else if ( nHiddenAux >tamH ) {
+                nuevoO = nHiddenAux-tamH;
             }
 
         }
+        //levels = super.levels -levels;
+        
          badConsequence = new NumericBadConsequence(text, levels, nuevoV, nuevoO);
          return badConsequence;
         
     } 
+
+    public void setnVisibleTreasures(int nVisibleTreasures) {
+        this.nVisibleTreasures = nVisibleTreasures;
+    }
+
+    public void setnHiddenTreasures(int nHiddenTreasures) {
+        this.nHiddenTreasures = nHiddenTreasures;
+    }
 
     
     

@@ -6,6 +6,7 @@
 package GUI;
 
 import NapakalakiGame.BadConsequence;
+import javax.swing.JLabel;
 
 /**
  *
@@ -21,10 +22,15 @@ public class BadConsequenceView extends javax.swing.JPanel {
         initComponents();
     }
      public void setBadConsequence(BadConsequence badconsequence){
-         if(badconsequence !=null){
+        
+         
+             
+         if(badconsequence !=null){           
             badConsequenceModel = badconsequence;
             this.niveles.setText(Integer.toString(badConsequenceModel.getLevels()));
-            this.texto.setText(badConsequenceModel.getText());
+            
+                this.texto.setText(badConsequenceModel.getText()+"\n");
+            
          }
          else{
              this.niveles.setText("niveles perdidos");

@@ -69,35 +69,38 @@ public class SpecificBadConsequence extends BadConsequence{
                 */
         
         /* VISIBLES */
-        for (TreasureKind visibleBad : this.specificVisibleTreasures){
-            copia_specificV.add(visibleBad);
-        }
-        
-        /* Seleccionamos los tesoros que se ajustan al badconsequence que
-            puede cumplir el jugador*/
-        for(Treasure dadoBad : v){
-            if(copia_specificV.contains(dadoBad.getType())){ //si contiene el tipo
-                bad_specific_Vdev.add(dadoBad.getType());   //añadimos a la lista
-                copia_specificV.remove(dadoBad.getType()); //eliminamos elemento de la copia
+        if (v != null) {
+            System.out.println("Estoy quitando especificos visibles");
+            for (TreasureKind visibleBad : this.specificVisibleTreasures) {
+                copia_specificV.add(visibleBad);
+            }
+
+            /* Seleccionamos los tesoros que se ajustan al badconsequence que
+             puede cumplir el jugador*/
+            for (Treasure dadoBad : v) {
+                if (copia_specificV.contains(dadoBad.getType())) { //si contiene el tipo
+                    bad_specific_Vdev.add(dadoBad.getType());   //añadimos a la lista
+                    copia_specificV.remove(dadoBad.getType()); //eliminamos elemento de la copia
+                }
             }
         }
-        
         /* OCULTOS */
         
-        for (TreasureKind ocultoBad : this.specificHiddenTreasures){
-            copia_specificH.add(ocultoBad);
-        }
-        
-        /* Seleccionamos los tesoros que se ajustan al badconsequence que
-            puede cumplir el jugador*/
-        
-        for(Treasure dadoBad : h){
-            if(copia_specificH.contains(dadoBad.getType())){ //si contiene el tipo
-                bad_specific_Hdev.add(dadoBad.getType()); //añadimos a la lista 
-                copia_specificV.remove(dadoBad.getType()); //eliminamos elemento de la copia
+        if(h != null){
+            System.out.println("Estoy quitando especificos ocultos");
+            for (TreasureKind ocultoBad : this.specificHiddenTreasures) {
+                copia_specificH.add(ocultoBad);
+            }
+
+            /* Seleccionamos los tesoros que se ajustan al badconsequence que
+             puede cumplir el jugador*/
+            for (Treasure dadoBad : h) {
+                if (copia_specificH.contains(dadoBad.getType())) { //si contiene el tipo
+                    bad_specific_Hdev.add(dadoBad.getType()); //añadimos a la lista 
+                    copia_specificV.remove(dadoBad.getType()); //eliminamos elemento de la copia
+                }
             }
         }
-        
         bad = new SpecificBadConsequence(this.text,0,bad_specific_Vdev,bad_specific_Hdev);
         return bad;
     }

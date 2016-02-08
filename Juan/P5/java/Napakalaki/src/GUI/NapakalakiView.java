@@ -23,17 +23,19 @@ public class NapakalakiView extends javax.swing.JFrame {
         initComponents();
         this.next_turn.setEnabled(false);
         this.combat.setEnabled(false);
-        this.currentMonster.setVisible(false);
+        //this.currentMonster.setVisible(false);
         this.setLocationRelativeTo(null); //ponemos ventana Centrada
     }
 
-    public void setNapakalaki(Napakalaki n){
+    public void setNapakalaki(Napakalaki n) throws CloneNotSupportedException{
         
         meet_m = false;
         napakalakiModel = n;
 
         this.currentPlayer.setPlayer(n.getCurrentPlayer());
-        
+        this.napakalakiModel.getCurrentMonster().getBadConsequence().
+                adjustToFitTreasureList(napakalakiModel.getCurrentPlayer()
+                        .getVisibleTreasures(), napakalakiModel.getCurrentPlayer().getVisibleTreasures());
         
         this.currentPlayer.setNapakalakiModel(napakalakiModel);
         
@@ -195,13 +197,26 @@ public class NapakalakiView extends javax.swing.JFrame {
             } catch (CloneNotSupportedException ex) {
                 Logger.getLogger(NapakalakiView.class.getName()).log(Level.SEVERE, null, ex);
             }
-
             
+            
+        }
+        try {
+            if (this.napakalakiModel.developCombat().toString().equals("CurrentCultist")) {
+                currentPlayer.setSectario(true);
+                
+            } else {
+                currentPlayer.setSectario(false);
+                
+
+            }
+            currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
+        } catch (CloneNotSupportedException ex) {
+            Logger.getLogger(NapakalakiView.class.getName()).log(Level.SEVERE, null, ex);
         }
         
 //        this.napakalakiModel.discardHiddenTreasures(napakalakiModel.getCurrentPlayer().getHiddenTreasures());
 //        this.napakalakiModel.discardVisibleTreasures(napakalakiModel.getCurrentPlayer().getVisibleTreasures());
-        this.napakalakiModel.getCurrentMonster().getBadConsequence().adjustToFitTreasureList(napakalakiModel.getCurrentPlayer().getVisibleTreasures(), napakalakiModel.getCurrentPlayer().getVisibleTreasures());
+        
         this.currentPlayer.setNapakalakiModel(napakalakiModel);
         repaint();
     }//GEN-LAST:event_combatActionPerformed
@@ -216,7 +231,11 @@ public class NapakalakiView extends javax.swing.JFrame {
             this.resultado.setText("Esperando");
             this.napakalakiModel.nextTurn();
             this.currentPlayer.getMakeVisible().setEnabled(true);
-            this.setNapakalaki(napakalakiModel);
+               try {
+                   this.setNapakalaki(napakalakiModel);
+               } catch (CloneNotSupportedException ex) {
+                   Logger.getLogger(NapakalakiView.class.getName()).log(Level.SEVERE, null, ex);
+               }
 
        
 

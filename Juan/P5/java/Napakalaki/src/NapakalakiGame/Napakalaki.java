@@ -99,18 +99,19 @@ public class Napakalaki {
 
         boolean next = false;
         if(currentPlayer == null)
-            return true;
+            next = true;
         else{
-            if (this.currentPlayer.validState()) {
-                next = true;
+//            if (this.currentPlayer.validState()) {
+//                next = true;
+            next = this.currentPlayer.validState();
                 return next;
             }
-            else{
-                return next;
-            }
+//            else{
+//                return next;
+//            }
+        return next;
         }
-        
-    }
+      
 
     /**
      * Método setEnemies()
@@ -255,9 +256,9 @@ public class Napakalaki {
     public boolean nextTurn() {
         //MIRAR
         boolean stateOK;
-        stateOK = this.nextTurnIsAllowed();  
-             
-         System.out.print(" nextTurn stateOK\n");
+        stateOK = this.nextTurnIsAllowed();
+
+        System.out.print(" nextTurn stateOK\n");
         if (stateOK) {
             boolean dead;
             this.currentMonster = this.dealer.nextMonster();
@@ -268,8 +269,10 @@ public class Napakalaki {
                 System.out.print(" Entra Esta muerto\n");
                 this.currentPlayer.initTreasures();
             }
+        } //stateOK = this.currentPlayer.validState(); //PODRIA SER ASÍ
+        else {
+            this.currentMonster = this.dealer.nextMonster();
         }
-        stateOK = this.currentPlayer.validState(); //PODRIA SER ASÍ
         return stateOK;
     }
 

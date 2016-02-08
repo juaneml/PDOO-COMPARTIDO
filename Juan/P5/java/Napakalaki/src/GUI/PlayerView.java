@@ -7,12 +7,16 @@
 package GUI;
 
 import NapakalakiGame.*;
+import static NapakalakiGame.CombatResult.LOSEANDCONVERT;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -40,7 +44,7 @@ public class PlayerView extends javax.swing.JPanel {
 
    
     
-    public void setPlayer(Player playerModel) {
+    public void setPlayer(Player playerModel) throws CloneNotSupportedException {
         this.playerModel = playerModel;
         this.nombre.setText(playerModel.getName());
         this.level.setText(Integer.toString(playerModel.getLevels()));
@@ -71,9 +75,7 @@ public class PlayerView extends javax.swing.JPanel {
         URL url = this.getClass().getResource(path);
         this.jugador.setIcon(new ImageIcon(url));
     }        
-        this.sectario.setText("No");
-        
-        
+      
         
    //     this.resultado.setText(napakalakiModel
         if(playerModel.getEnemy()!=null)   
@@ -91,6 +93,12 @@ public class PlayerView extends javax.swing.JPanel {
         
         revalidate();
 
+    }
+
+    public void setSectario(boolean a) {
+        this.label_sectario.setVisible(a); 
+        this.sectario.setVisible(false);
+        repaint();
     }
 
     public JButton getMakeVisible() {
@@ -234,7 +242,8 @@ public class PlayerView extends javax.swing.JPanel {
 
         label_n_combate.setText("Nivel de combate");
 
-        sectario.setText("SECTARIO");
+        sectario.setText("NO");
+        sectario.setEnabled(false);
 
         label_sectario.setText("Sectario");
 
@@ -340,42 +349,31 @@ public class PlayerView extends javax.swing.JPanel {
     private void makeVisibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeVisibleActionPerformed
         ArrayList<Treasure> selHidden = this.getSelectedTreasures(hiddenTreasures);
         this.napakalakiModel.makeTreasuresVisible(selHidden);
-        this.setPlayer(napakalakiModel.getCurrentPlayer());
+        try {
+            this.setPlayer(napakalakiModel.getCurrentPlayer());
+        } catch (CloneNotSupportedException ex) {
+            Logger.getLogger(PlayerView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_makeVisibleActionPerformed
 
     private void discardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardActionPerformed
-         ArrayList<Treasure> selHidden = this.getSelectedTreasures(hiddenTreasures);
-         ArrayList<Treasure> selVisibles = this.getSelectedTreasures(visibleTreasures);
 
-         int i=0;
-         int contador = 0;
-         for (Treasure t : selHidden){            
-            playerModel.discardHiddenTreasure(t);
-            napakalakiModel.discardHiddenTreasures(selHidden);
-            if(contador ==0){
-                hiddenTreasures.remove(i);
-                i++;
-                contador++;
-            }
-         }
-         i=0;
-         contador = 0;
-         for(Treasure t : selVisibles){
-             if(contador == 0){
-                playerModel.discardVisibleTreasure(t);
-                napakalakiModel.discardVisibleTreasures(selVisibles);
-                visibleTreasures.remove(i);
-                i++;
-                contador++;
-             }
-         }
-         
-         
-         
-       
-         
+        ArrayList<Treasure> selVisible = getSelectedTreasures(visibleTreasures);
+        this.napakalakiModel.discardVisibleTreasures(selVisible);
 
-         repaint();
+        ArrayList<Treasure> selHidden = getSelectedTreasures(hiddenTreasures);
+
+        this.napakalakiModel.discardHiddenTreasures(selHidden);
+
+        try {
+            setPlayer(napakalakiModel.getCurrentPlayer());
+        } catch (CloneNotSupportedException ex) {
+            Logger.getLogger(PlayerView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        this.repaint();
+
+
     }//GEN-LAST:event_discardActionPerformed
 
     private void discardAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardAllActionPerformed

@@ -1,6 +1,7 @@
 
 package NapakalakiGame;
 
+import static NapakalakiGame.Player.MAXLEVEL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -101,7 +102,7 @@ public class CardDealer {
        
        tVisible = new ArrayList(Arrays.asList(TreasureKind.HELMET));
        tHidden = new ArrayList();
-       badConsequence = new SpecificBadConsequence("Embobados con el lindo primigenio te descartas de tu"
+       badConsequence = new SpecificBadConsequence("Embobados con el lindo primigenio "+"\n"+"te descartas de tu"
                + "casco visible",0,tVisible,tHidden);
        prize = new Prize(1,1);
        this.unusedMonsters.add(new Monster("Chibithulhu",2,badConsequence,prize));
@@ -109,7 +110,7 @@ public class CardDealer {
        // El sopor de Dunwich
        tVisible = new ArrayList(Arrays.asList(TreasureKind.SHOES));
        tHidden = new ArrayList();
-       badConsequence = new SpecificBadConsequence("El primordial bostezo contagioso.Pierdes el calzado visible"
+       badConsequence = new SpecificBadConsequence("El primordial bostezo contagioso."+"\n"+"Pierdes el calzado visible"
                 ,0,tVisible,tHidden);
        prize = new Prize(1,1);
        this.unusedMonsters.add(new Monster("El sopor de Dunwich",2,badConsequence,prize));       
@@ -119,9 +120,8 @@ public class CardDealer {
        
        tVisible = new ArrayList(Arrays.asList(TreasureKind.ONEHAND));
        tHidden = new ArrayList(Arrays.asList(TreasureKind.ONEHAND));
-       badConsequence = new SpecificBadConsequence("Te atrapan para llevarte de fiesta "
-               + "y te dejan caer en mitadl del vuelo. Descarta 1 mano visible "
-               + "y 1 mano oculta",0,tVisible,tHidden);
+       badConsequence = new SpecificBadConsequence("Te atrapan para llevarte de fiesta "+"\n"
+                +"y te dejan caer en mitadl del vuelo. Descarta 1 mano visible "+"\n"+"y 1 mano oculta",0,tVisible,tHidden);
        prize = new Prize(4,1);
        this.unusedMonsters.add(new Monster("Angeles de la noche ibicenca",14,badConsequence,prize));
        
@@ -143,7 +143,7 @@ public class CardDealer {
        // Bichgooth
        tVisible = new ArrayList(Arrays.asList(TreasureKind.ARMOR));
        tHidden = new ArrayList();
-       badConsequence = new SpecificBadConsequence("Sientes bichos bajo la ropa.Descarta la armadura visible"
+       badConsequence = new SpecificBadConsequence("Sientes bichos bajo la ropa."+"\n"+"Descarta la armadura visible"
                ,0,tVisible,tHidden);
        prize = new Prize(1,1);
        this.unusedMonsters.add(new Monster("Bichgooth",2,badConsequence,prize));
@@ -167,8 +167,8 @@ public class CardDealer {
        // Los hondos
        
        badConsequence = new DeathBadConsequence("Estos monstrous resultan"
-               + "bastante superficiales y te aburren mortalmente."
-               + "Estas muerto",true);
+               +"\n"+"bastante superficiales y te aburren mortalmente."
+                +"\n"+"Estas muerto",true);
        prize = new Prize(2,1);
        this.unusedMonsters.add(new Monster("Los hondos",8,badConsequence,prize));
        
@@ -200,7 +200,7 @@ public class CardDealer {
        // Yskhtihyssg-Goth
        
        badConsequence = new DeathBadConsequence("No le hace gracia que pronuncien mal "
-               + "su nombre. Estas muerto",true);
+               + "\n"+ "su nombre. Estas muerto",true);
        prize = new Prize(3,1);
        this.unusedMonsters.add(new Monster("Yskhtihyssg-Goth",12,badConsequence,prize));
        
@@ -218,7 +218,7 @@ public class CardDealer {
        tHidden = new ArrayList();
        prize = new Prize(2,1);
        badConsequence = new SpecificBadConsequence("La quinta directiva primaria te obliga"
-               + " a perder 2 niveles y un tesoro, 2 manos visibles",2,tVisible,tHidden);
+               + "\n"+ "a perder 2 niveles y un tesoro, 2 manos visibles",2,tVisible,tHidden);
        this.unusedMonsters.add(new Monster("Roboggoth",8,badConsequence,prize));
        
        //El espia
@@ -244,7 +244,7 @@ public class CardDealer {
        tHidden = new ArrayList();
        
        badConsequence = new SpecificBadConsequence("Te faltan manos para tanta cabeza. "
-               + "Pierdes 3 niveles y tus tesoros visibles de las manos",3,tVisible,tHidden);
+               +"\n"+ "Pierdes 3 niveles y tus tesoros visibles de las manos",3,tVisible,tHidden);
        prize = new Prize(1,1);
        this.unusedMonsters.add(new Monster("Bicefalo",20,badConsequence,prize));
        
@@ -257,7 +257,7 @@ public class CardDealer {
        
        // Testigos Oculares
        
-       badConsequence = new NumericBadConsequence("Pierdes tus tesoros visibles. Jajaja",0,10,0);
+       badConsequence = new NumericBadConsequence("Pierdes tus tesoros visibles. Jajaja",0,MAXLEVEL,0);
        prize = new Prize(2,1);
        this.unusedMonsters.add(new Monster("Testigos Oculares",6,badConsequence,prize,2));
        
@@ -351,8 +351,9 @@ public class CardDealer {
      */
     public Treasure nextTreasure(){
        
-        Treasure aux; 
-            if (this.unusedTreasures.isEmpty()) 
+            Treasure aux=null;
+            if (this.unusedTreasures.isEmpty()|| unusedTreasures.get(0)==null) 
+                
             {
               
                 for (Treasure tesoro: this.usedTreasures)
@@ -361,15 +362,16 @@ public class CardDealer {
                 }
             
                 this.shuffleTreasures(); //barajamos el mazo de tesoros
-                this.unusedTreasures.clear(); //quitamos las cartas de los descartes
-            }
-            
-                //Ponemos la primera carta
+                this.unusedTreasures.clear(); //quitamos las cartas de los descartes//Ponemos la primera carta
                 
+               
+            }
+            else if(unusedTreasures.get(0)!=null)
                 aux = this.unusedTreasures.get(0);
                 
                 this.usedTreasures.add(aux);
                 this.unusedTreasures.remove(aux);
+                
         return aux;
         
     }

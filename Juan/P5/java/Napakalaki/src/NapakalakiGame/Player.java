@@ -8,19 +8,21 @@ import java.util.Random;
  * @author juane
  * @version 3.1
  */
-public class Player implements Cloneable  {
+public class Player implements Cloneable {
+
     static final int MAXLEVEL = 10; // <<constant>>
     protected Player enemy; //Relación asímismo 
-    
+
     /*Relaciones */
     private ArrayList<Treasure> hiddenTreasures ;//= new ArrayList();
-    private ArrayList<Treasure> visibleTreasures ;//= new ArrayList();
-    private BadConsequence pendingBadConsequence ;
-    
+    private ArrayList<Treasure> visibleTreasures; // = new ArrayList();
+    private BadConsequence pendingBadConsequence;
+
     protected ArrayList<Treasure> visibleCultist = visibleTreasures;
-    
-    /** Atributos de la clase
-     * 
+
+    /**
+     * Atributos de la clase
+     *
      */
     private String name;
     private int level;
@@ -28,9 +30,10 @@ public class Player implements Cloneable  {
     private boolean canISteal = true;
 
     /* Constructor */
-    
     /**
-     * Constructor Player(String name)     * 
+     * Constructor Player(String name)
+     *
+     *
      * @param name nombre del jugador
      */
     public Player(String name) {
@@ -41,56 +44,65 @@ public class Player implements Cloneable  {
         this.visibleTreasures = new ArrayList();
         this.hiddenTreasures = new ArrayList();
         this.visibleCultist = new ArrayList();
-        this.pendingBadConsequence = new NumericBadConsequence(" ", 0, 0, 0);
-        
+        this.pendingBadConsequence = new NumericBadConsequence(" ",0, 0, 0);
+
     }
-    
-   
+
     /**
-     * Constructor de copia superficial
-     * Utilización de Clone 
-     * @return  
-     * @throws java.lang.CloneNotSupportedException  
+     * Constructor de copia superficial Utilización de Clone
+     *
+     * @return
+     * @throws java.lang.CloneNotSupportedException
      */
-   
-    
     @Override
-    public Object clone () throws CloneNotSupportedException{ 
-       
+    public Object clone() throws CloneNotSupportedException {
+
         Player copia = new Player(this.name);
         try {
 
             copia = (Player) super.clone();
+            copia.name = this.name;
+            copia.level = this.level;
+            copia.dead = this.dead;
+            copia.canISteal = this.canISteal;
+            copia.hiddenTreasures = this.hiddenTreasures;
+            copia.visibleTreasures = this.visibleTreasures;
+            copia.visibleCultist = this.visibleCultist;
+            copia.pendingBadConsequence = this.pendingBadConsequence;
+
         } catch (CloneNotSupportedException e) {
             System.out.println(e);
         }
-        
-        copia.enemy = (Player)copia.enemy.clone();
+
+        copia.enemy = (Player) copia.enemy.clone();
         return copia;
     }
 
-     public Player (Player p) throws CloneNotSupportedException{
-         p = (Player) super.clone();
-     }
+    public Player(Player p) throws CloneNotSupportedException {
+        p = (Player) super.clone();
+    }
+
     /**
      * Método getName()
+     *
      * @return el nombre del jugador
      */
-    public String getName(){
-        return  this.name;
+    public String getName() {
+        return this.name;
     }
-    
+
     /**
      * Método bringToLife()
      */
-    private void bringToLife(){
+    private void bringToLife() {
         this.dead = false;
     }
-    
+
     /**
      * Método getCombatLevel()
-     * @return el nivel de combate del jugador.
-     * Recorremos el array con el número de tesoros visibles para añadirles el bonus.
+     *
+     * @return el nivel de combate del jugador. Recorremos el array con el
+     * número de tesoros visibles para añadirles el bonus.
      */
     /*Estaba a protected */
     public int getCombatLevel() {
@@ -103,297 +115,306 @@ public class Player implements Cloneable  {
             nivel = this.level + sum_bonus;
         } else {
             nivel = this.level;
-            
+
         }
-        
 
         return nivel;
-        
+
     }
+
     /**
      * Método incrementLevels
+     *
      * @param l incrementa l niveles
      */
-    private void incrementLevels( int l){
-        this.level = this.level+l;
+    private void incrementLevels(int l) {
+        this.level = this.level + l;
     }
-    
+
     /**
      * Método decrementLevels
+     *
      * @param l decrementa l niveles
      */
-    private void decrementLevels (int l){
-        if(this.level > 1){
-            this.level = this.level -l;
+    private void decrementLevels(int l) {
+        if (this.level > 1) {
+            this.level = this.level - l;
         }
     }
-    
+
     /**
      * Método setPendingBadConsequence(BadConsequence b)
+     *
      * @param b BadConsequence mal royo.
      */
-   
-    private void setPendingBadConsequence(BadConsequence b){
+    private void setPendingBadConsequence(BadConsequence b) {
         this.pendingBadConsequence = b;
     }
-    
+
     /**
      * Método applyPrize(Monster m)
+     *
      * @param m Monster
      */
-    private void applyPrize(Monster m){
+    private void applyPrize(Monster m) {
         int nLevels = m.getLevelsGained();
-        this.incrementLevels(nLevels);   
+        this.incrementLevels(nLevels);
         int nTreasures = m.getTreasuresGained();
-               
+
         CardDealer dealer;
-        Treasure treasure;         
-        
-        if (nTreasures > 0 ){  
+        Treasure treasure;
+
+        if (nTreasures > 0) {
             dealer = CardDealer.getInstance();
-        
-            for (int i = 1;i<nTreasures;i++){
+
+            for (int i = 1; i < nTreasures; i++) {
                 treasure = dealer.nextTreasure();
-                if(dealer.nextTreasure()!=null)
-                this.hiddenTreasures.add(treasure);
+                if (dealer.nextTreasure() != null ) {
+                    this.hiddenTreasures.add(treasure);
+                    if(this.hiddenTreasures.size()>4)
+                        this.hiddenTreasures.remove(i);
+                }
             }
+        } else {
         }
     }
-    
+
     /**
      * Método applyBadConsequence(Monster m)
+     *
      * @param m Monster
      */
-    private void applyBadConsequence (Monster m){
+    private void applyBadConsequence(Monster m) {
         BadConsequence badConsequence;
         BadConsequence pendingBad;
         badConsequence = m.getBadConsequence();
-        int nLevels = badConsequence.getLevels();        
+        int nLevels = badConsequence.getLevels();
         this.decrementLevels(nLevels);
-        
+
         pendingBad = badConsequence.adjustToFitTreasureList(hiddenTreasures, visibleTreasures);
         this.setPendingBadConsequence(pendingBad);
     }
-    
+
     /**
      * Método canMakeTreasureVisible(Treasure t)
+     *
      * @param t Treasure
      * @return true si puede hacer los tesoros ocultos a visibles
      */
-    private boolean canMakeTreasureVisible(Treasure t){
-        boolean puede=false;
-        
-        if(t.getType()== TreasureKind.ONEHAND ){
-            int numero=0;
-            int numerob=0;
-            for(Treasure taux : visibleTreasures){
-                if(taux.getType() == TreasureKind.ONEHAND){
+    private boolean canMakeTreasureVisible(Treasure t) {
+        boolean puede = false;
+
+        if (t.getType() == TreasureKind.ONEHAND) {
+            int numero = 0;
+            int numerob = 0;
+            for (Treasure taux : visibleTreasures) {
+                if (taux.getType() == TreasureKind.ONEHAND) {
                     numero++;
                 }
-                if(taux.getType() == TreasureKind.BOTHHANDS)
+                if (taux.getType() == TreasureKind.BOTHHANDS) {
                     numerob++;
+                }
             }
-            if(numero<2 && numerob == 0)
-                puede=true;                
+            if (numero < 2 && numerob == 0) {
+                puede = true;
+            }
         }
-        
-        if(t.getType()== TreasureKind.BOTHHANDS ){
-            int numero=0;
-            int numerob=0;
-            for(Treasure taux : visibleTreasures){
-                if(taux.getType() == TreasureKind.ONEHAND){
+
+        if (t.getType() == TreasureKind.BOTHHANDS) {
+            int numero = 0;
+            int numerob = 0;
+            for (Treasure taux : visibleTreasures) {
+                if (taux.getType() == TreasureKind.ONEHAND) {
                     numero++;
                 }
-                if(taux.getType() == TreasureKind.BOTHHANDS)
+                if (taux.getType() == TreasureKind.BOTHHANDS) {
                     numerob++;
+                }
             }
-            if(numero==0 && numerob == 0)
-                puede=true;                
+            if (numero == 0 && numerob == 0) {
+                puede = true;
+            }
         }
-        
-        if(t.getType()== TreasureKind.ARMOR ){
-            int numero=0;            
-            for(Treasure taux : visibleTreasures){
-                if(taux.getType() == TreasureKind.ARMOR){
+
+        if (t.getType() == TreasureKind.ARMOR) {
+            int numero = 0;
+            for (Treasure taux : visibleTreasures) {
+                if (taux.getType() == TreasureKind.ARMOR) {
                     numero++;
                 }
             }
-            if(numero==0)
-                puede=true;                
+            if (numero == 0) {
+                puede = true;
+            }
         }
-        
-        if(t.getType()== TreasureKind.HELMET ){
-            int numero=0;
-            for(Treasure taux : visibleTreasures){
-                if(taux.getType() == TreasureKind.HELMET){
+
+        if (t.getType() == TreasureKind.HELMET) {
+            int numero = 0;
+            for (Treasure taux : visibleTreasures) {
+                if (taux.getType() == TreasureKind.HELMET) {
                     numero++;
                 }
             }
-            if(numero==0)
-                puede=true;                
+            if (numero == 0) {
+                puede = true;
+            }
         }
-        
-        if(t.getType()== TreasureKind.SHOES ){
-            int numero=0;
-            for(Treasure taux : visibleTreasures){
-                if(taux.getType() == TreasureKind.SHOES){
+
+        if (t.getType() == TreasureKind.SHOES) {
+            int numero = 0;
+            for (Treasure taux : visibleTreasures) {
+                if (taux.getType() == TreasureKind.SHOES) {
                     numero++;
                 }
             }
-            if(numero==0)
-                puede=true;                
+            if (numero == 0) {
+                puede = true;
+            }
         }
-        
-        
+
         return puede;
     }
-    
+
     /**
-     * Método howManyVisibleTreasures (TreasureKind tKind)
-     * Recorremos el array con los tesoros visibles
-     * si el tipo de tesoro se encuentra en el array de
-     * tesoros visibles incrementamos la variable local de
-     * la función num, si no tenemos ese tipo devuelve 0
-     * 
+     * Método howManyVisibleTreasures (TreasureKind tKind) Recorremos el array
+     * con los tesoros visibles si el tipo de tesoro se encuentra en el array de
+     * tesoros visibles incrementamos la variable local de la función num, si no
+     * tenemos ese tipo devuelve 0
+     *
      * @param tKind TreasureKind
      * @return número de tesoros visiblees de tipo tKind
      */
-    private int howManyVisibleTreasures(TreasureKind tKind){
-        
+    private int howManyVisibleTreasures(TreasureKind tKind) {
+
         int num = 0;
-        
-        for (Treasure t: visibleTreasures){
-            if(t.getType() == tKind)
+
+        for (Treasure t : visibleTreasures) {
+            if (t.getType() == tKind) {
                 num++;
+            }
         }
         return num;
     }
-    
+
     /**
-     * Método dielfNoTreasures()
-     * Si el número de tesoros visibles y tesoros
+     * Método dielfNoTreasures() Si el número de tesoros visibles y tesoros
      * ocultos está vacio el jugador muere
      */
-    private void dielfNoTreasures (){
-        
-        if(this.visibleTreasures.isEmpty() && this.hiddenTreasures.isEmpty())
+    private void dielfNoTreasures() {
+
+        if (this.visibleTreasures.isEmpty() && this.hiddenTreasures.isEmpty()) {
             this.dead = true;
-        
+        }
+
     }
-    
+
     /**
      * Método isDead()
+     *
      * @return true si está muerto o false en caso contrario
      */
-    public boolean isDead(){
-        return this.dead; 
+    public boolean isDead() {
+        return this.dead;
     }
-    
+
     /**
      * Método getHiddenTreasures()
+     *
      * @return un array con los tesoros ocultos
      */
-    public ArrayList<Treasure> getHiddenTreasures(){
-        
-        return this.hiddenTreasures; 
-      
+    public ArrayList<Treasure> getHiddenTreasures() {
+
+        return this.hiddenTreasures;
+
     }
+
     /**
-     * Método getVisibleTreasures()     * 
+     * Método getVisibleTreasures()
+     *
+     *
      * @return un array con los tesoros visibles
      */
-    
-    public ArrayList<Treasure> getVisibleTreasures(){
-       
-            return this.visibleTreasures;
- 
+
+    public ArrayList<Treasure> getVisibleTreasures() {
+
+        return this.visibleTreasures;
+
     }
-    
+
     /**
      * Método CombatResult combat (Monster m)
+     *
      * @param m Monster
      * @return Devuelve el resultado del combate
      */
-    
-    public CombatResult combat(Monster m){
+    public CombatResult combat(Monster m) {
         int myLevel = this.getCombatLevel(); // 1.1.1
         int monsterLevel;
-        
-       // CardDealer dealer = CardDealer.getInstance();
-        
+        // CardDealer dealer = CardDealer.getInstance();
+
         CombatResult combatResult;
-        
-        System.out.println("Nivel combate "+ myLevel);
-       
         Monster currentMonster = m;
-        
-//        monsterLevel = currentMonster.getCombatLevel();
-        
         monsterLevel = this.getOponentLevel(currentMonster);
-        
-        if(myLevel > monsterLevel){
+
+        if (myLevel > monsterLevel) {
             this.applyPrize(m);
-         
+
             if (this.getLevels() >= MAXLEVEL) {
                 combatResult = CombatResult.WINGAME;
-                
-            }
-            
-            else{
+            } else {
                 combatResult = CombatResult.WIN;
-                
-                }
-        }
-            
-        else{
+
+            }
+        } else {
+
             this.applyBadConsequence(m);
-            if(shouldConvert() == true)
+            if (shouldConvert() == true) {
                 combatResult = CombatResult.LOSEANDCONVERT;
-            else
+            } else {
                 combatResult = CombatResult.LOSE;
+            }
         }
-        
-        return combatResult; 
+
+        return combatResult;
     }
-    
-    
+
     /**
-     * Método makeTreasureVisible(Treasure t)
-     * Hace los tesoros visibles.
+     * Método makeTreasureVisible(Treasure t) Hace los tesoros visibles.
+     *
      * @param t de tipo treasure.
      */
-    public void makeTreasureVisible(Treasure t){
+    public void makeTreasureVisible(Treasure t) {
         boolean canI = this.canMakeTreasureVisible(t);
-        
-        if (canI){
+
+        if (canI) {
             this.visibleTreasures.add(t);
             this.hiddenTreasures.remove(t);
         }
-            
+
     }
-    
+
     /**
-     * Método discardVisibleTreasure(Treasure t)
-     * Descarta los tesoros visibles.
+     * Método discardVisibleTreasure(Treasure t) Descarta los tesoros visibles.
+     *
      * @param t de tipo treasure
      */
-    public void discardVisibleTreasure (Treasure t){
-        if(visibleTreasures != null){
-        this.visibleTreasures.remove(t);
+    public void discardVisibleTreasure(Treasure t) {
+        if (visibleTreasures != null) {
+            this.visibleTreasures.remove(t);
         }
-        if((this.pendingBadConsequence != null ) && (!this.pendingBadConsequence.isEmpty())){
+        if ((this.pendingBadConsequence != null) && (!this.pendingBadConsequence.isEmpty())) {
             this.pendingBadConsequence.substractVisibleTreasure(t);
         }
-        
+
         this.dielfNoTreasures();
     }
-    
+
     /**
-     * Método discardHiddenTreasure(Treasure t)
-     * Descarta los tesoros ocultos.
+     * Método discardHiddenTreasure(Treasure t) Descarta los tesoros ocultos.
+     *
      * @param t Treasure
      */
-    public void discardHiddenTreasure(Treasure t){
+    public void discardHiddenTreasure(Treasure t) {
         if (hiddenTreasures != null) {
             this.hiddenTreasures.remove(t);
         }
@@ -403,110 +424,109 @@ public class Player implements Cloneable  {
 
         this.dielfNoTreasures();
     }
-    
+
     /**
      * Método validState()
-     * @return true  si pendingBandConsequence y hiddenTreasures está vacio
-     * false en caso contrario
+     *
+     * @return true si pendingBandConsequence y hiddenTreasures está vacio false
+     * en caso contrario
      */
-    public boolean validState(){
-          
+    public boolean validState() {
+
         boolean valid = false;
-        
-        if(this.hiddenTreasures != null){
-            if(this.pendingBadConsequence!= null || this.pendingBadConsequence.isEmpty()  && this.hiddenTreasures.size() <= 4  ){
-              valid = true;
-                
-            }return valid;
-        }           
-        else
-           return valid;
-       
-      //  return this.pendingBadConsequence == null || (this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size() <=4);
+
+        if (this.hiddenTreasures != null) {
+            if (this.pendingBadConsequence != null  && this.hiddenTreasures.size() <= 4) {
+                valid = true;
+//|| this.pendingBadConsequence.isEmpty()
+            }
+            return valid;
+        } else {
+            return valid;
+        }
+
+        //  return this.pendingBadConsequence == null || (this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size() <=4);
     }
-    
+
     /**
-     * Método initTreasures()
-     * Crea una instancia con CardDealer
-     * Crea una instancia con Dice
-     * 
+     * Método initTreasures() Crea una instancia con CardDealer Crea una
+     * instancia con Dice
+     *
      */
-    public void initTreasures(){
+    public void initTreasures() {
         CardDealer dealer = CardDealer.getInstance();
         Dice dice = Dice.getInstance();
         Treasure treasure;
         int number;
         this.bringToLife();
-        
+
         treasure = dealer.nextTreasure();
         this.hiddenTreasures.add(treasure);
         number = dice.nextNumber();
-        
-        
-        
-        if( number > 1 ){
-           
-                treasure = dealer.nextTreasure();
-                this.hiddenTreasures.add(treasure);
-            
+
+        if (number > 1) {
+
+            treasure = dealer.nextTreasure();
+            this.hiddenTreasures.add(treasure);
+
         }
-        
-        if (number == 6){
-            
-                treasure = dealer.nextTreasure();
-                this.hiddenTreasures.add(treasure);
-            
-            
+
+        if (number == 6) {
+
+            treasure = dealer.nextTreasure();
+            this.hiddenTreasures.add(treasure);
+
         }
     }
-    
+
     /**
-     * Método getLevels()
-     * Devulve el nivel del jugador
+     * Método getLevels() Devulve el nivel del jugador
+     *
      * @return level
      */
-    public int getLevels(){
-        
-        return this.level; 
+    public int getLevels() {
+
+        return this.level;
     }
-    
+
     /**
      * Método stealTreasure()
-     * @return 
+     *
+     * @return
      */
-    public Treasure stealTreasure(){
-       Treasure treasure = null; 
-       boolean canI = this.canISteal();
-       boolean canYou;
-       this.canISteal = canI;
-        
-        if(canI){
+    public Treasure stealTreasure() {
+        Treasure treasure = null;
+        boolean canI = this.canISteal();
+        boolean canYou;
+        this.canISteal = canI;
+
+        if (canI) {
             canYou = this.enemy.canYouGiveMeAtreasure();
-            if(canYou){
+            if (canYou) {
                 treasure = this.enemy.giveMeAtreasure();
                 this.hiddenTreasures.add(treasure);
                 this.haveStolen();
-                
-        }       
-         return treasure;   
-       }
+
+            }
+            return treasure;
+        }
         return null; //cambiar
     }
-    
+
     /**
-     * Método setEnemy(Player enemy)
-     * Asigna valor al atributo que referencia al enemigo 
-     * del jugador
-     * @param enemy 
+     * Método setEnemy(Player enemy) Asigna valor al atributo que referencia al
+     * enemigo del jugador
+     *
+     * @param enemy
      */
-    public void setEnemy(Player enemy){
+    public void setEnemy(Player enemy) {
         this.enemy = enemy;
     }
-    
+
     /**
      * Método giveMeAtreasure()
-     * @return 
-     * private
+     *
+     * @return private
      */
     protected Treasure giveMeAtreasure() {
 
@@ -517,44 +537,44 @@ public class Player implements Cloneable  {
 
         return tesoro;
     }
-    
+
     /**
      * Método canISteal()
-     * @return 
+     *
+     * @return
      */
-    public boolean canISteal(){
-        return this.canISteal; 
+    public boolean canISteal() {
+        return this.canISteal;
     }
+
     /**
-     * Método canYouGiveMeAtreasure()
-     * Devuelve true si el jugador tiene tesoros para 
-     * ser robados por otro jugador 
-     * false en caso contrario
-     * @return 
+     * Método canYouGiveMeAtreasure() Devuelve true si el jugador tiene tesoros
+     * para ser robados por otro jugador false en caso contrario
+     *
+     * @return
      */
-    protected boolean canYouGiveMeAtreasure(){
-      
-        if(!enemy.hiddenTreasures.isEmpty())
+    protected boolean canYouGiveMeAtreasure() {
+
+        if (!enemy.hiddenTreasures.isEmpty()) {
             return true;
-        
-        else
-           return false;
-                    
-          
+        } else {
+            return false;
+        }
+
     }
-    
+
     /**
-     * Método haveStolen()
-     * Cambia el atributo CanISteal a false
-     * cuando el jugador roba un tesoro
+     * Método haveStolen() Cambia el atributo CanISteal a false cuando el
+     * jugador roba un tesoro
      */
-    private void haveStolen(){
-        if(!this.hiddenTreasures.isEmpty())
+    private void haveStolen() {
+        if (!this.hiddenTreasures.isEmpty()) {
             this.canISteal = false;
-        else
+        } else {
             this.canISteal = true;
+        }
     }
-    
+
     /**
      * Método discardAllTreasures()
      */
@@ -570,36 +590,37 @@ public class Player implements Cloneable  {
             }
         }
     }
-    
-    protected int getOponentLevel(Monster m){
+
+    protected int getOponentLevel(Monster m) {
         return m.getCombatLevel();
     }
-    
-    protected boolean shouldConvert(){
+
+    protected boolean shouldConvert() {
         Dice dice = Dice.getInstance();
         int number = dice.nextNumber();
-        
-        if(number ==1)
+
+        if (number == 1) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
-    
+
     /**
-     * consultor protected para la variable enemy  para que
-     * pueda ser consultada también por CultistPlayer.
+     * consultor protected para la variable enemy para que pueda ser consultada
+     * también por CultistPlayer.
+     *
      * @return enemy de tipo Player
      */
-    
     /*antes protected*/
-    public Player getEnemy(){
-       return this.enemy;
+    public Player getEnemy() {
+        return this.enemy;
     }
-    
+
     @Override
     public String toString() {
-       // return "Player{" + "enemy=" + enemy + ", hiddenTreasures=" + hiddenTreasures + ", visibleTreasures=" + visibleTreasures + ", pendingBadConsequence=" + pendingBadConsequence + ", name=" + name + ", level=" + level + ", dead=" + dead + ", canISteal=" + canISteal + '}';
+        // return "Player{" + "enemy=" + enemy + ", hiddenTreasures=" + hiddenTreasures + ", visibleTreasures=" + visibleTreasures + ", pendingBadConsequence=" + pendingBadConsequence + ", name=" + name + ", level=" + level + ", dead=" + dead + ", canISteal=" + canISteal + '}';
         return "Player: " + this.name + " Nivel: " + this.level;
     }
-            
+
 }

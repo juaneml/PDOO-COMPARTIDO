@@ -83,7 +83,7 @@ public class NumericBadConsequence extends BadConsequence{
             if (nVisibleAux <= tamV) {
                 nuevoV = nVisibleAux;
             } else if ( nVisibleAux > tamV ) {
-                nuevoV = nVisibleAux -tamV ; //pruebas antes nuevo = tamV;
+                nuevoV = /*nVisibleAux -*/tamV ; //pruebas antes nuevo = tamV;
             }
         }
         if (h != null) {
@@ -92,7 +92,7 @@ public class NumericBadConsequence extends BadConsequence{
             if (nHiddenAux <= tamH) {
                 nuevoO = nHiddenAux;
             } else if ( nHiddenAux >tamH ) {
-                nuevoO = nHiddenAux-tamH;
+                nuevoO = /*nHiddenAux-*/tamH;
             }
 
         }

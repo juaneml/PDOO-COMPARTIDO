@@ -36,7 +36,7 @@ public class BadConsequenceView extends javax.swing.JPanel {
              aux = aux.substring(mitad); // obtenemos la mitad primera de la cadena
              aux2 = aux2.substring(0,mitad); // obtenemos la mitad segunda de la cadena
 
-             System.out.println("tamaño" + n);
+          
              badConsequenceModel = badconsequence;
              this.niveles.setText(Integer.toString(badConsequenceModel.getLevels()));
 

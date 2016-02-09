@@ -7,7 +7,6 @@
 package GUI;
 
 import NapakalakiGame.*;
-import static NapakalakiGame.CombatResult.LOSEANDCONVERT;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.net.URL;
@@ -16,7 +15,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -42,7 +40,7 @@ public class PlayerView extends javax.swing.JPanel {
        
     }
 
-   
+    
     
     public void setPlayer(Player playerModel) throws CloneNotSupportedException {
         this.playerModel = playerModel;
@@ -53,7 +51,7 @@ public class PlayerView extends javax.swing.JPanel {
         
         /*Cambiar icono jugador*/
        
-       if(playerModel.getName() !=null){
+       if(playerModel.getName() !=null&& playerModel.getName().length()>0){
         String path = null;  
         
         String aux = playerModel.getName();
@@ -61,10 +59,10 @@ public class PlayerView extends javax.swing.JPanel {
         aux =aux.substring(n-1); // obtenemos el último carácter
 
         
-        if(this.playerModel.getName().contains("b")){//){
+        if(aux.contains("b")){//){
              path ="/Jugador/jugador_uno.jpg";
         }
-        else if(this.playerModel.getName().equals("a")){
+        else if(aux.equals("a")){
             path = "/Jugador/jugadora.jpg";
         }
         else{

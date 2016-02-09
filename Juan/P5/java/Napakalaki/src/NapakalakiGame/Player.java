@@ -13,8 +13,8 @@ public class Player implements Cloneable  {
     protected Player enemy; //Relación asímismo 
     
     /*Relaciones */
-    private ArrayList<Treasure> hiddenTreasures = new ArrayList();
-    private ArrayList<Treasure> visibleTreasures = new ArrayList();
+    private ArrayList<Treasure> hiddenTreasures ;//= new ArrayList();
+    private ArrayList<Treasure> visibleTreasures ;//= new ArrayList();
     private BadConsequence pendingBadConsequence ;
     
     protected ArrayList<Treasure> visibleCultist = visibleTreasures;
@@ -40,6 +40,7 @@ public class Player implements Cloneable  {
         this.canISteal = false;
         this.visibleTreasures = new ArrayList();
         this.hiddenTreasures = new ArrayList();
+        this.visibleCultist = new ArrayList();
         this.pendingBadConsequence = new NumericBadConsequence(" ", 0, 0, 0);
         
     }
@@ -55,17 +56,17 @@ public class Player implements Cloneable  {
     
     @Override
     public Object clone () throws CloneNotSupportedException{ 
-        Player clone = null;
-        
-        try{
-            clone = (Player) super.clone();
+       
+        Player copia = new Player(this.name);
+        try {
+
+            copia = (Player) super.clone();
+        } catch (CloneNotSupportedException e) {
+            System.out.println(e);
         }
         
-        catch(CloneNotSupportedException e){
-        System.out.println(e);
-    }
-        clone.enemy = (Player)clone.enemy.clone();
-        return clone;
+        copia.enemy = (Player)copia.enemy.clone();
+        return copia;
     }
 
      public Player (Player p) throws CloneNotSupportedException{
@@ -148,7 +149,7 @@ public class Player implements Cloneable  {
         CardDealer dealer;
         Treasure treasure;         
         
-        if (nTreasures > 0){
+        if (nTreasures > 0 ){  
             dealer = CardDealer.getInstance();
         
             for (int i = 1;i<nTreasures;i++){
@@ -351,7 +352,7 @@ public class Player implements Cloneable  {
             else
                 combatResult = CombatResult.LOSE;
         }
-        ;
+        
         return combatResult; 
     }
     
@@ -410,18 +411,18 @@ public class Player implements Cloneable  {
      */
     public boolean validState(){
           
-//        boolean valid = false;
-//        
-//        if(this.hiddenTreasures != null){
-//            if(this.pendingBadConsequence!= null || this.pendingBadConsequence.isEmpty()  && this.hiddenTreasures.size() <= 4  ){
-//              valid = true;
-//                
-//            }return valid;
-//        }           
-//        else
-//           return valid;
-//       
-        return this.pendingBadConsequence == null || (this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size() <=4);
+        boolean valid = false;
+        
+        if(this.hiddenTreasures != null){
+            if(this.pendingBadConsequence!= null || this.pendingBadConsequence.isEmpty()  && this.hiddenTreasures.size() <= 4  ){
+              valid = true;
+                
+            }return valid;
+        }           
+        else
+           return valid;
+       
+      //  return this.pendingBadConsequence == null || (this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size() <=4);
     }
     
     /**

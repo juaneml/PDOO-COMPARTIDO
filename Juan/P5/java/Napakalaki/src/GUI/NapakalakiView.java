@@ -3,8 +3,12 @@ package GUI;
 
 import NapakalakiGame.CombatResult;
 import NapakalakiGame.Napakalaki;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Raul
@@ -24,9 +28,9 @@ public class NapakalakiView extends javax.swing.JFrame {
         this.next_turn.setEnabled(false);
         this.combat.setEnabled(false);
         //this.currentMonster.setVisible(false);
-        this.setLocationRelativeTo(null); //ponemos ventana Centrada
+        this.setLocationRelativeTo(null); //ponemos ventana Centrada    
     }
-
+ 
     public void setNapakalaki(Napakalaki n) throws CloneNotSupportedException{
         
         meet_m = false;
@@ -37,15 +41,11 @@ public class NapakalakiView extends javax.swing.JFrame {
                 adjustToFitTreasureList(napakalakiModel.getCurrentPlayer()
                         .getVisibleTreasures(), napakalakiModel.getCurrentPlayer().getVisibleTreasures());
         
-        this.currentPlayer.setNapakalakiModel(napakalakiModel);
-        
-        
+        this.currentPlayer.setNapakalakiModel(napakalakiModel);        
         this.repaint();
     }
    
-    
-    
-   
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,7 +83,7 @@ public class NapakalakiView extends javax.swing.JFrame {
             player_monsterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(player_monsterLayout.createSequentialGroup()
                 .addComponent(currentMonster, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 27, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         grupo_botones.add(meet_monster);
@@ -123,7 +123,6 @@ public class NapakalakiView extends javax.swing.JFrame {
             .addGroup(principalLayout.createSequentialGroup()
                 .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(principalLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addComponent(currentPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 976, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(player_monster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

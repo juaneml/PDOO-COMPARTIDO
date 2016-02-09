@@ -24,7 +24,7 @@ public class CultistPlayer extends Player {
      * @throws java.lang.CloneNotSupportedException
      */
     public CultistPlayer(Player p, Cultist c) throws CloneNotSupportedException {
-       super(p);
+        super(p);
         this.myCultistCard = c;
         this.totalCultistPlayers = this.totalCultistPlayers + 1;
     }

@@ -18,7 +18,7 @@ public class NapakalakiMain {
     
     
     public static void main(String[] args) throws CloneNotSupportedException {
-     ArrayList names = new ArrayList();
+     ArrayList<String> names = new ArrayList();
         
    /*1*/     Napakalaki game = Napakalaki.getInstance();   
    /*2*/     NapakalakiView napakalakiView = new NapakalakiView();        
@@ -30,7 +30,7 @@ public class NapakalakiMain {
    /*D) comenzar el juego leyendo los nombres*/
    
    /*3*/ PlayerNamesCapture namesCapture = new PlayerNamesCapture(napakalakiView,true);
-         namesCapture.setVisible(true);
+       //  namesCapture.setVisible(true);
    /*4*/ names = namesCapture.getNames();
    /*5*/ game.initGame(names);
    

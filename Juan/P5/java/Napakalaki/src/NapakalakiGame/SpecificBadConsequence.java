@@ -77,33 +77,41 @@ public class SpecificBadConsequence extends BadConsequence{
 
             /* Seleccionamos los tesoros que se ajustan al badconsequence que
              puede cumplir el jugador*/
+             System.out.println("Estoy quitando especificos visibles Antes"+ copia_specificV+"\n");
             for (Treasure dadoBad : v) {
                 if (copia_specificV.contains(dadoBad.getType())) { //si contiene el tipo
                     bad_specific_Vdev.add(dadoBad.getType());   //añadimos a la lista
                     copia_specificV.remove(dadoBad.getType()); //eliminamos elemento de la copia
                 }
             }
+             System.out.println("Estoy quitando especificos visibles Despues"+ copia_specificV+"\n");
         }
         /* OCULTOS */
         
         if(h != null){
-            System.out.println("Estoy quitando especificos ocultos");
+            
             for (TreasureKind ocultoBad : this.specificHiddenTreasures) {
                 copia_specificH.add(ocultoBad);
+              
             }
 
             /* Seleccionamos los tesoros que se ajustan al badconsequence que
              puede cumplir el jugador*/
+            System.out.println("Estoy quitando especificos ocultos Antes"+ copia_specificH+"\n");
             for (Treasure dadoBad : h) {
                 if (copia_specificH.contains(dadoBad.getType())) { //si contiene el tipo
                     bad_specific_Hdev.add(dadoBad.getType()); //añadimos a la lista 
                     copia_specificV.remove(dadoBad.getType()); //eliminamos elemento de la copia
+
                 }
+
             }
+             System.out.println("Estoy quitando especificos ocultos Despues"+ copia_specificH+"\n");
         }
         bad = new SpecificBadConsequence(this.text,0,bad_specific_Vdev,bad_specific_Hdev);
         return bad;
     }
+//    @Override
 //    public BadConsequence adjustToFitTreasureList(ArrayList<Treasure> v, ArrayList<Treasure> h) {
 //        int tamV = v.size();
 //        int tamH = h.size();
@@ -144,7 +152,7 @@ public class SpecificBadConsequence extends BadConsequence{
 //        return badConsequence;
 //        
 //    }
-    
+//    
        
     @Override
     public String toString() {

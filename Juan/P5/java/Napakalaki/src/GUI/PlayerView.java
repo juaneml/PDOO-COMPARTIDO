@@ -42,13 +42,20 @@ public class PlayerView extends javax.swing.JPanel {
 
     
     
-    public void setPlayer(Player playerModel) throws CloneNotSupportedException {
+    public void setPlayer(Player playerModel)  {
         this.playerModel = playerModel;
         this.nombre.setText(playerModel.getName());
         this.level.setText(Integer.toString(playerModel.getLevels()));
         this.combatLevel.setText(Integer.toString(playerModel.getCombatLevel()));
         
+//        if(napakalakiModel!=null)
+//        this.napakalakiModel.getCurrentMonster().getBadConsequence().
+//                adjustToFitTreasureList(napakalakiModel.getCurrentPlayer()
+//                        .getVisibleTreasures(), napakalakiModel.getCurrentPlayer().getVisibleTreasures());
         
+//       if(playerModel instaceof Cultist){
+//        playerModel;
+   // }
         /*Cambiar icono jugador*/
        
        if(playerModel.getName() !=null&& playerModel.getName().length()>0){
@@ -347,11 +354,11 @@ public class PlayerView extends javax.swing.JPanel {
     private void makeVisibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeVisibleActionPerformed
         ArrayList<Treasure> selHidden = this.getSelectedTreasures(hiddenTreasures);
         this.napakalakiModel.makeTreasuresVisible(selHidden);
-        try {
+        
             this.setPlayer(napakalakiModel.getCurrentPlayer());
-        } catch (CloneNotSupportedException ex) {
-            Logger.getLogger(PlayerView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+           
+        
     }//GEN-LAST:event_makeVisibleActionPerformed
 
     private void discardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardActionPerformed
@@ -363,11 +370,11 @@ public class PlayerView extends javax.swing.JPanel {
 
         this.napakalakiModel.discardHiddenTreasures(selHidden);
 
-        try {
+        
             setPlayer(napakalakiModel.getCurrentPlayer());
-        } catch (CloneNotSupportedException ex) {
-            Logger.getLogger(PlayerView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+           
+        
 
         this.repaint();
 

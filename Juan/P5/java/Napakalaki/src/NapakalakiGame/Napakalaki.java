@@ -147,7 +147,7 @@ public class Napakalaki {
      * @return
      * @throws java.lang.CloneNotSupportedException
      */
-    public CombatResult developCombat() throws CloneNotSupportedException {
+    public CombatResult developCombat() {
 
         CombatResult combatResult = this.currentPlayer.combat(this.currentMonster);
         if (combatResult == CombatResult.LOSEANDCONVERT){

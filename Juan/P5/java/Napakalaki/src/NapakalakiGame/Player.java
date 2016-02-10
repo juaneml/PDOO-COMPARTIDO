@@ -8,7 +8,7 @@ import java.util.Random;
  * @author juane
  * @version 3.1
  */
-public class Player implements Cloneable {
+public class Player {
 
     static final int MAXLEVEL = 10; // <<constant>>
     protected Player enemy; //Relación asímismo 
@@ -51,35 +51,16 @@ public class Player implements Cloneable {
     /**
      * Constructor de copia superficial Utilización de Clone
      *
-     * @return
-     * @throws java.lang.CloneNotSupportedException
+     * @param p
      */
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-
-        Player copia = new Player(this.name);
-        try {
-
-            copia = (Player) super.clone();
-            copia.name = this.name;
-            copia.level = this.level;
-            copia.dead = this.dead;
-            copia.canISteal = this.canISteal;
-            copia.hiddenTreasures = this.hiddenTreasures;
-            copia.visibleTreasures = this.visibleTreasures;
-            copia.visibleCultist = this.visibleCultist;
-            copia.pendingBadConsequence = this.pendingBadConsequence;
-
-        } catch (CloneNotSupportedException e) {
-            System.out.println(e);
-        }
-
-        copia.enemy = (Player) copia.enemy.clone();
-        return copia;
-    }
-
-    public Player(Player p) throws CloneNotSupportedException {
-        p = (Player) super.clone();
+    public Player(Player p){
+        this.name = p.name;
+        this.level = p.level;
+        this.dead = p.dead;
+        this.canISteal = p.canISteal;
+        this.visibleTreasures = p.visibleTreasures;
+        this.hiddenTreasures = p.hiddenTreasures;
+        this.pendingBadConsequence = p.pendingBadConsequence;
     }
 
     /**
@@ -140,6 +121,8 @@ public class Player implements Cloneable {
         if (this.level > 1) {
             this.level = this.level - l;
         }
+        else
+            this.level = 1;
     }
 
     /**
@@ -190,8 +173,9 @@ public class Player implements Cloneable {
         badConsequence = m.getBadConsequence();
         int nLevels = badConsequence.getLevels();
         this.decrementLevels(nLevels);
-
+        System.out.println("Antes en apply visible y ocultos"+this.visibleTreasures+this.hiddenTreasures);
         pendingBad = badConsequence.adjustToFitTreasureList(hiddenTreasures, visibleTreasures);
+        System.out.println("Despues en apply visible y ocultos"+this.visibleTreasures+this.hiddenTreasures);
         this.setPendingBadConsequence(pendingBad);
     }
 
@@ -366,8 +350,9 @@ public class Player implements Cloneable {
 
             }
         } else {
-
+            System.out.println("Antes visible y ocultos"+this.visibleTreasures+this.hiddenTreasures);
             this.applyBadConsequence(m);
+            System.out.println("Despues visible y ocultos"+this.visibleTreasures+this.hiddenTreasures);
             if (shouldConvert() == true) {
                 combatResult = CombatResult.LOSEANDCONVERT;
             } else {
@@ -436,9 +421,9 @@ public class Player implements Cloneable {
         boolean valid = false;
 
         if (this.hiddenTreasures != null) {
-            if (this.pendingBadConsequence != null  && this.hiddenTreasures.size() <= 4) {
+            if (this.pendingBadConsequence != null  || this.pendingBadConsequence.isEmpty()&& this.hiddenTreasures.size() <= 4) {
                 valid = true;
-//|| this.pendingBadConsequence.isEmpty()
+//
             }
             return valid;
         } else {

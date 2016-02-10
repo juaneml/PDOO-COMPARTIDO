@@ -36,10 +36,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         meet_m = false;
         napakalakiModel = n;
 
-        this.currentPlayer.setPlayer(n.getCurrentPlayer());
-        this.napakalakiModel.getCurrentMonster().getBadConsequence().
-                adjustToFitTreasureList(napakalakiModel.getCurrentPlayer()
-                        .getVisibleTreasures(), napakalakiModel.getCurrentPlayer().getVisibleTreasures());
+        this.currentPlayer.setPlayer(n.getCurrentPlayer());        
         
         this.currentPlayer.setNapakalakiModel(napakalakiModel);        
         this.repaint();
@@ -191,15 +188,13 @@ public class NapakalakiView extends javax.swing.JFrame {
             this.combat.setEnabled(false);
             this.currentPlayer.getMakeVisible().setEnabled(true);
 
-            try {
+            
                 this.resultado.setText(this.napakalakiModel.developCombat().toString());
-            } catch (CloneNotSupportedException ex) {
-                Logger.getLogger(NapakalakiView.class.getName()).log(Level.SEVERE, null, ex);
-            }
             
             
-        }
-        try {
+            
+        
+        
             if (this.napakalakiModel.developCombat().toString().equals("CurrentCultist")) {
                 currentPlayer.setSectario(true);
                 
@@ -209,10 +204,9 @@ public class NapakalakiView extends javax.swing.JFrame {
 
             }
             currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
-        } catch (CloneNotSupportedException ex) {
-            Logger.getLogger(NapakalakiView.class.getName()).log(Level.SEVERE, null, ex);
+       
+          
         }
-        
 //        this.napakalakiModel.discardHiddenTreasures(napakalakiModel.getCurrentPlayer().getHiddenTreasures());
 //        this.napakalakiModel.discardVisibleTreasures(napakalakiModel.getCurrentPlayer().getVisibleTreasures());
         

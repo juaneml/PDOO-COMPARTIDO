@@ -49,7 +49,7 @@ public class Player {
     }
 
     /**
-     * Constructor de copia superficial Utilización de Clone
+     * Constructor de copia superficial 
      *
      * @param p
      */
@@ -118,8 +118,9 @@ public class Player {
      * @param l decrementa l niveles
      */
     private void decrementLevels(int l) {
+       int valor = level-l;
         if (this.level > 1) {
-            this.level = this.level - l;
+            this.level = valor;
         }
         else
             this.level = 1;
@@ -354,9 +355,9 @@ public class Player {
 
             }
         } else {
-            System.out.println("Antes visible y ocultos"+this.visibleTreasures+this.hiddenTreasures);
+//            System.out.println("Antes visible y ocultos"+this.visibleTreasures+this.hiddenTreasures);
             this.applyBadConsequence(m);
-            System.out.println("Despues visible y ocultos"+this.visibleTreasures+this.hiddenTreasures);
+//            System.out.println("Despues visible y ocultos"+this.visibleTreasures+this.hiddenTreasures);
             if (shouldConvert() == true) {
                 combatResult = CombatResult.LOSEANDCONVERT;
             } else {

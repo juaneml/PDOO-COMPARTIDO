@@ -11,8 +11,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -25,7 +24,7 @@ public class PlayerView extends javax.swing.JPanel {
 
     private Player playerModel;
     private Napakalaki napakalakiModel ;
-
+    
     private boolean robado = false;
 
     
@@ -43,6 +42,7 @@ public class PlayerView extends javax.swing.JPanel {
     
     
     public void setPlayer(Player playerModel)  {
+       
         this.playerModel = playerModel;
         this.nombre.setText(playerModel.getName());
         this.level.setText(Integer.toString(playerModel.getLevels()));
@@ -53,9 +53,11 @@ public class PlayerView extends javax.swing.JPanel {
 //                adjustToFitTreasureList(napakalakiModel.getCurrentPlayer()
 //                        .getVisibleTreasures(), napakalakiModel.getCurrentPlayer().getVisibleTreasures());
         
-//       if(playerModel instaceof Cultist){
-//        playerModel;
-   // }
+     if( playerModel instanceof CultistPlayer ){
+       this.sectario.setText("YES");       
+        }
+       else
+         this.sectario.setText("No");
         /*Cambiar icono jugador*/
        
        if(playerModel.getName() !=null&& playerModel.getName().length()>0){
@@ -64,9 +66,10 @@ public class PlayerView extends javax.swing.JPanel {
         String aux = playerModel.getName();
         int n = aux.length(); // obtenemos el tamaño de la cadena
         aux =aux.substring(n-1); // obtenemos el último carácter
-
         
-        if(aux.contains("b")){//){
+        
+        
+        if(aux.equals("b")){//){
              path ="/Jugador/jugador_uno.jpg";
         }
         else if(aux.equals("a")){
@@ -100,11 +103,11 @@ public class PlayerView extends javax.swing.JPanel {
 
     }
 
-    public void setSectario(boolean a) {
-        this.label_sectario.setVisible(a); 
-        this.sectario.setVisible(false);
-        repaint();
-    }
+//    public void setSectario(boolean a) {
+//        this.label_sectario.setVisible(a); 
+//        this.sectario.setVisible(false);
+//        repaint();
+//    }
 
     public JButton getMakeVisible() {
         return makeVisible;
@@ -248,7 +251,6 @@ public class PlayerView extends javax.swing.JPanel {
         label_n_combate.setText("Nivel de combate");
 
         sectario.setText("NO");
-        sectario.setEnabled(false);
 
         label_sectario.setText("Sectario");
 

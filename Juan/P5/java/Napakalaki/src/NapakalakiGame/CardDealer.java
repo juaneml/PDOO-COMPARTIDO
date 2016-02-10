@@ -46,7 +46,7 @@ public class CardDealer {
         this.unusedTreasures.add(new Treasure("Botas de invetigacion",3,TreasureKind.SHOES));
         this.unusedTreasures.add(new Treasure("Capucha de Cthulhu",3,TreasureKind.HELMET));
         this.unusedTreasures.add(new Treasure("A prueba de babas",2,TreasureKind.ARMOR));
-        this.unusedTreasures.add(new Treasure("Botas de lluvia acida",1,TreasureKind.BOTHHANDS));
+        this.unusedTreasures.add(new Treasure("Botas de lluvia acida",1,TreasureKind.SHOES));
         this.unusedTreasures.add(new Treasure("Casco minero",2,TreasureKind.HELMET));
         this.unusedTreasures.add(new Treasure("Ametralladora Thompson",4,TreasureKind.BOTHHANDS));
         this.unusedTreasures.add(new Treasure("Camiseta de la UGR",1,TreasureKind.ARMOR));

@@ -2,8 +2,6 @@ package GUI;
 
 import NapakalakiGame.CombatResult;
 import NapakalakiGame.Napakalaki;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -17,6 +15,7 @@ public class NapakalakiView extends javax.swing.JFrame {
     private Napakalaki napakalakiModel;
     private boolean meet_m;
     private CombatResult combate;
+    
 
     public NapakalakiView() {
         initComponents();
@@ -26,13 +25,13 @@ public class NapakalakiView extends javax.swing.JFrame {
         this.setLocationRelativeTo(null); //ponemos ventana Centrada    
     }
 
-    public void setNapakalaki(Napakalaki n) throws CloneNotSupportedException {
+    public void setNapakalaki(Napakalaki n) {
 
         meet_m = false;
         napakalakiModel = n;
 
         this.currentPlayer.setPlayer(n.getCurrentPlayer());
-
+        
         this.currentPlayer.setNapakalakiModel(napakalakiModel);
         this.repaint();
     }
@@ -114,7 +113,8 @@ public class NapakalakiView extends javax.swing.JFrame {
             .addGroup(principalLayout.createSequentialGroup()
                 .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(principalLayout.createSequentialGroup()
-                        .addComponent(currentPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 976, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(currentPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(player_monster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(principalLayout.createSequentialGroup()
@@ -133,17 +133,17 @@ public class NapakalakiView extends javax.swing.JFrame {
         principalLayout.setVerticalGroup(
             principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(principalLayout.createSequentialGroup()
-                .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(player_monster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(currentPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(currentPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
                 .addGroup(principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiqueta_combate)
                     .addComponent(resultado)
                     .addComponent(meet_monster)
                     .addComponent(combat)
                     .addComponent(next_turn))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(principal, java.awt.BorderLayout.CENTER);
@@ -170,6 +170,9 @@ public class NapakalakiView extends javax.swing.JFrame {
 //                adjustToFitTreasureList(napakalakiModel.getCurrentPlayer().
 //                        getVisibleTreasures(), napakalakiModel.getCurrentPlayer().getVisibleTreasures());
 
+        currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
+
+        this.currentPlayer.setNapakalakiModel(napakalakiModel);
         repaint();
     }//GEN-LAST:event_meet_monsterActionPerformed
 
@@ -183,14 +186,6 @@ public class NapakalakiView extends javax.swing.JFrame {
             this.currentPlayer.getMakeVisible().setEnabled(true);
 
             this.resultado.setText(this.napakalakiModel.developCombat().toString());
-
-            if (this.napakalakiModel.developCombat().toString().equals("CurrentCultist")) {
-                currentPlayer.setSectario(true);
-
-            } else {
-                currentPlayer.setSectario(false);
-
-            }
 
         }
         currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
@@ -209,15 +204,13 @@ public class NapakalakiView extends javax.swing.JFrame {
             this.resultado.setText("Esperando");
             this.napakalakiModel.nextTurn();
             this.currentPlayer.getMakeVisible().setEnabled(true);
-               try {
-                   this.setNapakalaki(napakalakiModel);
-               } catch (CloneNotSupportedException ex) {
-                   Logger.getLogger(NapakalakiView.class.getName()).log(Level.SEVERE, null, ex);
-               }
+               
+            this.setNapakalaki(napakalakiModel);
+               
 
        
 
-           // this.currentMonster.setMonster(napakalakiModel.getCurrentMonster());
+           
             currentMonster.getInicialIcon();
             repaint();
         }

@@ -149,24 +149,24 @@ public class Napakalaki {
     public CombatResult developCombat() {
 
         CombatResult combatResult = this.currentPlayer.combat(this.currentMonster);
-        if (combatResult == CombatResult.LOSEANDCONVERT){
-            
-            CultistPlayer cultistPlayer = new CultistPlayer(currentPlayer,dealer.nextCultist());
-            
-            for(int i=0; i< players.size(); i++){
-                if(players.get(i) == currentPlayer){
-                   players.add(i, cultistPlayer);
-                   players.remove(players.get(i+1));
-                    
-                    
+        if (combatResult == CombatResult.LOSEANDCONVERT) {
+
+            CultistPlayer cultistPlayer = new CultistPlayer(currentPlayer, dealer.nextCultist());
+
+            for (int i = 0; i < players.size(); i++) {
+                if (players.get(i) == currentPlayer) {
+                    players.add(i, cultistPlayer);
+                    players.remove(players.get(i + 1));
+
                 }
-                if(players.get(i).enemy == currentPlayer)
+                if (players.get(i).enemy == currentPlayer) {
                     players.get(i).enemy = cultistPlayer;
-                    
+                }
+
             }
-             currentPlayer = cultistPlayer;
+            currentPlayer = cultistPlayer;
         }
-       
+        System.out.println(players);
         return combatResult;
     }
 

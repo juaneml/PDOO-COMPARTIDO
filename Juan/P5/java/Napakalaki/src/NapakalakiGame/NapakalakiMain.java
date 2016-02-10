@@ -17,7 +17,7 @@ public class NapakalakiMain {
     
     
     
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args) {
      ArrayList<String> names = new ArrayList();
         
    /*1*/     Napakalaki game = Napakalaki.getInstance();   

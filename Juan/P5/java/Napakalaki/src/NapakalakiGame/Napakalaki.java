@@ -145,7 +145,6 @@ public class Napakalaki {
      * Método developCombat()
      *
      * @return
-     * @throws java.lang.CloneNotSupportedException
      */
     public CombatResult developCombat() {
 

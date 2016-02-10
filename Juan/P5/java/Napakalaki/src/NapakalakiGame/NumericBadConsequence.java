@@ -71,11 +71,13 @@ public class NumericBadConsequence extends BadConsequence {
         int nuevoV = nVisibleTreasures;
         int nuevoO = nHiddenTreasures;
 
+        
+        
         int nVisibleAux = nVisibleTreasures;
         int nHiddenAux = nHiddenTreasures;
         if (v != null) {
             int tamV = v.size();
-
+             
             // Para los tesoros visibles
             if (nVisibleAux <= tamV) {
                 nuevoV = nVisibleAux;
@@ -93,8 +95,12 @@ public class NumericBadConsequence extends BadConsequence {
             }
 
         }
-        //levels = super.levels -levels;
+        System.out.println("Numeric visible antes " + nuevoV);
+        System.out.println("Numeric visible Despues " + nuevoV + "\n");
 
+        System.out.println("Numeric visible antes " + nuevoO);
+        System.out.println("Numeric visible Despues " + nuevoO + "\n");
+        
         badConsequence = new NumericBadConsequence(text, levels, nuevoV, nuevoO);
         return badConsequence;
 

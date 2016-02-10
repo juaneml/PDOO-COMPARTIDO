@@ -1,14 +1,10 @@
-
 package GUI;
 
 import NapakalakiGame.CombatResult;
 import NapakalakiGame.Napakalaki;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
+
 /**
  *
  * @author Raul
@@ -18,11 +14,10 @@ public class NapakalakiView extends javax.swing.JFrame {
     /**
      * Creates new form NapakalakiView
      */
-    
     private Napakalaki napakalakiModel;
-    private boolean meet_m;    
+    private boolean meet_m;
     private CombatResult combate;
-    
+
     public NapakalakiView() {
         initComponents();
         this.next_turn.setEnabled(false);
@@ -30,19 +25,18 @@ public class NapakalakiView extends javax.swing.JFrame {
         //this.currentMonster.setVisible(false);
         this.setLocationRelativeTo(null); //ponemos ventana Centrada    
     }
- 
-    public void setNapakalaki(Napakalaki n) throws CloneNotSupportedException{
-        
+
+    public void setNapakalaki(Napakalaki n) throws CloneNotSupportedException {
+
         meet_m = false;
         napakalakiModel = n;
 
-        this.currentPlayer.setPlayer(n.getCurrentPlayer());        
-        
-        this.currentPlayer.setNapakalakiModel(napakalakiModel);        
+        this.currentPlayer.setPlayer(n.getCurrentPlayer());
+
+        this.currentPlayer.setNapakalakiModel(napakalakiModel);
         this.repaint();
     }
-   
- 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -158,58 +152,49 @@ public class NapakalakiView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void meet_monsterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meet_monsterActionPerformed
-       // this.combat.setEnabled(true);
-       
-        if (this.meet_m == false){
-           this.currentMonster.setMonster(napakalakiModel.getCurrentMonster());
-            
+        // this.combat.setEnabled(true);
+
+        if (this.meet_m == false) {
+            this.currentMonster.setMonster(napakalakiModel.getCurrentMonster());
         }
-         if(this.meet_monster.isSelected()){
-             
+        if (this.meet_monster.isSelected()) {
+
             this.currentPlayer.getMakeVisible().setEnabled(false);
             this.currentMonster.setMonster(napakalakiModel.getCurrentMonster());
             this.currentMonster.setVisible(true);
             this.combat.setEnabled(true);
             this.next_turn.setEnabled(false);
             this.meet_monster.setEnabled(false);
-        }  
-             this.napakalakiModel.getCurrentMonster().getBadConsequence().adjustToFitTreasureList(napakalakiModel.getCurrentPlayer().getVisibleTreasures(), napakalakiModel.getCurrentPlayer().getVisibleTreasures());
-       
-            repaint();
+        }
+//        this.napakalakiModel.getCurrentMonster().getBadConsequence().
+//                adjustToFitTreasureList(napakalakiModel.getCurrentPlayer().
+//                        getVisibleTreasures(), napakalakiModel.getCurrentPlayer().getVisibleTreasures());
+
+        repaint();
     }//GEN-LAST:event_meet_monsterActionPerformed
 
-    
 
     private void combatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatActionPerformed
-      
+
         if (this.combat.isSelected()) {
             this.meet_monster.setEnabled(false);
             this.next_turn.setEnabled(true);
             this.combat.setEnabled(false);
             this.currentPlayer.getMakeVisible().setEnabled(true);
 
-            
-                this.resultado.setText(this.napakalakiModel.developCombat().toString());
-            
-            
-            
-        
-        
+            this.resultado.setText(this.napakalakiModel.developCombat().toString());
+
             if (this.napakalakiModel.developCombat().toString().equals("CurrentCultist")) {
                 currentPlayer.setSectario(true);
-                
+
             } else {
                 currentPlayer.setSectario(false);
-                
 
             }
-            currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
-       
-          
+
         }
-//        this.napakalakiModel.discardHiddenTreasures(napakalakiModel.getCurrentPlayer().getHiddenTreasures());
-//        this.napakalakiModel.discardVisibleTreasures(napakalakiModel.getCurrentPlayer().getVisibleTreasures());
-        
+        currentPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
+
         this.currentPlayer.setNapakalakiModel(napakalakiModel);
         repaint();
     }//GEN-LAST:event_combatActionPerformed

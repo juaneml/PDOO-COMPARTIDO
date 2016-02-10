@@ -170,13 +170,17 @@ public class Player {
     private void applyBadConsequence(Monster m) {
         BadConsequence badConsequence;
         BadConsequence pendingBad;
-        badConsequence = m.getBadConsequence();
-        int nLevels = badConsequence.getLevels();
-        this.decrementLevels(nLevels);
+        badConsequence = m.getBadConsequence();//1
+        
+        int nLevels = badConsequence.getLevels(); //2
+        
+        this.decrementLevels(nLevels);//3
+        
         System.out.println("Antes en apply visible y ocultos"+this.visibleTreasures+this.hiddenTreasures);
-        pendingBad = badConsequence.adjustToFitTreasureList(hiddenTreasures, visibleTreasures);
+        pendingBad = badConsequence.adjustToFitTreasureList(hiddenTreasures, visibleTreasures);//4
+        
         System.out.println("Despues en apply visible y ocultos"+this.visibleTreasures+this.hiddenTreasures);
-        this.setPendingBadConsequence(pendingBad);
+        this.setPendingBadConsequence(pendingBad); //5
     }
 
     /**
@@ -421,7 +425,7 @@ public class Player {
         boolean valid = false;
 
         if (this.hiddenTreasures != null) {
-            if (this.pendingBadConsequence != null  || this.pendingBadConsequence.isEmpty()&& this.hiddenTreasures.size() <= 4) {
+            if (this.pendingBadConsequence != null  || (this.pendingBadConsequence.isEmpty()&& this.hiddenTreasures.size() <= 4)) {
                 valid = true;
 //
             }
